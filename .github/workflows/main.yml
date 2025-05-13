@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      uses: actions/checkout@v2
       
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -31,15 +31,36 @@ jobs:
           python manage.py migrate
           python manage.py collectstatic --noinput
       
+  unit-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
       - name: Run tests
         run: |
           uv pip install pytest-django
           pytest
           bandit -r votre_projet
           safety check
-      
+
+  integration-tests:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          uv pip install pytest-django
+          pytest
+          bandit -r votre_projet
+          safety check
+
+  deploy:
+    needs: [unit-tests, integration-tests]
+    runs-on: ubuntu-latest
+    steps:
+      uses: actions/checkout@v2
       - name: Build and deploy
-        needs: build
         if: github.ref == 'refs/heads/main'
         run: |
           # Vos commandes de déploiement ici
