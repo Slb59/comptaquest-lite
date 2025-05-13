@@ -10,13 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
 from pathlib import Path
 from config import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 
 # Quick-start development settings - unsuitable for production
@@ -39,6 +37,11 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    'comptaquest.users',
+    'comptaquest.utils',
+    'comptaquest.comptas',
+    'comptaquest.consos',
+    'comptaquest.healths',
 ] 
 
 TIERS_APPS = [
@@ -52,12 +55,11 @@ TIERS_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
     'modelcluster',
     'taggit',
     'compressor',
     'tailwind',
-    'theme',
 ]
 
 DEV_APPS = [
@@ -75,6 +77,11 @@ STATICFILES_FINDERS = [
 
 TAILWIND_APP_NAME = 'theme'
 NPM_BIN_PATH = env("NPM_BIN_PATH")
+
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Pour le développement
+STATIC_ROOT = BASE_DIR / "staticfiles"    # Pour la production
+WAGTAILADMIN_BASE_CSS = None
 
 DJANGO_MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -117,26 +124,13 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    "default": {
-            "ENGINE": env("DATABASE_ENGINE"),
-            "NAME": env("DATABASE_NAME"),
-            "USER": env("DATABASE_USER"),
-            "PASSWORD": env("DATABASE_PASSWORD"),
-            "HOST": env("DATABASE_HOST"),
-            "PORT": env("DATABASE_PORT"),
-        }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
-print("BASE_DIR:", BASE_DIR)
-print("DATABASES:", DATABASES)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
