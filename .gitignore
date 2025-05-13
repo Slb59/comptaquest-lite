@@ -1,0 +1,23 @@
+# no environments files
+__pycache__
+.env*
+.venv
+
+# no base file
+*.ini
+*.sql
+*.sqlite3
+
+# no tests files
+.pytest_cache
+.coverage
+.coverage.*
+.htmlcov
+
+# no utils files
+_tools
+compose.yml
+
+# no logs
+debug_db.log
+debug.log
