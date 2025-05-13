@@ -1,0 +1,45 @@
+name: Django CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install uv
+          uv init
+          uv add django wagtail
+          uv sync
+      
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+      
+      - name: Run tests
+        run: |
+          uv pip install pytest-django
+          pytest
+          bandit -r votre_projet
+          safety check
+      
+      - name: Build and deploy
+        needs: [build]
+        if: github.ref == 'refs/heads/main'
+        run: |
+          # Vos commandes de déploiement ici
