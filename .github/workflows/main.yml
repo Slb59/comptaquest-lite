@@ -1,4 +1,4 @@
-name: Django CI/CD
+name: Comptaquest CI/CD
 
 on:
   push:
@@ -10,12 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
@@ -35,32 +35,37 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      - name: Run tests
+      - uses: actions/checkout@v4
+      - name: Run unit tests
         run: |
-          uv pip install pytest-django
-          pytest
-          bandit -r votre_projet
+          uv pip install pytest-django pytest-cov
+          pytest tests/unit --cov=comptaquest --cov-report=xml
+          bandit -r comptaquest
           safety check
 
   integration-tests:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      - name: Run tests
+      - uses: actions/checkout@v4
+      - name: Run integration tests
         run: |
-          uv pip install pytest-django
-          pytest
-          bandit -r votre_projet
+          uv pip install pytest-django pytest-cov
+          pytest tests/integration --cov=comptaquest --cov-report=xml
+          bandit -r comptaquest
           safety check
 
   deploy:
     needs: [unit-tests, integration-tests]
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Build and deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          # Vos commandes de déploiement ici
+          # Exemple de déploiement (à adapter)
+          echo "Déploiement en cours..."
+          # Ajoutez vos commandes de déploiement ici
+          # Exemple pour un déploiement sur un serveur :
+          # scp -r . user@server:/path/to/deploy
+          # ssh user@server "cd /path/to/deploy && docker-compose up -d"
