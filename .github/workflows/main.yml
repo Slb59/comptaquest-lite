@@ -39,7 +39,7 @@ jobs:
           safety check
       
       - name: Build and deploy
-        needs: [build]
+        needs: build
         if: github.ref == 'refs/heads/main'
         run: |
           # Vos commandes de déploiement ici
