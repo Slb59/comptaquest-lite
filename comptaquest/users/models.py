@@ -88,4 +88,3 @@ class Member(CQUser):
 def create_user_profile(sender, instance, created, **kwargs):
     if created and instance.usertype == "MEMBER":
         MemberProfile.objects.create(user=instance)
-

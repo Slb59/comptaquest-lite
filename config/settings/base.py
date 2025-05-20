@@ -42,7 +42,7 @@ PROJECT_APPS = [
     'comptaquest.comptas',
     'comptaquest.consos',
     'comptaquest.healths',
-] 
+]
 
 TIERS_APPS = [
     'wagtail.contrib.forms',
