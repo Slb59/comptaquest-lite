@@ -17,5 +17,6 @@ jobs:
           pip install safety bandit
       - name: Run security checks
         run: |
-          safety check
+          safety scan
           bandit -r votre_projet
+          safetu auth

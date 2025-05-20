@@ -1,2 +1,7 @@
 {% load static %}
 <link href="{% static 'css/output.css' %}" rel="stylesheet">
+
+{% load compress %}
+{% compress css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endcompress %}
