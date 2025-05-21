@@ -23,3 +23,14 @@ class CustomAuthSettings(BaseSetting):
 
     class Meta:
         abstract = True
+
+@register_setting(icon='log-out')
+class LogoutSettings(BaseSetting):
+    logout_message = models.TextField(
+        verbose_name=_('Message de déconnexion'),
+        blank=True,
+        help_text=_('Message affiché après la déconnexion')
+    )
+    
+    class Meta:
+        abstract = True

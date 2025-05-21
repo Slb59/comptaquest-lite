@@ -14,7 +14,7 @@ from pathlib import Path
 from config import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -105,7 +105,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,6 +130,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = "/"
+LOGIN_URL = '/account/login/'
 
 
 # Password validation
@@ -173,3 +178,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# cookie settings
+SESSION_COOKIE_DOMAIN = None # Important pour le développement local
+SESSION_COOKIE_NAME = 'comptaquest'
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_SECURE = False # Définir à True en production
+SESSION_COOKIE_SAMESITE = 'Lax'
+
+CSRF_COOKIE_NAME = 'comptaquest'
+CSRF_COOKIE_AGE = 60 * 60 * 24 * 30
+CSRF_COOKIE_SECURE = False # Définir à True en production
+CSRF_COOKIE_SAMESITE = 'Lax'
+
+SECURE_SSL_REDIRECT = False   # Désactive la redirection HTTPS

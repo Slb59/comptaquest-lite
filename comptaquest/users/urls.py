@@ -1,14 +1,14 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
-# from .views import CustomLoginView, CustomLogoutView, ProfileUpdateView
-from .views import LoginView
+from .views import LogoutView, ProfileUpdateView, LoginView
 
 app_name = "users"
 
 urlpatterns = [
     # login/logout urls
     path("login/", LoginView.as_view(), name="login"),
-    # path("logout/", CustomLogoutView.as_view(), name="logout"),
+    path("logout/", LogoutView.as_view(), name="logout"),
+    
     # password change urls
     path(
         "password-change/",

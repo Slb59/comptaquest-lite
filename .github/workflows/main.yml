@@ -77,7 +77,7 @@ jobs:
           safety check
 
   deploy:
-    needs: [unit-tests, integration-tests performance-checks code-quality]
+    needs: [unit-tests, integration-tests, performance-checks, code-quality]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
