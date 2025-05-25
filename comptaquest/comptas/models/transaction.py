@@ -128,9 +128,7 @@ class Transaction(models.Model):
     amount = models.DecimalField(default=0, max_digits=8, decimal_places=2)
 
     date_pointed = models.DateTimeField(blank=True, null=True, db_index=True)
-    description = models.TextField(
-        validators=[MaxLengthValidator(500)], blank=True, null=True
-    )
+    description = models.TextField(validators=[MaxLengthValidator(500)], blank=True, null=True)
     updatable = models.BooleanField(default=True)
     transaction_type = models.CharField(
         max_length=15,
@@ -160,9 +158,7 @@ class Transaction(models.Model):
         Raises ProtectedError if the transaction cannot be deleted.
         """
         if self.date_pointed:
-            raise ProtectedError(
-                _("Cannot delete transaction that has been pointed/reconciled"), self
-            )
+            raise ProtectedError(_("Cannot delete transaction that has been pointed/reconciled"), self)
 
         self.status = self.TransactionStatus.DELETED
         self.save(update_fields=["status"])
@@ -185,13 +181,9 @@ class ExpenseTransaction(Transaction, Expense):
     class Meta(Transaction.Meta):
         indexes = [
             # Compound index for account and transaction type
-            models.Index(
-                fields=["account", "transaction_type"], name="idx_expense_account_type"
-            ),
+            models.Index(fields=["account", "transaction_type"], name="idx_expense_account_type"),
             # Compound index for date and account
-            models.Index(
-                fields=["date_transaction", "account"], name="idx_expense_date_account"
-            ),
+            models.Index(fields=["date_transaction", "account"], name="idx_expense_date_account"),
             models.Index(fields=["status"], name="idx_expense_status"),
         ]
 
@@ -204,13 +196,9 @@ class IncomeTransaction(Transaction, Income):
     class Meta(Transaction.Meta):
         indexes = [
             # Compound index for account and transaction type
-            models.Index(
-                fields=["account", "transaction_type"], name="idx_income_account_type"
-            ),
+            models.Index(fields=["account", "transaction_type"], name="idx_income_account_type"),
             # Compound index for date and account
-            models.Index(
-                fields=["date_transaction", "account"], name="idx_income_date_account"
-            ),
+            models.Index(fields=["date_transaction", "account"], name="idx_income_date_account"),
             models.Index(fields=["status"], name="idx_income_status"),
         ]
 
@@ -226,13 +214,9 @@ class TransferTransaction(Transaction, Transfer):
     class Meta(Transaction.Meta):
         indexes = [
             # Compound index for account and transaction type
-            models.Index(
-                fields=["account", "transaction_type"], name="idx_transfer_account_type"
-            ),
+            models.Index(fields=["account", "transaction_type"], name="idx_transfer_account_type"),
             # Compound index for date and account
-            models.Index(
-                fields=["date_transaction", "account"], name="idx_transfer_date_account"
-            ),
+            models.Index(fields=["date_transaction", "account"], name="idx_transfer_date_account"),
             models.Index(fields=["status"], name="idx_transfer_status"),
         ]
 
@@ -267,13 +251,9 @@ class TransferTransaction(Transaction, Transfer):
         Both transactions must be eligible for deletion.
         """
         # First check if either transaction is pointed
-        if self.date_pointed or (
-            self.link_transfer and self.link_transfer.date_pointed
-        ):
+        if self.date_pointed or (self.link_transfer and self.link_transfer.date_pointed):
             raise ProtectedError(
-                _(
-                    "Cannot delete transfer - one or both transactions have been pointed/reconciled"
-                ),
+                _("Cannot delete transfer - one or both transactions have been pointed/reconciled"),
                 self,
             )
 

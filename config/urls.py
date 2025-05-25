@@ -14,12 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.apps import apps
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+
 from comptaquest.comptas.views import DashboardView
+
 # from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.generic import TemplateView
 
@@ -28,12 +31,10 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("__debug__/", include("debug_toolbar.urls")),
     # path("", include("django_components.urls")),
-
     # home url
     path("", DashboardView.as_view(), name="dashboard"),
-    # path('dashboard/', LoginRequiredMixin(TemplateView.as_view(template_name='dashboard.html')), 
-        #  name='dashboard'),
-
+    # path('dashboard/', LoginRequiredMixin(TemplateView.as_view(template_name='dashboard.html')),
+    #  name='dashboard'),
     # app urls
     path("account/", include("comptaquest.users.urls")),
     path("comptas/", include("comptaquest.comptas.urls")),

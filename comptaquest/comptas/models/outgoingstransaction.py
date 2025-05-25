@@ -53,9 +53,7 @@ class OutgoingsTransaction(models.Model):
         if self.last_transaction == self:
             raise ValidationError("last_transaction cannot reference the same object.")
         if self.previous_transaction == self:
-            raise ValidationError(
-                "previous_transaction cannot reference the same object."
-            )
+            raise ValidationError("previous_transaction cannot reference the same object.")
 
         # Prevent circular references in last_transaction
         if self.is_circular_reference(self.last_transaction):
@@ -63,9 +61,7 @@ class OutgoingsTransaction(models.Model):
 
         # Prevent circular references in previous_transaction
         if self.is_circular_reference(self.previous_transaction):
-            raise ValidationError(
-                "Circular reference detected in previous_transaction."
-            )
+            raise ValidationError("Circular reference detected in previous_transaction.")
 
     def is_circular_reference(self, transaction):
         """

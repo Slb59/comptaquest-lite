@@ -27,12 +27,14 @@ dependencies = [
     "djangorestframework==3.16.0",
     "draftjs-exporter==5.1.0",
     "et-xmlfile==2.0.0",
+    "factory-boy>=3.3.3",
     "filetype==1.2.0",
     "idna==3.10",
     "laces==0.1.2",
     "openpyxl==3.1.5",
     "pillow==11.2.1",
     "pillow-heif==0.21.0",
+    "pytest-django>=4.11.1",
     "rcssmin==1.1.2",
     "requests==2.32.3",
     "rjsmin==1.2.2",
@@ -73,3 +75,11 @@ extend-ignore = ['E402','E501']
 [tool.mypy]
 ignore_missing_imports="True"
 strict="True"
+
+[tool.pytest.init_options]
+DJANGO_SETTINGS_MODULE = "config.settings.dev"
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+python_classes = ["Test*"]
+testpaths = ["tests"]
+addopts = "--reuse-db"

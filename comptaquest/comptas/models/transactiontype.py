@@ -1,10 +1,6 @@
 from django.db import models
 
-from comptaquest.utils.models import (
-    CategoryCodification,
-    IncomeCodification,
-    PaymentCodification,
-)
+from comptaquest.utils.models import CategoryCodification, IncomeCodification, PaymentCodification
 
 from .account import CurrentAccount
 

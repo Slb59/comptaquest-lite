@@ -17,12 +17,9 @@ from .views import (
 app_name = "comptas"
 
 urlpatterns = [
-  
     path("members/", MembersView.as_view(), name="members"),
     # account urls
-    path(
-        "account/<int:account_id>/", AccountDetailView.as_view(), name="account_detail"
-    ),  # for individual accounts
+    path("account/<int:account_id>/", AccountDetailView.as_view(), name="account_detail"),  # for individual accounts
     path("account/create/", AccountCreateView.as_view(), name="account_create"),
     # outgoings urls
     path("outgoings/", OutgoingsView.as_view(), name="outgoings"),
@@ -47,6 +44,3 @@ urlpatterns = [
         name="transaction_create",
     ),
 ]
-
-
-

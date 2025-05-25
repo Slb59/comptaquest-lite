@@ -16,9 +16,7 @@ class Ledger(models.Model):
     )
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
-    status = models.CharField(
-        max_length=15, choices=LedgerState.choices, default=LedgerState.OPEN
-    )
+    status = models.CharField(max_length=15, choices=LedgerState.choices, default=LedgerState.OPEN)
 
     def clean(self):
         if self.start_date and self.end_date and self.start_date > self.end_date:

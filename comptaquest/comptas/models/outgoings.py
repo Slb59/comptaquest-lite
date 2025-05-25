@@ -41,19 +41,13 @@ class Outgoings(models.Model):
         db_index=True,
     )
     name = models.CharField(max_length=50, blank=False, null=False)
-    outgoings_type = models.CharField(
-        max_length=15, choices=OutgoingsType.choices, default=OutgoingsType.EXPENSE
-    )
+    outgoings_type = models.CharField(max_length=15, choices=OutgoingsType.choices, default=OutgoingsType.EXPENSE)
     last_integrated_date = models.DateTimeField(blank=True, null=True)
-    periodicity = models.CharField(
-        max_length=15, choices=Periodicity.choices, default=Periodicity.MONTHLY
-    )
+    periodicity = models.CharField(max_length=15, choices=Periodicity.choices, default=Periodicity.MONTHLY)
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     amount = models.DecimalField(default=0, max_digits=8, decimal_places=2)
-    description = models.TextField(
-        validators=[MaxLengthValidator(500)], blank=True, null=True
-    )
+    description = models.TextField(validators=[MaxLengthValidator(500)], blank=True, null=True)
 
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
