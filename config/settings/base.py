@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from config import env
@@ -61,6 +61,8 @@ TIERS_APPS = [
     "taggit",
     "compressor",
     "tailwind",
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 DEV_APPS = [
@@ -79,9 +81,9 @@ STATICFILES_FINDERS = [
 TAILWIND_APP_NAME = "theme"
 NPM_BIN_PATH = env("NPM_BIN_PATH")
 
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]  # Pour le développement
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Pour la production
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Pour le développement
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Pour la production
 WAGTAILADMIN_BASE_CSS = None
 
 DJANGO_MIDDLEWARE = [
@@ -96,6 +98,7 @@ DJANGO_MIDDLEWARE = [
 
 TIERS_MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    
 ]
 
 MIDDLEWARE = DJANGO_MIDDLEWARE + TIERS_MIDDLEWARE
@@ -106,7 +109,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -115,6 +118,13 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            # 'loaders': [
+            # ('django.template.loaders.cached.Loader', [
+            #     'django.template.loaders.filesystem.Loader',
+            #     'django.template.loaders.app_directories.Loader',
+            #     'path.to.custom.Loader',
+            # ]),
+            # ],
         },
     },
 ]
@@ -122,13 +132,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

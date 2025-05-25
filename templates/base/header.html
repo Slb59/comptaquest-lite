@@ -1,0 +1,11 @@
+<header id="header">
+
+    {% if user.is_authenticated %}
+        <div class="user_connected">
+            <p>Vous êtes connecté en tant que {{request.user}}</p>
+        </div>
+
+        <!-- Navigation-->
+        {% include 'navbar/navbar.html' %}
+    {% endif %}
+</header>

@@ -1,7 +1,29 @@
 {% load static %}
-<link href="{% static 'css/output.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/output.css' %}">
 
 {% load compress %}
 {% compress css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endcompress %}
+
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+    {% include "base/head.html"%}
+
+    <body id="page-top">  
+        {% include "base/header.html"%}
+
+        <main>
+            <div id="content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </main>
+
+    {% include "base/footer.html"%}
+    </body>
+
+</html>

@@ -3,6 +3,7 @@ from django.contrib.auth import forms as auth_forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import CQUser, MemberProfile
+from crispy_forms.helper import FormHelper
 
 
 class LoginForm(auth_forms.AuthenticationForm):
@@ -15,6 +16,10 @@ class LoginForm(auth_forms.AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={"placeholder": _("Password"), "class": "form-input"}),
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
 
     def confirm_login_allowed(self, user):
         if not user.is_active:
