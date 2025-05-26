@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 from .models import CQUser, MemberProfile
 from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Div, Submit
 
 
 class LoginForm(auth_forms.AuthenticationForm):
@@ -20,6 +21,19 @@ class LoginForm(auth_forms.AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
+        self.helper.form_class = 'border p-8'
+        # self.helper.form_method = 'GET'
+        # self.helper.form_action = 'comptas:dashboard'
+        self.helper.layout = Layout(
+            # Div(
+            #     Div('email', css_class="md:w-[50%]"),
+            #     Div('password', css_class="md:w-[50%]"),
+            #     css_class="md:flex md:justify-between"
+            # ),
+            'email',
+            'password',
+            Submit('submit', 'Se connecter', css_class='mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900'),
+        )
 
     def confirm_login_allowed(self, user):
         if not user.is_active:

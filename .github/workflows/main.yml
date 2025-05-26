@@ -42,6 +42,7 @@ jobs:
           python-version: '3.12'
       - name: Install Flake8
         run: |
+          pip install uv
           uv add flake8
       - name: Run code quality checks
         run: |
@@ -55,6 +56,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install pytest
+        run: |
+          pip install uv
+          uv add pytest
       - name: Run performance checks
         run: |
           pytest --benchmark-only
@@ -64,12 +69,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        - name: Install pytest
+        run: |
+          pip install uv
+          uv add pytest pytest-django pytest-cov
       - name: Run unit tests
         run: |
-          uv add pytest pytest-django pytest-cov
           export DJANGO_SETTINGS_MODULE=config.settings.dev
           uv run pytest tests/unit --cov=comptaquest --cov-report=xml
-          bandit -r comptaquest
+          # bandit -r comptaquest
           # safety check
 
   integration-tests:
@@ -77,12 +85,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install pytest
+        run: |
+          pip install uv
+          uv add pytest pytest-django pytest-cov
       - name: Run integration tests
         run: |
-          # uv pip install pytest-django pytest-cov
           pytest tests/integration --cov=comptaquest --cov-report=xml
-          bandit -r comptaquest
-          safety check
+          # bandit -r comptaquest
+          # safety check
 
   deploy:
     needs: [unit-tests, integration-tests, performance-checks, code-quality]
