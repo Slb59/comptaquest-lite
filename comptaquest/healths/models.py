@@ -5,7 +5,7 @@ from django.db.models import Sum
 from django.utils import timezone
 
 from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction
-from comptaquest.users.models import Member
+from secretbox.users.models import Member
 
 
 class HealthManager(models.Manager):

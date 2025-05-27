@@ -32,7 +32,7 @@ class LoginView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Connexion")
-        context["logo_url"] = "/static/images/logo.png"
+        context["logo_url"] = "/static/images/logo-sb.png"
         return context
 
 

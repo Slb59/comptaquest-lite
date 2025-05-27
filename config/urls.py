@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from comptaquest.comptas.views import DashboardView
+from secretbox.dashboard.views import DashboardView
 
 # from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.views.generic import TemplateView
@@ -36,7 +36,7 @@ urlpatterns = [
     # path('dashboard/', LoginRequiredMixin(TemplateView.as_view(template_name='dashboard.html')),
     #  name='dashboard'),
     # app urls
-    path("account/", include("comptaquest.users.urls")),
+    path("account/", include("secretbox.users.urls")),
     path("comptas/", include("comptaquest.comptas.urls")),
     path("utils/", include("comptaquest.utils.urls")),
     path("healths/", include("comptaquest.healths.urls")),
