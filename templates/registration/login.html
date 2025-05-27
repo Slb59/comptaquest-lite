@@ -1,11 +1,42 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+{% load crispy_forms_tags i18n%}
 
 {% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
 
-<div class="w-full max-w-xl mx-auto sm:px-6 lg:px-8">
-    <h1 class="'text-4xl font-bold mb-8"> {{ title }}</h1>
-    {% crispy form %}
+    <div class="max-w-md w-full space-y-6">
+
+        {% include "base/logo_header.html" %}
+
+        <!-- Messages d'erreur -->
+        {% if messages %}
+        <div class="mb-4 w-full">
+            {% for message in messages %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Message pas de compte -->
+        <div class="mb-4 text-gray-700 px-4 py-1 w-full">
+            <p class="mb-1">{% trans "Vous n'avez pas encore de compte ?" %}</p>
+            <p class="text-gray-500">{% trans "Veuillez contacter l'administrateur du site" %}</p>
+        </div>
+
+
+        <!-- Formulaire avec Crispy Forms -->
+        <div class="w-full max-w-xl mx-auto sm:px-4 lg:px-4">
+        {% crispy form %}
+        </div>
+
+        <!-- Lien de réinitialisation de mot de passe -->
+        <div class="text-sm text-center mt-4">
+            <a href="{% url 'users:password_reset' %}" class="font-medium text-indigo-600 hover:text-indigo-500">
+                {% trans "Mot de passe oublié ?" %}
+            </a>
+        </div>
+    </div>
 </div>
-
 {% endblock %}

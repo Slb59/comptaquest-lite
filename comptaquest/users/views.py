@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView, UpdateView
+from django.contrib.auth import authenticate
 
 from .forms import LoginForm
 from .models import CQUser
@@ -14,23 +15,24 @@ class LoginView(FormView):
     
     form_class = LoginForm
     template_name = "registration/login.html"
-    # success_url = reverse_lazy("comptas:dashboard")
+    success_url = reverse_lazy("comptas:dashboard")
 
-    # def form_valid(self, form):
-    #     user = form.get_user()
-    #     login(self.request, user)
+    def form_valid(self, form):
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+        user = authenticate(self.request, email=email, password=password)
 
-    #     # Redirection basée sur le type d'utilisateur
-    #     # if user.usertype == CQUser.UserTypes.ACCOUNTANT:
-    #     #     return redirect(reverse_lazy('accountant_dashboard'))
-    #     # elif user.usertype == CQUser.UserTypes.SUPERMEMBER:
-    #     #     return redirect(reverse_lazy('supermember_dashboard'))
-    #     # return redirect(reverse_lazy('member_dashboard'))
-    #     return redirect(self.success_url)
+        if user is not None:
+            login(self.request, user)
+            return super().form_valid(form)
+        else:
+            messages.error(self.request, _("Email ou mot de passe incorrect"))
+            return self.form_invalid(form)    
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Connexion")
+        context["logo_url"] = "/static/images/logo.png"
         return context
 
 
