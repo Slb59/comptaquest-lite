@@ -1,17 +1,18 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView, UpdateView
 from django.contrib.auth import authenticate
+from django.views.decorators.csrf import csrf_protect
 
 from .forms import LoginForm
 from .models import CQUser
 
 
-class LoginView(FormView):
+class LoginView(LoginView):
     
     form_class = LoginForm
     template_name = "registration/login.html"
@@ -35,6 +36,20 @@ class LoginView(FormView):
         context["logo_url"] = "/static/images/logo-sb.png"
         return context
 
+    def get_success_url(self):
+
+        next_page = success_url
+        if next_page == '':
+            next_page = '/' # if next param is not available, then redirect the user to the homepage after login.
+
+        return next_page
+    
+    def form_invalid(self, form):
+        response = super().form_invalid(form)
+        next_url = self.request.GET.get('next') or self.request.POST.get('next')
+        if next_url:
+            return redirect(f"{self.request.path}?next={next_url}")
+        return response
 
 class LogoutView(LoginRequiredMixin, LogoutView):
 
