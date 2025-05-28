@@ -1,0 +1,79 @@
+<!-- templates/dashboard.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="flex h-screen">
+    <!-- Colonne de gauche avec liens -->
+    <div class="w-1/6 bg-gray-100 p-4">
+        <div class="flex flex-col space-y-4">
+            <a href="#" class="flex items-center p-2 bg-blue-500 text-white rounded-full">
+                <img src="{% static 'images/icon1.png' %}" alt="Icon 1" class="w-8 h-8 mr-2">
+                <span>Lien 1</span>
+            </a>
+            <a href="#" class="flex items-center p-2 bg-green-500 text-white rounded-full">
+                <img src="{% static 'images/icon2.png' %}" alt="Icon 2" class="w-8 h-8 mr-2">
+                <span>Lien 2</span>
+            </a>
+            <a href="#" class="flex items-center p-2 bg-purple-500 text-white rounded-full">
+                <img src="{% static 'images/icon3.png' %}" alt="Icon 3" class="w-8 h-8 mr-2">
+                <span>Lien 3</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="w-5/6 p-4">
+        <!-- Logo et titre -->
+        <div class="flex items-center mb-6">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="h-12 w-auto mr-4">
+            <h1 class="text-3xl font-bold">Dashboard</h1>
+        </div>
+
+        <!-- Tableau des todos -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b">État</th>
+                        <th class="py-2 px-4 border-b">Durée</th>
+                        <th class="py-2 px-4 border-b">Description</th>
+                        <th class="py-2 px-4 border-b">Rendez-vous</th>
+                        <th class="py-2 px-4 border-b">Type</th>
+                        <th class="py-2 px-4 border-b">Qui</th>
+                        <th class="py-2 px-4 border-b">Lieu</th>
+                        <th class="py-2 px-4 border-b">Périodique</th>
+                        <th class="py-2 px-4 border-b">Date</th>
+                        <th class="py-2 px-4 border-b">Priorité</th>
+                        <th class="py-2 px-4 border-b">Fait</th>
+                        <th class="py-2 px-4 border-b">Note</th>
+                        <th class="py-2 px-4 border-b">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todos %}
+                    <tr>
+                        <td class="py-2 px-4 border-b">{{ todo.get_state_display }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.duration }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.description }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.appointment }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.get_type_display }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.who }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.place }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.periodic }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.date }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.get_priority_display }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.done }}</td>
+                        <td class="py-2 px-4 border-b">{{ todo.note }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <button class="bg-blue-500 text-white px-2 py-1 rounded">Chronomètre</button>
+                            <button class="bg-green-500 text-white px-2 py-1 rounded">Éditer</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

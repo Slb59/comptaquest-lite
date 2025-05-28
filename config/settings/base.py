@@ -39,6 +39,7 @@ DJANGO_APPS = [
 
 PROJECT_APPS = [
     "secretbox.users",
+    "secretbox.dashboard",
     "comptaquest.utils",
     "comptaquest.comptas",
     "comptaquest.consos",
