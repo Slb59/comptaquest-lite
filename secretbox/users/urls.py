@@ -1,7 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 
-from .views import LoginView, LogoutView, ProfileUpdateView
+from .views import LoginView, LogoutView, ProfileUpdateView, PasswordResetView
 
 app_name = "users"
 
@@ -21,7 +21,7 @@ urlpatterns = [
         name="password_change_done",
     ),
     # password reset urls
-    path("password-reset/", auth_views.PasswordResetView.as_view(), name="password_reset"),
+    path("password-reset/", PasswordResetView.as_view(), name="password_reset"),
     path(
         "password-reset/done/",
         auth_views.PasswordResetDoneView.as_view(),

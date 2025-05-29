@@ -7,6 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Submit
 
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
 
 
 class LoginForm(auth_forms.AuthenticationForm):
@@ -86,3 +87,25 @@ class MemberProfileForm(forms.ModelForm):
         widgets = {
             "avatar": forms.FileInput(attrs={"class": "form-control"}),
         }
+
+
+class PasswordResetForm(DjangoPasswordResetForm):
+    
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['email'].label=_("Email")
+        self.fields['email'].widget = forms.EmailInput(attrs={
+            "placeholder": _("Votre adresse email"),
+            "class": "form-input",
+            "autofocus": True
+        })
+    
+        self.helper = FormHelper()
+        self.helper.form_class = 'border p-8'
+        self.helper.layout = Layout(
+            'email',
+            Submit('submit', 'Réinitialiser le mot de passe', css_class='mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900'),
+        )
+  

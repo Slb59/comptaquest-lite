@@ -44,6 +44,7 @@ PROJECT_APPS = [
     "comptaquest.comptas",
     "comptaquest.consos",
     "comptaquest.healths",
+    "potionrun.chapters",
 ]
 
 TIERS_APPS = [
@@ -209,3 +210,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 SECURE_SSL_REDIRECT = False  # Désactive la redirection HTTPS
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = "osynia.devapps@gmail.com"

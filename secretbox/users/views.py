@@ -7,8 +7,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView, UpdateView
 from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
 
-from .forms import LoginForm
+from .forms import LoginForm, PasswordResetForm
 from .models import CQUser
 
 
@@ -105,3 +106,14 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, _("Please correct the errors below."))
         return super().form_invalid(form)
+
+class PasswordResetView(DjangoPasswordResetView):
+    form_class = PasswordResetForm
+    template_name = "registration/password_reset.html"
+    success_url = reverse_lazy("users:login")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("Reinitialisation du mot de passe")
+        context["logo_url"] = "/static/images/logo-sb.png"
+        return context
