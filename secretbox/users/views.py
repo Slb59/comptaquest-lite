@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
 
-from .forms import LoginForm, PasswordResetForm
+from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
 from .models import CQUser
 
 
@@ -78,24 +78,19 @@ class LogoutView(LoginRequiredMixin, LogoutView):
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):
-    template_name = "profile.html"
-    success_url = reverse_lazy("users:profile")
+    model = CQUser
+    form_class = ProfileUpdateForm
+    template_name = "secretbox/profile.html"
+    success_url = reverse_lazy("secretbox:dashboard")
 
     def get_object(self, queryset=None):
-        if self.request.user.usertype == CQUser.UserTypes.MEMBER:
-            # For member users, get or create their profile
-            profile, created = MemberProfile.objects.get_or_create(user=self.request.user)
-            return profile
-        return None
-
-    def get_form_class(self):
-        if self.request.user.usertype == CQUser.UserTypes.MEMBER:
-            return MemberProfileForm
-        return None
+        return self.request.user
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
+        context["title"] = _("Vos données")
+        context["logo_url"] = "/static/images/logo-sb.png"
         return context
 
     def form_valid(self, form):

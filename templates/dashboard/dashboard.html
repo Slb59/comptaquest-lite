@@ -1,4 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     {% include "base/logo_header.html" %}
+    <div>
+        <a href="{% url 'users:profile_update' %}">Mon Profil</a>
+    </div>
 {% endblock %}

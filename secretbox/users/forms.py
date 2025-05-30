@@ -9,6 +9,8 @@ from crispy_forms.layout import Layout, Div, Submit
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
 
+from django.contrib.auth.forms import UserChangeForm
+
 
 class LoginForm(auth_forms.AuthenticationForm):
     email = forms.EmailField(
@@ -80,13 +82,37 @@ class CQUserChangeForm(auth_forms.UserChangeForm):
         fields = {"trigram", "email", "password"}
 
 
-class MemberProfileForm(forms.ModelForm):
+class ProfileUpdateForm(UserChangeForm):
+    email = forms.EmailField(
+        label=_("Email"),
+        widget=forms.EmailInput(attrs={"class": "form-input"})
+    )
+    trigram = forms.CharField(
+        label=_("Trigram"),
+        max_length=5,
+        widget=forms.TextInput(attrs={"class": "form-input"})
+    )
+
     class Meta:
-        model = MemberProfile
-        fields = ["avatar"]
-        widgets = {
-            "avatar": forms.FileInput(attrs={"class": "form-control"}),
-        }
+        model = CQUser
+        fields = ('email', 'trigram')
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            'email',
+            'trigram',
+            Submit('submit', 'Valider', css_class='button white')
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if CQUser.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+            raise forms.ValidationError("Cet email est déjà utilisé.")
+        return email
 
 
 class PasswordResetForm(DjangoPasswordResetForm):

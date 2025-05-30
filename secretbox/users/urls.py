@@ -11,12 +11,12 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     # password change urls
     path(
-        "password-change/",
+        "profile/password-change/",
         auth_views.PasswordChangeView.as_view(),
         name="password_change",
     ),
     path(
-        "password-change/done/",
+        "profile/password-change/done/",
         auth_views.PasswordChangeDoneView.as_view(),
         name="password_change_done",
     ),
@@ -39,4 +39,6 @@ urlpatterns = [
     ),
     # profile urls
     path("profile/", ProfileUpdateView.as_view(), name="profile"),
+    # path('profile/request-app-modification/', request_app_modification, name='request_app_modification'),
+
 ]

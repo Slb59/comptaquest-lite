@@ -22,6 +22,22 @@ class CQUser(auth_models.AbstractUser):
     trigram = models.CharField(max_length=5, blank=False)
     usertype = models.CharField(max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True)
 
+    last_password_change = models.DateTimeField(
+        _("Dernier changement de mot de passe"),
+        null=True,
+        blank=True
+    )
+    last_email_change = models.DateTimeField(
+        _("Dernier changement d'email"),
+        null=True,
+        blank=True
+    )
+    last_trigram_change = models.DateTimeField(
+        _("Dernier changement de trigram"),
+        null=True,
+        blank=True
+    )
+
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["trigram"]
 
@@ -29,6 +45,31 @@ class CQUser(auth_models.AbstractUser):
 
     def __str__(self):
         return f"{self.trigram}"
+
+    def can_modify_apps(self):
+        """Permet de savoir si l'utilisateur a les droits pour modifier les apps"""
+        return self.usertype == self.UserTypes.SUPERMEMBER or self.is_staff
+
+    def request_app_modification(self, requested_apps):
+        """Envoie un mail à l'administrateur pour demander la modification des apps"""
+        from django.core.mail import send_mail
+        from django.conf import settings
+
+        subject = f"Demande de modification d'applications pour {self.trigram}"
+        message = f"""
+        L'utilisateur {self.trigram} ({self.email}) a demandé une modification de ses applications autorisées.
+        Applications demandées : {', '.join(requested_apps)}
+
+        Veuillez traiter cette demande via l'interface d'administration.
+        """
+
+        send_mail(
+            subject,
+            message,
+            self.email,
+            [settings.ADMIN_EMAIL],
+            fail_silently=False,
+        )
 
     class Meta:
         verbose_name_plural = "users"
@@ -80,7 +121,4 @@ class Member(CQUser):
             )
 
 
-@receiver(post_save, sender=Member)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created and instance.usertype == "MEMBER":
-        MemberProfile.objects.create(user=instance)
+
