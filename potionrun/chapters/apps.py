@@ -7,4 +7,4 @@ class ChaptersConfig(AppConfig):
 
     def ready(self):
         # Importer les signaux
-        import potionrun.chapter.signals
+        from . import signals

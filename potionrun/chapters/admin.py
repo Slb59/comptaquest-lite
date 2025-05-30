@@ -18,12 +18,12 @@ class ChapterAdmin(admin.ModelAdmin):
 
 @admin.register(Act)
 class ActAdmin(admin.ModelAdmin):
-    list_display = ('chapter', 'number', 'cr_duration')
+    list_display = ('chapter', 'number', 'short')
     list_filter = ('chapter',)
     search_fields = ('chapter__name', 'description')
 
 @admin.register(Scene)
 class SceneAdmin(admin.ModelAdmin):
-    list_display = ('act', 'number', 'cl_duration', 'cr_duration')
+    list_display = ('act', 'number', 'short')
     list_filter = ('act__chapter', 'act')
     search_fields = ('act__chapter__name', 'instructions')
