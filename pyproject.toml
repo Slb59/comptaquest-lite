@@ -23,6 +23,7 @@ dependencies = [
     "django-modelcluster==6.4",
     "django-permissionedforms==0.1",
     "django-stubs-ext==5.2.0",
+    "django-stubs[compatible-mypy]>=5.2.0",
     "django-taggit==6.1.0",
     "django-tasks==0.7.0",
     "django-treebeard==4.7.1",
@@ -75,8 +76,11 @@ exclude = ["*/migrations/*", "./.venv/*", ".git", "__pycache__"]
 extend-ignore = ['E402','E501']
 
 [tool.mypy]
-ignore_missing_imports="True"
-strict="True"
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "config.settings.dev"
+
 
 [tool.pytest.init_options]
 DJANGO_SETTINGS_MODULE = "config.settings.dev"

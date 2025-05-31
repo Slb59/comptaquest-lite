@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from .account import CurrentAccount
 from .ledger import Ledger
 from .transactiontype import Expense, Income, Transfer
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class TransactionManager(models.Manager):
@@ -146,7 +147,7 @@ class Transaction(models.Model):
 
     objects = TransactionManager()  # Attach the custom manager
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
 
     def __str__(self):
@@ -178,7 +179,7 @@ class ExpenseTransaction(Transaction, Expense):
     Represents a financial transaction specifically categorized as an expense.
     """
 
-    class Meta(Transaction.Meta):
+    class Meta(Transaction.Meta, TypedModelMeta):
         indexes = [
             # Compound index for account and transaction type
             models.Index(fields=["account", "transaction_type"], name="idx_expense_account_type"),
@@ -193,7 +194,7 @@ class IncomeTransaction(Transaction, Income):
     Represents a financial transaction specifically categorized as income.
     """
 
-    class Meta(Transaction.Meta):
+    class Meta(Transaction.Meta, TypedModelMeta):
         indexes = [
             # Compound index for account and transaction type
             models.Index(fields=["account", "transaction_type"], name="idx_income_account_type"),
@@ -211,7 +212,7 @@ class TransferTransaction(Transaction, Transfer):
     ...
     # contra_entry?
 
-    class Meta(Transaction.Meta):
+    class Meta(Transaction.Meta, TypedModelMeta):
         indexes = [
             # Compound index for account and transaction type
             models.Index(fields=["account", "transaction_type"], name="idx_transfer_account_type"),

@@ -1,6 +1,7 @@
 from django import forms
 
-from comptaquest.comptas.models import CurrentAccount, ExpenseTransaction, Outgoings
+from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
+                                        Outgoings)
 
 
 class CurrentAccountForm(forms.ModelForm):

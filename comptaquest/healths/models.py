@@ -4,8 +4,10 @@ from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
 
-from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction
+from comptaquest.comptas.models.transaction import (ExpenseTransaction,
+                                                    IncomeTransaction)
 from secretbox.users.models import Member
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class HealthManager(models.Manager):
@@ -106,7 +108,7 @@ class Health(models.Model):
     secu = models.OneToOneField(Secu, on_delete=models.CASCADE, related_name="secu")
     mutuelle = models.OneToOneField(Mutuelle, on_delete=models.CASCADE, related_name="mutuelle")
 
-    class Meta:
+    class Meta(TypedModelMeta):
         verbose_name = "health"
         verbose_name_plural = "healths"
         ordering = ["-date"]

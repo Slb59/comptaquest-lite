@@ -1,27 +1,27 @@
-from django.contrib.auth import login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LogoutView, LoginView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import \
+    PasswordResetView as DjangoPasswordResetView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import FormView, UpdateView
-from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
+from django.views.generic import FormView, UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
 from .models import CQUser
 
 
 class LoginView(LoginView):
-    
+
     form_class = LoginForm
     template_name = "registration/login.html"
     success_url = reverse_lazy("comptas:dashboard")
 
     def form_valid(self, form):
-        email = form.cleaned_data['email']
-        password = form.cleaned_data['password']
+        email = form.cleaned_data["email"]
+        password = form.cleaned_data["password"]
         user = authenticate(self.request, email=email, password=password)
 
         if user is not None:
@@ -29,7 +29,7 @@ class LoginView(LoginView):
             return super().form_valid(form)
         else:
             messages.error(self.request, _("Email ou mot de passe incorrect"))
-            return self.form_invalid(form)    
+            return self.form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -40,17 +40,18 @@ class LoginView(LoginView):
     def get_success_url(self):
 
         next_page = success_url
-        if next_page == '':
-            next_page = '/' # if next param is not available, then redirect the user to the homepage after login.
+        if next_page == "":
+            next_page = "/"  # if next param is not available, then redirect the user to the homepage after login.
 
         return next_page
-    
+
     def form_invalid(self, form):
         response = super().form_invalid(form)
-        next_url = self.request.GET.get('next') or self.request.POST.get('next')
+        next_url = self.request.GET.get("next") or self.request.POST.get("next")
         if next_url:
             return redirect(f"{self.request.path}?next={next_url}")
         return response
+
 
 class LogoutView(LoginRequiredMixin, LogoutView):
 
@@ -101,6 +102,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     def form_invalid(self, form):
         messages.error(self.request, _("Please correct the errors below."))
         return super().form_invalid(form)
+
 
 class PasswordResetView(DjangoPasswordResetView):
     form_class = PasswordResetForm

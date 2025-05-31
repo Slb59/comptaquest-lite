@@ -8,9 +8,15 @@
         <img src="{% static 'images/profile_osynia.png' %}" alt="Profile" class="w-6 h-6">
     </a>
 
-    <!-- Ajoutez d'autres pastilles ici -->
+    <!-- pastille pour comptaquest -->
     <a href="{% url 'comptas:dashboard' %}"
         class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500">
-        <img src="{% static 'images/logo_cq.png' %}" alt="Another Page" class="w-6 h-6">
+        <img src="{% static 'images/logo_cq.png' %}" alt="ComptaQuest" class="w-6 h-6">
     </a>
+
+        <!-- pastille pour ptionrun -->
+        <a href="{% url 'potionrun:launch' %}"
+            class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500">
+            <img src="{% static 'images/logo_pr.png' %}" alt="PotionRun" class="w-6 h-6">
+        </a>
 </div>

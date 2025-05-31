@@ -5,6 +5,7 @@ from django.db import models
 
 from .account import CurrentAccount
 from .transactiontype import Expense, Income, Transfer
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class Outgoings(models.Model):
@@ -58,7 +59,7 @@ class Outgoings(models.Model):
         null=True,
     )
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
 
     def clean(self):

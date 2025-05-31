@@ -1,7 +1,8 @@
 import factory
-from tests.factories.member import MemberFactory
 
-from comptaquest.utils.models import CategoryCodification, Codification, IncomeCodification, PaymentCodification
+from comptaquest.utils.models import (CategoryCodification, Codification,
+                                      IncomeCodification, PaymentCodification)
+from tests.factories.member import MemberFactory
 
 
 class CodificationFactory(factory.django.DjangoModelFactory):

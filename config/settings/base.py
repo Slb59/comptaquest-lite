@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
+
 import os
 from pathlib import Path
 
@@ -24,7 +25,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=[])
-
 
 
 # Application definition
@@ -85,8 +85,8 @@ TAILWIND_APP_NAME = "theme"
 NPM_BIN_PATH = env("NPM_BIN_PATH")
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Pour le développement
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Pour la production
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # Pour le développement
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # Pour la production
 WAGTAILADMIN_BASE_CSS = None
 
 DJANGO_MIDDLEWARE = [
@@ -101,7 +101,6 @@ DJANGO_MIDDLEWARE = [
 
 TIERS_MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    
 ]
 
 MIDDLEWARE = DJANGO_MIDDLEWARE + TIERS_MIDDLEWARE
@@ -112,7 +111,7 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -144,7 +143,7 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, 'db.sqlite3'),
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 

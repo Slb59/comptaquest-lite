@@ -1,38 +1,33 @@
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Div, Layout, Submit
 from django import forms
+from django.contrib.auth import authenticate
 from django.contrib.auth import forms as auth_forms
+from django.contrib.auth.forms import \
+    PasswordResetForm as DjangoPasswordResetForm
+from django.contrib.auth.forms import UserChangeForm
 from django.utils.translation import gettext_lazy as _
 
 from .models import CQUser, MemberProfile
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Submit
-
-from django.contrib.auth import authenticate
-from django.contrib.auth.forms import PasswordResetForm as DjangoPasswordResetForm
-
-from django.contrib.auth.forms import UserChangeForm
 
 
 class LoginForm(auth_forms.AuthenticationForm):
     email = forms.EmailField(
         label=_("Identifiant"),
-        widget=forms.EmailInput(attrs={
-            "placeholder": _("Votre adresse email"),
-            "class": "form-input",
-            "autofocus": True
-        }),
+        widget=forms.EmailInput(
+            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+        ),
     )
     password = forms.CharField(
         label=_("Mot de passe"),
         strip=False,
-        widget=forms.PasswordInput(attrs={
-            "placeholder": _("Votre mot de passe"),
-            "class": "form-input"}),
+        widget=forms.PasswordInput(attrs={"placeholder": _("Votre mot de passe"), "class": "form-input"}),
     )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_class = 'border p-8'
+        self.helper.form_class = "border p-8"
         # self.helper.form_method = 'GET'
         # self.helper.form_action = 'comptas:dashboard'
         self.helper.layout = Layout(
@@ -41,11 +36,15 @@ class LoginForm(auth_forms.AuthenticationForm):
             #     Div('password', css_class="md:w-[50%]"),
             #     css_class="md:flex md:justify-between"
             # ),
-            'email',
-            'password',
-            Submit('submit', 'Se connecter', css_class='mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900'),
+            "email",
+            "password",
+            Submit(
+                "submit",
+                "Se connecter",
+                css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
+            ),
         )
-    
+
     def clean(self):
         cleaned_data = super().clean()
         email = cleaned_data.get("email")
@@ -55,7 +54,7 @@ class LoginForm(auth_forms.AuthenticationForm):
             user = authenticate(email=email, password=password)
             if user is None:
                 raise forms.ValidationError(_("Email ou mot de passe incorrect"))
-        
+
         return cleaned_data
 
     def confirm_login_allowed(self, user):
@@ -83,55 +82,51 @@ class CQUserChangeForm(auth_forms.UserChangeForm):
 
 
 class ProfileUpdateForm(UserChangeForm):
-    email = forms.EmailField(
-        label=_("Email"),
-        widget=forms.EmailInput(attrs={"class": "form-input"})
-    )
-    trigram = forms.CharField(
-        label=_("Trigram"),
-        max_length=5,
-        widget=forms.TextInput(attrs={"class": "form-input"})
-    )
+    email = forms.EmailField(label=_("Email"), widget=forms.EmailInput(attrs={"class": "form-input"}))
+    trigram = forms.CharField(label=_("Trigram"), max_length=5, widget=forms.TextInput(attrs={"class": "form-input"}))
 
     class Meta:
         model = CQUser
-        fields = ('email', 'trigram')
-
+        fields = ("email", "trigram")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
+        self.helper.form_method = "post"
         self.helper.layout = Layout(
-            'email',
-            'trigram',
-            Submit('submit', 'Valider', css_class='mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900'),
+            "email",
+            "trigram",
+            Submit(
+                "submit",
+                "Valider",
+                css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
+            ),
         )
 
     def clean_email(self):
-        email = self.cleaned_data.get('email')
+        email = self.cleaned_data.get("email")
         if CQUser.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
             raise forms.ValidationError("Cet email est déjà utilisé.")
         return email
 
 
 class PasswordResetForm(DjangoPasswordResetForm):
-    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['email'].label=_("Email")
-        self.fields['email'].widget = forms.EmailInput(attrs={
-            "placeholder": _("Votre adresse email"),
-            "class": "form-input",
-            "autofocus": True
-        })
-    
-        self.helper = FormHelper()
-        self.helper.form_class = 'border p-8'
-        self.helper.layout = Layout(
-            'email',
-            Submit('submit', 'Réinitialiser le mot de passe', css_class='mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900'),
+        self.fields["email"].label = _("Email")
+        self.fields["email"].widget = forms.EmailInput(
+            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
         )
-  
+
+        self.helper = FormHelper()
+        self.helper.form_class = "border p-8"
+        self.helper.layout = Layout(
+            "email",
+            Submit(
+                "submit",
+                "Réinitialiser le mot de passe",
+                css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
+            ),
+        )

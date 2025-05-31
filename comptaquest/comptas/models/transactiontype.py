@@ -1,8 +1,10 @@
 from django.db import models
 
-from comptaquest.utils.models import CategoryCodification, IncomeCodification, PaymentCodification
+from comptaquest.utils.models import (CategoryCodification, IncomeCodification,
+                                      PaymentCodification)
 
 from .account import CurrentAccount
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class Expense(models.Model):
@@ -25,7 +27,7 @@ class Expense(models.Model):
         related_name="%(class)s_payment_expenses",
     )
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
 
 
@@ -49,7 +51,7 @@ class Income(models.Model):
         related_name="%(class)s_category_incomes",
     )
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
 
 
@@ -82,5 +84,5 @@ class Transfer(models.Model):
         null=True,
     )
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True

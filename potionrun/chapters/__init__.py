@@ -1,1 +1,1 @@
-default_app_config = 'chapters.apps.ChaptersConfig'
+default_app_config = "chapters.apps.ChaptersConfig"

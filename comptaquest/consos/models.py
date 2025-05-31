@@ -3,6 +3,7 @@ from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class Place(models.Model):
@@ -52,9 +53,7 @@ class Conso(models.Model):
     """
 
     date = models.DateField(default=timezone.now)
-    amount = models.DecimalField(
-        default=0, max_digits=8, decimal_places=2, validators=[MinValueValidator(0)]
-    )
+    amount = models.DecimalField(default=0, max_digits=8, decimal_places=2, validators=[MinValueValidator(0)])
     description = models.CharField(max_length=255, blank=True, null=True)
     place = models.ForeignKey(
         Place,
@@ -65,7 +64,7 @@ class Conso(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(TypedModelMeta):
         """Meta options for Conso model."""
 
         verbose_name = "Conso"
@@ -158,9 +157,7 @@ class ConsoWater(Conso):
             year = timezone.now().year
 
         return (
-            self.__class__.objects.filter(date__year=year).aggregate(
-                total_quantity=Sum("quantity")
-            )["total_quantity"]
+            self.__class__.objects.filter(date__year=year).aggregate(total_quantity=Sum("quantity"))["total_quantity"]
             or 0
         )
 

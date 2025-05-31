@@ -3,7 +3,9 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from .outgoings import ExpenseOutgoings, IncomeOutgoings, TransferOutgoings
-from .transaction import ExpenseTransaction, IncomeTransaction, TransferTransaction
+from .transaction import (ExpenseTransaction, IncomeTransaction,
+                          TransferTransaction)
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class OutgoingsTransaction(models.Model):
@@ -84,7 +86,7 @@ class OutgoingsTransaction(models.Model):
             current = current.last_transaction  # Traverse the chain
         return False
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
         # constraints = [
         #     models.CheckConstraint(

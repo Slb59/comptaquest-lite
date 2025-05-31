@@ -37,10 +37,11 @@ urlpatterns = [
     #  name='dashboard'),
     # app urls
     path("account/", include("secretbox.users.urls")),
-    path("comptas/", include("comptaquest.comptas.urls")),
-    path("utils/", include("comptaquest.utils.urls")),
-    path("healths/", include("comptaquest.healths.urls")),
-    path("consos/", include("comptaquest.consos.urls")),
+    path("cq/comptas/", include("comptaquest.comptas.urls")),
+    path("cq/utils/", include("comptaquest.utils.urls")),
+    path("cq/healths/", include("comptaquest.healths.urls")),
+    path("cq/consos/", include("comptaquest.consos.urls")),
+    path("pr/performances/", include("potionrun.performances.urls")),
 ]
 
 if settings.DEBUG:

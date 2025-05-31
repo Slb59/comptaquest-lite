@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
+from django_stubs_ext.db.models import TypedModelMeta
 
 
 class CQUser(auth_models.AbstractUser):
@@ -22,21 +23,9 @@ class CQUser(auth_models.AbstractUser):
     trigram = models.CharField(max_length=5, blank=False)
     usertype = models.CharField(max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True)
 
-    last_password_change = models.DateTimeField(
-        _("Dernier changement de mot de passe"),
-        null=True,
-        blank=True
-    )
-    last_email_change = models.DateTimeField(
-        _("Dernier changement d'email"),
-        null=True,
-        blank=True
-    )
-    last_trigram_change = models.DateTimeField(
-        _("Dernier changement de trigram"),
-        null=True,
-        blank=True
-    )
+    last_password_change = models.DateTimeField(_("Dernier changement de mot de passe"), null=True, blank=True)
+    last_email_change = models.DateTimeField(_("Dernier changement d'email"), null=True, blank=True)
+    last_trigram_change = models.DateTimeField(_("Dernier changement de trigram"), null=True, blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["trigram"]
@@ -52,8 +41,8 @@ class CQUser(auth_models.AbstractUser):
 
     def request_app_modification(self, requested_apps):
         """Envoie un mail à l'administrateur pour demander la modification des apps"""
-        from django.core.mail import send_mail
         from django.conf import settings
+        from django.core.mail import send_mail
 
         subject = f"Demande de modification d'applications pour {self.trigram}"
         message = f"""
@@ -71,7 +60,7 @@ class CQUser(auth_models.AbstractUser):
             fail_silently=False,
         )
 
-    class Meta:
+    class Meta(TypedModelMeta):
         verbose_name_plural = "users"
         verbose_name = "user"
         ordering = ["-trigram"]
@@ -86,7 +75,7 @@ class BaseUserProfile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     avatar = models.ImageField(blank=True, upload_to="profile_images")
 
-    class Meta:
+    class Meta(TypedModelMeta):
         abstract = True
 
     def __str__(self):
@@ -106,7 +95,7 @@ class MemberManager(models.Manager):
 
 class Member(CQUser):
 
-    class Meta:
+    class Meta(TypedModelMeta):
         proxy = True
 
     member = MemberManager()
@@ -119,6 +108,3 @@ class Member(CQUser):
             return MemberProfile.objects.create(
                 user=self,
             )
-
-
-

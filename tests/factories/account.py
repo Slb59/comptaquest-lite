@@ -1,7 +1,8 @@
 import factory
-from tests.factories.member import MemberFactory
 
-from comptaquest.comptas.models.account import CurrentAccount, InvestmentAccount
+from comptaquest.comptas.models.account import (CurrentAccount,
+                                                InvestmentAccount)
+from tests.factories.member import MemberFactory
 
 
 class CurrentAccountFactory(factory.django.DjangoModelFactory):

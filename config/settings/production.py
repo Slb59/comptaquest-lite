@@ -1,8 +1,8 @@
-from .base import * 
+from .base import *
 
 DEBUG = False
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # TODO : définir les paramètres de l'envoi de mail
 # EMAIL_HOST = 'smtp.example.com'
 # EMAIL_PORT = 587
