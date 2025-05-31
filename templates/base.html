@@ -13,17 +13,15 @@
 
     {% include "base/head.html"%}
 
-    <body id="page-top">
-        {% include "base/header.html"%}
-
+    <body id="page-top">       
         <main>
-            <div class="m-8">
+            <div class="flex">
+                {% include "base/header.html"%}
                 {% block content %}
-                {% endblock content %}
+                {% endblock content %}                
             </div>
+            {% include "base/footer.html"%}
         </main>
-
-    {% include "base/footer.html"%}
     </body>
 
 </html>

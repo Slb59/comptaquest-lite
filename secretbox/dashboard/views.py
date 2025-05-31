@@ -10,7 +10,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = _("Dashboard")
+        context["title"] = _("Bienvenue dans votre secretbox")
         context["logo_url"] = "/static/images/logo-sb.png"
         context['todos'] = Todo.objects.filter(user=self.request.user).order_by(
             'date', 'priority', 'category', 'periodic', 'who', 'place', 'duration', '?'

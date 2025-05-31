@@ -17,6 +17,7 @@ from .views import (
 app_name = "comptas"
 
 urlpatterns = [
+    path ("", DashboardView.as_view(), name="dashboard"),
     path("members/", MembersView.as_view(), name="members"),
     # account urls
     path("account/<int:account_id>/", AccountDetailView.as_view(), name="account_detail"),  # for individual accounts

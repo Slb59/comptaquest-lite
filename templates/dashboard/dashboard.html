@@ -1,7 +1,15 @@
 {% extends "base.html" %}
+
 {% block content %}
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
     {% include "base/logo_header.html" %}
-    <div>
-        <a href="{% url 'users:profile_update' %}">Mon Profil</a>
+
+    <!-- Contenu principal -->
+    <div class="mb-4 w-full">
+        <!-- Le contenu principal sera mis à jour ici -->
+        {% block dashboard_content %}
+            <h1 class="text-2xl font-bold">Bienvenue sur le tableau de bord</h1>
+        {% endblock dashboard_content %}
     </div>
+</div>
 {% endblock %}
