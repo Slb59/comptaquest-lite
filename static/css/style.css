@@ -10,3 +10,8 @@ body {
     padding: 20px;
 }
 
+.title-container {
+    width: 100%;
+    overflow: hidden;
+    /* Assurez-vous que le texte ne dépasse pas du conteneur */
+}

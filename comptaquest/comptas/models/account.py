@@ -5,6 +5,15 @@ from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
 
+class Wallet(models.Model):
+    name = models.CharField(max_length=4, primary_key=True)
+    label = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.label}"
+
+
 class AbstractAccount(models.Model):
 
     class AccountType(models.TextChoices):

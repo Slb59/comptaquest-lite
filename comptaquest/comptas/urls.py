@@ -4,15 +4,20 @@ from .views import (AccountCreateView, AccountDetailView, BalanceSheetView,
                     DashboardView, MembersView, OutgoingsCreateView,
                     OutgoingsDetailView, OutgoingsView, TransactionCreateView,
                     TransactionDetailView, TransactionsView)
+from .views import WalletListView, WalletCreateView, WalletUpdateView, WalletDeleteView
 
 app_name = "comptas"
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
     path("members/", MembersView.as_view(), name="members"),
-    # account urls
-    path("account/<int:account_id>/", AccountDetailView.as_view(), name="account_detail"),  # for individual accounts
-    path("account/create/", AccountCreateView.as_view(), name="account_create"),
+
+    # wallet urls
+    path('wallets/', WalletListView.as_view(), name='wallet_list'),
+    path('wallets/create/', WalletCreateView.as_view(), name='wallet_create'),
+    path('wallets/<str:pk>/update/', WalletUpdateView.as_view(), name='wallet_update'),
+    path('wallets/<str:pk>/delete/', WalletDeleteView.as_view(), name='wallet_delete'),
+
     # outgoings urls
     path("outgoings/", OutgoingsView.as_view(), name="outgoings"),
     path(

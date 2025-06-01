@@ -7,22 +7,49 @@ from .forms import CurrentAccountForm, OutgoingsForm
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
+from django.utils.translation import gettext_lazy as _
+from .models import Wallet
+from .forms import WalletForm
 
 
 class DashboardView(LoginRequiredMixin, ListView):
-    template_name = "dashboard.html"
+    template_name = "comptaquest/cq_dashboard.html"
     model = CurrentAccount  # for the model to be used in the template
     context_object_name = "accounts"  # for the context variable name
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["title"] = timezone.now()
+        context["logo_url"] = "/static/images/logo_cq.png"
         context["current_date"] = timezone.now()
         context["accounts"] = CurrentAccount.objects.all()
         return context
 
 
-class MembersView(LoginRequiredMixin, ListView):
-    template_name = "members.html"
+class WalletListView(ListView):
+    model = Wallet
+    template_name = 'wallet_list.html'
+    context_object_name = 'wallets'
+
+
+class WalletCreateView(CreateView):
+    model = Wallet
+    form_class = WalletForm
+    template_name = 'wallet_form.html'
+    success_url = reverse_lazy('wallet_list')
+
+
+class WalletUpdateView(UpdateView):
+    model = Wallet
+    form_class = WalletForm
+    template_name = 'wallet_form.html'
+    success_url = reverse_lazy('wallet_list')
+
+
+class WalletDeleteView(DeleteView):
+    model = Wallet
+    template_name = 'wallet_confirm_delete.html'
+    success_url = reverse_lazy('wallet_list')
 
 
 class AccountDetailView(LoginRequiredMixin, DetailView):

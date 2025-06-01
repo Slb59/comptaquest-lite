@@ -1,5 +1,5 @@
-<!-- Logo -->
-<div class="flex items-center mb-6">
+{% load custom_filters %}
+<div class="flex items-center">
     <img class="h-21 w-auto mr-4" src="{{ logo_url }}" alt="ComptaQuest">
-    <h1 class="text-4xl font-bold">{{ title }}</h1>
+    <h1 class="text-4xl font-bold title-container">{{ title|format_title }}</h1>
 </div>

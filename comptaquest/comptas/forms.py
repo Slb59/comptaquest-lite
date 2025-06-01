@@ -1,7 +1,13 @@
 from django import forms
 
 from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
-                                        Outgoings)
+                                        Outgoings, Wallet)
+
+
+class WalletForm(forms.ModelForm):
+    class Meta:
+        model = Wallet
+        fields = ['name', 'label', 'amount']
 
 
 class CurrentAccountForm(forms.ModelForm):
