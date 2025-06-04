@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, Layout, Submit
+from crispy_forms.layout import Layout, Submit, HTML
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth import forms as auth_forms
@@ -76,7 +76,7 @@ class CQUserCreationForm(auth_forms.UserCreationForm):
 class CQUserChangeForm(auth_forms.UserChangeForm):
     """New Member Creation Form"""
 
-    class Meta(auth_forms.UserCreationForm):
+    class Meta(auth_forms.UserChangeForm):
         model = CQUser
         fields = {"trigram", "email", "password"}
 
@@ -84,30 +84,58 @@ class CQUserChangeForm(auth_forms.UserChangeForm):
 class ProfileUpdateForm(UserChangeForm):
     email = forms.EmailField(label=_("Email"), widget=forms.EmailInput(attrs={"class": "form-input"}))
     trigram = forms.CharField(label=_("Trigram"), max_length=5, widget=forms.TextInput(attrs={"class": "form-input"}))
+    avatar = forms.ImageField(label=_("Avatar"), required=False)
 
     class Meta:
         model = CQUser
-        fields = ("email", "trigram")
+        fields = ("email", "trigram", "avatar")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = "post"
+
+        # Récupérer l'instance du profil utilisateur
+        profile = self.instance._profile if hasattr(self.instance, '_profile') else None
+        avatar_url = profile.get_avatar_url() if profile else "/static/images/default_avatar.png"
+
+        # Ajouter un élément HTML pour afficher l'avatar actuel
+        avatar_display = HTML(f"""
+        <div class="flex justify-center mb-4">
+            <img src="{avatar_url}" alt="Avatar" class="w-24 h-24 rounded-full">
+        </div>
+        """)
+
         self.helper.layout = Layout(
             "email",
             "trigram",
+            avatar_display,
+            "avatar",
             Submit(
                 "submit",
                 "Valider",
                 css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
             ),
         )
+        # # Récupérer l'instance du profil utilisateur
+        # if self.instance and hasattr(self.instance, '_profile'):
+        #     profile = self.instance._profile
+        #     self.initial['avatar'] = profile.avatar
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
         if CQUser.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
             raise forms.ValidationError("Cet email est déjà utilisé.")
         return email
+
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        if commit:
+            profile, created = MemberProfile.objects.get_or_create(user=user)
+            if 'avatar' in self.cleaned_data and self.cleaned_data['avatar']:
+                profile.avatar = self.cleaned_data['avatar']
+                profile.save()
+        return user
 
 
 class PasswordResetForm(DjangoPasswordResetForm):

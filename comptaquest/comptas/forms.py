@@ -7,7 +7,7 @@ from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
 class WalletForm(forms.ModelForm):
     class Meta:
         model = Wallet
-        fields = ['name', 'label', 'amount']
+        fields = ["name", "label", "amount"]
 
 
 class CurrentAccountForm(forms.ModelForm):

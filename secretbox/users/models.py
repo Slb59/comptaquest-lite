@@ -1,12 +1,10 @@
 from django.conf import settings
 from django.contrib.auth import models as auth_models
 from django.db import models
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.utils.translation import gettext_lazy as _
+from django_stubs_ext.db.models import TypedModelMeta
 
 from .managers import CustomUserManager
-from django_stubs_ext.db.models import TypedModelMeta
 
 
 class CQUser(auth_models.AbstractUser):
@@ -85,7 +83,13 @@ class BaseUserProfile(models.Model):
 class MemberProfile(BaseUserProfile):
     """specific data to member"""
 
-    ...
+    def get_avatar_url(self):
+        if self.avatar:
+            return self.avatar.url
+        return "/static/images/secret.jpeg"  # Chemin vers l'avatar par défaut
+
+    def __str__(self):
+        return f"Profile of {self.user.trigram}"
 
 
 class MemberManager(models.Manager):

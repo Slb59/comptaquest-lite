@@ -1,23 +1,24 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView as DjangoLoginView
+from django.contrib.auth.views import LogoutView as DjangoLogoutView
 from django.contrib.auth.views import \
     PasswordResetView as DjangoPasswordResetView
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.decorators.csrf import csrf_protect
-from django.views.generic import FormView, UpdateView
+from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
 from .models import CQUser
 
 
-class LoginView(LoginView):
+class LoginView(DjangoLoginView):
 
     form_class = LoginForm
     template_name = "registration/login.html"
-    success_url = reverse_lazy("comptas:dashboard")
+    success_url = reverse_lazy("dashboard")
 
     def form_valid(self, form):
         email = form.cleaned_data["email"]
@@ -53,7 +54,7 @@ class LoginView(LoginView):
         return response
 
 
-class LogoutView(LoginRequiredMixin, LogoutView):
+class LogoutView(LoginRequiredMixin, DjangoLogoutView):
 
     template_name = "registration/login.html"
     success_url = reverse_lazy("users:login")
@@ -82,7 +83,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     model = CQUser
     form_class = ProfileUpdateForm
     template_name = "secretbox/profile.html"
-    success_url = reverse_lazy("secretbox:dashboard")
+    success_url = reverse_lazy("dashboard")
 
     def get_object(self, queryset=None):
         return self.request.user
@@ -91,7 +92,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
         context["title"] = _("Vos données")
-        context["logo_url"] = "/static/images/logo-sb.png"
+        context["logo_url"] = "/static/images/logo_sb.png"
         return context
 
     def form_valid(self, form):

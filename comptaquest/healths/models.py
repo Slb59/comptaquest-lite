@@ -3,11 +3,11 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
+from django_stubs_ext.db.models import TypedModelMeta
 
 from comptaquest.comptas.models.transaction import (ExpenseTransaction,
                                                     IncomeTransaction)
 from secretbox.users.models import Member
-from django_stubs_ext.db.models import TypedModelMeta
 
 
 class HealthManager(models.Manager):

@@ -1,15 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils import timezone
-from django.views.generic import CreateView, DetailView, ListView
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
 
-from .forms import CurrentAccountForm, OutgoingsForm
+from .forms import CurrentAccountForm, OutgoingsForm, WalletForm
+from .models import Wallet
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
-from django.utils.translation import gettext_lazy as _
-from .models import Wallet
-from .forms import WalletForm
 
 
 class DashboardView(LoginRequiredMixin, ListView):
@@ -28,28 +28,28 @@ class DashboardView(LoginRequiredMixin, ListView):
 
 class WalletListView(ListView):
     model = Wallet
-    template_name = 'wallet_list.html'
-    context_object_name = 'wallets'
+    template_name = "wallet_list.html"
+    context_object_name = "wallets"
 
 
 class WalletCreateView(CreateView):
     model = Wallet
     form_class = WalletForm
-    template_name = 'wallet_form.html'
-    success_url = reverse_lazy('wallet_list')
+    template_name = "wallet_form.html"
+    success_url = reverse_lazy("wallet_list")
 
 
 class WalletUpdateView(UpdateView):
     model = Wallet
     form_class = WalletForm
-    template_name = 'wallet_form.html'
-    success_url = reverse_lazy('wallet_list')
+    template_name = "wallet_form.html"
+    success_url = reverse_lazy("wallet_list")
 
 
 class WalletDeleteView(DeleteView):
     model = Wallet
-    template_name = 'wallet_confirm_delete.html'
-    success_url = reverse_lazy('wallet_list')
+    template_name = "wallet_confirm_delete.html"
+    success_url = reverse_lazy("wallet_list")
 
 
 class AccountDetailView(LoginRequiredMixin, DetailView):

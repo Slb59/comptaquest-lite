@@ -2,10 +2,10 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxLengthValidator
 from django.db import models
+from django_stubs_ext.db.models import TypedModelMeta
 
 from .account import CurrentAccount
 from .transactiontype import Expense, Income, Transfer
-from django_stubs_ext.db.models import TypedModelMeta
 
 
 class Outgoings(models.Model):

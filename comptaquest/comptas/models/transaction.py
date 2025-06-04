@@ -2,11 +2,11 @@ from django.core.validators import MaxLengthValidator
 from django.db import models
 from django.db.models import ProtectedError
 from django.utils.translation import gettext_lazy as _
+from django_stubs_ext.db.models import TypedModelMeta
 
 from .account import CurrentAccount
 from .ledger import Ledger
 from .transactiontype import Expense, Income, Transfer
-from django_stubs_ext.db.models import TypedModelMeta
 
 
 class TransactionManager(models.Manager):
