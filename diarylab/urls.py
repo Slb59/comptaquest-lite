@@ -1,5 +1,5 @@
 from django.urls import path
-from entries.views import DiaryEntryCreateView, DiaryEntryListView, generate_pdf
+from .views import DiaryEntryCreateView, DiaryEntryListView, generate_pdf
 
 urlpatterns = [
     path('add/', DiaryEntryCreateView.as_view(), name='add_entry'),

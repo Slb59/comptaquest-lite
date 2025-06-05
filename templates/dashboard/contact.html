@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags i18n%}
+
+{% block content %}
+<div class="items-center justify-center bg-gray-50 py-6 px-4 sm:px-6 lg:px-8">
+    {% include "base/logo_header.html" %}
+
+    <!-- Formulaire avec Crispy Forms -->
+    <div class="w-full max-w-xl mx-auto sm:px-4 lg:px-4 py-3">
+        {% csrf_token %}
+        {% crispy form %}
+    </div>
+</div>
+{% endblock %}
