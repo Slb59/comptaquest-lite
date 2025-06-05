@@ -35,13 +35,19 @@ urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
     # path('dashboard/', LoginRequiredMixin(TemplateView.as_view(template_name='dashboard.html')),
     #  name='dashboard'),
-    # app urls
+    
+    # comptaquest urls
     path("account/", include("secretbox.users.urls")),
     path("cq/comptas/", include("comptaquest.comptas.urls")),
     path("cq/utils/", include("comptaquest.utils.urls")),
     path("cq/healths/", include("comptaquest.healths.urls")),
     path("cq/consos/", include("comptaquest.consos.urls")),
+
+    # potionrun urls
     path("pr/performances/", include("potionrun.performances.urls")),
+
+    # diarylab urls
+    path("diary/", include("diarylab.urls")),
 ]
 
 if settings.DEBUG:

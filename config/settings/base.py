@@ -47,6 +47,7 @@ PROJECT_APPS = [
     "comptaquest.healths",
     "potionrun.chapters",
     "potionrun.performances",
+    "diarylab",
 ]
 
 TIERS_APPS = [
