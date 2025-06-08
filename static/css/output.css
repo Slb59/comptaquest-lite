@@ -135,8 +135,14 @@
 .min-h-screen {
   min-height: 100vh;
 }
+.w-1 {
+  width: calc(var(--spacing) * 1);
+}
 .w-1\/6 {
   width: calc(1/6 * 100%);
+}
+.w-5 {
+  width: calc(var(--spacing) * 5);
 }
 .w-5\/6 {
   width: calc(5/6 * 100%);
@@ -167,6 +173,9 @@
 }
 .min-w-full {
   min-width: 100%;
+}
+.border-collapse {
+  border-collapse: collapse;
 }
 .transform {
   transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -399,6 +408,10 @@
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
   transition-duration: var(--tw-duration, var(--default-transition-duration));
+}
+.outline-none {
+  --tw-outline-style: none;
+  outline-style: none;
 }
 .hover\:bg-blue-700 {
   &:hover {

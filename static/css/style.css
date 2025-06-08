@@ -47,4 +47,64 @@ a.round-icon:hover {
     background-color: #6b7280;
 }
 
-/*  pour le bouton valider: mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900 */
+.main-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1 rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: #d7d4d0;
+    width: 100%;
+}
+
+@media (min-width: 640px) {
+    .main-screen {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-screen {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
+.button-valider {
+    margin-top: 1rem;
+    outline: none;
+    color: white;
+    background-color: #654321;
+
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-valider:hover {
+    background-color: #3a2412;
+    /* Remplacez par la couleur réelle */
+}
+
+.button-valider:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #fde047;
+    /* Remplacez par la couleur réelle */
+}
+
+/* Pour le mode sombre*/
+.dark .button-valider:focus {
+    box-shadow: 0 0 0 4px #78350f;
+    /* Remplacez par la couleur réelle */
+}
