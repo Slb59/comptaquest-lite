@@ -16,7 +16,7 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'add_entry' %}">Add New Entry</a>
+        <a href="{% url 'diarylab:add_entry' %}">Add New Entry</a>
         {% for year in view.get_years %}
             {% for month in view.get_months %}
             <a href="{% url 'generate_pdf' year month %}">Download {{ year }}-{{ month|stringformat:"02d" }} PDF</a>

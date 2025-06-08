@@ -23,9 +23,6 @@ from django.urls import include, path
 
 from secretbox.dashboard.views import DashboardView, ContactFormView
 
-# from django.contrib.auth.mixins import LoginRequiredMixin
-# from django.views.generic import TemplateView
-
 urlpatterns = [
     # admin urls
     path("admin/", admin.site.urls),
@@ -46,7 +43,7 @@ urlpatterns = [
     path("pr/performances/", include("potionrun.performances.urls")),
 
     # diarylab urls
-    path("diary/", include("diarylab.urls")),
+    path("diarylab/", include("diarylab.urls")),
 ]
 
 if settings.DEBUG:

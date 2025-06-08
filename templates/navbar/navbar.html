@@ -4,19 +4,25 @@
 <div class="w-16 p-4 flex flex-col items-center space-y-4">
     <!-- Pastille pour le profil -->
     <a href="{% url 'users:profile' %}"
-        class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500">
+        class="round-icon">
         <img src="{% static 'images/profile_osynia.png' %}" alt="Profile" class="w-6 h-6">
+    </a>
+
+    <!-- Pastille pour diarylab -->
+    <a href="{% url 'diarylab:list_entries' %}"
+        class="round-icon">
+        <img src="{% static 'images/logo_dl_v02.png' %}" alt="DiaryLab" class="w-6 h-6">
     </a>
 
     <!-- pastille pour comptaquest -->
     <a href="{% url 'comptas:dashboard' %}"
-        class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500">
+        class="round-icon">
         <img src="{% static 'images/logo_cq.png' %}" alt="ComptaQuest" class="w-6 h-6">
     </a>
 
     <!-- pastille pour ptionrun -->
     <a href="{% url 'performances:launch' %}"
-        class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500">
+        class="round-icon">
         <img src="{% static 'images/logo_pr.png' %}" alt="PotionRun" class="w-6 h-6">
     </a>
 </div>

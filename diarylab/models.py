@@ -2,10 +2,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 from django.conf import settings
+from datetime import datetime
 
 
 class DiaryEntry(models.Model):
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(default=datetime.now())
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

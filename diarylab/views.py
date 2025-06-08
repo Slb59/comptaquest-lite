@@ -8,6 +8,8 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from io import BytesIO
 from datetime import datetime
+from django.utils.translation import gettext_lazy as _
+
 
 class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
     model = DiaryEntry
@@ -38,7 +40,8 @@ class DiaryEntryListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
         context["title"] = _("Diary Lab")
-        context["logo_url"] = "/static/images/logo_dl.png"
+        context["logo_url"] = "/static/images/logo_dl_v02.png"
+        context["form"] = DiaryEntryForm()
         entries = self.get_queryset()
         years = set(entry.date.year for entry in entries)
         months = set(entry.date.month for entry in entries)
