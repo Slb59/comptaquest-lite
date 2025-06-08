@@ -48,6 +48,7 @@ PROJECT_APPS = [
     "potionrun.chapters",
     "potionrun.performances",
     "diarylab",
+    "sami",
 ]
 
 TIERS_APPS = [
