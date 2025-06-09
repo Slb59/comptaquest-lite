@@ -15,13 +15,13 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = 'diarylab/add_entry.html'
-    success_url = reverse_lazy('add_entry')
+    success_url = reverse_lazy('diarylab:add_entry')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
         context["title"] = _("Diary Lab")
-        context["logo_url"] = "/static/images/logo_dl.png"
+        context["logo_url"] = "/static/images/logo_dl_v02.png"
         return context
 
     def form_valid(self, form):

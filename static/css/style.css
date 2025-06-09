@@ -108,3 +108,8 @@ a.round-icon:hover {
     box-shadow: 0 0 0 4px #78350f;
     /* Remplacez par la couleur réelle */
 }
+
+.icon {
+    width: 24px;
+    height: 24px;
+}

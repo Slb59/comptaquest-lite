@@ -1,12 +1,15 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags i18n %}
+{% load static %}
+
 
 {% block content %}
 
-<div class="items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+<div class="main-screen">
     <div class="max-w-md w-full space-y-8">
         {% include "base/logo_header.html" %}
-
+        <a href="{% url 'diarylab:add_entry' %}">
+            <img src="{% static 'icons/add.png' %}" alt="Nouveau" class="icon">
+        </a>
         <ul>
             {% for entry in entries %}
             <li>
@@ -16,17 +19,12 @@
             {% endfor %}
         </ul>
 
-        <a href="{% url 'diarylab:add_entry' %}">Add New Entry</a>
+
         {% for year in view.get_years %}
             {% for month in view.get_months %}
             <a href="{% url 'generate_pdf' year month %}">Download {{ year }}-{{ month|stringformat:"02d" }} PDF</a>
             {% endfor %}
         {% endfor %}
-
-        <div class="w-full max-w-xl mx-auto sm:px-4 lg:px-4">
-            {% csrf_token %}
-            {% crispy form %}
-        </div>
 
     </div>
 </div>
