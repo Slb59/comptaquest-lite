@@ -1,21 +1,22 @@
-from django.views.generic import CreateView, ListView
-from django.urls import reverse_lazy
-from django.http import HttpResponse
+from io import BytesIO
+
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import DiaryEntry
-from .forms import DiaryEntryForm
+from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, ListView
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from io import BytesIO
-from datetime import datetime
-from django.utils.translation import gettext_lazy as _
+
+from .forms import DiaryEntryForm
+from .models import DiaryEntry
 
 
 class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
-    template_name = 'diarylab/add_entry.html'
-    success_url = reverse_lazy('diarylab:add_entry')
+    template_name = "diarylab/add_entry.html"
+    success_url = reverse_lazy("diarylab:add_entry")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -28,13 +29,14 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+
 class DiaryEntryListView(LoginRequiredMixin, ListView):
     model = DiaryEntry
-    template_name = 'diarylab/list_entries.html'
-    context_object_name = 'entries'
+    template_name = "diarylab/list_entries.html"
+    context_object_name = "entries"
 
     def get_queryset(self):
-        return DiaryEntry.objects.filter(user=self.request.user).order_by('-date')
+        return DiaryEntry.objects.filter(user=self.request.user).order_by("-date")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -45,13 +47,14 @@ class DiaryEntryListView(LoginRequiredMixin, ListView):
         entries = self.get_queryset()
         years = set(entry.date.year for entry in entries)
         months = set(entry.date.month for entry in entries)
-        context['years'] = sorted(years)
-        context['months'] = sorted(months)
+        context["years"] = sorted(years)
+        context["months"] = sorted(months)
         return context
 
+
 def generate_pdf(request, year, month):
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = f'attachment; filename="{year}{month:02d}-pensees.pdf"'
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="{year}{month:02d}-pensees.pdf"'
 
     buffer = BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)

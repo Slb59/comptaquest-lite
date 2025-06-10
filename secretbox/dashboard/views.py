@@ -1,10 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import TemplateView, FormView
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import FormView, TemplateView
 
-from .models import Todo
 from .forms import ContactForm
+from .models import Todo
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):
@@ -18,6 +18,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             "date", "priority", "category", "periodic", "who", "place", "duration", "?"
         )[:10]
         return context
+
 
 class ContactFormView(LoginRequiredMixin, FormView):
     form_class = ContactForm

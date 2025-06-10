@@ -1,9 +1,10 @@
+from datetime import datetime
+
+from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
-from django.conf import settings
-from datetime import datetime
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Sami(models.Model):
@@ -13,33 +14,26 @@ class Sami(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     bedtime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)],
-        help_text=_("Saisir une valeur entre 0 et 3")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+    )
     wakeup = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)],
-        help_text=_("Saisir une valeur entre 0 et 3")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+    )
     nonstop = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
-        help_text=_("Saisir une valeur entre 0 et 5")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5")
+    )
     energy = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
-        help_text=_("Saisir une valeur entre 0 et 5")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5")
+    )
     naptime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(4)],
-        help_text=_("Saisir une valeur entre 0 et 4")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(4)], help_text=_("Saisir une valeur entre 0 et 4")
+    )
     phone = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(2)],
-        help_text=_("Saisir une valeur entre 0 et 2")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2")
+    )
     reading = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)],
-        help_text=_("Saisir une valeur entre 0 et 3")
-        )
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+    )
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -55,31 +49,35 @@ class Sami(models.Model):
     @property
     def wakeup_description(self):
         return _("Heure de réveil (0: < 5h30, 3: 5h30-7h30, 2: 7h30-8h00, 1: 8h00-9h00, 0: >9h00)")
-    
+
     @property
     def nonstop_description(self):
-        return _("Temps non stop (0: < 4h00, 1: 4h00-5h00,2: 5h00-6h00, 3: 6h00-7h00, 5: 7h00-8h00, 2: 8h00-10h00, 0: >10h00)")
-    
+        return _(
+            "Temps non stop (0: < 4h00, 1: 4h00-5h00,2: 5h00-6h00, 3: 6h00-7h00, 5: 7h00-8h00, 2: 8h00-10h00, 0: >10h00)"
+        )
+
     @property
     def energy_description(self):
-        return _("Forme (5: je fais plein de chose, je ne suis pas fatiguée, 1:je ne pleure pas mais je me lutte contre la fatigue toute la journée, 0:dépression)")
-    
+        return _(
+            "Forme (5: je fais plein de chose, je ne suis pas fatiguée, 1:je ne pleure pas mais je me lutte contre la fatigue toute la journée, 0:dépression)"
+        )
+
     @property
     def naptime_description(self):
         return _("Sieste (4: 15-20 mn, 2: < 15mn, 2: 20mn-1h, 0: > 1h)")
-    
+
     @property
     def phone_description(self):
         return _("Telephone (2: absence, 1: Présence, 0: présence et usage)")
-    
+
     @property
     def reading_description(self):
         return _("Lecture (3: > 30mn,2: <30mn concentrée, 1: <30mn non concentrée, 0: si absence)")
-    
+
     @property
     def total_sleep(self):
         return self.bedtime + self.wakeup + self.nonstop + self.energy + self.naptime + self.phone + self.reading
-    
+
     @property
     def total_sleep_description(self):
         return _("Total Sommeil : maxi 25")
@@ -91,4 +89,3 @@ class Sami(models.Model):
         verbose_name = _("Sami")
         verbose_name_plural = _("Samis")
         ordering = ["date"]
-

@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit, HTML
+from crispy_forms.layout import HTML, Layout, Submit
 from django import forms
 from django.contrib.auth import authenticate
 from django.contrib.auth import forms as auth_forms
@@ -96,15 +96,17 @@ class ProfileUpdateForm(UserChangeForm):
         self.helper.form_method = "post"
 
         # Récupérer l'instance du profil utilisateur
-        profile = self.instance._profile if hasattr(self.instance, '_profile') else None
+        profile = self.instance._profile if hasattr(self.instance, "_profile") else None
         avatar_url = profile.get_avatar_url() if profile else "/static/images/default_avatar.png"
 
         # Ajouter un élément HTML pour afficher l'avatar actuel
-        avatar_display = HTML(f"""
+        avatar_display = HTML(
+            f"""
         <div class="flex justify-center mb-4">
             <img src="{avatar_url}" alt="Avatar" class="w-24 h-24 rounded-full">
         </div>
-        """)
+        """
+        )
 
         self.helper.layout = Layout(
             "email",
@@ -132,8 +134,8 @@ class ProfileUpdateForm(UserChangeForm):
         user = super().save(commit=commit)
         if commit:
             profile, created = MemberProfile.objects.get_or_create(user=user)
-            if 'avatar' in self.cleaned_data and self.cleaned_data['avatar']:
-                profile.avatar = self.cleaned_data['avatar']
+            if "avatar" in self.cleaned_data and self.cleaned_data["avatar"]:
+                profile.avatar = self.cleaned_data["avatar"]
                 profile.save()
         return user
 
@@ -158,4 +160,3 @@ class PasswordResetForm(DjangoPasswordResetForm):
                 css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
             ),
         )
-

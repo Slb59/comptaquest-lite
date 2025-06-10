@@ -115,5 +115,3 @@ class PasswordResetView(DjangoPasswordResetView):
         context["title"] = _("Reinitialisation du mot de passe")
         context["logo_url"] = "/static/images/logo-sb.png"
         return context
-
-

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from secretbox.dashboard.views import DashboardView, ContactFormView
+from secretbox.dashboard.views import ContactFormView, DashboardView
 
 urlpatterns = [
     # admin urls
@@ -30,18 +30,15 @@ urlpatterns = [
     # path("", include("django_components.urls")),
     # home url
     path("", DashboardView.as_view(), name="dashboard"),
-    path('contact/', ContactFormView.as_view(), name='contact'),
-    
+    path("contact/", ContactFormView.as_view(), name="contact"),
     # comptaquest urls
     path("account/", include("secretbox.users.urls")),
     path("cq/comptas/", include("comptaquest.comptas.urls")),
     path("cq/utils/", include("comptaquest.utils.urls")),
     path("cq/healths/", include("comptaquest.healths.urls")),
     path("cq/consos/", include("comptaquest.consos.urls")),
-
     # potionrun urls
     path("pr/performances/", include("potionrun.performances.urls")),
-
     # diarylab urls
     path("diarylab/", include("diarylab.urls")),
 ]
