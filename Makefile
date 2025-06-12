@@ -4,7 +4,10 @@ quality:
 	uv run flake8 .
 
 tests:
-	
+	uv run pytest
+
+tests_diarylab:
+	uv run pytest tests/unit/diarylab
 
 deploy:
 	uv pip freeze > requirements.txt
@@ -12,4 +15,5 @@ deploy:
 	cp secretbox.desktop ~/Bureau/
 	cd "/home/sylvie/Documents/01_Documents Slb/01-Journaling/SecretBox/"
 	uv add -r requirements.txt
+	uv run manage.py migrate
 

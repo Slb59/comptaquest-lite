@@ -145,7 +145,7 @@ plugins = ["mypy_django_plugin.main"]
 django_settings_module = "config.settings.dev"
 
 
-[tool.pytest.init_options]
+[tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "config.settings.dev"
 python_files = ["test_*.py"]
 python_functions = ["test_*"]

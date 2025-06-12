@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from django.utils import timezone
 from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -22,7 +22,7 @@ class DiaryEntry(models.Model):
         - Users can have multiple diary entries
     """
 
-    date = models.DateField(default=datetime.now(), help_text=_("Date when this diary entry was written"))
+    date = models.DateField(default=timezone.now(), help_text=_("Date when this diary entry was written"))
     content = models.TextField(blank=True, help_text=_("The main content of the diary entry"))
     created_at = models.DateTimeField(
         auto_now_add=True, editable=False, help_text=_("Timestamp when this entry was created")

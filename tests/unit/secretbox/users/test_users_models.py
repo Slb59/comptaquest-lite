@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.utils import dateformat, timezone
 
-from comptaquest.users.models import Member
+from secretbox.users.models import Member
 from tests.factories.member import MemberFactory
 
 

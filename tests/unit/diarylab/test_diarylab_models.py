@@ -1,12 +1,13 @@
-from django.test import TestCase
+from django.test import TransactionTestCase
 from django.utils import timezone
+from datetime import datetime, timedelta
 
 from diarylab.models import DiaryEntry
-from tests.factories import DiaryEntryFactory
+from tests.factories.diarylab import DiaryEntryFactory
 from tests.factories.member import MemberFactory
 
 
-class DiaryEntryTests(TestCase):
+class DiaryEntryTests(TransactionTestCase):
     def setUp(self):
         self.user = MemberFactory()
         self.diary_entry = DiaryEntryFactory(user=self.user)
@@ -23,13 +24,18 @@ class DiaryEntryTests(TestCase):
 
     def test_date_ordering(self):
         """Test that diary entries are ordered by date"""
+
+        # delete the entry created in setUp
+        DiaryEntry.objects.filter(user=self.user).delete()
+
         # Create another entry with a different date
-        older_entry = DiaryEntryFactory(user=self.user, date=timezone.now() - timezone.timedelta(days=2))
-        newer_entry = DiaryEntryFactory(user=self.user, date=timezone.now() + timezone.timedelta(days=1))
+        now_entry = DiaryEntryFactory(user=self.user, date=timezone.now().date())
+        older_entry = DiaryEntryFactory(user=self.user, date=(timezone.now() - timezone.timedelta(days=2)).date())
+        newer_entry = DiaryEntryFactory(user=self.user, date=(timezone.now() + timezone.timedelta(days=1)).date())
 
         entries = DiaryEntry.objects.all()
         self.assertEqual(entries[0].date, older_entry.date)
-        self.assertEqual(entries[1].date, self.diary_entry.date)
+        self.assertEqual(entries[1].date, now_entry.date)
         self.assertEqual(entries[2].date, newer_entry.date)
 
     def test_user_relationship(self):
@@ -56,7 +62,7 @@ class DiaryEntryTests(TestCase):
 
     def test_date_default(self):
         """Test that date defaults to current date"""
-        entry = DiaryEntryFactory(date=None)
+        entry = DiaryEntry()
         self.assertLessEqual(timezone.now() - entry.date, timezone.timedelta(minutes=1))
 
     def test_auto_timestamps(self):

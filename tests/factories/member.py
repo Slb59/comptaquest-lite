@@ -1,6 +1,6 @@
 import factory
 
-from comptaquest.users.models import Member
+from secretbox.users.models import Member
 
 
 class MemberFactory(factory.django.DjangoModelFactory):

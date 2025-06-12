@@ -2,7 +2,7 @@ from django.contrib.auth import views as auth_views
 from django.test import Client, TestCase
 from django.urls import resolve, reverse
 
-from comptaquest.users import views
+from secretbox.users import views
 from tests.factories.member import MemberFactory
 
 
