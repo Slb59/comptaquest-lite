@@ -1,3 +1,5 @@
+include .env
+
 quality:
 	uv run black .
 	uv run isort .
@@ -6,14 +8,20 @@ quality:
 tests:
 	uv run pytest
 
-tests_diarylab:
-	uv run pytest tests/unit/diarylab
+tests-diarylab:
+	uv run pytest tests/unit/diarylab --html=tests/htmlcov/diarylab.html
+
+tests-secretbox:
+	uv run pytest tests/unit/secretbox --html=tests/htmlcov/secretbox.html
+
+tests-coverage:
+		uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
 
 deploy:
 	uv pip freeze > requirements.txt
-	rsync -a --exclude-from='.deployignore' . "/home/sylvie/Documents/01_Documents Slb/01-Journaling/SecretBox/"
+	rsync -a --exclude-from='.deployignore' . "$(DEPLOY_PATH)"
 	cp secretbox.desktop ~/Bureau/
-	cd "/home/sylvie/Documents/01_Documents Slb/01-Journaling/SecretBox/"
+	cd "$(DEPLOY_PATH)"
 	uv add -r requirements.txt
 	uv run manage.py migrate
 
