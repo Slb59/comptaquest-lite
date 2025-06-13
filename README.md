@@ -92,12 +92,14 @@ git commit -m "Detailed description of changes"
 git push
 ```
 
+    - check github action
+
     - Updating from main branch
 ```bash
 git fetch upstream
 git rebase upstream/main
 ```
-  
+    
 
 ### Version change
 
