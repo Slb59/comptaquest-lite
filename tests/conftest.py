@@ -1,5 +1,6 @@
-import pytest
 import os
+
+import pytest
 from django.conf import settings
 
 
@@ -9,6 +10,7 @@ def django_db_setup():
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": ":memory:",
     }
+
 
 @pytest.fixture(scope="session", autouse=True)
 def django_settings():

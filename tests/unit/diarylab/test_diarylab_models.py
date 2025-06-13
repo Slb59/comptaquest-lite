@@ -1,6 +1,6 @@
+"""Tests for diarylab.models"""
 from django.test import TransactionTestCase
 from django.utils import timezone
-from datetime import datetime, timedelta
 
 from diarylab.models import DiaryEntry
 from tests.factories.diarylab import DiaryEntryFactory
@@ -42,7 +42,7 @@ class DiaryEntryTests(TransactionTestCase):
         """Test that diary entries are properly related to users"""
         # Create another user and entry
         other_user = MemberFactory()
-        other_entry = DiaryEntryFactory(user=other_user) # noqa: F841
+        other_entry = DiaryEntryFactory(user=other_user)  # noqa: F841
 
         # Test that entries are filtered by user correctly
         user_entries = DiaryEntry.objects.filter(user=self.user)

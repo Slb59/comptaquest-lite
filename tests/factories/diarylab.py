@@ -5,7 +5,7 @@ from diarylab.models import DiaryEntry
 from tests.factories.member import MemberFactory
 
 fake = Faker()
-    
+
 
 class DiaryEntryFactory(factory.django.DjangoModelFactory):
     class Meta:

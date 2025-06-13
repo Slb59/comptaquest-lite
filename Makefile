@@ -15,7 +15,10 @@ tests-secretbox:
 	uv run pytest tests/unit/secretbox --html=tests/htmlcov/secretbox.html
 
 tests-coverage:
-		uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
+	uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
+
+run:
+	uv run manage.py runserver
 
 deploy:
 	uv pip freeze > requirements.txt

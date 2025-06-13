@@ -92,7 +92,7 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
         context["title"] = _("Vos données")
-        context["logo_url"] = "/static/images/logo_sb.png"
+        context["logo_url"] = "/static/images/logo_sb_v2.png"
         return context
 
     def form_valid(self, form):
@@ -113,5 +113,5 @@ class PasswordResetView(DjangoPasswordResetView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Reinitialisation du mot de passe")
-        context["logo_url"] = "/static/images/logo-sb.png"
+        context["logo_url"] = "/static/images/logo_sb_v2.png"
         return context
