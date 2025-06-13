@@ -70,13 +70,89 @@ DEPLOY_PATH=<<path to deploy>>
 
 ## Usage
 
-    How to run the project: Commands or instructions to start, build, or test the project.
-    Examples: Example usage, sample commands, or screenshots.
+    How to run the project: 
+    In frontend terminal: npm run build
+    In backend terminal: make run
+    Launch the project: http://127.0.0.1:8000/
 
 ## Contributing
 
+### New release process
     Guidelines: How others can contribute (coding standards, pull request process).
     Code of conduct: use the following command: make quality for the quality checks and updates.
+
+    - creating a branch for a new feature
+```bash
+    git checkout -b feature/feature_name upstream/main
+```
+    - commit the changes
+```bash
+git add .
+git commit -m "Detailed description of changes"
+git push
+```
+
+    - Updating from main branch
+```bash
+git fetch upstream
+git rebase upstream/main
+```
+  
+
+### Version change
+
+#### Prerequisites
+    - Have access rights to the repository
+    - Have Python and pip installed
+    - Being on the `main` branch
+    - Check that all current pull requests are merged
+    - Check that the tests pass
+
+#### Stages
+
+##### 1. Preparation
+```bash
+# Create a new branch for the release
+git checkout -b release/vX.Y.Z main
+```
+
+##### 2. Update the version
+```bash
+# Update the version in VERSION file
+echo "X.Y.Z" > VERSION
+
+# Check the version
+python manage.py show_version
+```
+
+##### 3. Update the changelog file
+```markdown
+# CHANGELOG.md
+## [X.Y.Z] - YYYY-MM-DD
+### Modification type (new feature, bug fix, improvement)
+- detailed description of the change
+```
+
+##### 4. Create the release commit
+```bash
+# Commit changes
+git add VERSION CHANGELOG.md
+git commit -m "Release vX.Y.Z"
+
+# Push and create the pull request
+git push origin release/vX.Y.Z
+```
+
+#### Versions types
+- **MAJOR**: Major changes or compatibility break
+- **MINOR**: New compatible features
+- **CORRECTION**: Bug fixes and minor improvements
+
+#### Checklist
+Before merging the pull request, make sure to:
+- Check that all tests pass
+- Confirm that the documentation is up to date
+- Validate that the changelog is complete
 
 ## Testing
 
