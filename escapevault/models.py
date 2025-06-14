@@ -2,6 +2,13 @@ import uuid
 
 from django.db import models
 from django_countries.fields import CountryField
+from django.core.exceptions import ValidationError
+import re
+
+def validate_day_month_format(value):
+    # Utilisez une expression régulière pour valider le format DD/MM
+    if not re.match(r"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])$", value):
+        raise ValidationError("The correct format is DD/MM.")
 
 
 class NomadePosition(models.Model):
@@ -19,13 +26,13 @@ class NomadePosition(models.Model):
     reviews = models.JSONField(default=list)
 
     # Dates
-    opening_date = models.DateField(null=True, blank=True)
-    closing_date = models.DateField(null=True, blank=True)
+    opening_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
+    closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
 
     # Category and Position
     category = models.CharField(max_length=100)
-    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=15, decimal_places=3, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=15, decimal_places=3, null=True, blank=True)
 
     def get_position(self):
         return (self.latitude, self.longitude)
