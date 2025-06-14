@@ -21,8 +21,8 @@ class DiaryEntry(models.Model):
         - Users can have multiple diary entries
     """
 
-    date = models.DateField(default=timezone.now(), help_text=_("Date when this diary entry was written"))
-    content = models.TextField(blank=True, help_text=_("The main content of the diary entry"))
+    date = models.DateField(default=timezone.now(), help_text=_("Date à laquelle cette pensée a été écrite"))
+    content = models.TextField(blank=True, help_text=_("Le contenu de cette pensée"))
     created_at = models.DateTimeField(
         auto_now_add=True, editable=False, help_text=_("Timestamp when this entry was created")
     )
@@ -36,7 +36,7 @@ class DiaryEntry(models.Model):
         on_delete=models.CASCADE,
         related_name="%(class)s_user_diaries",
         db_index=True,
-        help_text=_("User who created this diary entry"),
+        help_text=_("Utilisateur qui a écrit cette pensée"),
     )
 
     def __str__(self):
@@ -61,3 +61,9 @@ class DiaryEntry(models.Model):
         verbose_name = _("Pensée")
         verbose_name_plural = _("Pensées")
         ordering = ["date"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'date'],
+                name='unique_entry_per_user_per_date'
+            )
+        ]

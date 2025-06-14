@@ -7,9 +7,21 @@
 <div class="main-screen">
     <div class="max-w-md w-full space-y-8">
         {% include "base/logo_header.html" %}
+        {% if not entry_exists_today %}
         <a href="{% url 'diarylab:add_entry' %}">
             <img src="{% static 'icons/add.png' %}" alt="Nouveau" class="icon">
         </a>
+        {% endif %}
+
+        <!-- Display error message if it exists -->
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+
         <ul>
             {% for entry in entries %}
             <li>

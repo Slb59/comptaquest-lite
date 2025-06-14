@@ -12,6 +12,9 @@ class DiaryEntryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.fields['content'].label = "La pensée du jour"
+
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
 
