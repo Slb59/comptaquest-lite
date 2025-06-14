@@ -14,6 +14,9 @@ tests-diarylab:
 tests-secretbox:
 	uv run pytest tests/unit/secretbox --html=tests/htmlcov/secretbox.html
 
+tests-escapevault:
+	uv run pytest tests/unit/escapevault --html=tests/htmlcov/escapevault.html
+
 tests-coverage:
 	uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
 

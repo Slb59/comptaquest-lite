@@ -1,4 +1,5 @@
 """Tests for diarylab.models"""
+
 from django.test import TransactionTestCase
 from django.utils import timezone
 

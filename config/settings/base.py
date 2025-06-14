@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
-from config import env
+from config import env, get_version
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -50,6 +50,7 @@ PROJECT_APPS = [
     "potionrun.performances",
     "diarylab",
     "sami",
+    "escapevault",
 ]
 
 TIERS_APPS = [
@@ -70,6 +71,7 @@ TIERS_APPS = [
     "tailwind",
     "crispy_forms",
     "crispy_tailwind",
+    "django_countries",
 ]
 
 DEV_APPS = [
@@ -224,3 +226,10 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ['fr', 'en']
+CITIES_LIGHT_INCLUDE_COUNTRIES = ['FR']
+CITIES_LIGHT_INCLUDE_CITY_TYPES = [
+'PPL', 'PPLA', 'PPLA2', 'PPLA3',
+'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT',
+]
