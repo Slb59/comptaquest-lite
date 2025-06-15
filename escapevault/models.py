@@ -4,6 +4,7 @@ import uuid
 from django.core.exceptions import ValidationError
 from django.db import models
 from django_countries.fields import CountryField
+from django.utils.translation import gettext_lazy as _
 
 
 def validate_day_month_format(value):
@@ -20,20 +21,19 @@ class NomadePosition(models.Model):
     # Location Details
     address = models.TextField()
     city = models.TextField()
-    country = CountryField()
+    country = CountryField(blank_label=_("France"))
 
     # Rating System
     stars = models.IntegerField(default=0)
     reviews = models.JSONField(default=list)
-
     # Dates
     opening_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
     closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
 
     # Category and Position
     category = models.CharField(max_length=100)
-    latitude = models.DecimalField(max_digits=15, decimal_places=3, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=15, decimal_places=3, null=True, blank=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
 
     def get_position(self):
         return (self.latitude, self.longitude)

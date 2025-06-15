@@ -3,36 +3,19 @@ import uuid
 import pytest
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-from django_cities_light.models import City
 from django_countries.fields import Country
 
-from .models import NomadePosition
+from escapevault.models import NomadePosition
+from tests.factories.nomadeposition import NomadePositionFactory
 
 
-@pytest.mark.django_db
 class NomadePositionTests(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        # Création d'une ville de test
-        cls.test_city = City.objects.create(name="Paris", country_id="FR")
 
-        # Création d'une position de test
-        cls.position = NomadePosition.objects.create(
-            name="Test Position",
-            address="123 rue de Test",
-            city=cls.test_city,
-            country="FR",
-            stars=5,
-            reviews=[{"rating": 5, "comment": "Excellent"}],
-            opening_date="2025-01-01",
-            closing_date="2025-12-31",
-            category="Restaurant",
-            latitude=48.8566,
-            longitude=2.3522,
-        )
+    def setUp(self):
+        self.position = NomadePositionFactory()
 
     def test_create_position(self):
-        """Test la création basique d'une position"""
+        """Test the basic creation of a position"""
         position = NomadePosition.objects.create(
             name="Nouvelle Position",
             address="456 rue de Test",
