@@ -1,8 +1,11 @@
 from io import BytesIO
 
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView
 from reportlab.lib.pagesizes import letter
@@ -10,10 +13,6 @@ from reportlab.pdfgen import canvas
 
 from .forms import DiaryEntryForm
 from .models import DiaryEntry
-
-from django.contrib import messages
-from django.utils import timezone
-from django.shortcuts import render, redirect
 
 
 class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
@@ -33,23 +32,20 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         # Check if an entry already exists for the given date
-        entry_date = form.cleaned_data['date']
-        existing_entry = DiaryEntry.objects.filter(
-            user=self.request.user,
-            date=entry_date
-        ).exists()
+        entry_date = form.cleaned_data["date"]
+        existing_entry = DiaryEntry.objects.filter(user=self.request.user, date=entry_date).exists()
 
         if existing_entry:
             # Add an error to the form
-            form.add_error('date', _("Une entrée existe déjà pour cette date."))
+            form.add_error("date", _("Une entrée existe déjà pour cette date."))
             # Re-render the form with the error message
             return self.form_invalid(form)
-        
+
         # Save the form if no existing entry
         form.instance.user = self.request.user
         form.save()
         return super().form_valid(form)
-    
+
     def form_invalid(self, form):
         # Re-render the form with errors
         context = self.get_context_data(form=form)

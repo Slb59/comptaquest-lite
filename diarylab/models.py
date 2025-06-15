@@ -61,9 +61,4 @@ class DiaryEntry(models.Model):
         verbose_name = _("Pensée")
         verbose_name_plural = _("Pensées")
         ordering = ["date"]
-        constraints = [
-            models.UniqueConstraint(
-                fields=['user', 'date'],
-                name='unique_entry_per_user_per_date'
-            )
-        ]
+        constraints = [models.UniqueConstraint(fields=["user", "date"], name="unique_entry_per_user_per_date")]

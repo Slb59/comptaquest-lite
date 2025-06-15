@@ -1,9 +1,10 @@
+import re
 import uuid
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django_countries.fields import CountryField
-from django.core.exceptions import ValidationError
-import re
+
 
 def validate_day_month_format(value):
     # Utilisez une expression régulière pour valider le format DD/MM
