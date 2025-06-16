@@ -2,6 +2,7 @@ import re
 import uuid
 
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
@@ -15,7 +16,6 @@ def validate_day_month_format(value):
 
 class NomadePosition(models.Model):
     # Core Information
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
 
     # Location Details
@@ -32,8 +32,24 @@ class NomadePosition(models.Model):
 
     # Category and Position
     category = models.CharField(max_length=100)
-    latitude = models.FloatField(blank=True, null=True)
-    longitude = models.FloatField(blank=True, null=True)
+    latitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        null=True, blank=True,
+        validators=[
+            MinValueValidator(-90.0),
+            MaxValueValidator(90.0)
+        ]
+    )
+    longitude = models.DecimalField(
+        max_digits=9,
+        decimal_places=6,
+        null=True, blank=True,
+        validators=[
+            MinValueValidator(-90.0),
+            MaxValueValidator(90.0)
+        ]
+    )
 
     def get_position(self):
         return (self.latitude, self.longitude)

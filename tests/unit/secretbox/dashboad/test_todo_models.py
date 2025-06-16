@@ -1,4 +1,3 @@
-import pytest
 from datetime import date, timedelta
 
 from django.core.exceptions import ValidationError
@@ -8,6 +7,7 @@ from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
 # from django.utils import timezone
+
 
 class TodoModelTests(TestCase):
     def setUp(self):

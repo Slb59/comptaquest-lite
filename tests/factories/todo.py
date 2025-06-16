@@ -1,13 +1,12 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 import factory
 import factory.fuzzy
 from django.utils import timezone
 
-from secretbox.users.models import CQUser as User
+from secretbox.dashboard.models import Todo
 
 from .member import MemberFactory
-from secretbox.dashboard.models import Todo
 
 
 class TodoFactory(factory.django.DjangoModelFactory):
