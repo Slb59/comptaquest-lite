@@ -7,7 +7,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
@@ -106,13 +106,15 @@ def generate_pdf(request, year, month):
     response.write(pdf)
     return response
 
+
 class DiaryEditView(LoginRequiredMixin, UpdateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
-    template_name = 'diarylab/edit_entry.html'
-    success_url = reverse_lazy('diarylab:list_entries')
+    template_name = "diarylab/edit_entry.html"
+    success_url = reverse_lazy("diarylab:list_entries")
+
 
 class DiaryDeleteView(LoginRequiredMixin, DeleteView):
     model = DiaryEntry
-    template_name = 'diarylab/delete_entry.html'
-    success_url = reverse_lazy('diarylab:list_entries')
+    template_name = "diarylab/delete_entry.html"
+    success_url = reverse_lazy("diarylab:list_entries")

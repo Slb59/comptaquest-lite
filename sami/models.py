@@ -1,10 +1,12 @@
 from datetime import datetime
-from django.utils import timezone
+
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
+
 from secretbox.tools.models import get_now_date
 
 

@@ -3,8 +3,8 @@ import uuid
 
 from django.core.exceptions import ValidationError
 from django.db import models
-from django_countries.fields import CountryField
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 
 
 def validate_day_month_format(value):

@@ -5,10 +5,11 @@ from .models import Todo
 
 @admin.register(Todo)
 class TodoAdmin(admin.ModelAdmin):
-    list_display = ("description", "user", "state", "date", "priority")
+    list_display = ("description", "user", "state", "planned_date", "priority")
     list_filter = ("state", "category", "who", "place", "priority")
     search_fields = ("description", "user__trigram", "note")
-    date_hierarchy = "date"
+    date_hierarchy = "planned_date"
+    ordering = ("-planned_date",)
     fieldsets = (
         (
             None,
@@ -23,6 +24,7 @@ class TodoAdmin(admin.ModelAdmin):
                     "who",
                     "place",
                     "periodic",
+                    "current_date",
                     "date",
                     "priority",
                     "done",

@@ -3,7 +3,9 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
+
 from secretbox.tools.models import get_now_date
+
 
 class DiaryEntry(models.Model):
     """
@@ -20,9 +22,6 @@ class DiaryEntry(models.Model):
         - Each diary entry belongs to exactly one user
         - Users can have multiple diary entries
     """
-
-
-
 
     date = models.DateField(default=get_now_date, help_text=_("Date à laquelle cette pensée a été écrite"))
     content = models.TextField(blank=True, help_text=_("Le contenu de cette pensée"))

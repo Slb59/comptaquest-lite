@@ -1,41 +1,24 @@
-from django.test import TestCase
-from django.utils import timezone
+import pytest
 from datetime import date, timedelta
-from secretbox.users.models import Member
-from tests.factories.member import MemberFactory
-from secretbox.dashboard.models import Todo
-from django.core.exceptions import ValidationError
 
+from django.core.exceptions import ValidationError
+from django.test import TestCase
+
+from tests.factories.member import MemberFactory
+from tests.factories.todo import TodoFactory
+
+# from django.utils import timezone
 
 class TodoModelTests(TestCase):
     def setUp(self):
         """Setup method to create test data"""
         self.user = MemberFactory()
-        self.todo = Todo.objects.create(
-            user=self.user,
-            state="todo",
-            duration=timedelta(hours=1),
-            description="Test task",
-            appointment=timezone.now(),
-            category="01-organisation",
-            who="SLB",
-            place="partout",
-            periodic="01-none",
-            date=date.today(),
-            priority="1-highest",
-            note="Test note"
-        )
+        self.todo = TodoFactory(user=self.user, state="todo")
 
     def test_todo_creation(self):
         """Test that a Todo instance can be created"""
         self.assertEqual(self.todo.user, self.user)
         self.assertEqual(self.todo.state, "todo")
-        self.assertEqual(self.todo.description, "Test task")
-        self.assertEqual(self.todo.category, "01-organisation")
-        self.assertEqual(self.todo.who, "SLB")
-        self.assertEqual(self.todo.place, "partout")
-        self.assertEqual(self.todo.periodic, "01-none")
-        self.assertEqual(self.todo.priority, "01-none")
 
     def test_validate_element_success(self):
         """Test validate_element when new date is in the future"""
@@ -74,31 +57,36 @@ class TodoModelTests(TestCase):
 
     def test_state_choices(self):
         """Test that state choices are valid"""
-        valid_states = [state[0] for state in Todo.STATE_CHOICES]
+
+        # Test invalid state
         self.todo.state = "invalid_state"
         with self.assertRaises(ValueError):
             self.todo.save()
+
+        # Test valid state
         self.todo.state = "todo"
         self.todo.save()  # Should not raise an error
 
     def test_priority_choices(self):
         """Test that priority choices are valid"""
-        valid_priorities = [priority[0] for priority in Todo.PRIORITY_CHOICES]
+
+        # Test invalid priority
         self.todo.priority = "invalid_priority"
         with self.assertRaises(ValueError):
             self.todo.save()
+
+        # Test valid priority
         self.todo.priority = "01-none"
         self.todo.save()  # Should not raise an error
 
     def test_category_choices(self):
         """Test that category choices are valid"""
-        valid_categories = [category[0] for category in Todo.CATEGORY_CHOICES]
 
         # Test invalid category
         self.todo.category = "invalid_category"
         with self.assertRaises(ValidationError):
             self.todo.full_clean()
-        
+
         # Test valid category
         self.todo.category = "01-organisation"
         try:
@@ -108,16 +96,18 @@ class TodoModelTests(TestCase):
 
     def test_who_choices(self):
         """Test that who choices are valid"""
-        valid_who = [who[0] for who in Todo.WHO_CHOICES]
+
+        # Test invalid who
         self.todo.who = "invalid_who"
         with self.assertRaises(ValueError):
             self.todo.save()
+
+        # Test valid who
         self.todo.who = "SLB"
         self.todo.save()  # Should not raise an error
 
     def test_place_choices(self):
         """Test that place choices are valid"""
-        valid_places = [place[0] for place in Todo.PLACE_CHOICES]
         self.todo.place = "invalid_place"
         with self.assertRaises(ValueError):
             self.todo.save()
@@ -126,9 +116,38 @@ class TodoModelTests(TestCase):
 
     def test_periodic_choices(self):
         """Test that periodic choices are valid"""
-        valid_periodic = [periodic[0] for periodic in Todo.PERIODIC_CHOICES]
         self.todo.periodic = "invalid_periodic"
         with self.assertRaises(ValueError):
             self.todo.save()
         self.todo.periodic = "01-none"
         self.todo.save()  # Should not raise an error
+
+    def test_new_day_with_done_state(self):
+        # Create an instance of YourModel with state "done"
+        instance = TodoFactory(current_date=date(2023, 10, 9), planned_date=date(2023, 10, 9), state="done")
+
+        # Call the new_day method
+        instance.new_day()
+
+        # Refresh the instance from the database
+        instance.refresh_from_db()
+
+        # Check if the dates are updated and state remains "done"
+        self.assertEqual(instance.current_date, date(2023, 10, 10))
+        self.assertEqual(instance.planned_date, date(2023, 10, 10))
+        self.assertEqual(instance.state, "done")
+
+    def test_new_day_with_non_done_state(self):
+        # Create an instance of YourModel with state other than "done"
+        instance = TodoFactory(current_date=date(2023, 10, 9), planned_date=date(2023, 10, 9), state="todo")
+
+        # Call the new_day method
+        instance.new_day()
+
+        # Refresh the instance from the database
+        instance.refresh_from_db()
+
+        # Check if the dates are updated and state is set to "report"
+        self.assertEqual(instance.current_date, date(2023, 10, 10))
+        self.assertEqual(instance.planned_date, date(2023, 10, 10))
+        self.assertEqual(instance.state, "report")

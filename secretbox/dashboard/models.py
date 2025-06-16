@@ -1,6 +1,7 @@
 # models.py
 from django.db import models
 
+from secretbox.tools.models import get_now_date
 from secretbox.users.models import CQUser as User
 
 
@@ -141,7 +142,8 @@ class Todo(models.Model):
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
-    date = models.DateField()
+    current_date = models.DateField()
+    planned_date = models.DateField()
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
     done = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
@@ -207,4 +209,18 @@ class Todo(models.Model):
         """
         self.state = "report"
         self.validate_element(timezone.now() + timedelta(days=1))
+        self.save()
+
+    def new_day(self):
+        """
+        Updates the element's current date to now.
+        Updates all planned dates to now.
+        set the state to "report" if the element is not done.
+
+        This method updates the element's current date to the next day and saves the changes.
+        """
+        self.current_date = get_now_date()
+        self.planned_date = get_now_date()
+        if self.state != "done":
+            self.state = "report"
         self.save()
