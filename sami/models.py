@@ -1,14 +1,15 @@
 from datetime import datetime
-
+from django.utils import timezone
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
+from secretbox.tools.models import get_now_date
 
 
 class Sami(models.Model):
-    date = models.DateField(default=datetime.now())
+    date = models.DateField(default=get_now_date)
     weight = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

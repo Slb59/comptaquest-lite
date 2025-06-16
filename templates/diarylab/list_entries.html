@@ -24,9 +24,21 @@
 
         <ul>
             {% for entry in entries %}
-            <li>
-                <h3>{{ entry.date|date:"l d F Y" }}</h3>
-                <p>{{ entry.content }}</p>
+            <li class="entry-item">
+                <div class="entry-date">
+                    {{ entry.date|date:"l d F Y" }}
+                </div>
+                <div class="entry-content">
+                    {{ entry.content }}
+                </div>
+                <div class="action-icons">
+                    <a href="{% url 'diarylab:edit_entry' entry.id %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'diarylab:delete_entry' entry.id %}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
             </li>
             {% endfor %}
         </ul>

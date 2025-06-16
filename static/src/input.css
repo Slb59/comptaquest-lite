@@ -14,3 +14,22 @@
     --color-violet: #8A2BE2;
     --color-vert: #2E8B57;
 }
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url("/static/font/Cinzel.ttf");
+}
+
+@media (min-width: 640px) {
+    .main-screen {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-screen {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
