@@ -15,7 +15,7 @@ class TodoFactory(factory.django.DjangoModelFactory):
 
     user = MemberFactory()
     state = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.STATE_CHOICES])
-    duration = factory.fuzzy.FuzzyNaiveTimeDelta(start_dt=timedelta(hours=1), end_dt=timedelta(days=1))
+    duration = factory.fuzzy.FuzzyInteger(low=10, high=800)
     description = factory.Faker("sentence")
     appointment = factory.fuzzy.FuzzyDateTime(start_dt=timezone.now(), end_dt=timezone.now() + timedelta(days=30))
     category = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.CATEGORY_CHOICES])
@@ -25,11 +25,10 @@ class TodoFactory(factory.django.DjangoModelFactory):
     current_date = factory.LazyFunction(lambda: timezone.now().date())
     planned_date = factory.LazyFunction(lambda: timezone.now().date() + timedelta(days=1))
     priority = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PRIORITY_CHOICES])
-    done = factory.Maybe(
-        "is_done", yes_declaration=factory.LazyFunction(lambda: timezone.now().date()), no_declaration=None
-    )
+
+    done = factory.LazyAttribute(
+        lambda _: timezone.now().date() if factory.fuzzy.FuzzyChoice([True, False]) else None
+    )  
     note = factory.Faker("text")
 
-    @factory.lazy_attribute
-    def is_done(self):
-        return factory.Faker("boolean").generate({})
+

@@ -1,9 +1,8 @@
 from django.contrib.auth import get_user_model
-from django.test import TestCase, Client
-
-from escapevault.models import NomadePosition
-from tests.factories.nomadeposition import NomadePositionFactory
+from django.test import Client, TestCase
 from django.urls import reverse
+
+from tests.factories.nomadeposition import NomadePositionFactory
 
 
 class NomadePositionAdminTests(TestCase):
@@ -14,20 +13,14 @@ class NomadePositionAdminTests(TestCase):
         self.client.force_login(self.admin_user)
         self.position = NomadePositionFactory()
 
-        # Setup the admin site
-        # self.site = AdminSite()
-        # self.site.register(NomadePosition, NomadePositionAdmin)
-        # self.admin = NomadePositionAdmin(NomadePosition, self.site)
-
-
     def test_admin_export_csv(self):
         """Test l'export CSV depuis l'interface admin"""
-        url = reverse('admin:nomades_nomadeposition_changelist')
+        url = reverse("admin:nomades_nomadeposition_changelist")
         data = {
-            'action': 'export_to_csv',
-            '_selected_action': [self.position.id],
+            "action": "export_to_csv",
+            "_selected_action": [self.position.id],
         }
         response = self.client.post(url, data, follow=True)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'text/csv')
+        self.assertEqual(response["Content-Type"], "text/csv")

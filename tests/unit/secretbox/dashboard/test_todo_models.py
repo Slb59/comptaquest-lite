@@ -99,28 +99,45 @@ class TodoModelTests(TestCase):
 
         # Test invalid who
         self.todo.who = "invalid_who"
-        with self.assertRaises(ValueError):
-            self.todo.save()
+        with self.assertRaises(ValidationError):
+            self.todo.full_clean() 
 
         # Test valid who
         self.todo.who = "SLB"
-        self.todo.save()  # Should not raise an error
+        try:
+            self.todo.full_clean()  # This should not raise an error
+        except ValidationError:
+            self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_place_choices(self):
         """Test that place choices are valid"""
+
+        # Test invalid place
         self.todo.place = "invalid_place"
-        with self.assertRaises(ValueError):
-            self.todo.save()
+        with self.assertRaises(ValidationError):
+            self.todo.full_clean()
+        
+        # test valid place
         self.todo.place = "partout"
-        self.todo.save()  # Should not raise an error
+        try:
+            self.todo.full_clean()
+        except ValidationError:
+            self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_periodic_choices(self):
         """Test that periodic choices are valid"""
+
+        # test invalid periodic
         self.todo.periodic = "invalid_periodic"
-        with self.assertRaises(ValueError):
-            self.todo.save()
+        with self.assertRaises(ValidationError):
+            self.todo.full_clean()
+        
+        # test valid periodic
         self.todo.periodic = "01-none"
-        self.todo.save()  # Should not raise an error
+        try:
+            self.todo.full_clean()
+        except ValidationError:
+            self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_new_day_with_done_state(self):
         # Create an instance of YourModel with state "done"

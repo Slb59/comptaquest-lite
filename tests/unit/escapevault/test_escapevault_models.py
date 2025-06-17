@@ -1,9 +1,6 @@
-# from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-from django.test import TestCase, Client
+from django.test import TestCase
 
-from escapevault.models import NomadePosition
 from tests.factories.nomadeposition import NomadePositionFactory
 
 
@@ -68,6 +65,3 @@ class NomadePositionTests(TestCase):
         """Test la représentation en chaîne du modèle"""
         expected = f"{self.position.name} ({self.position.city})"
         self.assertEqual(str(self.position), expected)
-
-
-

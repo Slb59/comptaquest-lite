@@ -1,5 +1,3 @@
-import uuid
-
 import factory
 from django_countries import countries
 
@@ -13,7 +11,7 @@ class NomadePositionFactory(factory.django.DjangoModelFactory):
     name = factory.Faker("company")
     address = factory.Faker("street_address")
     city = factory.Faker("city")
-    country = factory.LazyFunction(lambda: countries.by_name('France')) 
+    country = factory.LazyFunction(lambda: countries.by_name("France"))
     stars = factory.Faker("random_int", min=0, max=5)
     reviews = factory.Faker("text", max_nb_chars=200)
     opening_date = factory.Faker("date", pattern="%d/%m")

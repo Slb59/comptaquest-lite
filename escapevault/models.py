@@ -2,7 +2,7 @@ import re
 import uuid
 
 from django.core.exceptions import ValidationError
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
@@ -35,20 +35,16 @@ class NomadePosition(models.Model):
     latitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
-        null=True, blank=True,
-        validators=[
-            MinValueValidator(-90.0),
-            MaxValueValidator(90.0)
-        ]
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(-90.0), MaxValueValidator(90.0)],
     )
     longitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
-        null=True, blank=True,
-        validators=[
-            MinValueValidator(-90.0),
-            MaxValueValidator(90.0)
-        ]
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(-90.0), MaxValueValidator(90.0)],
     )
 
     def get_position(self):

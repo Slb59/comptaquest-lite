@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.encoding import smart_str
 
-
 from .models import NomadePosition
 
 
@@ -80,4 +79,3 @@ class NomadePositionAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return request.user.is_superuser
-

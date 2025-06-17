@@ -4,6 +4,8 @@ from django.db import models
 from secretbox.tools.models import get_now_date
 from secretbox.users.models import CQUser as User
 
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 class Todo(models.Model):
     """
@@ -135,7 +137,13 @@ class Todo(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
-    duration = models.DurationField(blank=True, null=True)
+    duration = models.IntegerField(
+        default=30,
+        validators=[
+            MinValueValidator(10),
+            MaxValueValidator(800)
+        ]
+    )
     description = models.TextField()
     appointment = models.DateTimeField(blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
