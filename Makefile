@@ -15,7 +15,7 @@ tests-secretbox:
 	uv run manage.py test tests/unit/secretbox --html=tests/htmlcov/secretbox.html
 
 tests-escapevault:
-	uv run pytest tests/unit/escapevault --html=tests/htmlcov/escapevault.html
+	uv run pytest tests/unit/escapevault tests/integration/escapevault --html=tests/htmlcov/escapevault.html
 
 tests-coverage:
 	uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
