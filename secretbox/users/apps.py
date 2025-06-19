@@ -7,4 +7,4 @@ class UsersConfig(AppConfig):
 
     def ready(self):
         # Importer les signaux
-        from . import signals # noqa: F401
+        from . import signals  # noqa: F401

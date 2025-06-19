@@ -1,4 +1,5 @@
 import factory
+import pytest
 
 from comptaquest.comptas.models.outgoings import ExpenseOutgoings
 from tests.factories.account import CurrentAccountFactory
@@ -7,6 +8,7 @@ from tests.factories.codification import (CategoryCodificationFactory,
 from tests.factories.member import MemberFactory
 
 
+@pytest.mark.django_db
 class ExpenseOutgoingsFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating ExpenseOutgoings instances.

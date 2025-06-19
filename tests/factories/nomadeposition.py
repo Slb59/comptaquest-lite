@@ -1,9 +1,11 @@
 import factory
+import pytest
 from django_countries import countries
 
 from escapevault.models import NomadePosition
 
 
+@pytest.mark.django_db
 class NomadePositionFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = NomadePosition

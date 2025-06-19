@@ -1,10 +1,12 @@
 import factory
+import pytest
 
 from comptaquest.comptas.models.account import (CurrentAccount,
                                                 InvestmentAccount)
 from tests.factories.member import MemberFactory
 
 
+@pytest.mark.django_db
 class CurrentAccountFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating CurrentAccount instances.
@@ -19,6 +21,7 @@ class CurrentAccountFactory(factory.django.DjangoModelFactory):
     created_by = factory.SubFactory(MemberFactory)
 
 
+@pytest.mark.django_db
 class InvestmentAccountFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating InvestmentAccount instances.

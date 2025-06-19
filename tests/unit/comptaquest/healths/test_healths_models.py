@@ -11,7 +11,7 @@ from tests.factories.transaction import (ExpenseTransactionFactory,
                                          IncomeTransactionFactory)
 
 
-class HealthModelTests(TestCase):
+class TestHealthModel(TestCase):
     def setUp(self):
         self.user = MemberFactory()
         self.account = CurrentAccountFactory(user=self.user)

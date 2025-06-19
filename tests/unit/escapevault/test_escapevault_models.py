@@ -4,7 +4,7 @@ from django.test import TestCase
 from tests.factories.nomadeposition import NomadePositionFactory
 
 
-class NomadePositionTests(TestCase):
+class TestNomadePosition(TestCase):
 
     def setUp(self):
         self.position = NomadePositionFactory()

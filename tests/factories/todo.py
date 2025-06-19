@@ -2,6 +2,7 @@ from datetime import timedelta
 
 import factory
 import factory.fuzzy
+import pytest
 from django.utils import timezone
 
 from secretbox.dashboard.models import Todo
@@ -9,11 +10,12 @@ from secretbox.dashboard.models import Todo
 from .member import MemberFactory
 
 
+@pytest.mark.django_db
 class TodoFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Todo
 
-    user = MemberFactory()
+    user = factory.SubFactory(MemberFactory)
     state = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.STATE_CHOICES])
     duration = factory.fuzzy.FuzzyInteger(low=10, high=800)
     description = factory.Faker("sentence")
@@ -27,8 +29,6 @@ class TodoFactory(factory.django.DjangoModelFactory):
     priority = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PRIORITY_CHOICES])
 
     done = factory.LazyAttribute(
-        lambda _: timezone.now().date() if factory.fuzzy.FuzzyChoice([True, False]) else None
-    )  
+        lambda obj: timezone.now().date() if factory.fuzzy.FuzzyChoice([True, False]) else None
+    )
     note = factory.Faker("text")
-
-

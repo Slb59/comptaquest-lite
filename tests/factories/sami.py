@@ -1,8 +1,10 @@
 import factory
+import pytest
 from django.utils import timezone
 from your_app.models import Sami  # Replace 'your_app' with the actual app name
 
 
+@pytest.mark.django_db
 class SamiFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Sami

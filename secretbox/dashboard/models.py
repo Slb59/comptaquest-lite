@@ -1,10 +1,11 @@
-# models.py
+# dashboard.models.py
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 from secretbox.tools.models import get_now_date
 from secretbox.users.models import CQUser as User
-
-from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Todo(models.Model):
@@ -137,13 +138,7 @@ class Todo(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
-    duration = models.IntegerField(
-        default=30,
-        validators=[
-            MinValueValidator(10),
-            MaxValueValidator(800)
-        ]
-    )
+    duration = models.IntegerField(default=30, validators=[MinValueValidator(10), MaxValueValidator(800)])
     description = models.TextField()
     appointment = models.DateTimeField(blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
@@ -161,7 +156,7 @@ class Todo(models.Model):
 
     def validate_element(self, new_date):
         """
-        Validates and updates a Todo element's date if the new date is in the future.
+        Validates and updates a Todo element's planned_date if the new date is in the future.
 
         This method checks if the provided date is later than the current date and
         updates the element's date accordingly. The changes are automatically saved
@@ -173,8 +168,9 @@ class Todo(models.Model):
         Returns:
             bool: True if the date was updated, False if the new date is not later than current date
         """
-        if new_date > self.date:
-            self.date = new_date
+        print(new_date, self.planned_date)
+        if new_date > self.planned_date:
+            self.planned_date = new_date
             self.save()
             return True
         else:

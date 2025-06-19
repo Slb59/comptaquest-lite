@@ -291,6 +291,7 @@ dependencies = [
     { name = "django-filter" },
     { name = "django-modelcluster" },
     { name = "django-permissionedforms" },
+    { name = "django-pytest" },
     { name = "django-stubs", extra = ["compatible-mypy"] },
     { name = "django-stubs-ext" },
     { name = "django-taggit" },
@@ -420,6 +421,7 @@ requires-dist = [
     { name = "django-filter", specifier = "==25.1" },
     { name = "django-modelcluster", specifier = "==6.4" },
     { name = "django-permissionedforms", specifier = "==0.1" },
+    { name = "django-pytest", specifier = ">=0.2.0" },
     { name = "django-stubs", extras = ["compatible-mypy"], specifier = "==5.2.0" },
     { name = "django-stubs-ext", specifier = "==5.2.0" },
     { name = "django-taggit", specifier = "==6.1.0" },
@@ -748,6 +750,12 @@ sdist = { url = "https://files.pythonhosted.org/packages/94/4b/364fe61a161ead607
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e6/5b/216157ff053f955b15b9dcdc13bfb6e406666445164fee9e332e141be96d/django_permissionedforms-0.1-py2.py3-none-any.whl", hash = "sha256:d341a961a27cc77fde8cc42141c6ab55cc1f0cb886963cc2d6967b9674fa47d6", size = 5744 },
 ]
+
+[[package]]
+name = "django-pytest"
+version = "0.2.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b2/e2/2a87105042c08a6f116aac1d9c666e89982a4f707652a0f7d76e8a88b554/django-pytest-0.2.0.tar.gz", hash = "sha256:de21f20f9e7eb941529d75078b18192506a9f6d4ae80f86fbe2f3bcac8e09d71", size = 5906 }
 
 [[package]]
 name = "django-stubs"

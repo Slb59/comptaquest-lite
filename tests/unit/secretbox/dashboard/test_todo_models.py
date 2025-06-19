@@ -9,7 +9,7 @@ from tests.factories.todo import TodoFactory
 # from django.utils import timezone
 
 
-class TodoModelTests(TestCase):
+class TestTodoModel(TestCase):
     def setUp(self):
         """Setup method to create test data"""
         self.user = MemberFactory()
@@ -22,17 +22,17 @@ class TodoModelTests(TestCase):
 
     def test_validate_element_success(self):
         """Test validate_element when new date is in the future"""
-        new_date = date.today() + timedelta(days=1)
+        new_date = self.todo.planned_date + timedelta(days=1)
         result = self.todo.validate_element(new_date)
         self.assertTrue(result)
-        self.assertEqual(self.todo.date, new_date)
+        self.assertEqual(self.todo.planned_date, new_date)
 
     def test_validate_element_failure(self):
         """Test validate_element when new date is not in the future"""
-        new_date = date.today() - timedelta(days=1)
+        new_date = self.todo.planned_date - timedelta(days=1)
         result = self.todo.validate_element(new_date)
         self.assertFalse(result)
-        self.assertNotEqual(self.todo.date, new_date)
+        self.assertNotEqual(self.todo.planned_date, new_date)
 
     def test_next_date_daily(self):
         """Test next_date with daily periodicity"""
@@ -50,34 +50,40 @@ class TodoModelTests(TestCase):
 
     def test_report_element(self):
         """Test report_element method"""
-        original_date = self.todo.date
+        original_date = self.todo.planned_date
         self.todo.report_element()
         self.assertEqual(self.todo.state, "report")
-        self.assertEqual(self.todo.date, original_date + timedelta(days=1))
+        self.assertEqual(self.todo.planned_date, original_date + timedelta(days=1))
 
     def test_state_choices(self):
         """Test that state choices are valid"""
 
         # Test invalid state
         self.todo.state = "invalid_state"
-        with self.assertRaises(ValueError):
-            self.todo.save()
+        with self.assertRaises(ValidationError):
+            self.todo.full_clean()
 
         # Test valid state
         self.todo.state = "todo"
-        self.todo.save()  # Should not raise an error
+        try:
+            self.todo.full_clean()  # This should not raise an error
+        except ValidationError:
+            self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_priority_choices(self):
         """Test that priority choices are valid"""
 
         # Test invalid priority
         self.todo.priority = "invalid_priority"
-        with self.assertRaises(ValueError):
-            self.todo.save()
+        with self.assertRaises(ValidationError):
+            self.todo.full_clean()
 
         # Test valid priority
-        self.todo.priority = "01-none"
-        self.todo.save()  # Should not raise an error
+        self.todo.priority = "1-highest"
+        try:
+            self.todo.full_clean()  # This should not raise an error
+        except ValidationError:
+            self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_category_choices(self):
         """Test that category choices are valid"""
@@ -100,7 +106,7 @@ class TodoModelTests(TestCase):
         # Test invalid who
         self.todo.who = "invalid_who"
         with self.assertRaises(ValidationError):
-            self.todo.full_clean() 
+            self.todo.full_clean()
 
         # Test valid who
         self.todo.who = "SLB"
@@ -116,7 +122,7 @@ class TodoModelTests(TestCase):
         self.todo.place = "invalid_place"
         with self.assertRaises(ValidationError):
             self.todo.full_clean()
-        
+
         # test valid place
         self.todo.place = "partout"
         try:
@@ -131,7 +137,7 @@ class TodoModelTests(TestCase):
         self.todo.periodic = "invalid_periodic"
         with self.assertRaises(ValidationError):
             self.todo.full_clean()
-        
+
         # test valid periodic
         self.todo.periodic = "01-none"
         try:
