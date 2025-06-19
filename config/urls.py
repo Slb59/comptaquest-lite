@@ -41,6 +41,7 @@ urlpatterns = [
     path("pr/performances/", include("potionrun.performances.urls")),
     # diarylab urls
     path("diarylab/", include("diarylab.urls")),
+    path("escapevault/", include("escapevault.urls")),
 ]
 
 if settings.DEBUG:

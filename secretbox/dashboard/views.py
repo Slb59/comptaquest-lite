@@ -15,7 +15,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context["title"] = _("Bienvenue dans SecretBox")
         context["logo_url"] = "/static/images/logo_sb.png"
         context["todos"] = Todo.objects.filter(user=self.request.user).order_by(
-            "date", "priority", "category", "periodic", "who", "place", "duration", "?"
+            "planned_date", "priority", "category", "periodic", "who", "place", "duration", "?"
         )[:10]
         return context
 

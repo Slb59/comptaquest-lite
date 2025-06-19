@@ -50,6 +50,7 @@ dependencies = [
     "filelock==3.16.1",
     "filetype==1.2.0",
     "flake8==7.2.0",
+    "folium>=0.20.0",
     "h11==0.16.0",
     "httpcore==1.0.9",
     "httpx==0.28.1",
