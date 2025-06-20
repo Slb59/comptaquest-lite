@@ -145,10 +145,10 @@ class Todo(models.Model):
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
-    lest_execute_date = models.DateField(blank=True, null=True)
+    last_execute_date = models.DateField(blank=True, null=True)
     planned_date = models.DateField()
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
-    done = models.DateField(blank=True, null=True)
+    done_date = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -171,7 +171,8 @@ class Todo(models.Model):
 
         if state!=done and new_date > self.planned_date:
             self.planned_date = new_date
-            self.lest_execute_date = get_now_date()
+            self.last_execute_date = get_now_date()
+            self.done_date = get_now_date()
             self.state = "todo"
             self.save()
             return True
@@ -231,3 +232,11 @@ class Todo(models.Model):
             self.planned_date = get_now_date()        
             self.state = "report"
             self.save()
+
+    def set_done(self):
+        """
+        Sets the element's state to "done" and updates the date done_date.
+        """
+        self.state = "done"
+        self.done_date = get_now_date()
+        self.save()

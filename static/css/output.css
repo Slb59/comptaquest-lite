@@ -1,4 +1,4 @@
-/*! tailwindcss v4.1.8 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
 @layer properties;
 .collapse {
   visibility: collapse;
@@ -320,9 +320,6 @@
 .py-6 {
   padding-block: calc(var(--spacing) * 6);
 }
-.py-12 {
-  padding-block: calc(var(--spacing) * 12);
-}
 .text-center {
   text-align: center;
 }
@@ -419,10 +416,6 @@
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
   transition-duration: var(--tw-duration, var(--default-transition-duration));
 }
-.outline-none {
-  --tw-outline-style: none;
-  outline-style: none;
-}
 .hover\:bg-blue-700 {
   &:hover {
     @media (hover: hover) {
@@ -434,13 +427,6 @@
   &:hover {
     @media (hover: hover) {
       background-color: var(--color-darkbrown);
-    }
-  }
-}
-.hover\:bg-gray-500 {
-  &:hover {
-    @media (hover: hover) {
-      background-color: var(--color-gray-500);
     }
   }
 }
@@ -740,6 +726,22 @@
   }
 }
 @layer utilities;
+@font-face {
+  font-family: 'Cinzel';
+  src: url("/static/font/Cinzel.ttf");
+}
+@media (min-width: 640px) {
+  .main-screen {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .main-screen {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false;

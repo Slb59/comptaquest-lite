@@ -1,22 +1,13 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/output.css' %}">
-<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
-
-{% load compress %}
-{% compress css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">
-<link rel="stylesheet" href="{% static 'css/panneaul.css' %}">
-{% endcompress %}
-
-{% load crispy_forms_tags %}
-
 <!DOCTYPE html>
 <html lang="fr">
+    <head>
+        {% include "base/head.html"%}
+        <title>
+            {% include "base/title.html"%}
+        </title>
+    </head>
 
-    {% include "base/head.html"%}
-
-    <body id="page-top">       
+    <body id="page-top">
         <main>
             <div class="flex">
                 {% include "base/header.html"%}
