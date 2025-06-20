@@ -145,7 +145,7 @@ class Todo(models.Model):
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
-    current_date = models.DateField()
+    lest_execute_date = models.DateField(blank=True, null=True)
     planned_date = models.DateField()
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
     done = models.DateField(blank=True, null=True)
@@ -168,9 +168,11 @@ class Todo(models.Model):
         Returns:
             bool: True if the date was updated, False if the new date is not later than current date
         """
-        print(new_date, self.planned_date)
-        if new_date > self.planned_date:
+
+        if state!=done and new_date > self.planned_date:
             self.planned_date = new_date
+            self.lest_execute_date = get_now_date()
+            self.state = "todo"
             self.save()
             return True
         else:
@@ -211,9 +213,10 @@ class Todo(models.Model):
         This method sets the element's state to "report" and updates the date to the next date.
         The changes are automatically saved to the database if the update is successful.
         """
-        self.state = "report"
-        self.validate_element(timezone.now() + timedelta(days=1))
-        self.save()
+        if self.state != "done":      
+            self.planned_date = get_now_date() + timedelta(days=1)
+            self.state = "report"
+            self.save()
 
     def new_day(self):
         """
@@ -222,9 +225,9 @@ class Todo(models.Model):
         set the state to "report" if the element is not done.
 
         This method updates the element's current date to the next day and saves the changes.
+        
         """
-        self.current_date = get_now_date()
-        self.planned_date = get_now_date()
-        if self.state != "done":
+        if self.state != "done" and planned_date <= timezone.now():
+            self.planned_date = get_now_date()        
             self.state = "report"
-        self.save()
+            self.save()

@@ -38,14 +38,14 @@ class TestTodoModel(TestCase):
         """Test next_date with daily periodicity"""
         self.todo.periodic = "02-everyday"
         next_date = self.todo.next_date()
-        expected_date = self.todo.date + timedelta(days=1)
+        expected_date = self.todo.planned_date + timedelta(days=1)
         self.assertEqual(next_date, expected_date)
 
     def test_next_date_weekly(self):
         """Test next_date with weekly periodicity"""
         self.todo.periodic = "07-everyweek"
         next_date = self.todo.next_date()
-        expected_date = self.todo.date + timedelta(days=7)
+        expected_date = self.todo.planned_date + timedelta(days=7)
         self.assertEqual(next_date, expected_date)
 
     def test_report_element(self):
@@ -147,7 +147,7 @@ class TestTodoModel(TestCase):
 
     def test_new_day_with_done_state(self):
         # Create an instance of YourModel with state "done"
-        instance = TodoFactory(current_date=date(2023, 10, 9), planned_date=date(2023, 10, 9), state="done")
+        instance = TodoFactory(current_date=date(2025, 10, 9), planned_date=date(2025, 10, 9), state="done")
 
         # Call the new_day method
         instance.new_day()
@@ -155,14 +155,15 @@ class TestTodoModel(TestCase):
         # Refresh the instance from the database
         instance.refresh_from_db()
 
-        # Check if the dates are updated and state remains "done"
-        self.assertEqual(instance.current_date, date(2023, 10, 10))
-        self.assertEqual(instance.planned_date, date(2023, 10, 10))
+        # Check if the dates are not updated and state remains "done"
+        self.assertEqual(instance.current_date, date(2025, 10, 9))
+        self.assertEqual(instance.planned_date, date(2025, 10, 9))
         self.assertEqual(instance.state, "done")
 
-    def test_new_day_with_non_done_state(self):
+    def test_new_day_with_non_done_state_and_planned_date_in_future(self):
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(current_date=date(2023, 10, 9), planned_date=date(2023, 10, 9), state="todo")
+        instance = TodoFactory(current_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
+        instance.planned_date = date(2025, 6, 25)
 
         # Call the new_day method
         instance.new_day()
@@ -171,6 +172,21 @@ class TestTodoModel(TestCase):
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "report"
-        self.assertEqual(instance.current_date, date(2023, 10, 10))
-        self.assertEqual(instance.planned_date, date(2023, 10, 10))
+        self.assertEqual(instance.current_date, date(2025, 6, 21))
+        self.assertEqual(instance.planned_date, date(2025, 6, 25))
+        self.assertEqual(instance.state, "todo")
+
+def test_new_day_with_non_done_state_and_planned_date_is_past(self):
+        # Create an instance of YourModel with state other than "done"
+        instance = TodoFactory(current_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
+
+        # Call the new_day method
+        instance.new_day()
+
+        # Refresh the instance from the database
+        instance.refresh_from_db()
+
+        # Check if the dates are updated and state is set to "report"
+        self.assertEqual(instance.current_date, date(2025, 6, 21))
+        self.assertEqual(instance.planned_date, date(2025, 6, 21))
         self.assertEqual(instance.state, "report")
