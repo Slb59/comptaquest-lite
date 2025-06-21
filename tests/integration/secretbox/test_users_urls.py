@@ -63,7 +63,7 @@ class TestUserViews(TestCase):
     def test_profile_GET_unauthenticated(self):
         response = self.client.get(reverse("users:profile"))
         self.assertEqual(response.status_code, 302)  # Should redirect to login
-        self.assertRedirects(response, f'/login/?next={reverse("users:profile")}', status_code=302)
+        self.assertRedirects(response, f'/login/?next={reverse("account:profile")}', status_code=302)
 
     def test_password_change_authenticated(self):
         self.client.login(email=self.member.email, password="password")
