@@ -1,9 +1,12 @@
-from django.utils import timezone
-from datetime import date, timedelta, datetime
 import random
+from datetime import date, datetime, timedelta
+
+from django.utils import timezone
+
 
 def get_now_date():
     return date.today()
+
 
 def get_random_date_in_current_month():
     today = date.today()

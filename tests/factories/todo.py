@@ -3,10 +3,11 @@ from datetime import timedelta
 import factory
 import factory.fuzzy
 import pytest
-from django.utils import timezone
+
 
 from secretbox.dashboard.models import Todo
-from secretbox.tools.models import get_now_date, get_random_date_in_current_month
+from secretbox.tools.models import (get_now_date,
+                                    get_random_date_in_current_month)
 
 from .member import MemberFactory
 
@@ -29,7 +30,5 @@ class TodoFactory(factory.django.DjangoModelFactory):
     planned_date = factory.LazyAttribute(lambda obj: get_now_date() + timedelta(days=1))
     priority = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PRIORITY_CHOICES])
 
-    done_date = factory.LazyAttribute(
-        lambda obj: get_now_date() if factory.fuzzy.FuzzyChoice([True, False]) else None
-    )
+    done_date = factory.LazyAttribute(lambda obj: get_now_date() if factory.fuzzy.FuzzyChoice([True, False]) else None)
     note = factory.Faker("text")

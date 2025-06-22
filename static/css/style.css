@@ -43,6 +43,16 @@ a.round-icon {
     transition: background-color 0.3s ease;
 }
 
+a.round-hicon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
 a.round-icon:hover {
     background-color: #6b7280;
 }

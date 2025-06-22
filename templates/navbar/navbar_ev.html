@@ -1,8 +1,12 @@
 {% load static %}
 
-<div>
-    <!-- Pastille pour la liste -->
-    <a href="{% url 'escapevault:list' %}" class="round-icon">
-        <img src="{% static 'icons/list.png' %}" alt="Liste des positions" class="w-6 h-6">
+<div class="w-32 p-4 flex items-center space-x-4">
+    <!-- Pastille for the list -->
+    <a href="{% url 'escapevault:list_positions' %}" class="round-hicon">
+        <img src="{% static 'icons/list.png' %}" alt="Liste des positions" class="w-8 h-8">
+    </a>
+    <!-- Pastille for new position -->
+    <a href="{% url 'escapevault:add_position' %}" class="round-hicon">
+        <img src="{% static 'icons/add.png' %}" alt="Nouvelle position" class="w-8 h-8">
     </a>
 </div>

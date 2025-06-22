@@ -1,11 +1,14 @@
-from .models import EscapeVaultPosition
-from django.utils.translation import gettext_lazy as _
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout, Submit
+from django import forms
+from django.utils.translation import gettext_lazy as _
 
-class EscapeVaultPositionForm(forms.ModelForm):
+from .models import NomadePosition
+
+
+class EscapeVaultForm(forms.ModelForm):
     class Meta:
-        model = EscapeVaultPosition
+        model = NomadePosition
         fields = ["name", "city", "latitude", "longitude"]
 
     def __init__(self, *args, **kwargs):
@@ -29,7 +32,7 @@ class EscapeVaultPositionForm(forms.ModelForm):
                     "submit",
                     "Valider",
                     css_class="button-valider",
-                    ),
+                ),
                 HTML(
                     '<a href="{% url \'escapevault:list\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
                 ),

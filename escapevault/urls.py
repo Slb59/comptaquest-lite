@@ -1,5 +1,8 @@
 from django.urls import path
-from .views import EscapeVaultMapView
+
+from .views import (EscapeVaultCreateView, EscapeVaultDeleteView,
+                    EscapeVaultEditView, EscapeVaultListView,
+                    EscapeVaultMapView)
 
 app_name = "escapevault"
 

@@ -1,8 +1,9 @@
 # dashboard.models.py
+from datetime import timedelta
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
-from datetime import timedelta
 
 from secretbox.tools.models import get_now_date
 from secretbox.users.models import CQUser as User
@@ -169,7 +170,7 @@ class Todo(models.Model):
             bool: True if the date was updated, False if the new date is not later than current date
         """
 
-        if state!=done and new_date > self.planned_date:
+        if self.state != "done" and new_date > self.planned_date:
             self.planned_date = new_date
             self.last_execute_date = get_now_date()
             self.done_date = get_now_date()
@@ -214,7 +215,7 @@ class Todo(models.Model):
         This method sets the element's state to "report" and updates the date to the next date.
         The changes are automatically saved to the database if the update is successful.
         """
-        if self.state != "done":      
+        if self.state != "done":
             self.planned_date = get_now_date() + timedelta(days=1)
             self.state = "report"
             self.save()
@@ -226,10 +227,10 @@ class Todo(models.Model):
         set the state to "report" if the element is not done.
 
         This method updates the element's current date to the next day and saves the changes.
-        
+
         """
-        if self.state != "done" and planned_date <= timezone.now():
-            self.planned_date = get_now_date()        
+        if self.state != "done" and self.planned_date <= timezone.now():
+            self.planned_date = get_now_date()
             self.state = "report"
             self.save()
 
