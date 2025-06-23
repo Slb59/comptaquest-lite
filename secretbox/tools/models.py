@@ -27,9 +27,12 @@ def get_random_date_in_current_month():
     random_day = random.randint(1, last_day_of_month.day)
     random_date = date(year, month, random_day)
 
-    # Convert in django timezone
-    # random_date = datetime.combine(random_date, )
-    random_date = datetime.combine(random_date, datetime.min.time())
-    random_date = timezone.make_aware(random_date)
-    # random_date = random_date.astimezone(timezone.get_current_timezone())
-    return random_date
+    # Convert in django timezone and return
+    
+    return convert_date_to_django_date(random_date)
+
+def convert_date_to_django_date(the_date):
+    # Convert the date in django timezone
+    the_date = datetime.combine(the_date, datetime.min.time())
+    the_date = timezone.make_aware(the_date)
+    return the_date

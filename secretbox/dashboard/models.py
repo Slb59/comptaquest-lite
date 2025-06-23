@@ -147,7 +147,7 @@ class Todo(models.Model):
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
     last_execute_date = models.DateField(blank=True, null=True)
-    planned_date = models.DateField()
+    planned_date = models.DateField(default=timezone.now+timedelta(days=1))
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
     done_date = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)

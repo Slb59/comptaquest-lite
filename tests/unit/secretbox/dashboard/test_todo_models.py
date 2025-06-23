@@ -6,7 +6,7 @@ from django.test import TestCase
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
-# from django.utils import timezone
+from secretbox.tools.models import convert_date_to_django_date
 
 
 class TestTodoModel(TestCase):
@@ -162,8 +162,11 @@ class TestTodoModel(TestCase):
 
     def test_new_day_with_non_done_state_and_planned_date_in_future(self):
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(last_execute_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
-        instance.planned_date = date(2025, 6, 25)
+        instance = TodoFactory(
+            last_execute_date=convert_date_to_django_date(date(2025, 6, 20)),
+            planned_date=convert_date_to_django_date(date(2025, 6, 25)),
+            state="todo"
+        )
 
         # Call the new_day method
         instance.new_day()
@@ -172,8 +175,10 @@ class TestTodoModel(TestCase):
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "report"
-        self.assertEqual(instance.last_execute_date, date(2025, 6, 21))
-        self.assertEqual(instance.planned_date, date(2025, 6, 25))
+        last_execute_date_expected = convert_date_to_django_date(date(2025, 6, 21))        
+        self.assertEqual(instance.last_execute_date, last_execute_date_expected)
+        planned_date_expected = convert_date_to_django_date(date(2025, 6, 25))
+        self.assertEqual(instance.planned_date, planned_date_expected)
         self.assertEqual(instance.state, "todo")
 
     def test_new_day_with_non_done_state_and_planned_date_is_past(self):
