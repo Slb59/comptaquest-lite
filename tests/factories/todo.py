@@ -4,7 +4,6 @@ import factory
 import factory.fuzzy
 import pytest
 
-
 from secretbox.dashboard.models import Todo
 from secretbox.tools.models import (get_now_date,
                                     get_random_date_in_current_month)

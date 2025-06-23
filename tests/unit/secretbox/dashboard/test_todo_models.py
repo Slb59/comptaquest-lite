@@ -3,10 +3,9 @@ from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
+from secretbox.tools.models import convert_date_to_django_date
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
-
-from secretbox.tools.models import convert_date_to_django_date
 
 
 class TestTodoModel(TestCase):
@@ -165,7 +164,7 @@ class TestTodoModel(TestCase):
         instance = TodoFactory(
             last_execute_date=convert_date_to_django_date(date(2025, 6, 20)),
             planned_date=convert_date_to_django_date(date(2025, 6, 25)),
-            state="todo"
+            state="todo",
         )
 
         # Call the new_day method
@@ -175,7 +174,7 @@ class TestTodoModel(TestCase):
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "report"
-        last_execute_date_expected = convert_date_to_django_date(date(2025, 6, 21))        
+        last_execute_date_expected = convert_date_to_django_date(date(2025, 6, 21))
         self.assertEqual(instance.last_execute_date, last_execute_date_expected)
         planned_date_expected = convert_date_to_django_date(date(2025, 6, 25))
         self.assertEqual(instance.planned_date, planned_date_expected)

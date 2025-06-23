@@ -28,8 +28,9 @@ def get_random_date_in_current_month():
     random_date = date(year, month, random_day)
 
     # Convert in django timezone and return
-    
+
     return convert_date_to_django_date(random_date)
+
 
 def convert_date_to_django_date(the_date):
     # Convert the date in django timezone

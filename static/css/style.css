@@ -118,6 +118,7 @@ a.round-icon:hover {
     border-bottom: 1px solid #ccc;
 }
 
+
 .entry-date {
     color: #8B4513;
     font-weight: bold;
@@ -254,4 +255,13 @@ a.round-icon:hover {
     height: 100%;
     margin-top: 1rem;
     justify-content: center;
+}
+
+.position-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
 }

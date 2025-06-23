@@ -41,7 +41,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
 
 class EscapeVaultListView(LoginRequiredMixin, ListView):
     model = NomadePosition
-    template_name = "escapevault/list.html"
+    template_name = "escapevault/escapevault_list.html"
     context_object_name = "positions"
 
     def get_queryset(self):
@@ -58,7 +58,7 @@ class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "escapevault/add_position.html"
-    success_url = reverse_lazy("escapevault:list")
+    success_url = reverse_lazy("escapevault:list_positions")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
