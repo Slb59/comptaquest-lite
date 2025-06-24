@@ -6,6 +6,13 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 
+def validate_city_format(value):
+    if len(value) > 40:
+        raise ValidationError("The city name is too long.")
+    
+    if not all(c.isalpha() or c.isspace() or c == '-' for c in value):
+        raise ValidationError("The city name contains invalid characters.")
+
 
 def validate_day_month_format(value):
     # Utilisez une expression régulière pour valider le format DD/MM
@@ -19,7 +26,10 @@ class NomadePosition(models.Model):
 
     # Location Details
     address = models.TextField()
-    city = models.TextField()
+    city = models.TextField(
+        max_length=40, help_text=_('Nom de la ville'),
+        validators=[validate_city_format]
+    )
     country = CountryField(blank_label=_("France"))
 
     # Rating System

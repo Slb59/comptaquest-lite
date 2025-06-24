@@ -129,6 +129,9 @@
 .h-24 {
   height: calc(var(--spacing) * 24);
 }
+.h-full {
+  height: 100%;
+}
 .h-screen {
   height: 100vh;
 }
@@ -197,6 +200,9 @@
 }
 .justify-center {
   justify-content: center;
+}
+.gap-4 {
+  gap: calc(var(--spacing) * 4);
 }
 .space-y-4 {
   :where(& > :not(:last-child)) {
@@ -491,6 +497,46 @@
   &:focus {
     --tw-outline-style: none;
     outline-style: none;
+  }
+}
+.sm\:h-\[40px\] {
+  @media (width >= 40rem) {
+    height: 40px;
+  }
+}
+.sm\:h-\[200px\] {
+  @media (width >= 40rem) {
+    height: 200px;
+  }
+}
+.sm\:w-\[0px\] {
+  @media (width >= 40rem) {
+    width: 0px;
+  }
+}
+.sm\:w-\[40px\] {
+  @media (width >= 40rem) {
+    width: 40px;
+  }
+}
+.sm\:w-\[70px\] {
+  @media (width >= 40rem) {
+    width: 70px;
+  }
+}
+.sm\:w-\[100px\] {
+  @media (width >= 40rem) {
+    width: 100px;
+  }
+}
+.sm\:w-\[170px\] {
+  @media (width >= 40rem) {
+    width: 170px;
+  }
+}
+.sm\:w-\[200px\] {
+  @media (width >= 40rem) {
+    width: 200px;
   }
 }
 .sm\:px-4 {
