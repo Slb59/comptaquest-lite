@@ -25,7 +25,7 @@ class TodoFactory(factory.django.DjangoModelFactory):
     who = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.WHO_CHOICES])
     place = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PLACE_CHOICES])
     periodic = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PERIODIC_CHOICES])
-    last_execute_date = factory.LazyFunction(get_now_date)
+    report_date = factory.LazyFunction(get_now_date)
     planned_date = factory.LazyAttribute(lambda obj: get_now_date() + timedelta(days=1))
     priority = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.PRIORITY_CHOICES])
 

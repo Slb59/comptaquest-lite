@@ -1,11 +1,10 @@
 # dashboard.models.py
-from datetime import timedelta
+from datetime import timedelta, date
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils import timezone
 
-from secretbox.tools.models import get_now_date
 from secretbox.users.models import CQUser as User
 
 
@@ -146,8 +145,8 @@ class Todo(models.Model):
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
-    last_execute_date = models.DateField(blank=True, null=True)
-    planned_date = models.DateField(default=(timezone.now() + timedelta(days=1)))
+    report_date = models.DateField(blank=True, null=True)
+    planned_date = models.DateField(default=(date.today() + timedelta(days=1)))
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
     done_date = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
@@ -155,7 +154,7 @@ class Todo(models.Model):
     def __str__(self):
         return self.description
 
-    def validate_element(self, new_date):
+    def validate_element(self, new_date, date_to_validate=date.today()):
         """
         Validates and updates a Todo element's planned_date if the new date is in the future.
 
@@ -172,7 +171,7 @@ class Todo(models.Model):
 
         if self.state != "done" and new_date > self.planned_date:
             self.planned_date = new_date
-            self.last_execute_date = get_now_date()
+            self.report_date = None
             self.done_date = get_now_date()
             self.state = "todo"
             self.save()
@@ -206,7 +205,7 @@ class Todo(models.Model):
         }
 
         days_to_add = PERIODIC_DAYS_MAPPING[self.periodic]
-        return self.date + timedelta(days=days_to_add)
+        return self.planned_date + timedelta(days=days_to_add)
 
     def report_element(self):
         """
@@ -216,11 +215,13 @@ class Todo(models.Model):
         The changes are automatically saved to the database if the update is successful.
         """
         if self.state != "done":
-            self.planned_date = get_now_date() + timedelta(days=1)
+            self.planned_date = date.today() + timedelta(days=1)
             self.state = "report"
+            if self.report_date is None:
+                self.report_date = date.today()
             self.save()
 
-    def new_day(self):
+    def new_day(self, new_planned_date=date.today()):
         """
         Updates the element's current date to now.
         Updates all planned dates to now.
@@ -229,9 +230,11 @@ class Todo(models.Model):
         This method updates the element's current date to the next day and saves the changes.
 
         """
-        if self.state != "done" and self.planned_date <= timezone.now():
-            self.planned_date = get_now_date()
+        if self.state != "done" and self.planned_date < new_planned_date:
+            self.planned_date = new_planned_date
             self.state = "report"
+            if self.report_date is None:
+                self.report_date = new_planned_date
             self.save()
 
     def set_done(self):
@@ -239,5 +242,5 @@ class Todo(models.Model):
         Sets the element's state to "done" and updates the date done_date.
         """
         self.state = "done"
-        self.done_date = get_now_date()
+        self.done_date = date.today()
         self.save()

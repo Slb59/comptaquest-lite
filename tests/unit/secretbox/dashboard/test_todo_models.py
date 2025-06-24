@@ -145,59 +145,103 @@ class TestTodoModel(TestCase):
             self.fail("full_clean() raised ValidationError unexpectedly!")
 
     def test_new_day_with_done_state(self):
+
+        mock_date = date(2025, 6, 24)
+
         # Create an instance of YourModel with state "done"
-        instance = TodoFactory(last_execute_date=date(2025, 10, 9), planned_date=date(2025, 10, 9), state="done")
+        instance = TodoFactory(
+            report_date=date(2025, 10, 9), 
+            planned_date=date(2025, 10, 9), 
+            state="done")
 
         # Call the new_day method
-        instance.new_day()
+        instance.new_day(mock_date)
 
         # Refresh the instance from the database
         instance.refresh_from_db()
 
         # Check if the dates are not updated and state remains "done"
-        self.assertEqual(instance.last_execute_date, date(2025, 10, 9))
-        self.assertEqual(instance.planned_date, date(2025, 10, 9))
+        report_date_expected = date(2025, 10, 9)
+        self.assertEqual(instance.report_date, report_date_expected)
+        planned_date_expected = date(2025, 10, 9)
+        self.assertEqual(instance.planned_date, planned_date_expected)
         self.assertEqual(instance.state, "done")
 
     def test_new_day_with_non_done_state_and_planned_date_in_future(self):
+        
+        mock_date = date(2025, 6, 24)
+        
         # Create an instance of YourModel with state other than "done"
         instance = TodoFactory(
-            last_execute_date=convert_date_to_django_date(date(2025, 6, 20)),
-            planned_date=convert_date_to_django_date(date(2025, 6, 25)),
+            report_date=None,
+            planned_date=date(2025, 6, 25),
             state="todo",
         )
 
         # Call the new_day method
-        instance.new_day()
+        instance.new_day(mock_date)
 
         # Refresh the instance from the database
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "report"
-        last_execute_date_expected = convert_date_to_django_date(date(2025, 6, 21))
-        self.assertEqual(instance.last_execute_date, last_execute_date_expected)
-        planned_date_expected = convert_date_to_django_date(date(2025, 6, 25))
+        report_date_expected = None
+        self.assertEqual(instance.report_date, report_date_expected)
+        planned_date_expected = date(2025, 6, 25)
         self.assertEqual(instance.planned_date, planned_date_expected)
         self.assertEqual(instance.state, "todo")
 
     def test_new_day_with_non_done_state_and_planned_date_is_past(self):
+
+        mock_date = date(2025, 6, 24)
+
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(last_execute_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            report_date=date(2025, 6, 20),
+            planned_date=date(2025, 6, 20),
+            state="todo")
 
         # Call the new_day method
-        instance.new_day()
+        instance.new_day(mock_date)
 
         # Refresh the instance from the database
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "report"
-        self.assertEqual(instance.last_execute_date, date(2025, 6, 21))
-        self.assertEqual(instance.planned_date, date(2025, 6, 21))
+        report_date_expected = date(2025, 6, 20)
+        self.assertEqual(instance.report_date, report_date_expected)
+        planned_date_expected = mock_date
+        self.assertEqual(instance.planned_date, planned_date_expected)
+        self.assertEqual(instance.state, "report")
+
+    def test_new_day_with_non_done_state_and_planned_date_is_past_and_report_date_is_none(self):
+
+        mock_date = date(2025, 6, 24)
+
+        # Create an instance of YourModel with state other than "done"
+        instance = TodoFactory(
+            report_date=None,
+            planned_date=date(2025, 6, 20),
+            state="todo")
+
+        # Call the new_day method
+        instance.new_day(mock_date)
+
+        # Refresh the instance from the database
+        instance.refresh_from_db()
+
+        # Check if the dates are updated and state is set to "report"
+        report_date_expected = date(2025, 6, 24)
+        self.assertEqual(instance.report_date, report_date_expected)
+        planned_date_expected = mock_date
+        self.assertEqual(instance.planned_date, planned_date_expected)
         self.assertEqual(instance.state, "report")
 
     def test_set_done(self):
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            planned_date=date(2025, 6, 20),
+            state="todo")
 
         # Call the new_day method
         instance.set_done()

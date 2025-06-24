@@ -24,10 +24,10 @@ class TodoAdmin(admin.ModelAdmin):
                     "who",
                     "place",
                     "periodic",
-                    "current_date",
-                    "date",
+                    "report_date",
+                    "planned_date",
                     "priority",
-                    "done",
+                    "done_date",
                     "note",
                 )
             },
