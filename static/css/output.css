@@ -180,6 +180,9 @@
 .min-w-full {
   min-width: 100%;
 }
+.flex-1 {
+  flex: 1;
+}
 .border-collapse {
   border-collapse: collapse;
 }

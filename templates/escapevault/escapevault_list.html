@@ -25,16 +25,23 @@
     <ul>
         {% for pos in positions %}
         <li class="position-item">
-            <div class="position-name">
-                {{ entry.name }}
+            <div class="position-name flex-container">
+
+                <!-- Lien vers le site internet -->
+                {% if pos.link_to_site %}
+                    <a href="{{ pos.link_to_site }}" class="name-text" target="_blank" rel="noopener noreferrer">{{ pos.name }}</a>
+                {% else %}
+                    <span class="name-text">{{ pos.name }}</span>
+                {% endif %}
+
                 <div class="action-icons">
                     <!-- Pastille for edit position -->
                     <a href="{% url 'escapevault:edit_position' pk=pos.pk %}" class="round-hicon">
-                        <img src="{% static 'icons/edit.png' %}" alt="Nouvelle position" class="w-8 h-8">
+                        <img src="{% static 'icons/edit.png' %}" alt="Nouvelle position" class="w-6 h-6">
                     </a>
                     <!-- Pastille for new position -->
                     <a href="{% url 'escapevault:delete_position' pk=pos.pk %}" class="round-hicon">
-                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-8 h-8">
+                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
                     </a>
                 </div>
             </div>

@@ -9,7 +9,7 @@ from .models import NomadePosition
 class EscapeVaultForm(forms.ModelForm):
     class Meta:
         model = NomadePosition
-        fields = ["name", "city", "latitude", "longitude"]
+        fields = ["name", "city", "latitude", "longitude", "link_to_site"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,6 +18,7 @@ class EscapeVaultForm(forms.ModelForm):
         self.fields["city"].label = _("Ville")
         self.fields["latitude"].label = _("Latitude")
         self.fields["longitude"].label = _("Longitude")
+        self.fields["link_to_site"].label = _("Lien vers le site internet")
 
         # Redimensionner le champ city
         self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[40px]", "style": "max-height: 40px;"})
@@ -39,6 +40,7 @@ class EscapeVaultForm(forms.ModelForm):
                 Div("longitude", css_class="w-full sm:w-[170px]"),
                 css_class="flex items-center gap-4",
             ),
+            "link_to_site",
             Div(
                 Submit(
                     "submit",

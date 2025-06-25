@@ -43,6 +43,10 @@ a.round-icon {
     transition: background-color 0.3s ease;
 }
 
+a.round-icon:hover {
+    background-color: #6b7280;
+}
+
 a.round-hicon {
     width: 2rem;
     height: 2rem;
@@ -53,8 +57,43 @@ a.round-hicon {
     transition: background-color 0.3s ease;
 }
 
-a.round-icon:hover {
+a.round-hicon:hover {
     background-color: #6b7280;
+}
+
+a.little-round-hicon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+a.little-round-hicon:hover {
+    background-color: #c4c8cf;
+}
+
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Ou "flex-start" si tu veux que tout soit collé à gauche */
+    gap: 1rem;
+    /* espace entre le nom et les icônes */
+}
+
+.name-text {
+    flex: 1; /* prend tout l'espace disponible à gauche */
+    text-decoration: none;
+    color: inherit;
+}
+
+a.name-text:hover {
+    text-decoration: underline;
+    color: #2A3D66;
 }
 
 .main-screen {
@@ -150,6 +189,8 @@ a.round-icon:hover {
 
 .action-icons {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .action-icons a {
@@ -258,10 +299,9 @@ a.round-icon:hover {
 }
 
 .position-item {
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 5px;
+    padding: 4px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #f9f9f9;
     border-bottom: 1px solid #ccc;
 }

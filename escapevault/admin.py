@@ -11,7 +11,12 @@ from .models import NomadePosition
 @admin.register(NomadePosition)
 class NomadePositionAdmin(admin.ModelAdmin):
     # Configuration générale
-    list_display = ("name", "city", "country", "stars", "opening_date")
+    list_display = (
+        "name", "city", "country",
+        "stars", "opening_date", "closing_date",
+        "category", "latitude", "longitude",
+        "reviews", "link_to_site",
+    )
     list_filter = ("city", "country", "category", "stars", "opening_date")
     search_fields = ("name", "address", "category")
 
@@ -42,6 +47,7 @@ class NomadePositionAdmin(admin.ModelAdmin):
             "Catégorie",
             "Date d'ouverture",
             "Date de fermeture",
+            "Lien vers le site internet",
         ]
 
         writer.writerow(header)
@@ -60,6 +66,7 @@ class NomadePositionAdmin(admin.ModelAdmin):
                     smart_str(obj.category),
                     smart_str(obj.opening_date),
                     smart_str(obj.closing_date),
+                    smart_str(obj.link_to_site),
                 ]
             )
 

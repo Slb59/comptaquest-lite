@@ -71,10 +71,16 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "escapevault/edit_position.html"
-    success_url = reverse_lazy("escapevault:list")
+    success_url = reverse_lazy("escapevault:list_positions")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _(f"{self.object.name}")
+        context["logo_url"] = "/static/images/logo_ev.png"
+        return context
 
 
 class EscapeVaultDeleteView(LoginRequiredMixin, DeleteView):
     model = NomadePosition
     template_name = "escapevault/delete_position.html"
-    success_url = reverse_lazy("escapevault:list")
+    success_url = reverse_lazy("escapevault:list_positions")

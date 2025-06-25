@@ -53,6 +53,7 @@ class NomadePosition(models.Model):
         blank=True,
         validators=[MinValueValidator(-90.0), MaxValueValidator(90.0)],
     )
+    link_to_site = models.URLField(blank=True, null=True)
 
     def get_position(self):
         return (self.latitude, self.longitude)
