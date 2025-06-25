@@ -20,22 +20,13 @@ class EscapeVaultForm(forms.ModelForm):
         self.fields["longitude"].label = _("Longitude")
 
         # Redimensionner le champ city
-        self.fields["city"].widget.attrs.update({
-            'class': 'h-full sm:h-[40px]',
-            'style': 'max-height: 40px;'
-        })
+        self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[40px]", "style": "max-height: 40px;"})
 
         # Redimensionner le champ latitude
-        self.fields["latitude"].widget.attrs.update({
-            'class': 'w-full sm:w-[170px]',
-            'style': 'max-width: 170px;'
-        })
+        self.fields["latitude"].widget.attrs.update({"class": "w-full sm:w-[170px]", "style": "max-width: 170px;"})
 
         # Redimensionner le champ longitude
-        self.fields["longitude"].widget.attrs.update({
-            'class': 'w-full sm:w-[170px]',
-            'style': 'max-width: 170px;'
-        })
+        self.fields["longitude"].widget.attrs.update({"class": "w-full sm:w-[170px]", "style": "max-width: 170px;"})
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
@@ -46,7 +37,7 @@ class EscapeVaultForm(forms.ModelForm):
             Div(
                 Div("latitude", css_class="w-full sm:w-[170px]"),
                 Div("longitude", css_class="w-full sm:w-[170px]"),
-                css_class="flex items-center gap-4"
+                css_class="flex items-center gap-4",
             ),
             Div(
                 Submit(

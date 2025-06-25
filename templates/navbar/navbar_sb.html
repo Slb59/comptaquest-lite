@@ -1,0 +1,8 @@
+{% load static %}
+
+<div class="w-32 p-4 flex items-center space-x-4">
+    <!-- Pastille for new entry -->
+    <a href="{% url 'dashboard:add_todo' %}" class="round-hicon">
+        <img src="{% static 'icons/add.png' %}" alt="Nouvelle entrée" class="w-8 h-8">
+    </a>
+</div>

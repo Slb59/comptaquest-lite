@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import FormView, TemplateView
+from django.views.generic import CreateView, FormView, TemplateView
 
-from .forms import ContactForm
+from .forms import ContactForm, TodoForm
 from .models import Todo
 
 
@@ -28,5 +28,18 @@ class ContactFormView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Contact")
+        context["logo_url"] = "/static/images/logo_sb.png"
+        return context
+
+
+class TodoCreateView(LoginRequiredMixin, CreateView):
+    model = Todo
+    form_class = TodoForm
+    template_name = "dashboard/add_todo.html"
+    success_url = reverse_lazy("dashboard")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("Nouvelle entrée")
         context["logo_url"] = "/static/images/logo_sb.png"
         return context

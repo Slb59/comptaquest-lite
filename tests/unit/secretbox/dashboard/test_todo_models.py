@@ -3,7 +3,6 @@ from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from secretbox.tools.models import convert_date_to_django_date
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
@@ -51,11 +50,11 @@ class TestTodoModel(TestCase):
         """Test report_element method"""
         mock_date = date(2025, 6, 24)
 
-        original_date = self.todo.planned_date
         self.todo.report_date = None
 
+        # call report_element method
         self.todo.report_element(mock_date)
-        
+
         # Test valid state
         self.assertEqual(self.todo.state, "report")
         self.assertEqual(self.todo.planned_date, mock_date + timedelta(days=1))
@@ -156,10 +155,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state "done"
-        instance = TodoFactory(
-            report_date=date(2025, 10, 9), 
-            planned_date=date(2025, 10, 9), 
-            state="done")
+        instance = TodoFactory(report_date=date(2025, 10, 9), planned_date=date(2025, 10, 9), state="done")
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -175,9 +171,9 @@ class TestTodoModel(TestCase):
         self.assertEqual(instance.state, "done")
 
     def test_new_day_with_non_done_state_and_planned_date_in_future(self):
-        
+
         mock_date = date(2025, 6, 24)
-        
+
         # Create an instance of YourModel with state other than "done"
         instance = TodoFactory(
             report_date=None,
@@ -203,10 +199,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(
-            report_date=date(2025, 6, 20),
-            planned_date=date(2025, 6, 20),
-            state="todo")
+        instance = TodoFactory(report_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -226,10 +219,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(
-            report_date=None,
-            planned_date=date(2025, 6, 20),
-            state="todo")
+        instance = TodoFactory(report_date=None, planned_date=date(2025, 6, 20), state="todo")
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -248,9 +238,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(
-            planned_date=date(2025, 6, 20),
-            state="todo")
+        instance = TodoFactory(planned_date=date(2025, 6, 20), state="todo")
 
         # Call the new_day method
         instance.set_done(mock_date)

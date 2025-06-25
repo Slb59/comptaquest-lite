@@ -524,9 +524,19 @@
     width: 70px;
   }
 }
+.sm\:w-\[90px\] {
+  @media (width >= 40rem) {
+    width: 90px;
+  }
+}
 .sm\:w-\[100px\] {
   @media (width >= 40rem) {
     width: 100px;
+  }
+}
+.sm\:w-\[150px\] {
+  @media (width >= 40rem) {
+    width: 150px;
   }
 }
 .sm\:w-\[170px\] {
@@ -537,6 +547,11 @@
 .sm\:w-\[200px\] {
   @media (width >= 40rem) {
     width: 200px;
+  }
+}
+.sm\:w-\[900px\] {
+  @media (width >= 40rem) {
+    width: 900px;
   }
 }
 .sm\:px-4 {

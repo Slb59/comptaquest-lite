@@ -30,6 +30,7 @@ urlpatterns = [
     # path("", include("django_components.urls")),
     # home url
     path("", DashboardView.as_view(), name="dashboard"),
+    path("dashboard/", include("secretbox.dashboard.urls")),
     path("contact/", ContactFormView.as_view(), name="contact"),
     # comptaquest urls
     path("account/", include("secretbox.users.urls")),

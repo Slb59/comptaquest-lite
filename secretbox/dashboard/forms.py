@@ -1,6 +1,8 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Submit
+from crispy_forms.layout import Layout, Submit, HTML
 from django import forms
+
+from .models import Todo
 
 
 class ContactForm(forms.Form):
@@ -46,3 +48,68 @@ class ContactForm(forms.Form):
                 self.add_error("subject", "The subject must be at least 5 characters long.")
             if len(message) < 10:
                 self.add_error("message", "The message must be at least 10 characters long.")
+
+
+class TodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        fields = [
+            "state",
+            "duration",
+            "description",
+            "appointment",
+            "category",
+            "who",
+            "place",
+            "periodic",
+            "report_date",
+            "planned_date",
+            "priority",
+            "done_date",
+            "note",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields["state"].label = "État"
+        self.fields["duration"].label = "Durée"
+        self.fields["description"].label = "Description"
+        self.fields["appointment"].label = "Date et heure"
+        self.fields["category"].label = "Catégorie"
+        self.fields["who"].label = "Personne"
+        self.fields["place"].label = "Lieu"
+        self.fields["periodic"].label = "Fréquence"
+
+        # Resize the state field
+        self.fields["state"].widget.attrs.update({"class": "w-full sm:w-[150px]", "style": "max-width: 150px;"})
+
+        # Resize the duration field
+        self.fields["duration"].widget.attrs.update({"class": "w-full sm:w-[90px]", "style": "max-width: 90px;"})
+
+        self.helper = FormHelper()
+        self.helper.form_class = "border p-8"
+
+        self.helper.layout = Layout(
+            "state",
+            "duration",
+            "description",
+            "appointment",
+            "category",
+            "who",
+            "place",
+            "periodic",
+            "report_date",
+            "planned_date",
+            "priority",
+            "done_date",
+            "note",
+            Submit(
+                "submit",
+                "Valider",
+                css_class="button-valider",
+            ),
+            # HTML(
+            #     '<a href="{% url \'dashboard:list_todos\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
+            # ),
+        )
