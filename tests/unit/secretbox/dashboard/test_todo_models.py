@@ -49,10 +49,17 @@ class TestTodoModel(TestCase):
 
     def test_report_element(self):
         """Test report_element method"""
+        mock_date = date(2025, 6, 24)
+
         original_date = self.todo.planned_date
-        self.todo.report_element()
+        self.todo.report_date = None
+
+        self.todo.report_element(mock_date)
+        
+        # Test valid state
         self.assertEqual(self.todo.state, "report")
-        self.assertEqual(self.todo.planned_date, original_date + timedelta(days=1))
+        self.assertEqual(self.todo.planned_date, mock_date + timedelta(days=1))
+        self.assertEqual(self.todo.report_date, mock_date)
 
     def test_state_choices(self):
         """Test that state choices are valid"""
@@ -238,17 +245,19 @@ class TestTodoModel(TestCase):
         self.assertEqual(instance.state, "report")
 
     def test_set_done(self):
+        mock_date = date(2025, 6, 24)
+
         # Create an instance of YourModel with state other than "done"
         instance = TodoFactory(
             planned_date=date(2025, 6, 20),
             state="todo")
 
         # Call the new_day method
-        instance.set_done()
+        instance.set_done(mock_date)
 
         # Refresh the instance from the database
         instance.refresh_from_db()
 
         # Check if the dates are updated and state is set to "done"
         self.assertEqual(instance.state, "done")
-        self.assertEqual(instance.done_date, date(2025, 6, 20))
+        self.assertEqual(instance.done_date, mock_date)

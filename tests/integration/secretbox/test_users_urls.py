@@ -10,11 +10,11 @@ class TestUserUrls(TestCase):
 
     def test_login_url_resolves(self):
         url = reverse("users:login")
-        self.assertEqual(resolve(url).func.view_class, views.CustomLoginView)
+        self.assertEqual(resolve(url).func.view_class, views.LoginView)
 
     def test_logout_url_resolves(self):
         url = reverse("users:logout")
-        self.assertEqual(resolve(url).func.view_class, views.CustomLogoutView)
+        self.assertEqual(resolve(url).func.view_class, views.LogoutView)
 
     def test_password_change_url_resolves(self):
         url = reverse("users:password_change")

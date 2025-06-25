@@ -172,7 +172,7 @@ class Todo(models.Model):
         if self.state != "done" and new_date > self.planned_date:
             self.planned_date = new_date
             self.report_date = None
-            self.done_date = get_now_date()
+            self.done_date = date_to_validate
             self.state = "todo"
             self.save()
             return True
@@ -207,7 +207,7 @@ class Todo(models.Model):
         days_to_add = PERIODIC_DAYS_MAPPING[self.periodic]
         return self.planned_date + timedelta(days=days_to_add)
 
-    def report_element(self):
+    def report_element(self, date_of_report=date.today()):
         """
         Reports the element to the user.
 
@@ -215,10 +215,10 @@ class Todo(models.Model):
         The changes are automatically saved to the database if the update is successful.
         """
         if self.state != "done":
-            self.planned_date = date.today() + timedelta(days=1)
+            self.planned_date = date_of_report + timedelta(days=1)
             self.state = "report"
             if self.report_date is None:
-                self.report_date = date.today()
+                self.report_date = date_of_report
             self.save()
 
     def new_day(self, new_planned_date=date.today()):
@@ -237,10 +237,10 @@ class Todo(models.Model):
                 self.report_date = new_planned_date
             self.save()
 
-    def set_done(self):
+    def set_done(self, date_of_done=date.today()):
         """
         Sets the element's state to "done" and updates the date done_date.
         """
         self.state = "done"
-        self.done_date = date.today()
+        self.done_date = date_of_done
         self.save()
