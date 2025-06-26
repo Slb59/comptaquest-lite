@@ -108,6 +108,7 @@ DJANGO_MIDDLEWARE = [
 
 TIERS_MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "threadlocals.middleware.ThreadLocalMiddleware",
 ]
 
 MIDDLEWARE = DJANGO_MIDDLEWARE + TIERS_MIDDLEWARE

@@ -308,6 +308,7 @@ dependencies = [
     { name = "django-stubs-ext" },
     { name = "django-taggit" },
     { name = "django-tasks" },
+    { name = "django-threadlocals" },
     { name = "django-treebeard" },
     { name = "djangorestframework" },
     { name = "djc-core-html-parser" },
@@ -439,6 +440,7 @@ requires-dist = [
     { name = "django-stubs-ext", specifier = "==5.2.0" },
     { name = "django-taggit", specifier = "==6.1.0" },
     { name = "django-tasks", specifier = "==0.7.0" },
+    { name = "django-threadlocals", specifier = ">=0.10" },
     { name = "django-treebeard", specifier = "==4.7.1" },
     { name = "djangorestframework", specifier = "==3.16.0" },
     { name = "djc-core-html-parser", specifier = "==1.0.2" },
@@ -829,6 +831,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/86/d2/09aa8cac81e5eb1719bed0fdfa865501e739a384830772a01954dc59e192/django_tasks-0.7.0.tar.gz", hash = "sha256:499f80d1a051566443cfa88a300d8b03435af7fc5708cad4d8da6d285614f739", size = 29581 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/11/e2/1079d177654bd3d4200040d031e9e42831fab532ac4ea8354db15b3280b5/django_tasks-0.7.0-py3-none-any.whl", hash = "sha256:8a8d64f2dc6e29ac2f45092d90e2dd82dc1dca100dfe3a4f2ce1209db99f3527", size = 39970 },
+]
+
+[[package]]
+name = "django-threadlocals"
+version = "0.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/60/b4/8defa1d5de9efa81b75b90baccd8607de1a2abd24c0d25a630d9183a1b6f/django-threadlocals-0.10.tar.gz", hash = "sha256:c06a4c6701a56bcca2acd0bd655aaa136501ab7e5e6327ab7245be629906432a", size = 5655 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0b/02/181f5c3e8f6da800bc8ee4089a38878842d6f1c65054f0ffc0bd042aad47/django_threadlocals-0.10-py3-none-any.whl", hash = "sha256:fd5e2cb36224163a53f326baddfc36251d150466234a16d8f97f54ad92bce89d", size = 6685 },
 ]
 
 [[package]]

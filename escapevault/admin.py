@@ -12,10 +12,17 @@ from .models import NomadePosition
 class NomadePositionAdmin(admin.ModelAdmin):
     # Configuration générale
     list_display = (
-        "name", "city", "country",
-        "stars", "opening_date", "closing_date",
-        "category", "latitude", "longitude",
-        "reviews", "link_to_site",
+        "name",
+        "city",
+        "country",
+        "stars",
+        "opening_date",
+        "closing_date",
+        "category",
+        "latitude",
+        "longitude",
+        "reviews",
+        "link_to_site",
     )
     list_filter = ("city", "country", "category", "stars", "opening_date")
     search_fields = ("name", "address", "category")

@@ -3,6 +3,7 @@ from datetime import date, timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from threadlocals.threadlocals import get_current_request
 
 from secretbox.users.models import CQUser as User
 
@@ -146,7 +147,7 @@ class Todo(models.Model):
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
     report_date = models.DateField(blank=True, null=True)
     planned_date = models.DateField(default=(date.today() + timedelta(days=1)))
-    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="01-none")
+    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="4-normal")
     done_date = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
 
@@ -155,11 +156,9 @@ class Todo(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:  # Seulement lors de la création
-            self.user = kwargs.pop('user', None) or getattr(
-                thread_local.get_current_request(), 'user', None
-            )
+            self.user = kwargs.pop("user", None) or get_current_request().user
         super().save(*args, **kwargs)
-    
+
     def validate_element(self, new_date, date_to_validate=date.today()):
         """
         Validates and updates a Todo element's planned_date if the new date is in the future.
@@ -250,3 +249,11 @@ class Todo(models.Model):
         self.state = "done"
         self.done_date = date_of_done
         self.save()
+ 
+    def get_appointment_display(self):
+        """
+        Returns the formatted appointment or an empty string if None.
+        Returns:
+            str: The formatted appointment or an empty string.
+        """
+        return self.appointment.strftime("%d/%m/%Y %H:%M") if self.appointment else ""

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="main-screen">
@@ -8,6 +9,57 @@
     <div class="w-full">
         <!-- Le contenu principal sera mis à jour ici -->
         {% block dashboard_content %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-4 border-b table-header" scope="row">État</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Durée</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Description</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Rendez-vous</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Catégorie</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Qui</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Lieu</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Périodique</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Planifié</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Priorité</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Fait</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Note</th>
+                            <th class="py-2 px-4 border-b table-header" scope="row">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in todos %}
+                        <tr>
+                            <td class="py-2 px-4 border-b">{{ todo.get_state_display }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.duration }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.description }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.get_appointment_display }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.get_category_display }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.who }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.place }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.get_periodic_display }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.date }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.get_priority_display }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.done }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.note }}</td>
+                            <td class="action-icons">
+                                <!-- Pastille chronomètre -->
+                                <button class="bg-blue-500 text-white px-2 py-1 rounded" type="button">Chronomètre</button>
+                                <!-- Pastille for edit position -->
+                                <a href="{% url 'dashboard:edit_todo' pk=todo.pk %}" class="round-hicon">
+                                    <img src="{% static 'icons/edit.png' %}" alt="Nouvelle position" class="w-6 h-6">
+                                </a>
+                                <!-- Pastille for new position -->
+                                <a href="{% url 'dashboard:delete_todo' pk=todo.pk %}" class="round-hicon">
+                                    <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         {% endblock dashboard_content %}
     </div>
 </div>
