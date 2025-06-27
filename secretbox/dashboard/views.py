@@ -23,7 +23,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 class ContactFormView(LoginRequiredMixin, FormView):
     form_class = ContactForm
     template_name = "dashboard/contact.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -36,7 +36,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     form_class = TodoForm
     template_name = "dashboard/add_todo.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -48,7 +48,7 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     form_class = TodoForm
     template_name = "dashboard/add_todo.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -58,11 +58,15 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
 
 class TodoDeleteView(LoginRequiredMixin, DeleteView):
     model = Todo
-    template_name = "dashboard/delete_todo.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = _("Nouvelle entrée")
-        context["logo_url"] = "/static/images/logo_sb.png"
         return context
+
+    def form_valid(self, form):
+        self.object = self.get_object()
+        self.object.state = "cancel"
+        self.object.note = f"*** supprimé {date.today()} ***\n{self.object.note}"
+        self.object.save()
+        return super().form_valid(form)

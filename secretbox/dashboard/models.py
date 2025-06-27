@@ -78,6 +78,7 @@ class Todo(models.Model):
         ("in_progress", "En cours"),
         ("done", "Terminé"),
         ("report", "Reporté"),
+        ("cancel", "Annulé"),
     ]
     PRIORITY_CHOICES = [
         ("6-verylow", "Très faible"),

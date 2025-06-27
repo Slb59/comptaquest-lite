@@ -29,7 +29,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     # path("", include("django_components.urls")),
     # home url
-    path("", DashboardView.as_view(), name="dashboard"),
+    path("", DashboardView.as_view(), name="home"),
     path("dashboard/", include("secretbox.dashboard.urls")),
     path("contact/", ContactFormView.as_view(), name="contact"),
     # comptaquest urls
