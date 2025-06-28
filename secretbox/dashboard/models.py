@@ -155,11 +155,6 @@ class Todo(models.Model):
     def __str__(self):
         return self.description
 
-    def save(self, *args, **kwargs):
-        if not self.pk:  # Seulement lors de la création
-            self.user = kwargs.pop("user", None) or get_current_request().user
-        super().save(*args, **kwargs)
-
     def validate_element(self, new_date, date_to_validate=date.today()):
         """
         Validates and updates a Todo element's planned_date if the new date is in the future.

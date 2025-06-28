@@ -53,9 +53,15 @@
                                     <img src="{% static 'icons/edit.png' %}" alt="Nouvelle position" class="w-6 h-6">
                                 </a>
                                 <!-- Pastille for new position -->
-                                <a href="{% url 'dashboard:delete_todo' pk=todo.pk %}" class="round-hicon">
+                                <form method="post" action="{% url 'dashboard:delete_todo' pk=todo.pk %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="round-hicon" style="background: none; border: none; padding: 0;">
+                                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
+                                    </button>
+                                </form>
+                                <!-- <a href="{% url 'dashboard:delete_todo' pk=todo.pk %}" class="round-hicon">
                                     <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
-                                </a>
+                                </a> -->
                             </td>
                         </tr>
                         {% endfor %}
