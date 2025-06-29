@@ -7,11 +7,8 @@
 <div class="main-screen">
 
     {% include "base/logo_header.html" %}
+    {% include 'navbar/navbar_ev2.html' %}
 
-    <!-- Pastille for new position -->
-    <a href="{% url 'escapevault:add_position' %}" class="round-hicon">
-        <img src="{% static 'icons/add.png' %}" alt="Nouvelle position" class="w-8 h-8">
-    </a>
 
     <!-- Display error message if it exists -->
     {% if messages %}

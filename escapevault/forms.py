@@ -9,12 +9,13 @@ from .models import NomadePosition
 class EscapeVaultForm(forms.ModelForm):
     class Meta:
         model = NomadePosition
-        fields = ["name", "city", "latitude", "longitude", "link_to_site"]
+        fields = ["name", "category", "city", "latitude", "longitude", "link_to_site"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.fields["name"].label = _("Nom de la position")
+        self.fields["category"].label = _("Catégorie")
         self.fields["city"].label = _("Ville")
         self.fields["latitude"].label = _("Latitude")
         self.fields["longitude"].label = _("Longitude")
@@ -34,6 +35,7 @@ class EscapeVaultForm(forms.ModelForm):
 
         self.helper.layout = Layout(
             "name",
+            "category",
             "city",
             Div(
                 Div("latitude", css_class="w-full sm:w-[170px]"),

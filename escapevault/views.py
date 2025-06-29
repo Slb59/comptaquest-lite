@@ -23,11 +23,19 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
 
         # Add markers for each position
         for position in positions:
+
+
+            icon = folium.CustomIcon(
+                icon_image=position.get_category_image(),
+                icon_size=(50, 50),
+                icon_anchor=(25, 25),
+            )
             if position.latitude and position.longitude:
                 folium.Marker(
                     location=[position.latitude, position.longitude],
-                    popup=f"{position.name} ({position.city})",
+                    popup=f"{position.name} ({position.opening_date}-{position.closing_date})",
                     tooltip=position.name,
+                    icon=icon,
                 ).add_to(the_map)
 
         # Convert the map to HTML
