@@ -89,7 +89,7 @@ class NomadePosition(models.Model):
     
     def get_category_image(self):
         if self.category:
-            icon_image=f"static/icons/escapevault/{self.category}.jpg"
+            icon_image=f"static/icons/escapevault/{self.category}.png"
         else:
             icon_image=f"static/icons/escapevault/default.png"
         return icon_image

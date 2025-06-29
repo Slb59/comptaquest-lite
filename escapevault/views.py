@@ -28,7 +28,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
             icon = folium.CustomIcon(
                 icon_image=position.get_category_image(),
                 icon_size=(50, 50),
-                icon_anchor=(25, 25),
+                icon_anchor=(0, 0),
             )
             if position.latitude and position.longitude:
                 folium.Marker(
