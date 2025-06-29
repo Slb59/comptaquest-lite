@@ -18,7 +18,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context["logo_url"] = "/static/images/logo_sb.png"
         context["todos"] = Todo.objects.filter(user=self.request.user).order_by(
             "planned_date", "priority", "category", "periodic", "who", "place", "duration", "?"
-        )[:10]
+        )
         return context
 
 

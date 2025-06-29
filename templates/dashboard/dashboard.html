@@ -9,10 +9,10 @@
     <div class="w-full">
         <!-- Le contenu principal sera mis à jour ici -->
         {% block dashboard_content %}
-            <div class="overflow-x-auto">
+            <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
                 <table class="min-w-full bg-white">
                     <thead>
-                        <tr>
+                        <tr class="sticky top-0 bg-brown-100 text-left">
                             <th class="py-2 px-4 border-b table-header" scope="row">État</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Durée</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Description</th>
@@ -39,9 +39,9 @@
                             <td class="py-2 px-4 border-b">{{ todo.who }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.place }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.get_periodic_display }}</td>
-                            <td class="py-2 px-4 border-b">{{ todo.date }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.get_planned_date_display }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.get_priority_display }}</td>
-                            <td class="py-2 px-4 border-b">{{ todo.done }}</td>
+                            <td class="py-2 px-4 border-b">{{ todo.done_date }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.note }}</td>
                             <td class="action-icons">
                                 <!-- Pastille chronomètre -->

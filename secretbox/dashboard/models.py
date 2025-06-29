@@ -253,3 +253,11 @@ class Todo(models.Model):
             str: The formatted appointment or an empty string.
         """
         return self.appointment.strftime("%d/%m/%Y %H:%M") if self.appointment else ""
+    
+    def get_planned_date_display(self):
+        """
+        Returns the formatted planned_date or an empty string if None.
+        Returns:
+            str: The formatted planned_date or an empty string.
+        """
+        return self.planned_date.strftime("%d/%m/%Y") if self.planned_date else ""

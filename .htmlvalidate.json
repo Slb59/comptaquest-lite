@@ -1,0 +1,17 @@
+{
+    "extends": [
+        "html-validate:recommended"
+    ],
+    "elements": [
+        "html5"
+    ],
+    "rules": {
+        "attribute-allowed-values": "warn"
+    },
+    "template": {
+        "ignore-pattern": [
+            "{%.*?%}",
+            "{{.*?}}"
+        ]
+    }
+}
