@@ -20,6 +20,7 @@ def validate_day_month_format(value):
     if not re.match(r"^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])$", value):
         raise ValidationError("The correct format is DD/MM.")
 
+
 class NomadePosition(models.Model):
 
     CATEGORY_HOME = "home"
@@ -52,11 +53,7 @@ class NomadePosition(models.Model):
     closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
 
     # Category and Position
-    category = models.CharField(
-        max_length=100,
-        choices=CATEGORY_CHOICES,
-        default=CATEGORY_PLAIN
-    )
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_PLAIN)
     latitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
@@ -86,10 +83,10 @@ class NomadePosition(models.Model):
     class Meta:
         verbose_name = "Nomade Position"
         verbose_name_plural = "Nomade Positions"
-    
+
     def get_category_image(self):
         if self.category:
-            icon_image=f"static/icons/escapevault/{self.category}.png"
+            icon_image = f"static/icons/escapevault/{self.category}.png"
         else:
-            icon_image=f"static/icons/escapevault/default.png"
+            icon_image = f"static/icons/escapevault/default.png"
         return icon_image

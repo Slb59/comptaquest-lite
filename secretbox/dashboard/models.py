@@ -3,7 +3,6 @@ from datetime import date, timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from threadlocals.threadlocals import get_current_request
 
 from secretbox.users.models import CQUser as User
 
@@ -245,7 +244,7 @@ class Todo(models.Model):
         self.state = "done"
         self.done_date = date_of_done
         self.save()
- 
+
     def get_appointment_display(self):
         """
         Returns the formatted appointment or an empty string if None.
@@ -253,7 +252,7 @@ class Todo(models.Model):
             str: The formatted appointment or an empty string.
         """
         return self.appointment.strftime("%d/%m/%Y %H:%M") if self.appointment else ""
-    
+
     def get_planned_date_display(self):
         """
         Returns the formatted planned_date or an empty string if None.

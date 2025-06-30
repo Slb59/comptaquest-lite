@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Layout, Submit, Div
+from crispy_forms.layout import HTML, Div, Layout, Submit
 from django import forms
 
 from .models import Todo
@@ -87,6 +87,9 @@ class TodoForm(forms.ModelForm):
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
+        self.helper.form_method = "post"
+        self.helper.form_tag = True
+        self.helper.attrs = {"novalidate": "novalidate"}
 
         self.helper.layout = Layout(
             "state",
@@ -110,5 +113,5 @@ class TodoForm(forms.ModelForm):
                     '<a href="{% url \'home\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
                 ),
                 css_class="flex space-x-4",
-            )
+            ),
         )

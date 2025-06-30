@@ -24,7 +24,6 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
         # Add markers for each position
         for position in positions:
 
-
             icon = folium.CustomIcon(
                 icon_image=position.get_category_image(),
                 icon_size=(50, 50),
