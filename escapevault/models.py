@@ -48,9 +48,18 @@ class NomadePosition(models.Model):
     # Rating System
     stars = models.IntegerField(default=0)
     reviews = models.JSONField(default=list)
-    # Dates
-    opening_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
-    closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
+    
+    # Opening and Closing Dates
+    opening_date = models.CharField(
+        max_length=5, 
+        validators=[validate_day_month_format],
+        null=True, blank=True
+    )
+    closing_date = models.CharField(
+        max_length=5,
+        validators=[validate_day_month_format],
+        null=True, blank=True
+    )
 
     # Category and Position
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_PLAIN)

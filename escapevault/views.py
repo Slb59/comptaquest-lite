@@ -1,10 +1,10 @@
 import folium
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, ListView,
                                   TemplateView, UpdateView)
-
+from django import forms
 from .forms import EscapeVaultForm
 from .models import NomadePosition
 
@@ -29,11 +29,22 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
                 icon_size=(50, 50),
                 icon_anchor=(0, 0),
             )
+           
             if position.latitude and position.longitude:
+                
+                edit_url = reverse("escapevault:edit_position", kwargs={"pk": position.pk})
+                edit_url += f"?next={self.request.get_full_path()}"
+                popup_html = f'''
+                <div>
+                    <a href="{edit_url}" target="_blank" rel="noopener noreferrer">
+                        Modifier
+                    </a>
+                </div>'''
+                
                 folium.Marker(
                     location=[position.latitude, position.longitude],
-                    popup=f"{position.name} ({position.opening_date}-{position.closing_date})",
-                    tooltip=position.name,
+                    popup=folium.Popup(popup_html, max_width=250),
+                    tooltip=f"{position.name} ({position.opening_date}-{position.closing_date})",
                     icon=icon,
                 ).add_to(the_map)
 
@@ -78,7 +89,19 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "escapevault/edit_position.html"
-    success_url = reverse_lazy("escapevault:list_positions")
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        next_url = self.request.GET.get("next")
+        if next_url:
+            form.fields["next"] = forms.CharField(widget=forms.HiddenInput(), initial=next_url, required=False)
+        return form
+
+    def get_success_url(self):
+        next_url = self.request.GET.get("next") or self.request.POST.get("next")
+        if next_url:
+            return next_url
+        return reverse("escapevault:list_positions")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
