@@ -1,9 +1,6 @@
-from datetime import datetime
-
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
@@ -17,25 +14,112 @@ class Sami(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     bedtime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0
     )
     wakeup = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0
     )
     nonstop = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5")
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
     )
     energy = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5")
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
     )
     naptime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(4)], help_text=_("Saisir une valeur entre 0 et 4")
+        validators=[MinValueValidator(0), MaxValueValidator(4)], help_text=_("Saisir une valeur entre 0 et 4"),
+        default=0
     )
     phone = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2")
+        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2"),
+        default=0
     )
     reading = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3")
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0
+    )
+
+    fruits = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0
+    )
+
+    vegetables = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2"),
+        default=0
+    )
+
+    meals = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    desserts = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    sugardrinks = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    nosugardrinks = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    homework = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    garden = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    Outsidetime = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    endurancesport = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    yogasport = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    videogames = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    papergames = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    administrative = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    computer = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
+    )
+
+    youtube = models.IntegerField(
+        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0
     )
 
     user = models.ForeignKey(
@@ -84,6 +168,108 @@ class Sami(models.Model):
     @property
     def total_sleep_description(self):
         return _("Total Sommeil : maxi 25")
+
+    @property
+    def fruits_description(self):
+        return _("1 par fruit, maxi 3")
+
+    @property
+    def vegetables_description(self):
+        return _("1 par légume, maxi 2")
+
+    @property
+    def meals_description(self):
+        return _(
+            "selon la qualité du plat, +1 s'il y a au moins 3 ingrédients différents, +1 s'il y a des légumes, -3 s'il y a des pâtes ou du pain"
+        )
+
+    @property
+    def desserts_description(self):
+        return _(
+            "0 si le dessert est trop calorique (chocolat ou gâteau), +2 ou +3 s'il est fait maison, +1 s'il est léger (yaourt)"
+        )
+
+    @property
+    def sugardrinks_description(self):
+        return _(
+            "0 si il est trop calorique (coca), -2 si c'est du sirop, -2 si sucre ajouté (dans le thé ou le café par exemple)"
+        )
+
+    @property
+    def nosugardrinks_description(self):
+        return _("+1 par verre")
+
+    @property
+    def total_food(self):
+        return self.fruits + self.vegetables + self.meals + self.desserts + self.sugardrinks + self.nosugardrinks
+
+    @property
+    def total_food_description(self):
+        return _("Total Alimentation : maxi 25")
+
+    @property
+    def homework_description(self):
+        return _("5 si > 2h, 4 si entre 1h et 2h, 3 si 30mn-1h, 2 si < 30mn")
+
+    @property
+    def garden_description(self):
+        return _("5 si > 2h,  4 si entre 1h et 2h, 3 si 30mn-1h, 2 si < 30mn,   0 sinon")
+
+    @property
+    def Outsidetime_description(self):
+        return _("5 si > 3h ,4 si entre 2 et 3h, 3 entre 1 et 2h, 0 sinon")
+
+    @property
+    def endurancesport_description(self):
+        return _("Natation-course-velo: 5 si > 1h ,4 si entre 30mn et 1h ,2 si <30mn, 0 si rien")
+
+    @property
+    def yogasport_description(self):
+        return _("Yoga-musculation,5 si >1h ,4 si >30mn ,2 si < 30mn ,0 sinon")
+
+    @property
+    def total_move(self):
+        return self.homework + self.garden + self.Outsidetime + self.endurancesport + self.yogasport
+
+    @property
+    def total_move_description(self):
+        return _("Total Mouvement : maxi 25")
+
+    @property
+    def videogames_description(self):
+        return _("5 >1h30, 3: entre 1h30 et 2h, 2 si 0, 0 sinon")
+
+    @property
+    def papergames_description(self):
+        return _("5 si entre 2 et 3h ,4 si entre 1 et 2h ou > 3h ,3 si < 1h, 0 si > 3h")
+
+    @property
+    def administrative_description(self):
+        return _("5 si entre 2 et 3h ,4 si entre 1 et 2h ou > 3h ,3 si < 1h, 0 si > 3h")
+
+    @property
+    def computer_description(self):
+        return _("5 si entre 4 et 5h ,3 si > 5 ,4 si entre 2 et 4h ,3 si 1 à 2h")
+
+    @property
+    def youtube_description(self):
+        return _("5 si < 1h ,3 si entre 1h et 2h ,0 si > 2h")
+
+    @property
+    def total_idea(self):
+        return self.computer + self.youtube + self.administrative + self.papergames + self.videogames
+
+    @property
+    def total_idea_description(self):
+        return _("Total idées : maxi 25")
+
+    @property
+    def total_sami(self):
+        return self.total_sleep + self.total_food + self.total_move + self.total_idea
+
+    @property
+    def total_sami_description(self):
+        return _("Total Sami : maxi 100")
 
     def __str__(self):
         return f"Sami data {self.date}"

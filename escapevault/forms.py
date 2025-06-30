@@ -10,9 +10,14 @@ class EscapeVaultForm(forms.ModelForm):
     class Meta:
         model = NomadePosition
         fields = [
-            "name", "category", "city",
-            "latitude", "longitude", "link_to_site",
-            "opening_date", "closing_date",
+            "name",
+            "category",
+            "city",
+            "latitude",
+            "longitude",
+            "link_to_site",
+            "opening_date",
+            "closing_date",
         ]
 
     def __init__(self, *args, **kwargs):

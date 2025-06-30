@@ -1,10 +1,11 @@
 import folium
+from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, ListView,
                                   TemplateView, UpdateView)
-from django import forms
+
 from .forms import EscapeVaultForm
 from .models import NomadePosition
 
@@ -29,18 +30,18 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
                 icon_size=(50, 50),
                 icon_anchor=(0, 0),
             )
-           
+
             if position.latitude and position.longitude:
-                
+
                 edit_url = reverse("escapevault:edit_position", kwargs={"pk": position.pk})
                 edit_url += f"?next={self.request.get_full_path()}"
-                popup_html = f'''
+                popup_html = f"""
                 <div>
                     <a href="{edit_url}" target="_blank" rel="noopener noreferrer">
                         Modifier
                     </a>
-                </div>'''
-                
+                </div>"""
+
                 folium.Marker(
                     location=[position.latitude, position.longitude],
                     popup=folium.Popup(popup_html, max_width=250),

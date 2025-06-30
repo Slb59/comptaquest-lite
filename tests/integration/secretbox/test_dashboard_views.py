@@ -8,11 +8,12 @@ from secretbox.dashboard.models import Todo
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
+
 class TodoTestMixin:
     def assertRedirectsToLogin(self, response):
         self.assertEqual(response.status_code, 302)
         self.assertIn("login", response.url)
-    
+
     def assertRedirectsToDashboard(self, response):
         self.assertEqual(response.status_code, 302)
         self.assertEqual("/", response.url)
@@ -62,8 +63,8 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         }
         response = self.client.post(self.url, data)
         assert response.status_code == 200  # Form is shown again
-        
-        form = response.context['form']
+
+        form = response.context["form"]
         assert "description" in form.errors
         assert "Champ requis." in form.errors["description"]
 
@@ -157,3 +158,4 @@ class TodoDeleteViewTest(TestCase, TodoTestMixin):
         self.todo.refresh_from_db()
         self.assertEqual(self.todo.state, "cancel")
         self.assertEqual(self.todo.note.count("*** supprimé"), 1)
+        self.assertRedirects(response, reverse("home"))

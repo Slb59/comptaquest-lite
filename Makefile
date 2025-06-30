@@ -15,7 +15,10 @@ tests-secretbox:
 	uv run pytest tests/unit/secretbox tests/integration/secretbox --html=tests/htmlcov/secretbox.html
 
 tests-escapevault:
-	uv run pytest tests/unit/escapevault tests/integration/escapevault --html=tests/htmlcov/escapevault.html
+	uv run pytest tests/unit/test_escapevault_models.py tests/integration/escapevault --html=tests/htmlcov/escapevault.html
+
+tests-sami:
+	uv run pytest tests/unit/test_sami_models.py --html=tests/htmlcov/sami.html
 
 tests-coverage:
 	uv run pytest --cov=. tests --cov-report=html:tests/htmlcov

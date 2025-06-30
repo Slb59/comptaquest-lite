@@ -48,18 +48,10 @@ class NomadePosition(models.Model):
     # Rating System
     stars = models.IntegerField(default=0)
     reviews = models.JSONField(default=list)
-    
+
     # Opening and Closing Dates
-    opening_date = models.CharField(
-        max_length=5, 
-        validators=[validate_day_month_format],
-        null=True, blank=True
-    )
-    closing_date = models.CharField(
-        max_length=5,
-        validators=[validate_day_month_format],
-        null=True, blank=True
-    )
+    opening_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
+    closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
 
     # Category and Position
     category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_PLAIN)
@@ -97,5 +89,5 @@ class NomadePosition(models.Model):
         if self.category:
             icon_image = f"static/icons/escapevault/{self.category}.png"
         else:
-            icon_image = f"static/icons/escapevault/default.png"
+            icon_image = "static/icons/escapevault/default.png"
         return icon_image
