@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, FormView, TemplateView,
                                   UpdateView, View)
 
-from .forms import ContactForm, TodoForm
+from .forms import ContactForm, TodoForm, TodoFilterForm
 from .models import Todo
 
 
@@ -45,11 +45,33 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        form = TodoFilterForm(self.request.GET or None)
+        todos = Todo.objects.filter(user=self.request.user)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            if data["state"]:
+                todos = todos.filter(state=data["state"])
+            if data["category"]:
+                todos = todos.filter(category=data["category"])
+            if data["priority"]:
+                todos = todos.filter(priority=data["priority"])
+            if data["planned_date_start"]:
+                todos = todos.filter(planned_date__gte=data["planned_date_start"])
+            if data["planned_date_end"]:
+                todos = todos.filter(planned_date__lte=data["planned_date_end"])
+            if data["duration_min"] is not None:
+                todos = todos.filter(duration__gte=data["duration_min"])
+            if data["duration_max"] is not None:
+                todos = todos.filter(duration__lte=data["duration_max"])
+            if data["description"]:
+                todos = todos.filter(description__icontains=data["description"])
+
         context["title"] = _("Bienvenue dans SecretBox")
         context["logo_url"] = "/static/images/logo_sb.png"
-        context["todos"] = Todo.objects.filter(user=self.request.user).order_by(
-            "planned_date", "priority", "category", "periodic", "who", "place", "duration", "?"
-        )
+        
+        context["todos"] = todos.order_by("planned_date", "priority", "category", "periodic", "who", "place", "duration")
+        context["form"] = form
         return context
 
 

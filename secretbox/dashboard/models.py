@@ -135,12 +135,20 @@ class Todo(models.Model):
         ("15-every6months", "Tous les 6 mois"),
         ("16-everyyear", "Tous les ans"),
     ]
-
+    APPOINTEMENT_CHOICES = [
+        ("rdv","Rendez-vous"),
+        ("birthday","Anniversaire"),
+        ("festival","Fête"),
+    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
     duration = models.IntegerField(default=30, validators=[MinValueValidator(10), MaxValueValidator(800)])
     description = models.TextField()
-    appointment = models.DateTimeField(blank=True, null=True)
+    appointment = models.CharField(
+        max_length=20,
+        choices=APPOINTEMENT_CHOICES,
+        blank=True, null=True
+    )
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
@@ -245,14 +253,6 @@ class Todo(models.Model):
         self.done_date = date_of_done
         self.save()
 
-    def get_appointment_display(self):
-        """
-        Returns the formatted appointment or an empty string if None.
-        Returns:
-            str: The formatted appointment or an empty string.
-        """
-        return self.appointment.strftime("%d/%m/%Y %H:%M") if self.appointment else ""
-
     def get_planned_date_display(self):
         """
         Returns the formatted planned_date or an empty string if None.
@@ -260,3 +260,12 @@ class Todo(models.Model):
             str: The formatted planned_date or an empty string.
         """
         return self.planned_date.strftime("%d/%m/%Y") if self.planned_date else ""
+
+    def get_done_date_display(self):
+        """
+        Returns the formatted done_date or an empty string if None.
+        Returns:
+            str: The formatted done_date or an empty string.
+        """
+        return self.done_date.strftime("%d/%m/%Y") if self.done_date else ""
+    

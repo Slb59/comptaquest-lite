@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit
+from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
 from django import forms
 
 from .models import Todo
@@ -73,7 +73,7 @@ class TodoForm(forms.ModelForm):
         self.fields["state"].label = "État"
         self.fields["duration"].label = "Durée"
         self.fields["description"].label = "Description"
-        self.fields["appointment"].label = "Date et heure"
+        self.fields["appointment"].label = "Rdv"
         self.fields["category"].label = "Catégorie"
         self.fields["who"].label = "Personne"
         self.fields["place"].label = "Lieu"
@@ -115,3 +115,55 @@ class TodoForm(forms.ModelForm):
                 css_class="flex space-x-4",
             ),
         )
+
+
+class TodoFilterForm(forms.Form):
+    state = forms.ChoiceField(choices=[("", "Tous")] + Todo.STATE_CHOICES, required=False)
+    duration_min = forms.IntegerField(required=False, min_value=0, label="Durée min")
+    duration_max = forms.IntegerField(required=False, min_value=0, label="Durée max")
+    description = forms.CharField(required=False)
+    appointment = forms.ChoiceField(choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label="Rendez-vous")
+    category = forms.ChoiceField(choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES, required=False)
+    who = forms.ChoiceField(choices=[("", "Toutes")] + Todo.WHO_CHOICES, required=False)
+    place = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PLACE_CHOICES, required=False)
+    periodic = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES, required=False)    
+    planned_date_start = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
+    planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
+    priority = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES, required=False)
+    done_date_start = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
+    done_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
+    note = forms.CharField(required=False)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Resize the state field
+        self.fields["state"].widget.attrs.update({"class": "w-full sm:w-[150px]", "style": "max-width: 150px;"})
+
+        self.helper = FormHelper()
+        self.helper.form_method = "get"
+        self.helper.form_class = "p-4 bg-gray-100 rounded mb-4"
+        self.helper.label_class = "font-semibold"
+        self.helper.field_class = "w-full"
+
+        self.helper.layout = Layout(
+            Row(
+                Column("state", css_class="sm:col-span-1"),
+                Column("duration_min", css_class="sm:col-span-1"),
+                Column("duration_max", css_class="sm:col-span-1"),
+                Column("description", css_class="sm:col-span-3"),
+                Column("appointment", css_class="sm:col-span-1"),
+                Column("category", css_class="sm:col-span-1"),
+                Column("who", css_class="sm:col-span-1"),
+                css_class="grid grid-cols-12 gap-4",
+            ),
+            Row(
+                Column("priority", css_class="sm:col-span-2"), 
+                Column("planned_date_start", css_class="sm:col-span-3"),
+                Column("planned_date_end", css_class="sm:col-span-3"),                
+                css_class="grid grid-cols-12 gap-4",
+            ),
+            Submit("submit", "Filtrer", css_class="bg-blue-500 text-white px-4 py-2 rounded"),
+        )
+
+    
