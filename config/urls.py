@@ -43,6 +43,7 @@ urlpatterns = [
     # diarylab urls
     path("diarylab/", include("diarylab.urls")),
     path("escapevault/", include("escapevault.urls")),
+    path("sami/", include("sami.urls")),
 ]
 
 if settings.DEBUG:

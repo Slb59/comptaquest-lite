@@ -127,6 +127,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "secretbox.users.context_processors.app_access_permissions",
             ],
             # 'loaders': [
             # ('django.template.loaders.cached.Loader', [

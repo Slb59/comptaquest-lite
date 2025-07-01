@@ -19,6 +19,14 @@
         <img src="{% static 'images/logo_dl_v02.png' %}" alt="DiaryLab" class="w-6 h-6">
     </a>
 
+    <!-- Chip for sami -->
+    {% if can_access_sami %}
+    <a href="{% url 'sami:list' %}"
+        class="round-icon">
+        <img src="{% static 'images/logo_sami.png' %}" alt="Sami" class="w-6 h-6">
+    </a>
+    {% endif %}
+
     <!-- pastille pour comptaquest -->
     <a href="{% url 'comptas:dashboard' %}"
         class="round-icon">
