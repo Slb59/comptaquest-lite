@@ -57,6 +57,26 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
         context["map"] = the_map
         return context
 
+class EscapeVaultParametersView(LoginRequiredMixin, TemplateView):
+    template_name = "escapevault/parameters.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("EscapeVault Paramètres")
+        context["logo_url"] = "/static/images/logo_ev.png"
+        return context
+
+class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
+    model = NomadePosition
+    form_class = EscapeVaultForm
+    template_name = "escapevault/add_position.html"
+    success_url = reverse_lazy("escapevault:list_positions")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _("EscapeVault nouvelle Position")
+        context["logo_url"] = "/static/images/logo_ev.png"
+        return context
 
 class EscapeVaultListView(LoginRequiredMixin, ListView):
     model = NomadePosition
@@ -73,17 +93,7 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
         return context
 
 
-class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
-    model = NomadePosition
-    form_class = EscapeVaultForm
-    template_name = "escapevault/add_position.html"
-    success_url = reverse_lazy("escapevault:list_positions")
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = _("EscapeVault nouvelle Position")
-        context["logo_url"] = "/static/images/logo_ev.png"
-        return context
 
 
 class EscapeVaultEditView(LoginRequiredMixin, UpdateView):

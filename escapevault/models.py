@@ -22,6 +22,10 @@ def validate_day_month_format(value):
 
 
 class NomadePosition(models.Model):
+    """
+        Model representing a nomade position.
+        This nomade is not affected to a user. Any connected user that has the access to the escapevault application can see, update or delete it.
+    """
 
     CATEGORY_HOME = "home"
     CATEGORY_NOMADE = "nomade"

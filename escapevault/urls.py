@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (EscapeVaultCreateView, EscapeVaultDeleteView,
                     EscapeVaultEditView, EscapeVaultListView,
-                    EscapeVaultMapView)
+                    EscapeVaultMapView, EscapeVaultParametersView)
 
 app_name = "escapevault"
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path("list/", EscapeVaultListView.as_view(), name="list_positions"),
     path("<int:pk>/edit/", EscapeVaultEditView.as_view(), name="edit_position"),
     path("<int:pk>/delete/", EscapeVaultDeleteView.as_view(), name="delete_position"),
+    path("parameters/", EscapeVaultParametersView.as_view(), name="parameters"),
 ]
