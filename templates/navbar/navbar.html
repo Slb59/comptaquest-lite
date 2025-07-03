@@ -1,46 +1,55 @@
 {% load static %}
 
-<!-- Panneau latéral -->
+<!-- Lateral menu -->
 <div class="w-16 p-4 flex flex-col items-center space-y-4">
-    <!-- Pastille pour le profil -->
+    <!-- Chip for profil -->
     <a href="{% url 'users:profile' %}"
-        class="round-icon">
+        class="round-icon" title="Profil">
         <img src="{% static 'images/profile_osynia.png' %}" alt="Profile" class="w-6 h-6">
     </a>
 
-    <!-- Pastille pour Home page -->
-    <a href="{% url 'home' %}" class="round-icon">
+    <!-- Chip for Home page -->
+    <a href="{% url 'home' %}" class="round-icon" title="Tableau de bord">
         <img src="{% static 'images/logo_sb2.png' %}" alt="Tableau de bord" class="w-6 h-6">
     </a>
 
-    <!-- Pastille pour diarylab -->
+    <!-- Chip for diarylab -->
+    {% if can_access_diarylab %}
     <a href="{% url 'diarylab:list_entries' %}"
-        class="round-icon">
+        class="round-icon"
+        title="DiaryLab">
         <img src="{% static 'images/logo_dl_v02.png' %}" alt="DiaryLab" class="w-6 h-6">
     </a>
+    {% endif %}
 
     <!-- Chip for sami -->
     {% if can_access_sami %}
     <a href="{% url 'sami:list' %}"
-        class="round-icon">
+        class="round-icon" title="Sami">
         <img src="{% static 'images/logo_sami.png' %}" alt="Sami" class="w-6 h-6">
     </a>
     {% endif %}
 
-    <!-- pastille pour comptaquest -->
+    <!-- Chip for comptaquest -->
+    {% if can_access_comptas %}
     <a href="{% url 'comptas:dashboard' %}"
-        class="round-icon">
+        class="round-icon" title="ComptaQuest">
         <img src="{% static 'images/logo_cq.png' %}" alt="ComptaQuest" class="w-6 h-6">
     </a>
+    {% endif %}
 
-    <!-- pastille pour potionrun -->
+    <!-- Chip for potionrun -->
+    {% if can_access_potionrun %}
     <a href="{% url 'performances:launch' %}"
-        class="round-icon">
+        class="round-icon" title="PotionRun">
         <img src="{% static 'images/logo_pr.png' %}" alt="PotionRun" class="w-6 h-6">
     </a>
+    {% endif %}
 
-    <!-- pastille pour escapevault -->
-    <a href="{% url 'escapevault:evmap' %}" class="round-icon">
+    <!-- Chip for escapevault -->
+    {% if can_access_escapevault %}
+    <a href="{% url 'escapevault:evmap' %}" class="round-icon" title="EscapeVault">
         <img src="{% static 'images/logo_ev.png' %}" alt="EscapeVault" class="w-6 h-6">
     </a>
+    {% endif %}
 </div>

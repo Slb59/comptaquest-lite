@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.utils import timezone
+from datetime import datetime
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
@@ -10,18 +10,24 @@ from .models import Wallet
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
-
+import locale
 
 class DashboardView(LoginRequiredMixin, ListView):
     template_name = "comptaquest/cq_dashboard.html"
-    model = CurrentAccount  # for the model to be used in the template
-    context_object_name = "accounts"  # for the context variable name
+    model = CurrentAccount  
+    context_object_name = "accounts"  
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = timezone.now()
+
+        try:
+            locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
+        except locale.Error:
+            pass
+
+        context["title"] = datetime.today().strftime("%A %d %B %Y")
         context["logo_url"] = "/static/images/logo_cq.png"
-        context["current_date"] = timezone.now()
+        context["current_date"] = datetime.today()
         context["accounts"] = CurrentAccount.objects.all()
         return context
 

@@ -1,24 +1,25 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
 from django import forms
+from django.utils.translation import gettext_lazy as _
 
 from .models import Todo
 
 
 class ContactForm(forms.Form):
     REASON_CHOICES = [
-        ("", "Select a reason"),
-        ("general", "General Inquiry"),
-        ("support", "Technical Support"),
-        ("feedback", "Feedback"),
-        ("other", "Other"),
+        ("", _("Choisis une raison")),
+        ("general", _("Demande générale")),
+        ("support", _("Support technique")),
+        ("feedback", _("Conseil et avis")),
+        ("other", _("Autre")),
     ]
-    name = forms.CharField(label="Your Name", max_length=100, required=True)
-    email = forms.EmailField(label="Your Email", required=True)
-    reason = forms.ChoiceField(label="Reason for Contact", choices=REASON_CHOICES, required=True)
-    subject = forms.CharField(label="Subject", max_length=200, required=False)
-    message = forms.CharField(label="Your Message", widget=forms.Textarea(attrs={"rows": 4}), required=True)
-    subscribe = forms.BooleanField(label="Subscribe to newsletter", required=False)
+    name = forms.CharField(label=_("Ton nom"), max_length=100, required=True)
+    email = forms.EmailField(label=_("Ton Email"), required=True)
+    reason = forms.ChoiceField(label=_("Pourquoi me contactes-tu ?"), choices=REASON_CHOICES, required=True)
+    subject = forms.CharField(label=_("Sujet"), max_length=200, required=False)
+    message = forms.CharField(label=_("Ton message"), widget=forms.Textarea(attrs={"rows": 4}), required=True)
+    subscribe =forms.BooleanField(label=_("Souscris à ma newsletter"), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -118,15 +119,29 @@ class TodoForm(forms.ModelForm):
 
 
 class TodoFilterForm(forms.Form):
-    state = forms.ChoiceField(choices=[("", "Tous")] + Todo.STATE_CHOICES, required=False)
+    state = forms.ChoiceField(
+        choices=[("", "Tous")] + Todo.STATE_CHOICES,
+        required=False,
+        label="Etat"
+    )
     duration_min = forms.IntegerField(required=False, min_value=0, label="Durée min")
     duration_max = forms.IntegerField(required=False, min_value=0, label="Durée max")
     description = forms.CharField(required=False)
-    appointment = forms.ChoiceField(choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label="Rendez-vous")
-    category = forms.ChoiceField(choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES, required=False)
-    who = forms.ChoiceField(choices=[("", "Toutes")] + Todo.WHO_CHOICES, required=False)
+    appointment = forms.ChoiceField(choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous"))
+    category = forms.ChoiceField(
+        choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES,
+        required=False,
+        label = _("Catégorie")
+    )
+    who = forms.ChoiceField(
+        choices=[("", "Toutes")] + Todo.WHO_CHOICES,
+        required=False,
+        label=_("Qui"))
     place = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PLACE_CHOICES, required=False)
-    periodic = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES, required=False)    
+    periodic = forms.ChoiceField(
+        choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES,
+        required=False,
+        label=_("Fréquence"))    
     planned_date_start = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
     planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
     priority = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES, required=False)
@@ -155,12 +170,14 @@ class TodoFilterForm(forms.Form):
                 Column("appointment", css_class="sm:col-span-1"),
                 Column("category", css_class="sm:col-span-1"),
                 Column("who", css_class="sm:col-span-1"),
+                Column("place", css_class="sm:col-span-1"),
+                Column("periodic", css_class="sm:col-span-1"),
                 css_class="grid grid-cols-12 gap-4",
             ),
-            Row(
-                Column("priority", css_class="sm:col-span-2"), 
+            Row(                
                 Column("planned_date_start", css_class="sm:col-span-3"),
-                Column("planned_date_end", css_class="sm:col-span-3"),                
+                Column("planned_date_end", css_class="sm:col-span-3"),   
+                Column("priority", css_class="sm:col-span-2"),              
                 css_class="grid grid-cols-12 gap-4",
             ),
             Submit("submit", "Filtrer", css_class="bg-blue-500 text-white px-4 py-2 rounded"),
