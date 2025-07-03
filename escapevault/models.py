@@ -46,7 +46,7 @@ class NomadePosition(models.Model):
 
     # Location Details
     address = models.TextField()
-    city = models.TextField(max_length=40, help_text=_("Nom de la ville"), validators=[validate_city_format])
+    city = models.TextField(max_length=40, validators=[validate_city_format])
     country = CountryField(blank_label=_("France"))
 
     # Rating System
@@ -99,5 +99,11 @@ class NomadePosition(models.Model):
     def get_opening_date_display(self):
         if self.opening_date:
             return self.opening_date
+        else:
+            return ""
+    
+    def get_closing_date_display(self):
+        if self.closing_date:
+            return self.closing_date
         else:
             return ""

@@ -13,6 +13,7 @@ class EscapeVaultForm(forms.ModelForm):
             "name",
             "category",
             "city",
+            "country",
             "latitude",
             "longitude",
             "link_to_site",
@@ -26,14 +27,17 @@ class EscapeVaultForm(forms.ModelForm):
         self.fields["name"].label = _("Nom de la position")
         self.fields["category"].label = _("Catégorie")
         self.fields["city"].label = _("Ville")
+        self.fields["country"].label = _("Pays")
         self.fields["latitude"].label = _("Latitude")
         self.fields["longitude"].label = _("Longitude")
         self.fields["link_to_site"].label = _("Lien vers le site internet")
         self.fields["opening_date"].label = _("Date d'ouverture")
         self.fields["closing_date"].label = _("Date de fermeture")
 
-        # Redimensionner le champ city
-        self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[40px]", "style": "max-height: 40px;"})
+        # Resize the city and country field
+        self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
+
+        self.fields["country"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
 
         # Redimensionner le champ latitude
         self.fields["latitude"].widget.attrs.update({"class": "w-full sm:w-[170px]", "style": "max-width: 170px;"})
@@ -47,7 +51,11 @@ class EscapeVaultForm(forms.ModelForm):
         self.helper.layout = Layout(
             "name",
             "category",
-            "city",
+            Div(
+                Div("city", css_class="w-full sm:w-[180px]"),
+                Div("country", css_class="w-full sm:w-[180px]"),
+                css_class="flex items-center gap-4",
+            ),
             Div(
                 Div("latitude", css_class="w-full sm:w-[170px]"),
                 Div("longitude", css_class="w-full sm:w-[170px]"),

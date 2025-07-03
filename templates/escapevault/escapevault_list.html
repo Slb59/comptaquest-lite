@@ -19,35 +19,52 @@
     {% endfor %}
     {% endif %}
 
-    <ul>
-        {% for pos in positions %}
-        <li class="position-item">
-            <div class="position-name flex-container">
+    <!-- main content -->
+    {% block list_positions_content %}
+    <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr class="sticky top-0 bg-brown-100 text-left">
+                    <th class="py-2 px-4 border-b table-header" scope="row">Nom</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Ville</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Pays</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Étoiles</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Catégorie</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Ouverture</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Fermeture</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pos in positions %}
+                <tr>
+                    <td class="py-2 px-4 border-b">{{ pos.name }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.city }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.country }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.stars }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.category }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.get_opening_date_display }}</td>
+                    <td class="py-2 px-4 border-b">{{ pos.get_closing_date_display }}</td>
+                    <td class="action-icons">
+                        <!-- Pastille for edit position -->
+                        <a href="{% url 'escapevault:edit_position' pk=pos.pk %}?next={{request.get_full_path}}" class="round-hicon">
+                            <img src="{% static 'icons/edit.png' %}" alt="Modifier la position" class="w-6 h-6">
+                        </a>
 
-                <!-- Lien vers le site internet -->
-                {% if pos.link_to_site %}
-                    <a href="{{ pos.link_to_site }}" class="name-text" target="_blank" rel="noopener noreferrer">{{ pos.name }}</a>
-                {% else %}
-                    <span class="name-text">{{ pos.name }}</span>
-                {% endif %}
 
-                <div class="action-icons">
-                    <!-- Pastille for edit position -->
-                    <a href="{% url 'escapevault:edit_position' pk=pos.pk %}?next={{request.get_full_path}}" class="round-hicon">
-                        <img src="{% static 'icons/edit.png' %}" alt="Modifier la position" class="w-6 h-6">
-                    </a>
+                        <!-- Pastille for delete position -->
+                        <a href="{% url 'escapevault:delete_position' pk=pos.pk %}" class="round-hicon">
+                            <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-
-                    <!-- Pastille for delete position -->
-                    <a href="{% url 'escapevault:delete_position' pk=pos.pk %}" class="round-hicon">
-                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
-                    </a>
-                </div>
-            </div>
-
-        </li>
-        {% endfor %}
-    </ul>
+    
+    {% endblock list_positions_content %}
 
 </div>
 

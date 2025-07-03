@@ -93,6 +93,10 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # if form.is_valid():
+        #     data = form.cleaned_data
+
         context["title"] = _("EscapeVault Liste")
         context["logo_url"] = "/static/images/logo_ev.png"
         return context
