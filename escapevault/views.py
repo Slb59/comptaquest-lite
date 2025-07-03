@@ -42,10 +42,15 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
                     </a>
                 </div>"""
 
+                if position.opening_date or position.closing_date:
+                    tooltip_label = f"{position.name} ({position.opening_date}-{position.closing_date})"
+                else:
+                    tooltip_label = position.name
+
                 folium.Marker(
                     location=[position.latitude, position.longitude],
                     popup=folium.Popup(popup_html, max_width=250),
-                    tooltip=f"{position.name} ({position.opening_date}-{position.closing_date})",
+                    tooltip=tooltip_label,
                     icon=icon,
                 ).add_to(the_map)
 

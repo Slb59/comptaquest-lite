@@ -95,3 +95,9 @@ class NomadePosition(models.Model):
         else:
             icon_image = "static/icons/escapevault/default.png"
         return icon_image
+    
+    def get_opening_date_display(self):
+        if self.opening_date:
+            return self.opening_date
+        else:
+            return ""
