@@ -5,6 +5,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, ListView,
                                   TemplateView, UpdateView)
+from django.utils.timezone import now
 
 from .forms import EscapeVaultForm
 from .models import NomadePosition
@@ -128,6 +129,32 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
         context["title"] = _(f"{self.object.name}")
         context["logo_url"] = "/static/images/logo_ev.png"
         return context
+    
+    def form_valid(self, form):
+        new_review_text = form.cleaned_data.get("new_review", "").strip()
+
+
+
+        if new_review_text:
+            position = form.instance
+            existing_reviews = position.reviews or []
+
+            existing_reviews.append({
+                "text": new_review_text,
+                "date": now().isoformat()
+            })
+
+            position.reviews = existing_reviews
+
+        for r in position.reviews:
+            if isinstance(r.get("date"), str):
+                try:
+                    r["date"] = datetime.fromisoformat(r["date"])
+                except Exception:
+                    pass
+
+        return super().form_valid(form)
+
 
 
 class EscapeVaultDeleteView(LoginRequiredMixin, DeleteView):

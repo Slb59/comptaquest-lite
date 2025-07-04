@@ -7,6 +7,12 @@ from .models import NomadePosition
 
 
 class EscapeVaultForm(forms.ModelForm):
+    new_review = forms.CharField(
+        label=_("Ajouter un avis"),
+        widget=forms.Textarea(attrs={"rows": 3}),
+        required=False,
+    )
+
     class Meta:
         model = NomadePosition
         fields = [
@@ -19,12 +25,14 @@ class EscapeVaultForm(forms.ModelForm):
             "link_to_site",
             "opening_date",
             "closing_date",
+            "stars"
         ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.fields["name"].label = _("Nom de la position")
+        self.fields["stars"].label = _("Etoiles")
         self.fields["category"].label = _("Catégorie")
         self.fields["city"].label = _("Ville")
         self.fields["country"].label = _("Pays")
@@ -39,33 +47,34 @@ class EscapeVaultForm(forms.ModelForm):
 
         self.fields["country"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
 
-        # Redimensionner le champ latitude
-        self.fields["latitude"].widget.attrs.update({"class": "w-full sm:w-[170px]", "style": "max-width: 170px;"})
 
-        # Redimensionner le champ longitude
-        self.fields["longitude"].widget.attrs.update({"class": "w-full sm:w-[170px]", "style": "max-width: 170px;"})
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
 
         self.helper.layout = Layout(
-            "name",
-            "category",
             Div(
-                Div("city", css_class="w-full sm:w-[180px]"),
-                Div("country", css_class="w-full sm:w-[180px]"),
-                css_class="flex items-center gap-4",
+                Div("name", css_class="w-full sm:col-span-3"),
+                Div("stars", css_class="w-full sm:col-span-1"),
+                Div("category", css_class="w-full sm:col-span-2"),
+                css_class="grid grid-cols-6 gap-4",
+            ),
+            # "category",
+            Div(
+                Div("city", css_class="w-full sm:sm:col-span-3"),
+                Div("country", css_class="w-full sm:col-span-2"),
+                css_class="grid grid-cols-5 gap-4",
             ),
             Div(
-                Div("latitude", css_class="w-full sm:w-[170px]"),
-                Div("longitude", css_class="w-full sm:w-[170px]"),
-                css_class="flex items-center gap-4",
+                Div("latitude", css_class="w-full sm:col-span-2"),
+                Div("longitude", css_class="w-full sm:col-span-2"),
+                css_class="grid grid-cols-5 gap-4",
             ),
             "link_to_site",
             Div(
-                Div("opening_date", css_class="w-full sm:w-[170px]"),
-                Div("closing_date", css_class="w-full sm:w-[170px]"),
-                css_class="flex items-center gap-4",
+                Div("opening_date", css_class="w-full sm:col-span-2"),
+                Div("closing_date", css_class="w-full sm:col-span-2"),
+                css_class="grid grid-cols-5 gap-4",
             ),
             Div(
                 Submit(
@@ -79,3 +88,6 @@ class EscapeVaultForm(forms.ModelForm):
                 css_class="flex space-x-4",
             ),
         )
+        
+        # Insert the new_review field at the end of the form, just before the submit button
+        self.helper.layout.fields.insert(-1, "new_review") 

@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_countries.fields import CountryField
+from django_countries.fields import CountryField, Countries, Country
 
 
 def validate_city_format(value):
@@ -47,10 +47,22 @@ class NomadePosition(models.Model):
     # Location Details
     address = models.TextField()
     city = models.TextField(max_length=40, validators=[validate_city_format])
-    country = CountryField(blank_label=_("France"))
+
+    class NomadeCountries(Countries):
+        only = [
+            "CA", "FR", "DE", "IT", "JP", "RU", "GB"
+        ]
+    country = CountryField(
+        countries=NomadeCountries, 
+        default=Country(code='FR'), 
+        blank_label='(select country)'
+    )
 
     # Rating System
-    stars = models.IntegerField(default=0)
+    stars = models.IntegerField(
+        default=0, 
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     reviews = models.JSONField(default=list)
 
     # Opening and Closing Dates
