@@ -137,29 +137,48 @@ class TodoFilterForm(forms.Form):
         choices=[("", "Toutes")] + Todo.WHO_CHOICES,
         required=False,
         label=_("Qui"))
-    place = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PLACE_CHOICES, required=False)
+    place = forms.ChoiceField(
+        choices=[("", "Toutes")] + Todo.PLACE_CHOICES,
+        required=False,
+        label = _("Lieu"))
     periodic = forms.ChoiceField(
         choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES,
         required=False,
         label=_("Fréquence"))    
-    planned_date_start = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
-    planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
-    priority = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES, required=False)
-    done_date_start = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
-    done_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}))
+    planned_date_start = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("Date de planification"))
+    planned_date_end = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("_"))
+    priority = forms.ChoiceField(
+        choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES,
+        required=False,
+        label=_("Priorité"))
+    done_date_start = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("Date de fin"))
+    done_date_end = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("_"))
     note = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        # Resize the state field
-        self.fields["state"].widget.attrs.update({"class": "w-full sm:w-[150px]", "style": "max-width: 150px;"})
 
         self.helper = FormHelper()
         self.helper.form_method = "get"
         self.helper.form_class = "p-4 bg-gray-100 rounded mb-4"
         self.helper.label_class = "font-semibold"
         self.helper.field_class = "w-full"
+        self.helper.attrs = {
+            "id": "todo-filter-form",
+            "novalidate": "novalidate",
+        }
 
         self.helper.layout = Layout(
             Row(
@@ -172,15 +191,17 @@ class TodoFilterForm(forms.Form):
                 Column("who", css_class="sm:col-span-1"),
                 Column("place", css_class="sm:col-span-1"),
                 Column("periodic", css_class="sm:col-span-1"),
-                css_class="grid grid-cols-12 gap-4",
+                css_class="grid grid-cols-11 gap-4",
             ),
             Row(                
-                Column("planned_date_start", css_class="sm:col-span-3"),
-                Column("planned_date_end", css_class="sm:col-span-3"),   
-                Column("priority", css_class="sm:col-span-2"),              
-                css_class="grid grid-cols-12 gap-4",
+                Column("planned_date_start", css_class="sm:col-span-1"),
+                Column("planned_date_end", css_class="sm:col-span-1"),   
+                Column("priority", css_class="sm:col-span-1"), 
+                Column("done_date_start", css_class="sm:col-span-1"),
+                Column("done_date_end", css_class="sm:col-span-1"),
+                css_class="grid grid-cols-5 gap-4 py-2",
             ),
-            Submit("submit", "Filtrer", css_class="bg-blue-500 text-white px-4 py-2 rounded"),
+            # Submit("submit", "Filtrer", css_class="bg-blue-500 text-white px-4 py-2 rounded"),
         )
 
     

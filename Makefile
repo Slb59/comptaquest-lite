@@ -24,6 +24,7 @@ tests-coverage:
 	uv run pytest --cov=. tests --cov-report=html:tests/htmlcov
 
 run:
+	clear
 	uv run manage.py runserver
 
 deploy:

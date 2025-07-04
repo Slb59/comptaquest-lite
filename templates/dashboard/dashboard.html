@@ -9,9 +9,8 @@
     <!-- Main content -->
     <div class="w-full">
         <!-- Search form -->
-        <form method="get">
-            {% crispy form %}
-        </form>
+        {% crispy form %}
+
         <!-- Main content -->
         {% block dashboard_content %}
             <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
@@ -75,4 +74,5 @@
         {% endblock dashboard_content %}
     </div>
 </div>
-    {% endblock %}
+{% endblock %}
+

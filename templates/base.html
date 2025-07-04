@@ -18,4 +18,20 @@
         </main>
     </body>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("todo-filter-form");
+
+            if (form) {
+                const fields = form.querySelectorAll("input, select");
+
+                fields.forEach((field) => {
+                    field.addEventListener("change", () => {
+                        form.submit();
+                    });
+                });
+            }
+        });
+    </script>
+
 </html>
