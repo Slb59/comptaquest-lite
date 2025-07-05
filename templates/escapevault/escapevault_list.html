@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load crispy_forms_tags i18n %}
 
 {% block content %}
 
@@ -18,10 +18,16 @@
     </div>
     {% endfor %}
     {% endif %}
-
-    <!-- main content -->
+    
     {% block list_positions_content %}
+    <div class="max-w-6xl mx-auto px-4">
+    <!-- Search form -->
+    {% crispy form %}
+
+    <!-- main content -->    
     <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
+
+
         <table class="min-w-full bg-white">
             <thead>
                 <tr class="sticky top-0 bg-brown-100 text-left">
@@ -62,7 +68,7 @@
             </tbody>
         </table>
     </div>
-
+    </div>
     
     {% endblock list_positions_content %}
 

@@ -7,7 +7,7 @@ from django.views.generic import (CreateView, DeleteView, ListView,
                                   TemplateView, UpdateView)
 from django.utils.timezone import now
 
-from .forms import EscapeVaultForm
+from .forms import EscapeVaultForm, EscapeVaultFilterForm
 from .models import NomadePosition
 
 
@@ -16,12 +16,20 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        form = EscapeVaultFilterForm(self.request.GET or None)
+
+
 
         # Create a base map centered around a specific location
-        the_map = folium.Map(location=[48.8566, 2.3522], zoom_start=7)  # Centered on France
+        the_map = folium.Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
 
         # Fetch all nomadic positions from the database
-        positions = NomadePosition.objects.all()
+        positions = NomadePosition.objects.filter()
+
+        if form.is_valid():
+            data = form.cleaned_data
+            if data["category"]:
+                positions = positions.filter(category=data["category"])
 
         # Add markers for each position
         for position in positions:
@@ -60,6 +68,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
 
         context["title"] = _("EscapeVault Map")
         context["logo_url"] = "/static/images/logo_ev.png"
+        context["form"] = form
         context["map"] = the_map
         return context
 
@@ -94,15 +103,19 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        form = EscapeVaultFilterForm(self.request.GET or None)
+        positions = NomadePosition.objects.filter()
 
-        # if form.is_valid():
-        #     data = form.cleaned_data
+        if form.is_valid():
+            data = form.cleaned_data
+            if data["category"]:
+                positions = positions.filter(category=data["category"])
 
         context["title"] = _("EscapeVault Liste")
         context["logo_url"] = "/static/images/logo_ev.png"
+        context["positions"] = positions.order_by("country", "city", "name")
+        context["form"] = form
         return context
-
-
 
 
 

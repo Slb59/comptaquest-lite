@@ -178,6 +178,7 @@ class TodoFilterForm(forms.Form):
         self.helper.attrs = {
             "id": "todo-filter-form",
             "novalidate": "novalidate",
+            "data-autosubmit": "true", 
         }
 
         self.helper.layout = Layout(

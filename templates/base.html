@@ -20,9 +20,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("todo-filter-form");
+            const filterForms = document.querySelectorAll("form[data-autosubmit]");
 
-            if (form) {
+            filterForms.forEach((form) => {
                 const fields = form.querySelectorAll("input, select");
 
                 fields.forEach((field) => {
@@ -30,7 +30,9 @@
                         form.submit();
                     });
                 });
-            }
+            });
+        
+
         document.querySelectorAll(".validate-btn").forEach(button => {
                 button.addEventListener("click", function () {
                     const url = this.dataset.url;
