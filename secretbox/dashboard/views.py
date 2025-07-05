@@ -1,11 +1,15 @@
 from datetime import date
 
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, FormView, TemplateView,
                                   UpdateView, View)
+from django.utils.dateparse import parse_date
 
 from .forms import ContactForm, TodoForm, TodoFilterForm
 from .models import Todo
@@ -21,6 +25,29 @@ class ContactFormView(LoginRequiredMixin, FormView):
         context["title"] = _("Contact")
         context["logo_url"] = "/static/images/logo_sb.png"
         return context
+
+@login_required
+@require_POST
+def todo_mark_done(request, pk):
+    todo = get_object_or_404(Todo, pk=pk, user=request.user)
+    new_date_str = request.POST.get("new_date")
+
+    if not new_date_str:
+        return JsonResponse({"success": False, "message": _("Date manquante.")}, status=400)
+    new_date = parse_date(new_date_str)
+    if not new_date:
+        return JsonResponse({"success": False, "message": _("Date invalide.")}, status=400)
+
+
+    success = todo.validate_element(new_date)
+
+    if success:
+        return JsonResponse({"success": True, "done_date": todo.done_date.strftime("%Y-%m-%d")})
+    else:
+        return JsonResponse({
+            "success": False, 
+            "message": _("La date doit être postérieure à la date planifiée actuelle.")
+        })
 
 
 class TodoCreateView(LoginRequiredMixin, CreateView):

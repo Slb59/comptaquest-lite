@@ -177,7 +177,7 @@ class Todo(models.Model):
             bool: True if the date was updated, False if the new date is not later than current date
         """
 
-        if self.state != "done" and new_date > self.planned_date:
+        if (self.state != "done" and self.state != "cancel") and new_date > self.planned_date:
             self.planned_date = new_date
             self.report_date = None
             self.done_date = date_to_validate
@@ -249,9 +249,13 @@ class Todo(models.Model):
         """
         Sets the element's state to "done" and updates the date done_date.
         """
-        self.state = "done"
-        self.done_date = date_of_done
-        self.save()
+        if self.state != "cancel":
+            self.state = "done"
+            self.done_date = date_of_done
+            self.save()
+            return True
+        else:
+            return False
 
     def get_planned_date_display(self):
         """

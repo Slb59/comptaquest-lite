@@ -17,7 +17,7 @@
                 <table class="min-w-full bg-white">
                     <thead>
                         <tr class="sticky top-0 bg-brown-100 text-left">
-                            <th class="py-2 px-4 border-b table-header" scope="row">État</th>
+                            <th class="py-2 px-2 border-b table-header" scope="row">État</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Durée</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Description</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Rendez-vous</th>
@@ -29,13 +29,13 @@
                             <th class="py-2 px-4 border-b table-header" scope="row">Priorité</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Fait</th>
                             <th class="py-2 px-4 border-b table-header" scope="row">Note</th>
-                            <th class="py-2 px-4 border-b table-header" scope="row">Actions</th>
+                            <th class="py-2 px-8 border-b table-header" scope="row">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for todo in todos %}
-                        <tr>
-                            <td class="py-2 px-4 border-b">{{ todo.get_state_display }}</td>
+                        <tr id="todo-row-{{ todo.pk }}">
+                            <td class="py-2 px-2 border-b">{{ todo.get_state_display }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.duration }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.description }}</td>
                             <td class="py-2 px-4 border-b">
@@ -50,19 +50,27 @@
                             <td class="py-2 px-4 border-b">{{ todo.get_done_date_display }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.note }}</td>
                             <td class="action-icons">
+                                <!-- Chip to valide a task-->
+                                <button  
+                                    class="round-hicon validate-btn"
+                                    data-row-id="todo-row-{{ todo.pk }}"
+                                    data-url="{% url 'dashboard:mark_done' pk=todo.pk %}"
+                                >
+                                    <img src="{% static 'icons/coche.png' %}" alt="valide la ligne" class="w-6 h-6">
+                                </button>
                                 <!-- Chip stopwatch -->
                                 <a href="{% url 'home'%}" class="round-hicon">
                                     <img src="{% static 'icons/chrono.png' %}" alt="Nouvelle position" class="w-6 h-6">
                                 </a>
-                                <!-- Chip for edit position -->
+                                <!-- Chip for edit a task -->
                                 <a href="{% url 'dashboard:edit_todo' pk=todo.pk %}" class="round-hicon">
-                                    <img src="{% static 'icons/edit.png' %}" alt="Nouvelle position" class="w-6 h-6">
+                                    <img src="{% static 'icons/edit.png' %}" alt="Nouvelle ligne" class="w-6 h-6">
                                 </a>
-                                <!-- Chip for delete position -->
+                                <!-- Chip for delete a task -->
                                 <form method="post" action="{% url 'dashboard:delete_todo' pk=todo.pk %}" style="display: inline;">
                                     {% csrf_token %}
                                     <button type="submit" class="round-hicon" style="background: none; border: none; padding: 0;">
-                                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la position" class="w-6 h-6">
+                                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la ligne" class="w-6 h-6">
                                     </button>
                                 </form>
                             </td>

@@ -31,6 +31,53 @@
                     });
                 });
             }
+        document.querySelectorAll(".validate-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    const url = this.dataset.url;
+                    const rowId = this.dataset.rowId;
+                    const newDate = prompt("Entrez une nouvelle date (format AAAA-MM-JJ) :");
+                    if (!newDate) return;
+
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "X-CSRFToken": getCSRFToken(),
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        body: new URLSearchParams({ new_date: newDate })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Masquer la ligne ou mettre à jour visuellement
+                                document.getElementById(rowId).style.opacity = 0.4;
+                                document.getElementById(rowId).classList.add("line-through");
+                            } else {
+                                alert(data.message || "Échec de la validation.");
+                            }
+                        })
+                        .catch(() => alert("Une erreur est survenue."));
+                });
+            });
+
+            function getCSRFToken() {
+                return document.querySelector('[name=csrfmiddlewaretoken]').value;
+            }
+
+            // Fonction pour récupérer le CSRF token
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== "") {
+                    const cookies = document.cookie.split(";").map(c => c.trim());
+                    for (let cookie of cookies) {
+                        if (cookie.startsWith(name + "=")) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
         });
     </script>
 
