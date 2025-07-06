@@ -3,6 +3,7 @@ from datetime import date, timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import CQUser as User
 
@@ -161,6 +162,14 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.description
+    
+    def check_if_state_is_cancel_or_done(self):
+        if self.state == "done" :
+            return False, _("Cette tâche est déjà terminée")
+        if self.state == "cancel" :
+            return False, _("Cette tâche est déjà annulée")
+        else:
+            return True, ""
 
     def validate_element(self, new_date, date_to_validate=date.today()):
         """
@@ -176,16 +185,19 @@ class Todo(models.Model):
         Returns:
             bool: True if the date was updated, False if the new date is not later than current date
         """
+        if self.state in ("done", "cancel"):
+            return False, _("Cette tâche est déjà terminée ou annulée.")
+        
+        if new_date <= self.planned_date:
+            return False, _("La date doit être postérieure à la date planifiée actuelle.")
+        
+        self.planned_date = new_date
+        self.report_date = None
+        self.done_date = date_to_validate
+        self.state = "todo"
+        self.save()
+        return True, ""
 
-        if (self.state != "done" and self.state != "cancel") and new_date > self.planned_date:
-            self.planned_date = new_date
-            self.report_date = None
-            self.done_date = date_to_validate
-            self.state = "todo"
-            self.save()
-            return True
-        else:
-            return False
 
     def next_date(self):
         """

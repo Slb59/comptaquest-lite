@@ -3,7 +3,7 @@ from datetime import date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -27,11 +27,31 @@ class ContactFormView(LoginRequiredMixin, FormView):
         return context
 
 @login_required
+@require_GET
+def check_todo_state(request, pk):
+    print("check")
+    todo = get_object_or_404(Todo, pk=pk, user=request.user)
+
+    if todo.state in ("done", "cancel"):
+        return JsonResponse({
+            "can_validate": False,
+            "message": _("Cette tâche est déjà terminée ou annulée.")
+        }, status=400)
+
+    return JsonResponse({"can_validate": True})
+
+@login_required
 @require_POST
 def todo_mark_done(request, pk):
     todo = get_object_or_404(Todo, pk=pk, user=request.user)
-    new_date_str = request.POST.get("new_date")
 
+    success = todo.check_if_state_is_cancel_or_done()
+
+    if not success:
+        return JsonResponse({"success": False, "message": _("Cette tâche est déjà terminée ou annulée.")}, status=400)
+
+    new_date_str = request.POST.get("new_date")
+    
     if not new_date_str:
         return JsonResponse({"success": False, "message": _("Date manquante.")}, status=400)
     new_date = parse_date(new_date_str)
@@ -39,14 +59,14 @@ def todo_mark_done(request, pk):
         return JsonResponse({"success": False, "message": _("Date invalide.")}, status=400)
 
 
-    success = todo.validate_element(new_date)
+    success, message = todo.validate_element(new_date)
 
     if success:
         return JsonResponse({"success": True, "done_date": todo.done_date.strftime("%Y-%m-%d")})
     else:
         return JsonResponse({
             "success": False, 
-            "message": _("La date doit être postérieure à la date planifiée actuelle.")
+            "message": message
         })
 
 

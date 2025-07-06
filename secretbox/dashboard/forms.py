@@ -202,7 +202,7 @@ class TodoFilterForm(forms.Form):
                 Column("done_date_end", css_class="sm:col-span-1"),
                 css_class="grid grid-cols-5 gap-4 py-2",
             ),
-            # Submit("submit", "Filtrer", css_class="bg-blue-500 text-white px-4 py-2 rounded"),
+
         )
 
     

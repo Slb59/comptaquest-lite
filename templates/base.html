@@ -34,31 +34,55 @@
         
 
         document.querySelectorAll(".validate-btn").forEach(button => {
-                button.addEventListener("click", function () {
-                    const url = this.dataset.url;
-                    const rowId = this.dataset.rowId;
-                    const newDate = prompt("Entrez une nouvelle date (format AAAA-MM-JJ) :");
-                    if (!newDate) return;
+                button.addEventListener("click", async (e) => {
+                    const btn = e.currentTarget;
+                    const rowId = btn.dataset.rowId;
+                    const checkUrl = btn.dataset.checkUrl;
+                    const postUrl = btn.dataset.url;
 
-                    fetch(url, {
-                        method: "POST",
-                        headers: {
-                            "X-CSRFToken": getCSRFToken(),
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        body: new URLSearchParams({ new_date: newDate })
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.success) {
-                                // Masquer la ligne ou mettre à jour visuellement
-                                document.getElementById(rowId).style.opacity = 0.4;
-                                document.getElementById(rowId).classList.add("line-through");
-                            } else {
-                                alert(data.message || "Échec de la validation.");
-                            }
-                        })
-                        .catch(() => alert("Une erreur est survenue."));
+                    try {
+                        // ✅ Vérifie l'état d'abord
+                        const checkRes = await fetch(checkUrl);
+                        const checkData = await checkRes.json();
+
+                        if (!checkData.can_validate) {
+                            alert(checkData.message);
+                            return;
+                        }
+
+                        // ✅ Demande la nouvelle date
+                        const newDate = prompt("Nouvelle date (AAAA-MM-JJ) :");
+                        if (!newDate) return;
+
+                        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                        const postRes = await fetch(postUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                                "X-CSRFToken": csrfToken,
+                            },
+                            body: new URLSearchParams({ new_date: newDate }),
+                        });
+
+                        const postData = await postRes.json();
+
+                        if (postData.success) {
+                            alert("Tâche validée !");
+                            const row = document.getElementById(rowId);
+                            row.classList.add("opacity-50");
+                            // Cross out only text cells, not the last column(actions)
+                            row.querySelectorAll("td:not(:last-child)").forEach(cell => {
+                                cell.classList.add("line-through");
+                            });
+                        } else {
+                            alert(postData.message);
+                        }
+
+                    } catch (err) {
+                        alert("Une erreur s'est produite.");
+                        console.error(err);
+                    }
                 });
             });
 

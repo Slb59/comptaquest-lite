@@ -55,6 +55,7 @@
                                     class="round-hicon validate-btn"
                                     data-row-id="todo-row-{{ todo.pk }}"
                                     data-url="{% url 'dashboard:mark_done' pk=todo.pk %}"
+                                    data-check-url="{% url 'dashboard:check_todo_state' pk=todo.pk %}"
                                 >
                                     <img src="{% static 'icons/coche.png' %}" alt="valide la ligne" class="w-6 h-6">
                                 </button>
