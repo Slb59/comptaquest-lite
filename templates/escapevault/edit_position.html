@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags i18n %}
+{% load filters %}
 
 {% block content %}
 
@@ -14,11 +15,12 @@
     {% if form.instance.reviews %}
     <div class="mt-6 border-t pt-4">
         <h3 class="text-lg font-semibold mb-2">Avis précédents</h3>
+        
         <ul class="space-y-2">
             {% for review in form.instance.reviews %}
-            <li class="bg-gray-100 p-3 rounded shadow-sm">
-                <div class="text-sm text-gray-700">{{ review.text }}</div>
-                <div class="text-xs text-gray-700">{{ review.date|date:"d/m/Y H:i" }}</div>
+            <li class="bg-gray-100 p-3 rounded shadow-sm">                
+                <div class="text-sm text-gray-700">{{ review.date|parse_iso|date:"d/m/Y" }}</div>
+                <div class="text-sm text-gray-700">{{ review.text|linebreaksbr }}</div>
             </li>
             {% endfor %}
         </ul>
