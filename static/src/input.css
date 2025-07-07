@@ -1,5 +1,5 @@
-@tailwind base;
-@tailwind components;
+/* @tailwind directives */
+@import "tailwindcss/preflight"
 @tailwind utilities;
 
 @import 'tailwindcss';
@@ -33,4 +33,20 @@
         padding-right: 2rem;
     }
 }
+
+@layer components {
+    .round-icon {
+        @apply w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500;
+    }
+
+    .round-hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-500;
+    }
+
+    .button-valider {
+        @apply mt-4 font-medium rounded px-5 py-2.5 text-sm bg-brown text-white hover:bg-darkbrown focus:ring-4 focus:ring-or;
+    }
+}
+
+
 
