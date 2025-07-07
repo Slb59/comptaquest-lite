@@ -113,7 +113,7 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
 
         context["title"] = _("EscapeVault Liste")
         context["logo_url"] = "/static/images/logo_ev.png"
-        context["positions"] = positions.order_by("country", "city", "name")
+        context["positions"] = positions.order_by("category", "country", "city", "name")
         context["form"] = form
         return context
 
