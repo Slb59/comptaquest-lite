@@ -23,7 +23,7 @@ class ContactFormView(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Contact")
-        context["logo_url"] = "/static/images/logo_sb.png"
+        context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
 
 @login_required
@@ -79,7 +79,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Nouvelle entrée")
-        context["logo_url"] = "/static/images/logo_sb.png"
+        context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
 
     def form_valid(self, form):
@@ -123,7 +123,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
                 todos = todos.filter(periodic=data["periodic"])
 
         context["title"] = _("Bienvenue dans SecretBox")
-        context["logo_url"] = "/static/images/logo_sb.png"
+        context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         
         context["todos"] = todos.order_by("planned_date", "priority", "category", "periodic", "who", "place", "duration")
         context["form"] = form
@@ -141,8 +141,8 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = _("Nouvelle entrée")
-        context["logo_url"] = "/static/images/logo_sb.png"
+        context["title"] = _("Modifier l'entrée")
+        context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
 
 

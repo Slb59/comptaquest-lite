@@ -1,8 +1,8 @@
 /* @tailwind directives */
-@import "tailwindcss/preflight"
-@tailwind utilities;
-
-@import 'tailwindcss';
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 @theme {
     --color-black: #221f1f;
@@ -14,7 +14,7 @@
     --color-violet: #8A2BE2;
     --color-vert: #2E8B57;
     --color-taupe: #d7d4d0;
-    --color-white: #b2ccc5;
+    --color-white: #ecddd5;
 }
 
 @font-face {
@@ -71,7 +71,7 @@
     }
 
     .button-valider {
-        @apply mt-4 outline-none color-white bg-brown font-medium rounded-lg
+        @apply mt-4 outline-none text-white bg-brown font-medium rounded-lg
     }
 
 
