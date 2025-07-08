@@ -13,6 +13,8 @@
     --color-or: #FFD700;
     --color-violet: #8A2BE2;
     --color-vert: #2E8B57;
+    --color-taupe: #d7d4d0;
+    --color-white: #b2ccc5;
 }
 
 @font-face {
@@ -46,6 +48,66 @@
     .button-valider {
         @apply mt-4 font-medium rounded px-5 py-2.5 text-sm bg-brown text-white hover:bg-darkbrown focus:ring-4 focus:ring-or;
     }
+
+    a.round_hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-500;
+    }
+
+    a.little-round-hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-500;
+    }
+
+    .name-text {
+        @apply flex-1 no-underline text-inherit;
+    }
+    
+    a.name-text:hover {
+        @apply underline;
+        color: #2A3D66;
+    }
+
+    .main-screen {
+        @apply flex flex-col items-center justify-center pt-4 pb-6 px-4 bg-taupe w-full;
+    }
+
+    .button-valider {
+        @apply mt-4 outline-none color-white bg-brown font-medium rounded-lg
+    }
+
+
+/* .button-valider {
+    margin-top: 1rem;
+    outline: none;
+    color: white;
+    background-color: #654321;
+
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.button-valider:hover {
+    background-color: #3a2412;
+}
+
+.button-valider:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #fde047;
+    
+}
+
+/* Pour le mode sombre*/
+/*.dark .button-valider:focus {
+    box-shadow: 0 0 0 4px #78350f;
+    
+} */
+
 }
 
 

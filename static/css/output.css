@@ -175,8 +175,6 @@
     --container-xl: 36rem;
     --container-2xl: 42rem;
     --container-6xl: 72rem;
-    --text-xs: 0.75rem;
-    --text-xs--line-height: calc(1 / 0.75);
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-lg: 1.125rem;
@@ -203,6 +201,7 @@
     --color-or: #FFD700;
     --color-violet: #8A2BE2;
     --color-vert: #2E8B57;
+    --color-taupe: #d7d4d0;
   }
 }
 @layer base {
@@ -756,10 +755,6 @@
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
-  .text-xs {
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
-  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
@@ -1075,6 +1070,88 @@
     &:focus {
       --tw-ring-color: var(--color-or);
     }
+  }
+  a.round_hicon {
+    display: flex;
+    height: calc(var(--spacing) * 8);
+    width: calc(var(--spacing) * 8);
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(infinity * 1px);
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-gray-500);
+      }
+    }
+  }
+  a.little-round-hicon {
+    display: flex;
+    height: calc(var(--spacing) * 8);
+    width: calc(var(--spacing) * 8);
+    align-items: center;
+    justify-content: center;
+    border-radius: calc(infinity * 1px);
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-gray-500);
+      }
+    }
+  }
+  .name-text {
+    flex: 1;
+    color: inherit;
+    text-decoration-line: none;
+  }
+  a.name-text:hover {
+    text-decoration-line: underline;
+    color: #2A3D66;
+  }
+  .main-screen {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-taupe);
+    padding-inline: calc(var(--spacing) * 4);
+    padding-top: calc(var(--spacing) * 4);
+    padding-bottom: calc(var(--spacing) * 6);
+  }
+  .button-valider {
+    margin-top: calc(var(--spacing) * 4);
+    --tw-outline-style: none;
+    outline-style: none;
+  }
+  .button-valider {
+    margin-top: 1rem;
+    outline: none;
+    color: white;
+    background-color: #654321;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .button-valider:hover {
+    background-color: #3a2412;
+  }
+  .button-valider:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px #fde047;
+  }
+  .dark .button-valider:focus {
+    box-shadow: 0 0 0 4px #78350f;
   }
 }
 @property --tw-rotate-x {

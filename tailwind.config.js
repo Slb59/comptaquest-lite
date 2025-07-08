@@ -13,6 +13,8 @@ module.exports = {
         vert: 'var(--color-vert)',
         violet: 'var(--color-violet)',
         or: 'var(--color-or)',
+        taupe: 'var(--color-taupe)',
+        white: 'var(--color-white)',
       },
       fontFamily: {
         cinzel: ['Cinzel', 'Arial', 'sans-serif'],
