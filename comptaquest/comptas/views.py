@@ -3,17 +3,16 @@ from django.urls import reverse_lazy
 from datetime import datetime
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView)
+                                  UpdateView, FormView)
 
-from .forms import CurrentAccountForm, OutgoingsForm, WalletForm
-from .models import Wallet
+from .forms import SelectAccountTypeForm, CurrentAccountForm, InvestmentAccountForm, OutgoingsForm
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 import locale
 
 class DashboardView(LoginRequiredMixin, ListView):
-    template_name = "comptaquest/cq_dashboard.html"
+    template_name = "comptaquest/list_account.html"
     model = CurrentAccount  
     context_object_name = "accounts"  
 
@@ -32,31 +31,6 @@ class DashboardView(LoginRequiredMixin, ListView):
         return context
 
 
-class WalletListView(ListView):
-    model = Wallet
-    template_name = "wallet_list.html"
-    context_object_name = "wallets"
-
-
-class WalletCreateView(CreateView):
-    model = Wallet
-    form_class = WalletForm
-    template_name = "wallet_form.html"
-    success_url = reverse_lazy("wallet_list")
-
-
-class WalletUpdateView(UpdateView):
-    model = Wallet
-    form_class = WalletForm
-    template_name = "wallet_form.html"
-    success_url = reverse_lazy("wallet_list")
-
-
-class WalletDeleteView(DeleteView):
-    model = Wallet
-    template_name = "wallet_confirm_delete.html"
-    success_url = reverse_lazy("wallet_list")
-
 
 class AccountDetailView(LoginRequiredMixin, DetailView):
     template_name = "account_detail.html"
@@ -64,15 +38,63 @@ class AccountDetailView(LoginRequiredMixin, DetailView):
     context_object_name = "account"
 
 
-class AccountCreateView(LoginRequiredMixin, CreateView):
-    template_name = "account_create.html"
-    model = CurrentAccount
-    form_class = CurrentAccountForm
-    success_url = reverse_lazy("comptas:dashboard")
+class AccountTypeSelectView(FormView):
+    template_name = 'accounts/add_account_step1.html'
+    form_class = SelectAccountTypeForm
+    success_url = reverse_lazy('add_account')
 
     def form_valid(self, form):
-        form.instance.created_by = self.request.user  # if you need to set the creator
+        # Stocke le type de compte dans la session
+        self.request.session['selected_account_type'] = form.cleaned_data['account_type']
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _(f"Choix du type de compte")
+        context["logo_url"] = "/static/images/logo_cq.png"
+        return context
+
+class AccountCreateView(LoginRequiredMixin, CreateView):
+    template_name = "generic/add_template.html"
+    success_url = reverse_lazy("comptas:dashboard")
+
+    # model = CurrentAccount
+    # form_class = CurrentAccountForm
+
+    def dispatch(self, request, *args, **kwargs):
+        # Make sure the account type is set
+        self.account_type = request.session.get('selected_account_type')
+        if not self.account_type:
+            return redirect('account-select')  # return to the first step
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_form_class(self):
+        if self.account_type == 'Current':
+            return CurrentAccountForm
+        else:
+            return InvestmentAccountForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        return kwargs  # no additional data at this time
+
+    def form_valid(self, form):
+        instance = form.save(commit=False)
+        instance.created_by = self.request.user
+        instance.user = self.request.user
+        instance.account_type = self.account_type
+        instance.save()
+        # clear session after use
+        del self.request.session['selected_account_type']
+        return super().form_valid(form)
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = _(f"Nouveau compte {self.account_type}")
+        context["logo_url"] = "/static/images/logo_cq.png"
+        context['account_type'] = self.account_type
+        return context
 
 
 class OutgoingsView(LoginRequiredMixin, ListView):

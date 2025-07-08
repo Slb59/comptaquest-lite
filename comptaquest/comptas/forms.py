@@ -1,19 +1,68 @@
 from django import forms
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Div, HTML, Submit
+from comptaquest.comptas.models import (CurrentAccount, InvestmentAccount,ExpenseTransaction,
+                                        Outgoings)
 
-from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
-                                        Outgoings, Wallet)
 
+class SelectAccountTypeForm(forms.Form):
+    ACCOUNT_CHOICES = [
+        ('Current', 'Compte courant'),
+        ('Investment', 'Compte d\'investissement')
+    ]
+    account_type = forms.ChoiceField(label="Type de compte", choices=ACCOUNT_CHOICES)
 
-class WalletForm(forms.ModelForm):
-    class Meta:
-        model = Wallet
-        fields = ["name", "label", "amount"]
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Suivant'))
 
 
 class CurrentAccountForm(forms.ModelForm):
     class Meta:
         model = CurrentAccount
-        fields = ["name", "description"]
+        exclude = ['user', 'account_type']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(
+            Div(
+                Submit(
+                    "submit",
+                    "Valider",
+                    css_class="button-valider",
+                ),
+                HTML(
+                    '<a href="{% url \'escapevault:list_positions\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
+                ),
+                css_class="flex space-x-4",
+            )
+        )
+
+class InvestmentAccountForm(forms.ModelForm):
+    class Meta:
+        model = InvestmentAccount
+        exclude = ['user', 'account_type']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Div(
+                Submit(
+                    "submit",
+                    "Valider",
+                    css_class="button-valider",
+                ),
+                HTML(
+                    '<a href="{% url \'escapevault:list_positions\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
+                ),
+                css_class="flex space-x-4",
+            )
+        )
 
 
 class OutgoingsForm(forms.ModelForm):

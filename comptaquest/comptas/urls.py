@@ -1,21 +1,18 @@
 from django.urls import path
 
-from .views import (AccountCreateView, AccountDetailView, BalanceSheetView,
+from .views import (AccountCreateView, AccountTypeSelectView, AccountDetailView, BalanceSheetView,
                     DashboardView, OutgoingsCreateView, OutgoingsDetailView,
                     OutgoingsView, TransactionCreateView,
-                    TransactionDetailView, TransactionsView, WalletCreateView,
-                    WalletDeleteView, WalletListView, WalletUpdateView)
+                    TransactionDetailView, TransactionsView)
 
 app_name = "comptas"
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
-    # path("members/", MembersView.as_view(), name="members"),
-    # wallet urls
-    path("wallets/", WalletListView.as_view(), name="wallet_list"),
-    path("wallets/create/", WalletCreateView.as_view(), name="wallet_create"),
-    path("wallets/<str:pk>/update/", WalletUpdateView.as_view(), name="wallet_update"),
-    path("wallets/<str:pk>/delete/", WalletDeleteView.as_view(), name="wallet_delete"),
+    path('account/new/', AccountTypeSelectView.as_view(), name='account-select'),
+    path('account/create/', AccountCreateView.as_view(), name='account-create'),
+
+
     # outgoings urls
     path("outgoings/", OutgoingsView.as_view(), name="outgoings"),
     path(

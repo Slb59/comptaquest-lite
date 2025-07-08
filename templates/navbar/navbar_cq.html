@@ -1,5 +1,8 @@
 {% load static %}
 
 <div class="w-32 p-4 flex items-center space-x-4">
-
+    <!-- Chip for new account -->
+    <a href="{% url 'comptas:add_account' %}" class="round-hicon">
+        <img src="{% static 'icons/add.png' %}" alt="Nouveau compte" class="w-8 h-8">
+    </a>
 </div>
