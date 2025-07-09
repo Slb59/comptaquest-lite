@@ -37,9 +37,6 @@ a.contact-link:hover {
     /* Définit la couleur du soulignement */
 }
 
-
-
-
 .flex-container {
     display: flex;
     align-items: center;
@@ -48,9 +45,6 @@ a.contact-link:hover {
     gap: 1rem;
     /* espace entre le nom et les icônes */
 }
-
-
-
 
 .icon {
     width: 24px;
@@ -161,48 +155,13 @@ a.contact-link:hover {
     /* Centre le contenu du menu */
 }
 
-/* Style pour le panneau latéral */
-.w-16 {
-    width: 4rem;
-}
-
 .space-y-4>*+* {
     margin-top: 1rem;
 }
 
-/* Style pour les pastilles */
-.w-8 {
-    width: 2rem;
-}
-
-.h-8 {
-    height: 2rem;
-}
-
-.bg-gray-400 {
-    background-color: #9ca3af;
-}
-
-.bg-brown-100 {
-    background-color: rgba(var(--color-brown-rgb), 0.5);
-    backdrop-filter: blur(4px);
-}
-
-.rounded-full {
-    border-radius: 9999px;
-}
 
 .hover\:bg-gray-500:hover {
     background-color: #6b7280;
-}
-
-/* Style pour les images dans les pastilles */
-.w-6 {
-    width: 1.5rem;
-}
-
-.h-6 {
-    height: 1.5rem;
 }
 
 .escapevault-map {
@@ -212,19 +171,4 @@ a.contact-link:hover {
     justify-content: center;
 }
 
-.position-item {
-    margin-bottom: 5px;
-    padding: 4px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    border-bottom: 1px solid #ccc;
-}
 
-.scrollbar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-}

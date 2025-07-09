@@ -1,13 +1,14 @@
 import folium
+from datetime import datetime
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, ListView,
                                   TemplateView, UpdateView)
-from django.utils.timezone import now
 
-from .forms import EscapeVaultForm, EscapeVaultFilterForm
+from .forms import EscapeVaultFilterForm, EscapeVaultForm
 from .models import NomadePosition
 
 
@@ -17,8 +18,6 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         form = EscapeVaultFilterForm(self.request.GET or None)
-
-
 
         # Create a base map centered around a specific location
         the_map = folium.Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
@@ -72,6 +71,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
         context["map"] = the_map
         return context
 
+
 class EscapeVaultParametersView(LoginRequiredMixin, TemplateView):
     template_name = "escapevault/parameters.html"
 
@@ -80,6 +80,7 @@ class EscapeVaultParametersView(LoginRequiredMixin, TemplateView):
         context["title"] = _("EscapeVault Paramètres")
         context["logo_url"] = "/static/images/logo_ev.png"
         return context
+
 
 class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
     model = NomadePosition
@@ -92,6 +93,7 @@ class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
         context["title"] = _("EscapeVault nouvelle Position")
         context["logo_url"] = "/static/images/logo_ev.png"
         return context
+
 
 class EscapeVaultListView(LoginRequiredMixin, ListView):
     model = NomadePosition
@@ -118,7 +120,6 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
         return context
 
 
-
 class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
     model = NomadePosition
     form_class = EscapeVaultForm
@@ -142,20 +143,15 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
         context["title"] = _(f"{self.object.name}")
         context["logo_url"] = "/static/images/logo_ev.png"
         return context
-    
+
     def form_valid(self, form):
         new_review_text = form.cleaned_data.get("new_review", "").strip()
-
-
 
         if new_review_text:
             position = form.instance
             existing_reviews = position.reviews or []
 
-            existing_reviews.append({
-                "text": new_review_text,
-                "date": now().isoformat()
-            })
+            existing_reviews.append({"text": new_review_text, "date": now().isoformat()})
 
             position.reviews = existing_reviews
 
@@ -167,7 +163,6 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
                     pass
 
         return super().form_valid(form)
-
 
 
 class EscapeVaultDeleteView(LoginRequiredMixin, DeleteView):

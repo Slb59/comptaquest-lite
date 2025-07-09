@@ -137,19 +137,15 @@ class Todo(models.Model):
         ("16-everyyear", "Tous les ans"),
     ]
     APPOINTEMENT_CHOICES = [
-        ("rdv","Rendez-vous"),
-        ("birthday","Anniversaire"),
-        ("festival","Fête"),
+        ("rdv", "Rendez-vous"),
+        ("birthday", "Anniversaire"),
+        ("festival", "Fête"),
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
     duration = models.IntegerField(default=30, validators=[MinValueValidator(10), MaxValueValidator(800)])
     description = models.TextField()
-    appointment = models.CharField(
-        max_length=20,
-        choices=APPOINTEMENT_CHOICES,
-        blank=True, null=True
-    )
+    appointment = models.CharField(max_length=20, choices=APPOINTEMENT_CHOICES, blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
     who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
@@ -162,11 +158,11 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.description
-    
+
     def check_if_state_is_cancel_or_done(self):
-        if self.state == "done" :
+        if self.state == "done":
             return False, _("Cette tâche est déjà terminée")
-        if self.state == "cancel" :
+        if self.state == "cancel":
             return False, _("Cette tâche est déjà annulée")
         else:
             return True, ""
@@ -187,17 +183,16 @@ class Todo(models.Model):
         """
         if self.state in ("done", "cancel"):
             return False, _("Cette tâche est déjà terminée ou annulée.")
-        
+
         if new_date <= self.planned_date:
             return False, _("La date doit être postérieure à la date planifiée actuelle.")
-        
+
         self.planned_date = new_date
         self.report_date = None
         self.done_date = date_to_validate
         self.state = "todo"
         self.save()
         return True, ""
-
 
     def next_date(self):
         """
@@ -284,4 +279,3 @@ class Todo(models.Model):
             str: The formatted done_date or an empty string.
         """
         return self.done_date.strftime("%d/%m/%Y") if self.done_date else ""
-    

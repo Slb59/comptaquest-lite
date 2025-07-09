@@ -1,7 +1,9 @@
-from django import template
 from datetime import datetime
 
+from django import template
+
 register = template.Library()
+
 
 @register.filter
 def parse_iso(value):

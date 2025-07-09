@@ -1,20 +1,23 @@
+import locale
+from datetime import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from datetime import datetime
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
-                                  UpdateView, FormView)
+from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
+                                  ListView, UpdateView)
 
-from .forms import SelectAccountTypeForm, CurrentAccountForm, InvestmentAccountForm, OutgoingsForm
+from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
+                    SelectAccountTypeForm)
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
-import locale
+
 
 class DashboardView(LoginRequiredMixin, ListView):
     template_name = "comptaquest/list_account.html"
-    model = CurrentAccount  
-    context_object_name = "accounts"  
+    model = CurrentAccount
+    context_object_name = "accounts"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -31,7 +34,6 @@ class DashboardView(LoginRequiredMixin, ListView):
         return context
 
 
-
 class AccountDetailView(LoginRequiredMixin, DetailView):
     template_name = "account_detail.html"
     model = CurrentAccount
@@ -39,13 +41,13 @@ class AccountDetailView(LoginRequiredMixin, DetailView):
 
 
 class AccountTypeSelectView(FormView):
-    template_name = 'accounts/add_account_step1.html'
+    template_name = "accounts/add_account_step1.html"
     form_class = SelectAccountTypeForm
-    success_url = reverse_lazy('add_account')
+    success_url = reverse_lazy("add_account")
 
     def form_valid(self, form):
         # Stocke le type de compte dans la session
-        self.request.session['selected_account_type'] = form.cleaned_data['account_type']
+        self.request.session["selected_account_type"] = form.cleaned_data["account_type"]
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -53,6 +55,7 @@ class AccountTypeSelectView(FormView):
         context["title"] = _(f"Choix du type de compte")
         context["logo_url"] = "/static/images/logo_cq.png"
         return context
+
 
 class AccountCreateView(LoginRequiredMixin, CreateView):
     template_name = "generic/add_template.html"
@@ -63,13 +66,13 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         # Make sure the account type is set
-        self.account_type = request.session.get('selected_account_type')
+        self.account_type = request.session.get("selected_account_type")
         if not self.account_type:
-            return redirect('account-select')  # return to the first step
+            return redirect("account-select")  # return to the first step
         return super().dispatch(request, *args, **kwargs)
 
     def get_form_class(self):
-        if self.account_type == 'Current':
+        if self.account_type == "Current":
             return CurrentAccountForm
         else:
             return InvestmentAccountForm
@@ -85,15 +88,14 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
         instance.account_type = self.account_type
         instance.save()
         # clear session after use
-        del self.request.session['selected_account_type']
+        del self.request.session["selected_account_type"]
         return super().form_valid(form)
 
-    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _(f"Nouveau compte {self.account_type}")
         context["logo_url"] = "/static/images/logo_cq.png"
-        context['account_type'] = self.account_type
+        context["account_type"] = self.account_type
         return context
 
 

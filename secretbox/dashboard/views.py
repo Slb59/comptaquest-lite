@@ -1,17 +1,17 @@
 from datetime import date
 
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect
-from django.views.decorators.http import require_POST, require_GET
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils.dateparse import parse_date
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import (CreateView, FormView, TemplateView,
                                   UpdateView, View)
-from django.utils.dateparse import parse_date
 
-from .forms import ContactForm, TodoForm, TodoFilterForm
+from .forms import ContactForm, TodoFilterForm, TodoForm
 from .models import Todo
 
 
@@ -26,6 +26,7 @@ class ContactFormView(LoginRequiredMixin, FormView):
         context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
 
+
 @login_required
 @require_GET
 def check_todo_state(request, pk):
@@ -33,12 +34,12 @@ def check_todo_state(request, pk):
     todo = get_object_or_404(Todo, pk=pk, user=request.user)
 
     if todo.state in ("done", "cancel"):
-        return JsonResponse({
-            "can_validate": False,
-            "message": _("Cette tâche est déjà terminée ou annulée.")
-        }, status=400)
+        return JsonResponse(
+            {"can_validate": False, "message": _("Cette tâche est déjà terminée ou annulée.")}, status=400
+        )
 
     return JsonResponse({"can_validate": True})
+
 
 @login_required
 @require_POST
@@ -51,23 +52,19 @@ def todo_mark_done(request, pk):
         return JsonResponse({"success": False, "message": _("Cette tâche est déjà terminée ou annulée.")}, status=400)
 
     new_date_str = request.POST.get("new_date")
-    
+
     if not new_date_str:
         return JsonResponse({"success": False, "message": _("Date manquante.")}, status=400)
     new_date = parse_date(new_date_str)
     if not new_date:
         return JsonResponse({"success": False, "message": _("Date invalide.")}, status=400)
 
-
     success, message = todo.validate_element(new_date)
 
     if success:
         return JsonResponse({"success": True, "done_date": todo.done_date.strftime("%Y-%m-%d")})
     else:
-        return JsonResponse({
-            "success": False, 
-            "message": message
-        })
+        return JsonResponse({"success": False, "message": message})
 
 
 class TodoCreateView(LoginRequiredMixin, CreateView):
@@ -124,8 +121,10 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
         context["title"] = _("Bienvenue dans SecretBox")
         context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
-        
-        context["todos"] = todos.order_by("planned_date", "priority", "category", "periodic", "who", "place", "duration")
+
+        context["todos"] = todos.order_by(
+            "planned_date", "priority", "category", "periodic", "who", "place", "duration"
+        )
         context["form"] = form
         return context
 

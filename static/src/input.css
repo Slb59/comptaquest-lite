@@ -4,8 +4,13 @@
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 
+
+
+
+
 @theme {
     --color-black: #221f1f;
+    --color-gray: #9ca3af;
     --color-grey: #7c9786;
     --color-brown: #b36739;
     --color-darkbrown: #4f1b11;
@@ -15,6 +20,7 @@
     --color-vert: #2E8B57;
     --color-taupe: #d7d4d0;
     --color-white: #ecddd5;
+    --color-verybrown: #3a2412;
 }
 
 @font-face {
@@ -71,44 +77,33 @@
     }
 
     .button-valider {
-        @apply mt-4 outline-none text-white bg-brown font-medium rounded-lg
+        @apply mt-4 outline-none text-white bg-brown font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:bg-verybrown;
+    }
+    
+    .position-item {
+        @apply mb-1 p-1 border border-white rounded-1 border-b-white;
     }
 
+    .bg-brown-100 {
+        @apply backdrop-blur-sm;
+        background-color: rgba(var(--color-brown-rgb), 0.5);
+    }
 
-/* .button-valider {
-    margin-top: 1rem;
-    outline: none;
-    color: white;
-    background-color: #654321;
-
-    font-weight: 500;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
 }
 
-.button-valider:hover {
-    background-color: #3a2412;
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }
 
 .button-valider:focus {
-    outline: none;
     box-shadow: 0 0 0 4px #fde047;
-    
 }
-
-/* Pour le mode sombre*/
-/*.dark .button-valider:focus {
+.dark .button-valider:focus {
     box-shadow: 0 0 0 4px #78350f;
-    
-} */
-
 }
-
-
 

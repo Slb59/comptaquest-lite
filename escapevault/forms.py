@@ -1,15 +1,14 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
+from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import NomadePosition
 
+
 class EscapeVaultFilterForm(forms.Form):
     category = forms.ChoiceField(
-        choices=[("", "Toutes")] + NomadePosition.CATEGORY_CHOICES,
-        required=False,
-        label=_("Catégorie")
+        choices=[("", "Toutes")] + NomadePosition.CATEGORY_CHOICES, required=False, label=_("Catégorie")
     )
 
     def __init__(self, *args, **kwargs):
@@ -22,7 +21,7 @@ class EscapeVaultFilterForm(forms.Form):
         self.helper.attrs = {
             "id": "ev-filter-form",
             "novalidate": "novalidate",
-            "data-autosubmit": "true", 
+            "data-autosubmit": "true",
         }
 
         self.helper.layout = Layout(
@@ -31,6 +30,7 @@ class EscapeVaultFilterForm(forms.Form):
                 css_class="grid grid-cols-5 gap-4",
             ),
         )
+
 
 class EscapeVaultForm(forms.ModelForm):
     new_review = forms.CharField(
@@ -51,7 +51,7 @@ class EscapeVaultForm(forms.ModelForm):
             "link_to_site",
             "opening_date",
             "closing_date",
-            "stars"
+            "stars",
         ]
 
     def __init__(self, *args, **kwargs):
@@ -72,8 +72,6 @@ class EscapeVaultForm(forms.ModelForm):
         self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
 
         self.fields["country"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
-
-
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
@@ -114,6 +112,6 @@ class EscapeVaultForm(forms.ModelForm):
                 css_class="flex space-x-4",
             ),
         )
-        
+
         # Insert the new_review field at the end of the form, just before the submit button
-        self.helper.layout.fields.insert(-1, "new_review") 
+        self.helper.layout.fields.insert(-1, "new_review")

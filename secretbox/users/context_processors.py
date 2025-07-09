@@ -9,4 +9,3 @@ def app_access_permissions(request):
             "can_access_sami": user.is_superuser or user.groups.filter(name="sami_access").exists(),
         }
     return {}
-    

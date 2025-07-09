@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_countries.fields import CountryField, Countries, Country
+from django_countries.fields import Countries, Country, CountryField
 
 
 def validate_city_format(value):
@@ -23,8 +23,8 @@ def validate_day_month_format(value):
 
 class NomadePosition(models.Model):
     """
-        Model representing a nomade position.
-        This nomade is not affected to a user. Any connected user that has the access to the escapevault application can see, update or delete it.
+    Model representing a nomade position.
+    This nomade is not affected to a user. Any connected user that has the access to the escapevault application can see, update or delete it.
     """
 
     CATEGORY_HOME = "home"
@@ -34,11 +34,11 @@ class NomadePosition(models.Model):
     CATEGORY_BAN = "ban"
 
     CATEGORY_CHOICES = [
-        (CATEGORY_HOME, "Maison"),
-        (CATEGORY_NOMADE, "Nomade"),
-        (CATEGORY_LOVE, "Coup de cœur"),
-        (CATEGORY_PLAIN, "Ordinaire"),
-        (CATEGORY_BAN, "À bannir"),
+        (CATEGORY_HOME, _("Maison")),
+        (CATEGORY_NOMADE, _("Nomade")),
+        (CATEGORY_LOVE, _("Coup de coeur")),
+        (CATEGORY_PLAIN, _("Ordinaire")),
+        (CATEGORY_BAN, _("À bannir")),
     ]
 
     # Core Information
@@ -49,20 +49,12 @@ class NomadePosition(models.Model):
     city = models.TextField(max_length=40, validators=[validate_city_format])
 
     class NomadeCountries(Countries):
-        only = [
-            "CA", "FR", "DE", "IT", "JP", "RU", "GB"
-        ]
-    country = CountryField(
-        countries=NomadeCountries, 
-        default=Country(code='FR'), 
-        blank_label='(select country)'
-    )
+        only = ["CA", "FR", "DE", "IT", "JP", "RU", "GB"]
+
+    country = CountryField(countries=NomadeCountries, default=Country(code="FR"), blank_label="(select country)")
 
     # Rating System
-    stars = models.IntegerField(
-        default=0, 
-        validators=[MinValueValidator(1), MaxValueValidator(5)]
-    )
+    stars = models.IntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
     reviews = models.JSONField(default=list)
 
     # Opening and Closing Dates
@@ -107,13 +99,13 @@ class NomadePosition(models.Model):
         else:
             icon_image = "static/icons/escapevault/default.png"
         return icon_image
-    
+
     def get_opening_date_display(self):
         if self.opening_date:
             return self.opening_date
         else:
             return ""
-    
+
     def get_closing_date_display(self):
         if self.closing_date:
             return self.closing_date

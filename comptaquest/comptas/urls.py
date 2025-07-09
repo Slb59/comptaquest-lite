@@ -1,18 +1,17 @@
 from django.urls import path
 
-from .views import (AccountCreateView, AccountTypeSelectView, AccountDetailView, BalanceSheetView,
-                    DashboardView, OutgoingsCreateView, OutgoingsDetailView,
-                    OutgoingsView, TransactionCreateView,
-                    TransactionDetailView, TransactionsView)
+from .views import (AccountCreateView, AccountDetailView,
+                    AccountTypeSelectView, BalanceSheetView, DashboardView,
+                    OutgoingsCreateView, OutgoingsDetailView, OutgoingsView,
+                    TransactionCreateView, TransactionDetailView,
+                    TransactionsView)
 
 app_name = "comptas"
 
 urlpatterns = [
     path("", DashboardView.as_view(), name="dashboard"),
-    path('account/new/', AccountTypeSelectView.as_view(), name='account-select'),
-    path('account/create/', AccountCreateView.as_view(), name='account-create'),
-
-
+    path("account/new/", AccountTypeSelectView.as_view(), name="account-select"),
+    path("account/create/", AccountCreateView.as_view(), name="account-create"),
     # outgoings urls
     path("outgoings/", OutgoingsView.as_view(), name="outgoings"),
     path(

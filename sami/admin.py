@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from sami.models import Sami
 
 
@@ -28,36 +29,19 @@ class SamiAdmin(admin.ModelAdmin):
     )
 
     fieldsets = (
-        ("Informations générales", {
-            "fields": ("user", "date", "weight")
-        }),
-        ("Sommeil", {
-            "fields": (
-                "bedtime", "wakeup", "nonstop", "energy", "naptime", "phone", "reading", "total_sleep"
-            )
-        }),
-        ("Alimentation", {
-            "fields": (
-                "fruits", "vegetables", "meals", "desserts", "sugardrinks", "nosugardrinks", "total_food"
-            )
-        }),
-        ("Mouvement", {
-            "fields": (
-                "homework", "garden", "Outsidetime", "endurancesport", "yogasport", "total_move"
-            )
-        }),
-        ("Idées", {
-            "fields": (
-                "videogames", "papergames", "administrative", "computer", "youtube", "total_idea"
-            )
-        }),
-        ("Total général", {
-            "fields": ("total_sami",)
-        }),
-        ("Dates de création", {
-            "classes": ("collapse",),
-            "fields": ("created_at", "updated_at")
-        }),
+        ("Informations générales", {"fields": ("user", "date", "weight")}),
+        (
+            "Sommeil",
+            {"fields": ("bedtime", "wakeup", "nonstop", "energy", "naptime", "phone", "reading", "total_sleep")},
+        ),
+        (
+            "Alimentation",
+            {"fields": ("fruits", "vegetables", "meals", "desserts", "sugardrinks", "nosugardrinks", "total_food")},
+        ),
+        ("Mouvement", {"fields": ("homework", "garden", "Outsidetime", "endurancesport", "yogasport", "total_move")}),
+        ("Idées", {"fields": ("videogames", "papergames", "administrative", "computer", "youtube", "total_idea")}),
+        ("Total général", {"fields": ("total_sami",)}),
+        ("Dates de création", {"classes": ("collapse",), "fields": ("created_at", "updated_at")}),
     )
 
     def has_add_permission(self, request):
@@ -68,4 +52,3 @@ class SamiAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return True
-

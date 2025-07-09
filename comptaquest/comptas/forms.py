@@ -1,33 +1,31 @@
-from django import forms
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, HTML, Submit
-from comptaquest.comptas.models import (CurrentAccount, InvestmentAccount,ExpenseTransaction,
-                                        Outgoings)
+from crispy_forms.layout import HTML, Div, Layout, Submit
+from django import forms
+
+from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
+                                        InvestmentAccount, Outgoings)
 
 
 class SelectAccountTypeForm(forms.Form):
-    ACCOUNT_CHOICES = [
-        ('Current', 'Compte courant'),
-        ('Investment', 'Compte d\'investissement')
-    ]
+    ACCOUNT_CHOICES = [("Current", "Compte courant"), ("Investment", "Compte d'investissement")]
     account_type = forms.ChoiceField(label="Type de compte", choices=ACCOUNT_CHOICES)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Submit('submit', 'Suivant'))
+        self.helper.form_method = "post"
+        self.helper.add_input(Submit("submit", "Suivant"))
 
 
 class CurrentAccountForm(forms.ModelForm):
     class Meta:
         model = CurrentAccount
-        exclude = ['user', 'account_type']
+        exclude = ["user", "account_type"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
+        self.helper.form_method = "post"
         self.helper.add_input(
             Div(
                 Submit(
@@ -42,16 +40,18 @@ class CurrentAccountForm(forms.ModelForm):
             )
         )
 
+
 class InvestmentAccountForm(forms.ModelForm):
     class Meta:
         model = InvestmentAccount
-        exclude = ['user', 'account_type']
+        exclude = ["user", "account_type"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_method = 'post'
-        self.helper.add_input(Div(
+        self.helper.form_method = "post"
+        self.helper.add_input(
+            Div(
                 Submit(
                     "submit",
                     "Valider",

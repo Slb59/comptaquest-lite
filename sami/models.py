@@ -14,112 +14,135 @@ class Sami(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     bedtime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(3)],
+        help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0,
     )
     wakeup = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(3)],
+        help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0,
     )
     nonstop = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
     energy = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
     naptime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(4)], help_text=_("Saisir une valeur entre 0 et 4"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(4)],
+        help_text=_("Saisir une valeur entre 0 et 4"),
+        default=0,
     )
     phone = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(2)],
+        help_text=_("Saisir une valeur entre 0 et 2"),
+        default=0,
     )
     reading = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(3)],
+        help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0,
     )
 
     fruits = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(3)], help_text=_("Saisir une valeur entre 0 et 3"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(3)],
+        help_text=_("Saisir une valeur entre 0 et 3"),
+        default=0,
     )
 
     vegetables = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(2)], help_text=_("Saisir une valeur entre 0 et 2"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(2)],
+        help_text=_("Saisir une valeur entre 0 et 2"),
+        default=0,
     )
 
     meals = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     desserts = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     sugardrinks = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     nosugardrinks = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     homework = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     garden = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     Outsidetime = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     endurancesport = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     yogasport = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     videogames = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     papergames = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     administrative = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     computer = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     youtube = models.IntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)], help_text=_("Saisir une valeur entre 0 et 5"),
-        default=0
+        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        help_text=_("Saisir une valeur entre 0 et 5"),
+        default=0,
     )
 
     user = models.ForeignKey(

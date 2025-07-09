@@ -29,7 +29,7 @@ class AbstractAccount(models.Model):
         choices=AccountType.choices,
         default=AccountType.CURRENT,
     )
-    
+
     pointed_date = models.DateTimeField(blank=True, null=True, help_text=_("The last pointed date"))
     current_pointed_date = models.DateTimeField(
         blank=True,

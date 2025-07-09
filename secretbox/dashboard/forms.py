@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
+from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -19,7 +19,7 @@ class ContactForm(forms.Form):
     reason = forms.ChoiceField(label=_("Pourquoi me contactes-tu ?"), choices=REASON_CHOICES, required=True)
     subject = forms.CharField(label=_("Sujet"), max_length=200, required=False)
     message = forms.CharField(label=_("Ton message"), widget=forms.Textarea(attrs={"rows": 4}), required=True)
-    subscribe =forms.BooleanField(label=_("Souscris à ma newsletter"), required=False)
+    subscribe = forms.BooleanField(label=_("Souscris à ma newsletter"), required=False)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -119,52 +119,26 @@ class TodoForm(forms.ModelForm):
 
 
 class TodoFilterForm(forms.Form):
-    state = forms.ChoiceField(
-        choices=[("", "Tous")] + Todo.STATE_CHOICES,
-        required=False,
-        label="Etat"
-    )
+    state = forms.ChoiceField(choices=[("", "Tous")] + Todo.STATE_CHOICES, required=False, label="Etat")
     duration_min = forms.IntegerField(required=False, min_value=0, label="Durée min")
     duration_max = forms.IntegerField(required=False, min_value=0, label="Durée max")
     description = forms.CharField(required=False)
-    appointment = forms.ChoiceField(choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous"))
-    category = forms.ChoiceField(
-        choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES,
-        required=False,
-        label = _("Catégorie")
+    appointment = forms.ChoiceField(
+        choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous")
     )
-    who = forms.ChoiceField(
-        choices=[("", "Toutes")] + Todo.WHO_CHOICES,
-        required=False,
-        label=_("Qui"))
-    place = forms.ChoiceField(
-        choices=[("", "Toutes")] + Todo.PLACE_CHOICES,
-        required=False,
-        label = _("Lieu"))
-    periodic = forms.ChoiceField(
-        choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES,
-        required=False,
-        label=_("Fréquence"))    
+    category = forms.ChoiceField(choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES, required=False, label=_("Catégorie"))
+    who = forms.ChoiceField(choices=[("", "Toutes")] + Todo.WHO_CHOICES, required=False, label=_("Qui"))
+    place = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PLACE_CHOICES, required=False, label=_("Lieu"))
+    periodic = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES, required=False, label=_("Fréquence"))
     planned_date_start = forms.DateField(
-        required=False,
-        widget=forms.DateInput(attrs={"type": "date"}),
-        label=_("Date de planification"))
-    planned_date_end = forms.DateField(
-        required=False,
-        widget=forms.DateInput(attrs={"type": "date"}),
-        label=_("_"))
-    priority = forms.ChoiceField(
-        choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES,
-        required=False,
-        label=_("Priorité"))
+        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de planification")
+    )
+    planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
+    priority = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES, required=False, label=_("Priorité"))
     done_date_start = forms.DateField(
-        required=False,
-        widget=forms.DateInput(attrs={"type": "date"}),
-        label=_("Date de fin"))
-    done_date_end = forms.DateField(
-        required=False,
-        widget=forms.DateInput(attrs={"type": "date"}),
-        label=_("_"))
+        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de fin")
+    )
+    done_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
     note = forms.CharField(required=False)
 
     def __init__(self, *args, **kwargs):
@@ -178,7 +152,7 @@ class TodoFilterForm(forms.Form):
         self.helper.attrs = {
             "id": "todo-filter-form",
             "novalidate": "novalidate",
-            "data-autosubmit": "true", 
+            "data-autosubmit": "true",
         }
 
         self.helper.layout = Layout(
@@ -194,15 +168,12 @@ class TodoFilterForm(forms.Form):
                 Column("periodic", css_class="sm:col-span-1"),
                 css_class="grid grid-cols-11 gap-4",
             ),
-            Row(                
+            Row(
                 Column("planned_date_start", css_class="sm:col-span-1"),
-                Column("planned_date_end", css_class="sm:col-span-1"),   
-                Column("priority", css_class="sm:col-span-1"), 
+                Column("planned_date_end", css_class="sm:col-span-1"),
+                Column("priority", css_class="sm:col-span-1"),
                 Column("done_date_start", css_class="sm:col-span-1"),
                 Column("done_date_end", css_class="sm:col-span-1"),
                 css_class="grid grid-cols-5 gap-4 py-2",
             ),
-
         )
-
-    
