@@ -84,12 +84,5 @@ class NomadePositionAdmin(admin.ModelAdmin):
 
     export_to_csv.short_description = "Exporter sélection au CSV"
 
-    # Personnalisation des vues
-    def get_queryset(self, request):
-        queryset = super().get_queryset(request)
-        if not request.user.is_superuser:
-            return queryset.filter(city__isnull=False)
-        return queryset
-
     def has_delete_permission(self, request, obj=None):
         return request.user.is_superuser

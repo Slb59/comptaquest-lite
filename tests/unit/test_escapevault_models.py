@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.test import TestCase
 
 from tests.factories.nomadeposition import NomadePositionFactory
-
+from escapevault.models import validate_city_format, validate_day_month_format
 
 class TestNomadePosition(TestCase):
 
@@ -65,3 +65,71 @@ class TestNomadePosition(TestCase):
         """Test la représentation en chaîne du modèle"""
         expected = f"{self.position.name} ({self.position.city})"
         self.assertEqual(str(self.position), expected)
+
+class TestValidateCityFormat(TestCase):
+    def test_valid_city_names(self):
+        valid_names = [
+            "Paris",
+            "New York",
+            "São Paulo",
+            "San-Francisco",
+            "Lyon",
+            "Aix en Provence",
+            "Saint-Étienne"
+        ]
+        for name in valid_names:
+            try:
+                validate_city_format(name)
+            except ValidationError:
+                self.fail(f"validate_city_format() raised ValidationError unexpectedly for: '{name}'")
+
+    def test_city_name_too_long(self):
+        long_name = "A" * 41
+        with self.assertRaises(ValidationError) as context:
+            validate_city_format(long_name)
+        self.assertIn("too long", str(context.exception))
+
+    def test_city_name_with_invalid_characters(self):
+        invalid_names = [
+            "Paris!",
+            "New_York",
+            "San*Francisco",
+            "123City",
+            "City@Home",
+            "Nantes.",
+        ]
+        for name in invalid_names:
+            with self.assertRaises(ValidationError) as context:
+                validate_city_format(name)
+            self.assertIn("invalid characters", str(context.exception))
+
+class ValidateDayMonthFormatTests(TestCase):
+    def test_valid_dates(self):
+        valid_values = [
+            "01/01",
+            "15/06",
+            "31/12",
+            "09/09",
+            "30/04"
+        ]
+        for value in valid_values:
+            try:
+                validate_day_month_format(value)
+            except ValidationError:
+                self.fail(f"ValidationError raised unexpectedly for valid value: '{value}'")
+
+    def test_invalid_dates_format(self):
+        invalid_values = [
+            "1/01",     # jour à un chiffre
+            "01-01",    # séparateur invalide
+            "32/01",    # jour trop grand
+            "00/05",    # jour invalide
+            "12/00",    # mois invalide
+            "12/13",    # mois trop grand
+            "aa/bb",    # lettres
+            "31/4",     # mois à un chiffre
+        ]
+        for value in invalid_values:
+            with self.assertRaises(ValidationError) as context:
+                validate_day_month_format(value)
+            self.assertIn("DD/MM", str(context.exception))
