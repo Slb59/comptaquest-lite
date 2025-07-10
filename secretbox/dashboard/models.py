@@ -1,4 +1,4 @@
-# dashboard.models.py
+# secretbox.dashboard.models.py
 from datetime import date, timedelta
 
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -7,6 +7,13 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import CQUser as User
 
+from .choices import PRIORITY_CHOICES, PERIODIC_CHOICES, CATEGORY_CHOICES, PLACE_CHOICES
+
+# class ColorParameter(models.Model):
+#     """
+#     Model representing a color parameter for a task.
+#     """
+#     pr
 
 class Todo(models.Model):
     """
@@ -28,20 +35,7 @@ class Todo(models.Model):
             - 3-medium: Moyenne
             - 2-high: Élevée
             - 1-highest: Très élevée
-        category (CharField): Catégorie de la tâche :
-            - organisation: Organisation
-            - compta: Compta
-            - achat: Achats
-            - sport: Sport
-            - sante: Santé
-            - contact: Contact
-            - informatique: Informatique
-            - menage: Menage
-            - jardin: Jardin
-            - doudou: Doudou
-            - bricoles: Bricoles
-            - couture: Couture
-            - loisirs: Loisirs
+        category (CharField): Catégorie de la tâche
         who (CharField): Personne responsable avec les choix suivants :
             - SLB: Sylvie
             - JCB: Jean-Christophe
@@ -55,13 +49,7 @@ class Todo(models.Model):
             - chm: CHM
             - genese: Genèse
             - partout: Partout
-        periodic (CharField): Fréquence de répétition :
-            - none: Une seule fois
-            - everyday: Tous les jours
-            - every2days: Tous les 2 jours
-            - every3days: Tous les 3 jours
-            - everyweek: Toutes les semaines
-            - etc.
+        periodic (CharField): Fréquence de répétition 
         duration (DurationField): Durée estimée pour accomplir la tâche
         description (TextField): Description détaillée de la tâche
         appointment (DateTimeField): Date et heure prévue pour la tâche
@@ -80,29 +68,8 @@ class Todo(models.Model):
         ("report", "Reporté"),
         ("cancel", "Annulé"),
     ]
-    PRIORITY_CHOICES = [
-        ("6-verylow", "Très faible"),
-        ("5-low", "Faible"),
-        ("4-normal", "Normale"),
-        ("3-medium", "Moyenne"),
-        ("2-high", "Élevée"),
-        ("1-highest", "Trés élevée"),
-    ]
-    CATEGORY_CHOICES = [
-        ("01-organisation", "Organisation"),
-        ("02-compta", "Compta"),
-        ("03-achat", "Achats"),
-        ("04-sport", "Sport"),
-        ("05-sante", "Santé"),
-        ("06-contact", "Contact"),
-        ("07-informatique", "Informatique"),
-        ("08-menage", "Menage"),
-        ("09-jardin", "Jardin"),
-        ("10-doudou", "Doudou"),
-        ("11-bricoles", "Bricoles"),
-        ("12-couture", "Couture"),
-        ("13-loisirs", "Loisirs"),
-    ]
+    
+
     WHO_CHOICES = [
         ("SLB", "Sylvie"),
         ("JCB", "Jean-Christophe"),
@@ -112,30 +79,8 @@ class Todo(models.Model):
         ("MAM", "Maman"),
         ("PAP", "Papa"),
     ]
-    PLACE_CHOICES = [
-        ("cantin", "Cantin"),
-        ("chm", "CHM"),
-        ("genese", "Genèse"),
-        ("partout", "Partout"),
-    ]
-    PERIODIC_CHOICES = [
-        ("01-none", "une seule fois"),
-        ("02-everyday", "Tous les jours"),
-        ("03-every2days", "Tous les 2 jours"),
-        ("04-every3days", "Tous les 3 jours"),
-        ("05-every4days", "Tous les 4 jours"),
-        ("06-every5days", "Tous les 5 jours"),
-        ("07-everyweek", "Toutes les semaines"),
-        ("08-every10days", "Tous les 10 jours"),
-        ("09-every2weeks", "Toutes les 2 semaines"),
-        ("10-everymonth", "Tous les mois"),
-        ("11-every6weeks", "Toutes les 6 semaines"),
-        ("12-every2months", "Tous les 2 mois"),
-        ("13-every3months", "Tous les 3 mois"),
-        ("14-every4months", "Tous les 4 mois"),
-        ("15-every6months", "Tous les 6 mois"),
-        ("16-everyyear", "Tous les ans"),
-    ]
+
+    
     APPOINTEMENT_CHOICES = [
         ("rdv", "Rendez-vous"),
         ("birthday", "Anniversaire"),

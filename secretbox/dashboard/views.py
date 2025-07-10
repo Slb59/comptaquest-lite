@@ -118,6 +118,16 @@ class DashboardView(LoginRequiredMixin, TemplateView):
                 todos = todos.filter(place=data["place"])
             if data["periodic"]:
                 todos = todos.filter(periodic=data["periodic"])
+            if data["done_date_start"]:
+                todos = todos.filter(done_date__gte=data["done_date_start"])
+                todos = todos.exclude(done_date__isnull=True)
+
+            if data["done_date_end"]:
+                todos = todos.filter(done_date__lte=data["done_date_end"])
+                todos = todos.exclude(done_date__isnull=True)
+            
+            if data["done_date_isnull"]:
+                todos = todos.filter(done_date__isnull=data["done_date_isnull"])
 
         context["title"] = _("Bienvenue dans SecretBox")
         context["logo_url"] = "/static/images/secretbox/logo_sb2.png"

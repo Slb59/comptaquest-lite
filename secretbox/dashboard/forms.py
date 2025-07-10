@@ -4,6 +4,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import Todo
+from .choices import PRIORITY_CHOICES, PERIODIC_CHOICES, CATEGORY_CHOICES, PLACE_CHOICES
 
 
 class ContactForm(forms.Form):
@@ -126,20 +127,21 @@ class TodoFilterForm(forms.Form):
     appointment = forms.ChoiceField(
         choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous")
     )
-    category = forms.ChoiceField(choices=[("", "Toutes")] + Todo.CATEGORY_CHOICES, required=False, label=_("Catégorie"))
+    category = forms.ChoiceField(choices=[("", "Toutes")] + CATEGORY_CHOICES, required=False, label=_("Catégorie"))
     who = forms.ChoiceField(choices=[("", "Toutes")] + Todo.WHO_CHOICES, required=False, label=_("Qui"))
-    place = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PLACE_CHOICES, required=False, label=_("Lieu"))
-    periodic = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PERIODIC_CHOICES, required=False, label=_("Fréquence"))
+    place = forms.ChoiceField(choices=[("", "Toutes")] + PLACE_CHOICES, required=False, label=_("Lieu"))
+    periodic = forms.ChoiceField(choices=[("", "Toutes")] + PERIODIC_CHOICES, required=False, label=_("Fréquence"))
     planned_date_start = forms.DateField(
         required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de planification")
     )
     planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
-    priority = forms.ChoiceField(choices=[("", "Toutes")] + Todo.PRIORITY_CHOICES, required=False, label=_("Priorité"))
+    priority = forms.ChoiceField(choices=[("", "Toutes")] + PRIORITY_CHOICES, required=False, label=_("Priorité"))
     done_date_start = forms.DateField(
-        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de fin")
+        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de validation")
     )
     done_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
     note = forms.CharField(required=False)
+    done_date_isnull = forms.BooleanField(required=False, label="Sans date de validation")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -174,6 +176,7 @@ class TodoFilterForm(forms.Form):
                 Column("priority", css_class="sm:col-span-1"),
                 Column("done_date_start", css_class="sm:col-span-1"),
                 Column("done_date_end", css_class="sm:col-span-1"),
+                Column("done_date_isnull", css_class="sm:col-span-1"),
                 css_class="grid grid-cols-5 gap-4 py-2",
             ),
         )
