@@ -1,18 +1,14 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-
-from tests.factories.nomadeposition import NomadePositionFactory
 from tests.factories.member import MemberFactory
-
+from tests.factories.nomadeposition import NomadePositionFactory
 
 
 class NomadePositionAdminTests(TestCase):
     def setUp(self):
         self.admin_user = MemberFactory(
-            trigram="adm",
-            email="admin@example.com", password="password",
-            is_superuser=True, is_staff=True
+            trigram="adm", email="admin@example.com", password="password", is_superuser=True, is_staff=True
         )
         self.admin_user.save()
         self.client = Client()
@@ -21,7 +17,6 @@ class NomadePositionAdminTests(TestCase):
         self.pos1.save()
         print(self.pos1.city)
 
-    
     def test_admin_export_csv(self):
         """Test CSV export from the admin interface"""
         url = reverse("admin:escapevault_nomadeposition_changelist")
@@ -37,4 +32,3 @@ class NomadePositionAdminTests(TestCase):
         content = response.content.decode("utf-8")
         self.assertIn("Test 1", content)
         self.assertIn("Paris", content)
-

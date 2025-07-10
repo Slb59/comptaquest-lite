@@ -1,5 +1,4 @@
 import folium
-from datetime import datetime
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
@@ -154,13 +153,6 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
             existing_reviews.append({"text": new_review_text, "date": now().isoformat()})
 
             position.reviews = existing_reviews
-
-        for r in position.reviews:
-            if isinstance(r.get("date"), str):
-                try:
-                    r["date"] = datetime.fromisoformat(r["date"])
-                except Exception:
-                    pass
 
         return super().form_valid(form)
 

@@ -7,13 +7,15 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import CQUser as User
 
-from .choices import PRIORITY_CHOICES, PERIODIC_CHOICES, CATEGORY_CHOICES, PLACE_CHOICES
+from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
+                      PRIORITY_CHOICES)
 
 # class ColorParameter(models.Model):
 #     """
 #     Model representing a color parameter for a task.
 #     """
 #     pr
+
 
 class Todo(models.Model):
     """
@@ -49,7 +51,7 @@ class Todo(models.Model):
             - chm: CHM
             - genese: Genèse
             - partout: Partout
-        periodic (CharField): Fréquence de répétition 
+        periodic (CharField): Fréquence de répétition
         duration (DurationField): Durée estimée pour accomplir la tâche
         description (TextField): Description détaillée de la tâche
         appointment (DateTimeField): Date et heure prévue pour la tâche
@@ -68,7 +70,6 @@ class Todo(models.Model):
         ("report", "Reporté"),
         ("cancel", "Annulé"),
     ]
-    
 
     WHO_CHOICES = [
         ("SLB", "Sylvie"),
@@ -80,7 +81,6 @@ class Todo(models.Model):
         ("PAP", "Papa"),
     ]
 
-    
     APPOINTEMENT_CHOICES = [
         ("rdv", "Rendez-vous"),
         ("birthday", "Anniversaire"),

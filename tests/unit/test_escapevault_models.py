@@ -1,8 +1,9 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
-from tests.factories.nomadeposition import NomadePositionFactory
 from escapevault.models import validate_city_format, validate_day_month_format
+from tests.factories.nomadeposition import NomadePositionFactory
+
 
 class TestNomadePosition(TestCase):
 
@@ -66,17 +67,10 @@ class TestNomadePosition(TestCase):
         expected = f"{self.position.name} ({self.position.city})"
         self.assertEqual(str(self.position), expected)
 
+
 class TestValidateCityFormat(TestCase):
     def test_valid_city_names(self):
-        valid_names = [
-            "Paris",
-            "New York",
-            "São Paulo",
-            "San-Francisco",
-            "Lyon",
-            "Aix en Provence",
-            "Saint-Étienne"
-        ]
+        valid_names = ["Paris", "New York", "São Paulo", "San-Francisco", "Lyon", "Aix en Provence", "Saint-Étienne"]
         for name in valid_names:
             try:
                 validate_city_format(name)
@@ -103,15 +97,10 @@ class TestValidateCityFormat(TestCase):
                 validate_city_format(name)
             self.assertIn("invalid characters", str(context.exception))
 
+
 class ValidateDayMonthFormatTests(TestCase):
     def test_valid_dates(self):
-        valid_values = [
-            "01/01",
-            "15/06",
-            "31/12",
-            "09/09",
-            "30/04"
-        ]
+        valid_values = ["01/01", "15/06", "31/12", "09/09", "30/04"]
         for value in valid_values:
             try:
                 validate_day_month_format(value)
@@ -120,14 +109,14 @@ class ValidateDayMonthFormatTests(TestCase):
 
     def test_invalid_dates_format(self):
         invalid_values = [
-            "1/01",     # jour à un chiffre
-            "01-01",    # séparateur invalide
-            "32/01",    # jour trop grand
-            "00/05",    # jour invalide
-            "12/00",    # mois invalide
-            "12/13",    # mois trop grand
-            "aa/bb",    # lettres
-            "31/4",     # mois à un chiffre
+            "1/01",  # jour à un chiffre
+            "01-01",  # séparateur invalide
+            "32/01",  # jour trop grand
+            "00/05",  # jour invalide
+            "12/00",  # mois invalide
+            "12/13",  # mois trop grand
+            "aa/bb",  # lettres
+            "31/4",  # mois à un chiffre
         ]
         for value in invalid_values:
             with self.assertRaises(ValidationError) as context:

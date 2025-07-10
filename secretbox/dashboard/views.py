@@ -125,7 +125,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             if data["done_date_end"]:
                 todos = todos.filter(done_date__lte=data["done_date_end"])
                 todos = todos.exclude(done_date__isnull=True)
-            
+
             if data["done_date_isnull"]:
                 todos = todos.filter(done_date__isnull=data["done_date_isnull"])
 

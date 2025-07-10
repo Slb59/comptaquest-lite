@@ -3,8 +3,9 @@ from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
+                      PRIORITY_CHOICES)
 from .models import Todo
-from .choices import PRIORITY_CHOICES, PERIODIC_CHOICES, CATEGORY_CHOICES, PLACE_CHOICES
 
 
 class ContactForm(forms.Form):
