@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
 
-
 from escapevault.models import NomadePosition
 from tests.factories.member import MemberFactory
 from tests.factories.nomadeposition import NomadePositionFactory

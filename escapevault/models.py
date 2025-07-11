@@ -51,7 +51,8 @@ class NomadePosition(models.Model):
     class NomadeCountries(Countries):
         only = ["CA", "FR", "DE", "IT", "JP", "RU", "GB"]
 
-    country = CountryField(countries=NomadeCountries, default=Country(code="FR"), blank_label="(select country)")
+
+    country = CountryField(countries=NomadeCountries, default="FR", blank_label="(select country)")
 
     # Rating System
     stars = models.IntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])

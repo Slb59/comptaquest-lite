@@ -1,6 +1,6 @@
 # secretbox.dashboard.models.py
 from datetime import date, timedelta
-
+from django.core.validators import RegexValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -10,11 +10,36 @@ from secretbox.users.models import CQUser as User
 from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
                       PRIORITY_CHOICES)
 
-# class ColorParameter(models.Model):
-#     """
-#     Model representing a color parameter for a task.
-#     """
-#     pr
+HEX_COLOR_VALIDATOR = RegexValidator(
+    regex=r"^#[0-9A-Fa-f]{6}$", message="Entrez une couleur au format hexadécimal valide (ex: #1A2B3C)."
+)
+
+
+class ColorParameter(models.Model):
+    """
+    Model representing a color parameter for a task.
+    """
+
+    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
+    periodicity = models.CharField(max_length=20, choices=PERIODIC_CHOICES)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    place = models.CharField(max_length=20, choices=PLACE_CHOICES)
+    color = models.CharField(max_length=7, validators=[HEX_COLOR_VALIDATOR])
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["priority", "periodicity", "category", "place"], name="unique_color_combination"
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.priority} / {self.periodicity} / {self.category} / {self.place} → {self.color}"
+
+    def get_color_parameter_coverage():
+        nb_total = len(PRIORITY_CHOICES) * len(PERIODIC_CHOICES) * len(CATEGORY_CHOICES) * len(PLACE_CHOICES)
+        nb_elements = ColorParameter.objects.count()
+        return f"{nb_elements} / {nb_total} combinaisons définies ({round(100 * nb_elements / nb_total, 2)}%)"
 
 
 class Todo(models.Model):
