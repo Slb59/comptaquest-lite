@@ -20,7 +20,7 @@ class TodoFactory(factory.django.DjangoModelFactory):
     state = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.STATE_CHOICES])
     duration = factory.fuzzy.FuzzyInteger(low=10, high=800)
     description = factory.Faker("sentence")
-    appointment = factory.LazyFunction(get_random_date_in_current_month)
+    appointment = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.APPOINTEMENT_CHOICES])
     category = factory.fuzzy.FuzzyChoice([choice[0] for choice in CATEGORY_CHOICES])
     who = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.WHO_CHOICES])
     place = factory.fuzzy.FuzzyChoice([choice[0] for choice in PLACE_CHOICES])

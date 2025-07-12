@@ -21,15 +21,16 @@ class TestTodoModel(TestCase):
     def test_validate_element_success(self):
         """Test validate_element when new date is in the future"""
         new_date = self.todo.planned_date + timedelta(days=1)
-        result = self.todo.validate_element(new_date)
+        result, message = self.todo.validate_element(new_date)
         self.assertTrue(result)
         self.assertEqual(self.todo.planned_date, new_date)
 
     def test_validate_element_failure(self):
         """Test validate_element when new date is not in the future"""
         new_date = self.todo.planned_date - timedelta(days=1)
-        result = self.todo.validate_element(new_date)
+        result, message = self.todo.validate_element(new_date)
         self.assertFalse(result)
+        self.assertEqual(message, "La date doit être postérieure à la date planifiée actuelle.")
         self.assertNotEqual(self.todo.planned_date, new_date)
 
     def test_next_date_daily(self):
