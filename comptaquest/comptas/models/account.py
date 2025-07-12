@@ -4,17 +4,21 @@ from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
-
 class AbstractAccount(models.Model):
 
-    class AccountType(models.TextChoices):
-        CURRENT = "Current", "current"
-        INVESTMENT = "Investment", "investment"
+    class AccountTypeChoices(models.TextChoices):
+        CURRENT = "Current", _("Compte courant")
+        INVESTMENT = "Investment", _("Compte d'investissement")
 
-    class Bank(models.TextChoices):
+    class BankChoices(models.TextChoices):
         CE = "CE", "CE"
         CA = "CA", "CA"
         GMF = "GMF", "GMF"
+    
+    class StateChoices(models.TextChoices):
+        OPEN = "open", _("Ouvert")
+        CLOSE = "close", _("Fermé")
+        
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -26,8 +30,8 @@ class AbstractAccount(models.Model):
 
     account_type = models.CharField(
         max_length=15,
-        choices=AccountType.choices,
-        default=AccountType.CURRENT,
+        choices=AccountTypeChoices.choices,
+        default=AccountTypeChoices.CURRENT,
     )
 
     pointed_date = models.DateTimeField(blank=True, null=True, help_text=_("The last pointed date"))
@@ -65,13 +69,15 @@ class AbstractAccount(models.Model):
         related_name="%(class)s_created_by",
         db_index=True,
     )
+
+    state = models.CharField(max_length=15, choices=StateChoices.choices, default=StateChoices.OPEN)
     closed_date = models.DateTimeField(
         blank=True,
         null=True,
         help_text=_("After the closed date it is not possibile to add transaction or modify this account"),
     )
 
-    bank_name = models.CharField(max_length=15, choices=Bank.choices, default=Bank.CA)
+    bank_name = models.CharField(max_length=15, choices=BankChoices.choices, default=BankChoices.CA)
     description = models.TextField(blank=True, null=True)
 
     class Meta(TypedModelMeta):

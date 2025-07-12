@@ -9,7 +9,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
 
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
                     SelectAccountTypeForm)
-from .models.account import CurrentAccount
+from .models.account import CurrentAccount, AbstractAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 
@@ -41,9 +41,9 @@ class AccountDetailView(LoginRequiredMixin, DetailView):
 
 
 class AccountTypeSelectView(FormView):
-    template_name = "accounts/add_account_step1.html"
+    template_name = "generic/add_template.html"
     form_class = SelectAccountTypeForm
-    success_url = reverse_lazy("add_account")
+    success_url = reverse_lazy("comptas:account-create")
 
     def form_valid(self, form):
         # Stocke le type de compte dans la session
@@ -57,6 +57,7 @@ class AccountTypeSelectView(FormView):
         return context
 
 
+
 class AccountCreateView(LoginRequiredMixin, CreateView):
     template_name = "generic/add_template.html"
     success_url = reverse_lazy("comptas:dashboard")
@@ -68,7 +69,7 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
         # Make sure the account type is set
         self.account_type = request.session.get("selected_account_type")
         if not self.account_type:
-            return redirect("account-select")  # return to the first step
+            return redirect("comptas:account-select")  # return to the first step
         return super().dispatch(request, *args, **kwargs)
 
     def get_form_class(self):
@@ -84,7 +85,6 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
-        instance.user = self.request.user
         instance.account_type = self.account_type
         instance.save()
         # clear session after use
@@ -93,7 +93,10 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = _(f"Nouveau compte {self.account_type}")
+
+        context["title"] = _(f"Nouveau {
+            AbstractAccount.AccountTypeChoices(self.account_type).label.lower()
+        }")
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
         return context
