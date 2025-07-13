@@ -81,7 +81,7 @@
     }
     
     .position-item {
-        @apply mb-1 p-1 border border-white rounded-1 border-b-white;
+        @apply mb-1 p-1 border border-white rounded-lg border-b-white;
     }
 
     .bg-brown-100 {
