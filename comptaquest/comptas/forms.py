@@ -1,7 +1,7 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit
+from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
 from django import forms
-
+from django.utils.translation import gettext_lazy as _
 from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
                                         InvestmentAccount, Outgoings)
 
@@ -32,17 +32,57 @@ class CurrentAccountForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = "post"
-        self.helper.add_input(
-            Div(
-                Submit(
-                    "submit",
-                    "Valider",
-                    css_class="button-valider",
+        self.helper.form_class = "border p-8"
+        self.helper.label_class = "font-semibold"
+        # self.helper.field_class = "w-auto"
+
+        # Resize fields
+        self.fields["user"].label = _("Propriétaire de compte")
+        # self.fields["user"].widget.attrs.update({"class": "w-full sm:w-[90px]", "style": "max-width: 100px;"})
+        print("Champs disponibles :", list(self.fields.keys()))
+        self.fields["name"].label = _("Libellé de compte")
+        self.fields["bank_name"].label = _("Banque")
+        self.fields["pointed_date"].label = _("Dernier pointage")
+
+        self.helper.layout = Layout(
+            
+            Div(                
+                Div(
+                    Div("name", css_class="sm:col-span-2"),
+                    Div("user", css_class="sm:col-span-1"),
+                    Div("bank_name", css_class="sm:col-span-1"),
+                    css_class="grid sm:grid-cols-4 gap-4 mb-4 mt-4",
                 ),
-                HTML(
-                    '<a href="{% url \'comptas:dashboard\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
+                Div(                
+                    Div("pointed_date", css_class="sm:col-span-1"),
+                    Div("current_balance", css_class="sm:col-span-1"),
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4 border border-red-500",
                 ),
-                css_class="flex space-x-4",
+                Div(                
+                    Div("current_pointed_date", css_class="sm:col-span-1"),
+                    Div("current_pointed_balance", css_class="sm:col-span-1"),
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4 border border-red-500",
+                ),
+                "average_interest",
+                "ledger_analysis",
+                Div(
+                    Div("state", css_class="sm:col-span-1"),
+                    Div("created_date", css_class="sm:col-span-1"),
+                    Div("closed_date", css_class="sm:col-span-1"),
+                    css_class="grid grid-cols-3 gap-4",
+                ),
+                "description",
+                Div(
+                    Submit(
+                        "submit",
+                        "Valider",
+                        css_class="button-valider",
+                    ),
+                    HTML(
+                        '<a href="{% url \'comptas:dashboard\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
+                    ),
+                    css_class="flex space-x-4",
+                ),
             )
         )
 

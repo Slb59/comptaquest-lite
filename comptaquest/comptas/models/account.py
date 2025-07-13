@@ -26,7 +26,7 @@ class AbstractAccount(models.Model):
         related_name="%(class)s_user_accounts",
         db_index=True,
     )
-    name = models.CharField(max_length=50, help_text=_("the account name"))
+    name = models.CharField(max_length=50)
 
     account_type = models.CharField(
         max_length=15,
@@ -34,23 +34,25 @@ class AbstractAccount(models.Model):
         default=AccountTypeChoices.CURRENT,
     )
 
-    pointed_date = models.DateTimeField(blank=True, null=True, help_text=_("The last pointed date"))
-    current_pointed_date = models.DateTimeField(
+    # The last pointed date
+    pointed_date = models.DateField(blank=True, null=True)
+
+    # The account is to be pointed at this date, but not finished
+    current_pointed_date = models.DateField(
         blank=True,
         null=True,
-        help_text=_("The account is to be pointed at this date, but not finished"),
     )
+    # The amount of the balance that is being to be pointed
     current_pointed_balance = models.DecimalField(
         default=0,
         max_digits=8,
         decimal_places=2,
-        help_text=_("The amount of the balance that is being to be pointed"),
     )
+    # The last amount of balance pointed
     current_balance = models.DecimalField(
         default=0,
         max_digits=8,
         decimal_places=2,
-        help_text=_("The last amount of balance pointed"),
     )
 
     average_interest = models.DecimalField(
