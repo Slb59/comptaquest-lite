@@ -15,8 +15,10 @@ tests-secretbox:
 	uv run pytest tests/unit/secretbox tests/integration/secretbox --html=tests/htmlcov/secretbox.html
 
 tests-escapevault:
-	uv run secretbox/tools/create_test_user.py
+	uv run manage.py create_test_user
 	uv run pytest tests/unit/test_escapevault_models.py tests/integration/escapevault --html=tests/htmlcov/escapevault.html
+	npx playwright test
+	npx playwright show-report
 
 tests-sami:
 	uv run pytest tests/unit/test_sami_models.py --html=tests/htmlcov/sami.html

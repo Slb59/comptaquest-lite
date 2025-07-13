@@ -2,10 +2,17 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-    use: {
-        baseURL: 'http://127.0.0.1:8000',
-        storageState: 'auth/session.json',
-        headless: true,
-    },
-    testDir: './tests',
+    projects: [
+        {
+            name: 'setup',
+            testMatch: 'tests/endtoend/login.setup.ts',
+        },
+        {
+            name: 'e2e',
+            testMatch: 'tests/endtoend/**/*.spec.ts',
+            use: {
+                storageState: 'auth/session.json',
+            },
+        },
+    ],
 });

@@ -22,6 +22,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from secretbox.dashboard.views import ContactFormView, DashboardView
+from secretbox.users.views import LoginView
 
 urlpatterns = [
     # admin urls
@@ -30,6 +31,7 @@ urlpatterns = [
     # path("", include("django_components.urls")),
     # home url
     path("", DashboardView.as_view(), name="home"),
+    path("login/", LoginView.as_view(), name="login"),
     path("dashboard/", include("secretbox.dashboard.urls")),
     path("contact/", ContactFormView.as_view(), name="contact"),
     # comptaquest urls
