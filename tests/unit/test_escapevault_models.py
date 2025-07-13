@@ -70,7 +70,11 @@ class TestNomadePosition(TestCase):
 
 class TestValidateCityFormat(TestCase):
     def test_valid_city_names(self):
-        valid_names = ["Paris", "New York", "São Paulo", "San-Francisco", "Lyon", "Aix en Provence", "Saint-Étienne"]
+        valid_names = [
+            "Paris", "New York", "São Paulo",
+            "San-Francisco", "Lyon", "Aix en Provence",
+            "Saint-Étienne"
+        ]
         for name in valid_names:
             try:
                 validate_city_format(name)
@@ -105,7 +109,9 @@ class ValidateDayMonthFormatTests(TestCase):
             try:
                 validate_day_month_format(value)
             except ValidationError:
-                self.fail(f"ValidationError raised unexpectedly for valid value: '{value}'")
+                self.fail(
+                    f"ValidationError raised unexpectedly for valid value: '{value}'"
+                )
 
     def test_invalid_dates_format(self):
         invalid_values = [

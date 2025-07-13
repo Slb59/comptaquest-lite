@@ -9,7 +9,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
 
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
                     SelectAccountTypeForm)
-from .models.account import CurrentAccount, AbstractAccount
+from .models.account import AbstractAccount, CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 
@@ -57,7 +57,6 @@ class AccountTypeSelectView(FormView):
         return context
 
 
-
 class AccountCreateView(LoginRequiredMixin, CreateView):
     template_name = "generic/add_template.html"
     success_url = reverse_lazy("comptas:dashboard")
@@ -94,9 +93,11 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context["title"] = _(f"Nouveau {
+        context["title"] = _(
+            f"Nouveau {
             AbstractAccount.AccountTypeChoices(self.account_type).label.lower()
-        }")
+        }"
+        )
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
         return context

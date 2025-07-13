@@ -30,7 +30,10 @@ class TestTodoModel(TestCase):
         new_date = self.todo.planned_date - timedelta(days=1)
         result, message = self.todo.validate_element(new_date)
         self.assertFalse(result)
-        self.assertEqual(message, "La date doit être postérieure à la date planifiée actuelle.")
+        self.assertEqual(
+            message,
+            "La date doit être postérieure à la date planifiée actuelle."
+        )
         self.assertNotEqual(self.todo.planned_date, new_date)
 
     def test_next_date_daily(self):
@@ -200,7 +203,11 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(report_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            report_date=date(2025, 6, 20),
+            planned_date=date(2025, 6, 20),
+            state="todo"
+        )
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -220,7 +227,11 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(report_date=None, planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            report_date=None,
+            planned_date=date(2025, 6, 20),
+            state="todo"
+        )
 
         # Call the new_day method
         instance.new_day(mock_date)

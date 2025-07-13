@@ -14,7 +14,13 @@ class SelectAccountTypeForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = "post"
-        self.helper.add_input(Submit("submit", "Suivant", css_class="button-valider",))
+        self.helper.add_input(
+            Submit(
+                "submit",
+                "Suivant",
+                css_class="button-valider",
+            )
+        )
 
 
 class CurrentAccountForm(forms.ModelForm):

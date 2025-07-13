@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
+
 class AbstractAccount(models.Model):
 
     class AccountTypeChoices(models.TextChoices):
@@ -14,11 +15,10 @@ class AbstractAccount(models.Model):
         CE = "CE", "CE"
         CA = "CA", "CA"
         GMF = "GMF", "GMF"
-    
+
     class StateChoices(models.TextChoices):
         OPEN = "open", _("Ouvert")
         CLOSE = "close", _("Fermé")
-        
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,

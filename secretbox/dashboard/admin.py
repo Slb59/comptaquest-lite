@@ -1,6 +1,8 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
-from .models import Todo
+from .models import ColorParameter, Todo
 
 
 @admin.register(Todo)
@@ -33,3 +35,29 @@ class TodoAdmin(admin.ModelAdmin):
             },
         ),
     )
+
+
+@admin.register(ColorParameter)
+class ColorParameterAdmin(admin.ModelAdmin):
+    list_display = (
+        "priority",
+        "periodicity",
+        "category",
+        "place",
+        "color_display",
+    )
+
+    list_filter = (
+        "priority",
+        "periodicity",
+        "category",
+        "place",
+    )
+    search_fields = ("color",)
+
+    def color_display(self, obj):
+        return format_html(
+            '<div style="width: 60px; height: 20px; background-color: {}; border: 1px solid #ccc;"></div>', obj.color
+        )
+
+    color_display.short_description = _("Couleur")

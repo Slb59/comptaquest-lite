@@ -46,7 +46,10 @@ class SceneModelTest(TestCase):
         self.chapter = Chapter.objects.create(name="Test")
         self.act = Act.objects.create(chapter=self.chapter, number=1)
         self.scene = Scene.objects.create(
-            act=self.act, number=1, short="Scène 1", instructions="=> Instruction 1\n=> Instruction 2"
+            act=self.act, 
+            number=1, 
+            short="Scène 1", 
+            instructions="=> Instruction 1\n=> Instruction 2"
         )
 
     def test_scene_creation(self):

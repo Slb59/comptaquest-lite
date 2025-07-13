@@ -4,12 +4,14 @@ import factory
 import factory.fuzzy
 import pytest
 
+from secretbox.dashboard.choices import (CATEGORY_CHOICES, PERIODIC_CHOICES,
+                                         PLACE_CHOICES, PRIORITY_CHOICES)
 from secretbox.dashboard.models import Todo
 from secretbox.tools.models import (get_now_date,
                                     get_random_date_in_current_month)
 
 from .member import MemberFactory
-from secretbox.dashboard.choices import PRIORITY_CHOICES,CATEGORY_CHOICES,PERIODIC_CHOICES,PLACE_CHOICES
+
 
 @pytest.mark.django_db
 class TodoFactory(factory.django.DjangoModelFactory):

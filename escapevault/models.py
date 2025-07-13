@@ -51,7 +51,6 @@ class NomadePosition(models.Model):
     class NomadeCountries(Countries):
         only = ["CA", "FR", "DE", "IT", "JP", "RU", "GB"]
 
-
     country = CountryField(countries=NomadeCountries, default="FR", blank_label="(select country)")
 
     # Rating System

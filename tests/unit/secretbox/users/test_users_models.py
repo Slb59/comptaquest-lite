@@ -45,7 +45,11 @@ class TestModelMember(TestCase):
         except AttributeError:
             pass
         with self.assertRaises(ValueError):
-            User.objects.create_superuser(email="super@user.com", password="foo", is_superuser=False)
+            User.objects.create_superuser(
+                email="super@user.com",
+                password="foo",
+                is_superuser=False
+            )
 
     def test_user_object_name_is_trigram(self):
         expected_object_name = f"{self.member_1.trigram}"
@@ -61,5 +65,7 @@ class TestModelMember(TestCase):
 
     def test_user_created_date_is_today(self):
         expected_object_name = f"{dateformat.format(timezone.now(), 'Y-m-d')}"
-        format_user_created_date = f"{dateformat.format(self.member_1.profile.created_at, 'Y-m-d')}"
+        format_user_created_date = f"{
+            dateformat.format(self.member_1.profile.created_at, 'Y-m-d')
+        }"
         self.assertEqual(expected_object_name, format_user_created_date)

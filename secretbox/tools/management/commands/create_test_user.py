@@ -1,13 +1,15 @@
 from django.core.management.base import BaseCommand
+
 from secretbox.users.models import Member
 from tests.factories.member import MemberFactory
 
+
 class Command(BaseCommand):
-    help = 'Create user test for Playwright'
+    help = "Create user test for Playwright"
 
     def handle(self, *args, **options):
-        email = 'test.user@test.com'
-        password = 'motdepasse'
+        email = "test.user@test.com"
+        password = "motdepasse"
         if not Member.objects.filter(email=email).exists():
             user = MemberFactory(email=email, password=password)
             user.save()
