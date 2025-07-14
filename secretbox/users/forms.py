@@ -12,16 +12,23 @@ from .models import CQUser, MemberProfile
 
 
 class LoginForm(auth_forms.AuthenticationForm):
-    email = forms.EmailField(
-        label=_("Identifiant"),
-        widget=forms.EmailInput(
-            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
-        ),
-    )
+    # email = forms.EmailField(
+    #     label=_("Identifiant"),
+    #     widget=forms.EmailInput(
+    #         attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+    #     ),
+    # )
     password = forms.CharField(
         label=_("Mot de passe"),
         strip=False,
         widget=forms.PasswordInput(attrs={"placeholder": _("Votre mot de passe"), "class": "form-input"}),
+    )
+
+    username = forms.EmailField(
+        label=_("Identifiant"),
+        widget=forms.EmailInput(
+            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+        ),
     )
 
     def __init__(self, *args, **kwargs):
@@ -30,7 +37,7 @@ class LoginForm(auth_forms.AuthenticationForm):
         self.helper.form_class = "mt-4"
 
         self.helper.layout = Layout(
-            "email",
+            "username",
             "password",
             Submit(
                 "submit",
@@ -41,16 +48,16 @@ class LoginForm(auth_forms.AuthenticationForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        email = cleaned_data.get("email")
+        email = cleaned_data.get("username")
         password = cleaned_data.get("password")
 
         if email and password:
             print('ok email-passwd')
-            user = authenticate(email=email, password=password)
-            if user is None:
+            self.user_cache = authenticate(email=email, password=password)
+            if self.user_cache is None:
                 raise forms.ValidationError(_("Email ou mot de passe incorrect"))
             print('ok user')
-            print(user)
+            print(self.user_cache)
 
         return cleaned_data
 
@@ -60,6 +67,9 @@ class LoginForm(auth_forms.AuthenticationForm):
                 _("This account is inactive."),
                 code="inactive",
             )
+
+    def get_user(self):
+        return getattr(self, "user_cache", None)
 
 
 class CQUserCreationForm(auth_forms.UserCreationForm):

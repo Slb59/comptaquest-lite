@@ -11,6 +11,7 @@ from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
 from .models import CQUser
+from django.contrib.auth import login
 
 
 class LoginView(DjangoLoginView):
@@ -19,24 +20,24 @@ class LoginView(DjangoLoginView):
     template_name = "registration/login.html"
     success_url = reverse_lazy("home")
 
-    # def form_valid(self, form):
-    #     print("\n=== Authentification ===")
-    #     response = super().form_valid(form)
-    #     print(f"User.is_authenticated: {self.request.user.is_authenticated}")
-    #     print(f"Session: {dict(self.request.session)}")
-    #     return response
+    def form_valid(self, form):
+        print("\n=== Authentification ===")
+        login(self.request, form.get_user())
+        response = super().form_valid(form)
+        print(f"User.is_authenticated: {self.request.user.is_authenticated}")
+        print(f"Session: {dict(self.request.session)}")
+        return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Connexion")
         context["logo_url"] = "/static/images/secretbox/logo_sb.png"
         return context
-
-    # def get_success_url(self):
-    #     next_page = self.request.GET.get("next")
-    #     if next_page:
-    #         return next_page
-    #     return self.success_url
+    
+    def form_invalid(self, form):
+        print("=== Formulaire invalide ===")
+        print(form.errors)
+        return super().form_invalid(form)
 
 
 class LogoutView(LoginRequiredMixin, DjangoLogoutView):

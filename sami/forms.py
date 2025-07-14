@@ -4,7 +4,10 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Field
 from django.utils.translation import gettext_lazy as _
 
-class SamiForm(forms.ModelForm):
+from secretbox.tools.tooltip import TooltipFromInstanceMixin
+
+
+class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
 
     class Meta:
         model = Sami
@@ -13,17 +16,7 @@ class SamiForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # set the tooltip for each field
-        for field_name, field in self.fields.items():
-            help_text = field.help_text or ""
-            description_attr = f"{field_name}_description"
-            description = getattr(self.instance, description_attr, "")
-            combined = help_text
-            if description:
-                combined = f"{help_text} \n {description}" if help_text else description
-            if combined:
-                field.widget.attrs["title"] = combined
-                field.help_text = None
+        self.set_tooltips_from_instance()
         
         self.helper = FormHelper()
         self.helper.form_class = "mt-8"

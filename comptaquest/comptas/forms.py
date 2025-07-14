@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
                                         InvestmentAccount, Outgoings)
-
+from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
 class SelectAccountTypeForm(forms.Form):
     ACCOUNT_CHOICES = [("Current", "Compte courant"), ("Investment", "Compte d'investissement")]
@@ -14,6 +14,7 @@ class SelectAccountTypeForm(forms.Form):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = "post"
+        self.helper.form_class = "mt-4"
         self.helper.add_input(
             Submit(
                 "submit",
@@ -23,16 +24,18 @@ class SelectAccountTypeForm(forms.Form):
         )
 
 
-class CurrentAccountForm(forms.ModelForm):
+class CurrentAccountForm(forms.ModelForm, TooltipFromInstanceMixin):
     class Meta:
         model = CurrentAccount
         exclude = ["account_type", "created_at", "created_by"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.set_tooltips_from_instance()
         self.helper = FormHelper()
         self.helper.form_method = "post"
-        self.helper.form_class = "border p-8"
+        self.helper.form_class = "mt-4"
         self.helper.label_class = "font-semibold"
         # self.helper.field_class = "w-auto"
 
@@ -49,19 +52,22 @@ class CurrentAccountForm(forms.ModelForm):
             Div(                
                 Div(
                     Div("name", css_class="sm:col-span-2"),
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4 mt-4",
+                ),
+                Div(
                     Div("user", css_class="sm:col-span-1"),
                     Div("bank_name", css_class="sm:col-span-1"),
-                    css_class="grid sm:grid-cols-4 gap-4 mb-4 mt-4",
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4 mt-4",
                 ),
                 Div(                
                     Div("pointed_date", css_class="sm:col-span-1"),
                     Div("current_balance", css_class="sm:col-span-1"),
-                    css_class="grid sm:grid-cols-2 gap-4 mb-4 border border-red-500",
+                        css_class="grid sm:grid-cols-2 gap-4 mb-4",
                 ),
                 Div(                
                     Div("current_pointed_date", css_class="sm:col-span-1"),
                     Div("current_pointed_balance", css_class="sm:col-span-1"),
-                    css_class="grid sm:grid-cols-2 gap-4 mb-4 border border-red-500",
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4",
                 ),
                 "average_interest",
                 "ledger_analysis",
