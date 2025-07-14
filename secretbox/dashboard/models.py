@@ -22,9 +22,15 @@ class ColorParameter(models.Model):
     """
 
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
-    periodicity = models.CharField(max_length=20, choices=PERIODIC_CHOICES)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    place = models.CharField(max_length=20, choices=PLACE_CHOICES)
+    periodicity = models.CharField(
+        max_length=20, 
+        choices=[("*-Every", "tous les cas")] + PERIODIC_CHOICES)
+    category = models.CharField(
+        max_length=20, 
+        choices=[("*-Every", "tous les cas")] +CATEGORY_CHOICES)
+    place = models.CharField(
+        max_length=20, 
+        choices=[("*-Every", "tous les cas")] +PLACE_CHOICES)
     color = models.CharField(max_length=7, validators=[HEX_COLOR_VALIDATOR])
 
     class Meta:

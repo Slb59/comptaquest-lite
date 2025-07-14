@@ -7,6 +7,7 @@ quality:
 
 tests:
 	uv run pytest
+	npx playwright test
 
 tests-diarylab:
 	uv run pytest tests/unit/diarylab --html=tests/htmlcov/diarylab.html
@@ -30,6 +31,10 @@ run:
 	clear
 	uv run manage.py runserver
 
+run-front:
+	clear
+	npm run build
+
 deploy:
 	uv pip freeze > requirements.txt
 	rsync -a --exclude-from='.deployignore' . "$(DEPLOY_PATH)"
@@ -38,3 +43,6 @@ deploy:
 	uv add -r requirements.txt
 	uv run manage.py migrate
 
+dumpdata:
+	uv run manage.py dumpdata dashboard.ColorParameter \
+	--indent 2 > colorparameter.json

@@ -27,15 +27,9 @@ class LoginForm(auth_forms.AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_class = "border p-8"
-        # self.helper.form_method = 'GET'
-        # self.helper.form_action = 'comptas:dashboard'
+        self.helper.form_class = "mt-4"
+
         self.helper.layout = Layout(
-            # Div(
-            #     Div('email', css_class="md:w-[50%]"),
-            #     Div('password', css_class="md:w-[50%]"),
-            #     css_class="md:flex md:justify-between"
-            # ),
             "email",
             "password",
             Submit(
@@ -51,9 +45,12 @@ class LoginForm(auth_forms.AuthenticationForm):
         password = cleaned_data.get("password")
 
         if email and password:
+            print('ok email-passwd')
             user = authenticate(email=email, password=password)
             if user is None:
                 raise forms.ValidationError(_("Email ou mot de passe incorrect"))
+            print('ok user')
+            print(user)
 
         return cleaned_data
 

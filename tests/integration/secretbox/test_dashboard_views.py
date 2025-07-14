@@ -41,7 +41,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         data = {
             "description": "Faire le ménage",
             "state": "todo",
-            "appointment": "2025-06-10",
+            "appointment": "rdv",
             "category": "01-organisation",
             "who": "SLB",
             "place": "cantin",

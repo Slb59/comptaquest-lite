@@ -17,14 +17,14 @@ class LoginView(DjangoLoginView):
 
     form_class = LoginForm
     template_name = "registration/login.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("home")
 
-    def form_valid(self, form):
-        print("\n=== Authentification ===")
-        response = super().form_valid(form)
-        print(f"User.is_authenticated: {self.request.user.is_authenticated}")
-        print(f"Session: {dict(self.request.session)}")
-        return response
+    # def form_valid(self, form):
+    #     print("\n=== Authentification ===")
+    #     response = super().form_valid(form)
+    #     print(f"User.is_authenticated: {self.request.user.is_authenticated}")
+    #     print(f"Session: {dict(self.request.session)}")
+    #     return response
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -32,11 +32,11 @@ class LoginView(DjangoLoginView):
         context["logo_url"] = "/static/images/secretbox/logo_sb.png"
         return context
 
-    def get_success_url(self):
-        next_page = self.request.GET.get("next")
-        if next_page:
-            return next_page
-        return self.success_url
+    # def get_success_url(self):
+    #     next_page = self.request.GET.get("next")
+    #     if next_page:
+    #         return next_page
+    #     return self.success_url
 
 
 class LogoutView(LoginRequiredMixin, DjangoLogoutView):
