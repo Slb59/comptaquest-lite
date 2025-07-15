@@ -6,10 +6,10 @@ test('the logged in user views the filtered map', async ({ page }) => {
     await page.goto('http://127.0.0.1:8000/');
 
     // 3. Click on the EscapeVault logo
-    await page.locator('img[alt="EscapeVault"]').click();
+    await page.locator('a[title="EscapeVault"]').click();
 
     // 4. Check that you see the map
-    await expect(page.locator('#map')).toBeVisible();
+    await expect(page.locator('.folium-map')).toBeVisible();
 
     // 5. Select the “house” category
     await page.selectOption('select[name="category"]', 'maison');

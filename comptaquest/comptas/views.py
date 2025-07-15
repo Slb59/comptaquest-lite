@@ -2,7 +2,7 @@ import locale
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import redirect, reverse_lazy
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DetailView, FormView, ListView
 

@@ -52,12 +52,9 @@ class LoginForm(auth_forms.AuthenticationForm):
         password = cleaned_data.get("password")
 
         if email and password:
-            print("ok email-passwd")
             self.user_cache = authenticate(email=email, password=password)
             if self.user_cache is None:
                 raise forms.ValidationError(_("Email ou mot de passe incorrect"))
-            print("ok user")
-            print(self.user_cache)
 
         return cleaned_data
 

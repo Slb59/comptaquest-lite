@@ -11,7 +11,7 @@ export default defineConfig({
             name: 'e2e',
             testMatch: 'tests/endtoend/**/*.spec.ts',
             use: {
-                storageState: 'auth/session.json',
+                storageState: 'tests/auth/session.json',
             },
         },
     ],

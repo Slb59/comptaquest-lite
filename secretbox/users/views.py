@@ -20,6 +20,11 @@ class LoginView(DjangoLoginView):
     template_name = "registration/login.html"
     success_url = reverse_lazy("home")
 
+    def get_success_url(self):
+        url = self.success_url
+        print(url)
+        return url
+
     def form_valid(self, form):
         print("\n=== Authentification ===")
         login(self.request, form.get_user())
@@ -54,15 +59,15 @@ class LogoutView(LoginRequiredMixin, DjangoLogoutView):
             return redirect("users:login")
         return super().dispatch(request, *args, **kwargs)
 
-    def get_next_page(self):
-        # Redirection basée sur le dernier type d'utilisateur
-        last_user_type = self.request.session.get("last_user_type")
+    # def get_next_page(self):
+    #     # Redirection basée sur le dernier type d'utilisateur
+    #     last_user_type = self.request.session.get("last_user_type")
 
-        if last_user_type == CQUser.UserTypes.ACCOUNTANT:
-            return reverse_lazy("accountant_dashboard")
-        elif last_user_type == CQUser.UserTypes.SUPERMEMBER:
-            return reverse_lazy("supermember_dashboard")
-        return reverse_lazy("member_dashboard")
+    #     if last_user_type == CQUser.UserTypes.ACCOUNTANT:
+    #         return reverse_lazy("accountant_dashboard")
+    #     elif last_user_type == CQUser.UserTypes.SUPERMEMBER:
+    #         return reverse_lazy("supermember_dashboard")
+    #     return reverse_lazy("member_dashboard")
 
 
 class ProfileUpdateView(LoginRequiredMixin, UpdateView):

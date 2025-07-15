@@ -8,7 +8,7 @@ from .views import (AccountCreateView, AccountTypeSelectView, BalanceSheetView,
 app_name = "comptas"
 
 urlpatterns = [
-    path("", DashboardView.as_view(), name="dashboard"),
+    path("account/", DashboardView.as_view(), name="dashboard"),
     path("account/new/", AccountTypeSelectView.as_view(), name="account-select"),
     path("account/create/", AccountCreateView.as_view(), name="account-create"),
     # outgoings urls
