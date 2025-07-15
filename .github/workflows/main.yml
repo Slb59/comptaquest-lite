@@ -107,9 +107,8 @@ jobs:
       - name: Build and deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          # Exemple de déploiement (à adapter)
           echo "Déploiement en cours..."
-          # Ajoutez vos commandes de déploiement ici
           # Exemple pour un déploiement sur un serveur :
           # scp -r . user@server:/path/to/deploy
           # ssh user@server "cd /path/to/deploy && docker-compose up -d"
+          uv run manage.py loaddata secretbox/tools/loaddata/colorparameter.json

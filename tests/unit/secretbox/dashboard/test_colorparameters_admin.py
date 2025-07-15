@@ -1,6 +1,5 @@
 from django.contrib.admin.sites import AdminSite
 from django.test import RequestFactory, TestCase
-from django.utils.html import escape
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.dashboard.admin import ColorParameterAdmin
@@ -34,7 +33,7 @@ class ColorParameterAdminTest(TestCase):
     def test_color_display_renders_correct_html(self):
         rendered = self.admin.color_display(self.obj)
         expected_html = (
-            f'<div style="width: 60px; height: 20px; background-color: #123ABC; border: 1px solid #ccc;"></div>'
+            '<div style="width: 60px; height: 20px; background-color: #123ABC; border: 1px solid #ccc;"></div>'
         )
         self.assertHTMLEqual(rendered, expected_html)
 

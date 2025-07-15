@@ -1,9 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import ListView, TemplateView, CreateView
 from django.urls import reverse_lazy
-from .models import Sami
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, ListView, TemplateView
+
 from .forms import SamiForm
+from .models import Sami
+
 
 class SamiDashboardView(LoginRequiredMixin, TemplateView):
 
@@ -29,6 +31,7 @@ class SamiListView(LoginRequiredMixin, ListView):
         context["title"] = _("Tableau Sami")
         context["logo_url"] = "/static/images/logo_sami.png"
         return context
+
 
 class SamiCreateView(LoginRequiredMixin, CreateView):
     model = Sami

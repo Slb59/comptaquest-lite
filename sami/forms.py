@@ -1,10 +1,11 @@
-from django import forms
-from .models import Sami
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Div, Field
+from crispy_forms.layout import Div, Field, Layout
+from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
+
+from .models import Sami
 
 
 class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
@@ -17,7 +18,7 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
         super().__init__(*args, **kwargs)
 
         self.set_tooltips_from_instance()
-        
+
         self.helper = FormHelper()
         self.helper.form_class = "mt-8"
 
@@ -40,6 +41,6 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
                     Field("reading", wrapper_class="col-span-1"),
                     css_class="grid grid-cols-7 gap-4 mt-4",
                 ),
-                css_class="w-full max-w-2xl"         
+                css_class="w-full max-w-2xl",
             )
         )

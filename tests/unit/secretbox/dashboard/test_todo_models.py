@@ -3,6 +3,7 @@ from datetime import date, timedelta
 from django.core.exceptions import ValidationError
 from django.test import TestCase
 
+from tests.factories.colorparameters import ColorParameterFactory
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
@@ -30,10 +31,7 @@ class TestTodoModel(TestCase):
         new_date = self.todo.planned_date - timedelta(days=1)
         result, message = self.todo.validate_element(new_date)
         self.assertFalse(result)
-        self.assertEqual(
-            message,
-            "La date doit être postérieure à la date planifiée actuelle."
-        )
+        self.assertEqual(message, "La date doit être postérieure à la date planifiée actuelle.")
         self.assertNotEqual(self.todo.planned_date, new_date)
 
     def test_next_date_daily(self):
@@ -203,11 +201,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(
-            report_date=date(2025, 6, 20),
-            planned_date=date(2025, 6, 20),
-            state="todo"
-        )
+        instance = TodoFactory(report_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -227,11 +221,7 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(
-            report_date=None,
-            planned_date=date(2025, 6, 20),
-            state="todo"
-        )
+        instance = TodoFactory(report_date=None, planned_date=date(2025, 6, 20), state="todo")
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -261,3 +251,44 @@ class TestTodoModel(TestCase):
         # Check if the dates are updated and state is set to "done"
         self.assertEqual(instance.state, "done")
         self.assertEqual(instance.done_date, mock_date)
+
+
+class GetColorTestCase(TestCase):
+    def setUp(self):
+        # ColorParameter précis
+        self.color_hex = "#123ABC"
+        self.param = ColorParameterFactory(
+            priority="4-normal", periodicity="weekly", category="work", place="office", color=self.color_hex
+        )
+
+        # Todo correspondant exactement
+        self.todo = TodoFactory(priority="4-normal", periodic="weekly", category="work", place="office")
+
+    def test_get_color_exact_match(self):
+        color = self.todo.get_color()
+        self.assertEqual(color, self.color_hex)
+
+    def test_get_color_fallback_to_default(self):
+        todo = TodoFactory(
+            priority="4-normal",
+            periodic="monthly",  # ne correspond pas
+            category="home",  # ne correspond pas
+            place="remote",  # ne correspond pas
+        )
+        color = todo.get_color()
+        self.assertEqual(color, "#f3faf0")  # couleur par défaut
+
+    def test_get_color_with_place_every(self):
+        ColorParameterFactory(
+            priority="4-normal", periodicity="weekly", category="work", place="*-Every", color="#EEEEEE"
+        )
+
+        todo = TodoFactory(
+            priority="4-normal",
+            periodic="weekly",
+            category="work",
+            place="home",  # différent, donc devrait prendre '*-Every'
+        )
+
+        color = todo.get_color()
+        self.assertEqual(color, "#EEEEEE")

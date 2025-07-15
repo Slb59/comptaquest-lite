@@ -46,3 +46,6 @@ deploy:
 dumpdata:
 	uv run manage.py dumpdata dashboard.ColorParameter \
 	--indent 2 > colorparameter.json
+
+loaddata:
+	uv run manage.py loaddata secretbox/tools/loaddata/colorparameter.json

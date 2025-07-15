@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as DjangoLoginView
 from django.contrib.auth.views import LogoutView as DjangoLogoutView
@@ -11,7 +12,6 @@ from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
 from .models import CQUser
-from django.contrib.auth import login
 
 
 class LoginView(DjangoLoginView):
@@ -33,7 +33,7 @@ class LoginView(DjangoLoginView):
         context["title"] = _("Connexion")
         context["logo_url"] = "/static/images/secretbox/logo_sb.png"
         return context
-    
+
     def form_invalid(self, form):
         print("=== Formulaire invalide ===")
         print(form.errors)

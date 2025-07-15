@@ -4,6 +4,7 @@ from datetime import date, timedelta
 from django.core.validators import (MaxValueValidator, MinValueValidator,
                                     RegexValidator)
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import CQUser as User
@@ -22,15 +23,9 @@ class ColorParameter(models.Model):
     """
 
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES)
-    periodicity = models.CharField(
-        max_length=20, 
-        choices=[("*-Every", "tous les cas")] + PERIODIC_CHOICES)
-    category = models.CharField(
-        max_length=20, 
-        choices=[("*-Every", "tous les cas")] +CATEGORY_CHOICES)
-    place = models.CharField(
-        max_length=20, 
-        choices=[("*-Every", "tous les cas")] +PLACE_CHOICES)
+    periodicity = models.CharField(max_length=20, choices=[("*-Every", "tous les cas")] + PERIODIC_CHOICES)
+    category = models.CharField(max_length=20, choices=[("*-Every", "tous les cas")] + CATEGORY_CHOICES)
+    place = models.CharField(max_length=20, choices=[("*-Every", "tous les cas")] + PLACE_CHOICES)
     color = models.CharField(max_length=7, validators=[HEX_COLOR_VALIDATOR])
 
     class Meta:
@@ -256,3 +251,18 @@ class Todo(models.Model):
             str: The formatted done_date or an empty string.
         """
         return self.done_date.strftime("%d/%m/%Y") if self.done_date else ""
+
+    def get_color(self) -> str:
+        filters = [
+            Q(priority=self.priority, periodic=self.periodic, category=self.category, place=self.place),
+            Q(priority=self.priority, periodic=self.periodic, category=self.category, place="*-Every"),
+            Q(priority=self.priority, periodic=self.periodic, category="*-Every", place="*-Every"),
+            Q(priority=self.priority, periodic="*-Every", category="*-Every", place="*-Every"),
+        ]
+
+        for f in filters:
+            color_param = ColorParameter.objects.filter(f).first()
+            if color_param:
+                return color_param.color
+
+        return "#f3faf0"  # Couleur par défaut

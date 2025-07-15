@@ -1,10 +1,12 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
+from crispy_forms.layout import HTML, Div, Layout, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
+
 from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
                                         InvestmentAccount, Outgoings)
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
+
 
 class SelectAccountTypeForm(forms.Form):
     ACCOUNT_CHOICES = [("Current", "Compte courant"), ("Investment", "Compte d'investissement")]
@@ -48,8 +50,7 @@ class CurrentAccountForm(forms.ModelForm, TooltipFromInstanceMixin):
         self.fields["pointed_date"].label = _("Dernier pointage")
 
         self.helper.layout = Layout(
-            
-            Div(                
+            Div(
                 Div(
                     Div("name", css_class="sm:col-span-2"),
                     css_class="grid sm:grid-cols-2 gap-4 mb-4 mt-4",
@@ -59,12 +60,12 @@ class CurrentAccountForm(forms.ModelForm, TooltipFromInstanceMixin):
                     Div("bank_name", css_class="sm:col-span-1"),
                     css_class="grid sm:grid-cols-2 gap-4 mb-4 mt-4",
                 ),
-                Div(                
+                Div(
                     Div("pointed_date", css_class="sm:col-span-1"),
                     Div("current_balance", css_class="sm:col-span-1"),
-                        css_class="grid sm:grid-cols-2 gap-4 mb-4",
+                    css_class="grid sm:grid-cols-2 gap-4 mb-4",
                 ),
-                Div(                
+                Div(
                     Div("current_pointed_date", css_class="sm:col-span-1"),
                     Div("current_pointed_balance", css_class="sm:col-span-1"),
                     css_class="grid sm:grid-cols-2 gap-4 mb-4",

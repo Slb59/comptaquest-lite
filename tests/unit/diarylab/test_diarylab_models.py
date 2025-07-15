@@ -71,10 +71,7 @@ class TestDiaryEntry(TransactionTestCase):
         entry = DiaryEntryFactory()
 
         # Test created_at
-        self.assertLessEqual(
-            timezone.now() - entry.created_at, 
-            timezone.timedelta(minutes=1)
-        )
+        self.assertLessEqual(timezone.now() - entry.created_at, timezone.timedelta(minutes=1))
 
         # Test that updated_at is set
         self.assertIsNotNone(entry.updated_at)

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import SamiDashboardView, SamiListView, SamiCreateView
+from .views import SamiCreateView, SamiDashboardView, SamiListView
 
 app_name = "sami"
 

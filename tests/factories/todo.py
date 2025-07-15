@@ -7,8 +7,7 @@ import pytest
 from secretbox.dashboard.choices import (CATEGORY_CHOICES, PERIODIC_CHOICES,
                                          PLACE_CHOICES, PRIORITY_CHOICES)
 from secretbox.dashboard.models import Todo
-from secretbox.tools.models import (get_now_date,
-                                    get_random_date_in_current_month)
+from secretbox.tools.models import get_now_date
 
 from .member import MemberFactory
 

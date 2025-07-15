@@ -1,10 +1,9 @@
 from django.urls import path
 
-from .views import (AccountCreateView, AccountDetailView,
-                    AccountTypeSelectView, BalanceSheetView, DashboardView,
-                    OutgoingsCreateView, OutgoingsDetailView, OutgoingsView,
-                    TransactionCreateView, TransactionDetailView,
-                    TransactionsView)
+from .views import (AccountCreateView, AccountTypeSelectView, BalanceSheetView,
+                    DashboardView, OutgoingsCreateView, OutgoingsDetailView,
+                    OutgoingsView, TransactionCreateView,
+                    TransactionDetailView, TransactionsView)
 
 app_name = "comptas"
 
