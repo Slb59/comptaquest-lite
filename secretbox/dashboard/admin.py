@@ -41,7 +41,7 @@ class TodoAdmin(admin.ModelAdmin):
 class ColorParameterAdmin(admin.ModelAdmin):
     list_display = (
         "priority",
-        "periodicity",
+        "periodic",
         "category",
         "place",
         "color_display",
@@ -49,7 +49,7 @@ class ColorParameterAdmin(admin.ModelAdmin):
 
     list_filter = (
         "priority",
-        "periodicity",
+        "periodic",
         "category",
         "place",
     )

@@ -34,7 +34,7 @@
                     </thead>
                     <tbody>
                         {% for todo in todos %}
-                        <tr id="todo-row-{{ todo.pk }}">
+                        <tr id="todo-row-{{ todo.pk }}" style="background-color: {{ todo.get_color }};">
                             <td class="py-2 px-2 border-b">{{ todo.get_state_display }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.duration }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.description }}</td>

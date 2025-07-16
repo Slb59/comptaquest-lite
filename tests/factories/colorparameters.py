@@ -13,7 +13,7 @@ class ColorParameterFactory(DjangoModelFactory):
         model = ColorParameter
 
     priority = factory.Iterator([choice[0] for choice in PRIORITY_CHOICES])
-    periodicity = factory.Iterator([choice[0] for choice in PERIODIC_CHOICES])
+    periodic = factory.Iterator([choice[0] for choice in PERIODIC_CHOICES])
     category = factory.Iterator([choice[0] for choice in CATEGORY_CHOICES])
     place = factory.Iterator([choice[0] for choice in PLACE_CHOICES])
     color = factory.Faker("hex_color")  # example : "#A1B2C3"

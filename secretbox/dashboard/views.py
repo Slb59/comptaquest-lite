@@ -91,7 +91,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         form = TodoFilterForm(self.request.GET or None)
         todos = Todo.objects.filter(user=self.request.user)
-
+        print(todos[0].get_color())
         if form.is_valid():
             data = form.cleaned_data
             if data["state"]:
@@ -136,6 +136,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             "planned_date", "priority", "category", "periodic", "who", "place", "duration"
         )
         context["form"] = form
+
         return context
 
 

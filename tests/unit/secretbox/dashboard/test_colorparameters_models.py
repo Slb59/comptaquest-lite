@@ -12,7 +12,11 @@ class ColorParameterTests(TestCase):
 
     def setUp(self):
         self.valid_data = ColorParameterFactory(
-            priority="1-highest", periodicity="01-none", place="partout", category="01-organisation", color="#123ABC"
+            priority="1-highest", 
+            periodic="01-none", 
+            place="partout", 
+            category="01-organisation", 
+            color="#123ABC"
         )
 
     def test_create_color_parameter(self):
@@ -38,7 +42,7 @@ class ColorParameterTests(TestCase):
     def test_str_method(self):
         self.assertEqual(
             str(self.valid_data),
-            f"{self.valid_data.priority} / {self.valid_data.periodicity} / {self.valid_data.category} / {self.valid_data.place} → {self.valid_data.color}",
+            f"{self.valid_data.priority} / {self.valid_data.periodic} / {self.valid_data.category} / {self.valid_data.place} → {self.valid_data.color}",
         )
 
     def test_get_color_parameter_coverage(self):
