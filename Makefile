@@ -49,3 +49,4 @@ dumpdata:
 
 loaddata:
 	uv run manage.py loaddata secretbox/tools/loaddata/colorparameter.json
+	uv run manage.py loaddata secretbox/tools/loaddata/usergroup.json

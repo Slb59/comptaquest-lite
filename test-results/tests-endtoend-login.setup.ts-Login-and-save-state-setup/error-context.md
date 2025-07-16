@@ -1,0 +1,1361 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - heading "OperationalError at /login/" [level=1]
+  - text: database is locked
+  - table:
+    - rowgroup:
+      - 'row "Request Method: POST"':
+        - rowheader "Request Method:"
+        - cell "POST"
+      - 'row "Request URL: http://127.0.0.1:8000/login/"':
+        - rowheader "Request URL:"
+        - cell "http://127.0.0.1:8000/login/"
+      - 'row "Django Version: 5.2.1"':
+        - rowheader "Django Version:"
+        - cell "5.2.1"
+      - 'row "Exception Type: OperationalError"':
+        - rowheader "Exception Type:"
+        - cell "OperationalError"
+      - 'row "Exception Value: database is locked"':
+        - rowheader "Exception Value:"
+        - cell "database is locked"
+      - 'row "Exception Location: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py, line 360, in execute"':
+        - rowheader "Exception Location:"
+        - cell "/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py, line 360, in execute"
+      - 'row "Raised during: secretbox.users.views.LoginView"':
+        - rowheader "Raised during:"
+        - cell "secretbox.users.views.LoginView"
+      - 'row "Python Executable: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/bin/python3"':
+        - rowheader "Python Executable:"
+        - cell "/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/bin/python3"
+      - 'row "Python Version: 3.12.9"':
+        - rowheader "Python Version:"
+        - cell "3.12.9"
+      - 'row "Python Path: [''/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets '' ''2025/cq-20250513'', ''/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python312.zip'', ''/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12'', ''/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12/lib-dynload'', ''/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets '' ''2025/cq-20250513/.venv/lib/python3.12/site-packages'']"':
+        - rowheader "Python Path:"
+        - cell "['/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python312.zip', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12/lib-dynload', '/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/lib/python3.12/site-packages']":
+          - code: "['/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python312.zip', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12', '/home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12/lib-dynload', '/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/lib/python3.12/site-packages']"
+      - 'row "Server time: Wed, 16 Jul 2025 02:10:38 +0000"':
+        - rowheader "Server time:"
+        - cell "Wed, 16 Jul 2025 02:10:38 +0000"
+- main:
+  - heading "Traceback Switch to copy-and-paste view" [level=2]:
+    - text: Traceback
+    - button "Switch to copy-and-paste view"
+  - list:
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 105, in _execute"
+      - list:
+        - listitem: return self.cursor.execute(sql, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py
+      - text: ", line 360, in execute"
+      - list:
+        - listitem: return super().execute(query, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - heading "The above exception (database is locked) was the direct cause of the following exception:" [level=3]
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py
+      - text: ", line 55, in inner"
+      - list:
+        - listitem: response = get_response(request) ^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/core/handlers/base.py
+      - text: ", line 197, in _get_response"
+      - list:
+        - listitem: response = wrapped_callback(request, *callback_args, **callback_kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/.local/share/uv/python/cpython-3.12.9-linux-x86_64-gnu/lib/python3.12/contextlib.py
+      - text: ", line 81, in inner"
+      - list:
+        - listitem: return func(*args, **kwds) ^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/views/generic/base.py
+      - text: ", line 104, in view"
+      - list:
+        - listitem: return self.dispatch(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 48, in _wrapper"
+      - list:
+        - listitem: return bound_method(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 48, in _wrapper"
+      - list:
+        - listitem: return bound_method(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/views/decorators/debug.py
+      - text: ", line 143, in sensitive_post_parameters_wrapper"
+      - list:
+        - listitem: return view(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 48, in _wrapper"
+      - list:
+        - listitem: return bound_method(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 192, in _view_wrapper"
+      - list:
+        - listitem: result = _process_exception(request, e) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 190, in _view_wrapper"
+      - list:
+        - listitem: response = view_func(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/utils/decorators.py
+      - text: ", line 48, in _wrapper"
+      - list:
+        - listitem: return bound_method(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/views/decorators/cache.py
+      - text: ", line 80, in _view_wrapper"
+      - list:
+        - listitem: response = view_func(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/contrib/auth/views.py
+      - text: ", line 89, in dispatch"
+      - list:
+        - listitem: return super().dispatch(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/views/generic/base.py
+      - text: ", line 143, in dispatch"
+      - list:
+        - listitem: return handler(request, *args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/views/generic/edit.py
+      - text: ", line 151, in post"
+      - list:
+        - listitem: return self.form_valid(form) ^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/secretbox/users/views.py
+      - text: ", line 30, in form_valid"
+      - list:
+        - listitem: login(self.request, form.get_user()) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py
+      - text: ", line 187, in login"
+      - list:
+        - listitem: request.session.cycle_key() ^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py
+      - text: ", line 432, in cycle_key"
+      - list:
+        - listitem: self.create() ^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py
+      - text: ", line 74, in create"
+      - list:
+        - listitem: self.save(must_create=True) ^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py
+      - text: ", line 127, in save"
+      - list:
+        - listitem: obj.save( ^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/base.py
+      - text: ", line 902, in save"
+      - list:
+        - listitem: self.save_base( ^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/base.py
+      - text: ", line 1008, in save_base"
+      - list:
+        - listitem: updated = self._save_table( …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/base.py
+      - text: ", line 1169, in _save_table"
+      - list:
+        - listitem: results = self._do_insert( …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/base.py
+      - text: ", line 1210, in _do_insert"
+      - list:
+        - listitem: return manager._insert( …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/manager.py
+      - text: ", line 87, in manager_method"
+      - list:
+        - listitem: return getattr(self.get_queryset(), name)(*args, **kwargs) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/query.py
+      - text: ", line 1864, in _insert"
+      - list:
+        - listitem: return query.get_compiler(using=using).execute_sql(returning_fields) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py
+      - text: ", line 1882, in execute_sql"
+      - list:
+        - listitem: cursor.execute(sql, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 122, in execute"
+      - list:
+        - listitem: return super().execute(sql, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 79, in execute"
+      - list:
+        - listitem: return self._execute_with_wrappers( …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 92, in _execute_with_wrappers"
+      - list:
+        - listitem: return executor(sql, params, many, context) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 100, in _execute"
+      - list:
+        - listitem: "with self.db.wrap_database_errors: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …"
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/utils.py
+      - text: ", line 91, in __exit__"
+      - list:
+        - listitem: raise dj_exc_value.with_traceback(traceback) from exc_value ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/utils.py
+      - text: ", line 105, in _execute"
+      - list:
+        - listitem: return self.cursor.execute(sql, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+    - listitem:
+      - code: /home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513/.venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py
+      - text: ", line 360, in execute"
+      - list:
+        - listitem: return super().execute(query, params) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ …
+      - group: Local vars
+  - heading "Request information" [level=2]
+  - heading "USER" [level=3]
+  - paragraph: AnonymousUser
+  - heading "GET" [level=3]
+  - paragraph: No GET data
+  - heading "POST" [level=3]
+  - table:
+    - rowgroup:
+      - row "Variable Value":
+        - columnheader "Variable"
+        - columnheader "Value"
+    - rowgroup:
+      - row "csrfmiddlewaretoken 'EOfCHtXNNGbEjNPnxDlUccNWtJFjicJcpV4RrdxvTF6ZbAHaf0NWOR0vvqQP90c0'":
+        - cell "csrfmiddlewaretoken"
+        - cell "'EOfCHtXNNGbEjNPnxDlUccNWtJFjicJcpV4RrdxvTF6ZbAHaf0NWOR0vvqQP90c0'"
+      - row "username 'test.user@test.com'":
+        - cell "username"
+        - cell "'test.user@test.com'"
+      - row "password 'motdepasse2'":
+        - cell "password"
+        - cell "'motdepasse2'"
+      - row "submit 'Se connecter'":
+        - cell "submit"
+        - cell "'Se connecter'"
+  - heading "FILES" [level=3]
+  - paragraph: No FILES data
+  - heading "COOKIES" [level=3]
+  - table:
+    - rowgroup:
+      - row "Variable Value":
+        - columnheader "Variable"
+        - columnheader "Value"
+    - rowgroup:
+      - row "csrftoken '********************'":
+        - cell "csrftoken"
+        - cell "'********************'"
+  - heading "META" [level=3]
+  - table:
+    - rowgroup:
+      - row "Variable Value":
+        - columnheader "Variable"
+        - columnheader "Value"
+    - rowgroup:
+      - row "ADMIN_EMAIL 'osynia.devapps@gmail.com'":
+        - cell "ADMIN_EMAIL"
+        - cell "'osynia.devapps@gmail.com'"
+      - row "ALLOWED_HOSTS 'localhost'":
+        - cell "ALLOWED_HOSTS"
+        - cell "'localhost'"
+      - row "CHROME_DESKTOP 'code-oss.desktop'":
+        - cell "CHROME_DESKTOP"
+        - cell "'code-oss.desktop'"
+      - row "COLORTERM 'truecolor'":
+        - cell "COLORTERM"
+        - cell "'truecolor'"
+      - row "CONTENT_LENGTH '155'":
+        - cell "CONTENT_LENGTH"
+        - cell "'155'"
+      - row "CONTENT_TYPE 'application/x-www-form-urlencoded'":
+        - cell "CONTENT_TYPE"
+        - cell "'application/x-www-form-urlencoded'"
+      - row "CSRF_COOKIE 'VhZpUUKSg95v2X2XSxCcMPnJcRlG1YDY'":
+        - cell "CSRF_COOKIE"
+        - cell "'VhZpUUKSg95v2X2XSxCcMPnJcRlG1YDY'"
+      - row "DATABASE_URL 'sqlite:///db.sqlite3'":
+        - cell "DATABASE_URL"
+        - cell "'sqlite:///db.sqlite3'"
+      - row "DBUS_SESSION_BUS_ADDRESS 'unix:path=/run/user/1000/bus'":
+        - cell "DBUS_SESSION_BUS_ADDRESS"
+        - cell "'unix:path=/run/user/1000/bus'"
+      - row "DEBUG 'True'":
+        - cell "DEBUG"
+        - cell "'True'"
+      - row "DEBUGINFOD_URLS 'https://debuginfod.archlinux.org '":
+        - cell "DEBUGINFOD_URLS"
+        - cell "'https://debuginfod.archlinux.org '"
+      - row "DEFAULT_FROM_EMAIL 'osynia.devapps@gmail.com'":
+        - cell "DEFAULT_FROM_EMAIL"
+        - cell "'osynia.devapps@gmail.com'"
+      - row "DEPLOY_PATH '/home/sylvie/Documents/01_Documents Slb/01-Journaling/SecretBox/'":
+        - cell "DEPLOY_PATH"
+        - cell "'/home/sylvie/Documents/01_Documents Slb/01-Journaling/SecretBox/'"
+      - row "DESKTOP_SESSION 'plasma'":
+        - cell "DESKTOP_SESSION"
+        - cell "'plasma'"
+      - row "DISPLAY ':0'":
+        - cell "DISPLAY"
+        - cell "':0'"
+      - row "DJANGO_SECRET_KEY '********************'":
+        - cell "DJANGO_SECRET_KEY"
+        - cell "'********************'"
+      - row "DJANGO_SETTINGS_MODULE 'config.settings.dev'":
+        - cell "DJANGO_SETTINGS_MODULE"
+        - cell "'config.settings.dev'"
+      - row "EMAIL_HOST 'smtp.gmail.com'":
+        - cell "EMAIL_HOST"
+        - cell "'smtp.gmail.com'"
+      - row "EMAIL_HOST_PASSWORD '********************'":
+        - cell "EMAIL_HOST_PASSWORD"
+        - cell "'********************'"
+      - row "EMAIL_HOST_USER 'osynia.devapps@gmail.com'":
+        - cell "EMAIL_HOST_USER"
+        - cell "'osynia.devapps@gmail.com'"
+      - row "EMAIL_PORT '587'":
+        - cell "EMAIL_PORT"
+        - cell "'587'"
+      - row "EMAIL_USE_TLS 'True'":
+        - cell "EMAIL_USE_TLS"
+        - cell "'True'"
+      - row "GATEWAY_INTERFACE 'CGI/1.1'":
+        - cell "GATEWAY_INTERFACE"
+        - cell "'CGI/1.1'"
+      - row "GDK_BACKEND 'x11'":
+        - cell "GDK_BACKEND"
+        - cell "'x11'"
+      - row "GIT_ASKPASS '********************'":
+        - cell "GIT_ASKPASS"
+        - cell "'********************'"
+      - row "GTK2_RC_FILES '/etc/gtk-2.0/gtkrc:/home/sylvie/.gtkrc-2.0:/home/sylvie/.config/gtkrc-2.0'":
+        - cell "GTK2_RC_FILES"
+        - cell "'/etc/gtk-2.0/gtkrc:/home/sylvie/.gtkrc-2.0:/home/sylvie/.config/gtkrc-2.0'"
+      - row "GTK_MODULES 'canberra-gtk-module'":
+        - cell "GTK_MODULES"
+        - cell "'canberra-gtk-module'"
+      - row "GTK_RC_FILES '/etc/gtk/gtkrc:/home/sylvie/.gtkrc:/home/sylvie/.config/gtkrc'":
+        - cell "GTK_RC_FILES"
+        - cell "'/etc/gtk/gtkrc:/home/sylvie/.gtkrc:/home/sylvie/.config/gtkrc'"
+      - row "HOME '/home/sylvie'":
+        - cell "HOME"
+        - cell "'/home/sylvie'"
+      - row "HTTP_ACCEPT 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'":
+        - cell "HTTP_ACCEPT"
+        - cell "'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'"
+      - row "HTTP_ACCEPT_ENCODING 'gzip, deflate, br, zstd'":
+        - cell "HTTP_ACCEPT_ENCODING"
+        - cell "'gzip, deflate, br, zstd'"
+      - row "HTTP_ACCEPT_LANGUAGE 'en-US'":
+        - cell "HTTP_ACCEPT_LANGUAGE"
+        - cell "'en-US'"
+      - row "HTTP_CACHE_CONTROL 'max-age=0'":
+        - cell "HTTP_CACHE_CONTROL"
+        - cell "'max-age=0'"
+      - row "HTTP_CONNECTION 'keep-alive'":
+        - cell "HTTP_CONNECTION"
+        - cell "'keep-alive'"
+      - row "HTTP_COOKIE '********************'":
+        - cell "HTTP_COOKIE"
+        - cell "'********************'"
+      - row "HTTP_HOST '127.0.0.1:8000'":
+        - cell "HTTP_HOST"
+        - cell "'127.0.0.1:8000'"
+      - row "HTTP_ORIGIN 'http://127.0.0.1:8000'":
+        - cell "HTTP_ORIGIN"
+        - cell "'http://127.0.0.1:8000'"
+      - row "HTTP_REFERER 'http://127.0.0.1:8000/login/'":
+        - cell "HTTP_REFERER"
+        - cell "'http://127.0.0.1:8000/login/'"
+      - row "HTTP_SEC_CH_UA '\"Not;A=Brand\";v=\"99\", \"HeadlessChrome\";v=\"139\", \"Chromium\";v=\"139\"'":
+        - cell "HTTP_SEC_CH_UA"
+        - cell "'\"Not;A=Brand\";v=\"99\", \"HeadlessChrome\";v=\"139\", \"Chromium\";v=\"139\"'"
+      - row "HTTP_SEC_CH_UA_MOBILE '?0'":
+        - cell "HTTP_SEC_CH_UA_MOBILE"
+        - cell "'?0'"
+      - row "HTTP_SEC_CH_UA_PLATFORM '\"Linux\"'":
+        - cell "HTTP_SEC_CH_UA_PLATFORM"
+        - cell "'\"Linux\"'"
+      - row "HTTP_SEC_FETCH_DEST 'document'":
+        - cell "HTTP_SEC_FETCH_DEST"
+        - cell "'document'"
+      - row "HTTP_SEC_FETCH_MODE 'navigate'":
+        - cell "HTTP_SEC_FETCH_MODE"
+        - cell "'navigate'"
+      - row "HTTP_SEC_FETCH_SITE 'same-origin'":
+        - cell "HTTP_SEC_FETCH_SITE"
+        - cell "'same-origin'"
+      - row "HTTP_SEC_FETCH_USER '?1'":
+        - cell "HTTP_SEC_FETCH_USER"
+        - cell "'?1'"
+      - row "HTTP_UPGRADE_INSECURE_REQUESTS '1'":
+        - cell "HTTP_UPGRADE_INSECURE_REQUESTS"
+        - cell "'1'"
+      - row "HTTP_USER_AGENT ('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) ' 'HeadlessChrome/139.0.7258.5 Safari/537.36')":
+        - cell "HTTP_USER_AGENT"
+        - cell "('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) ' 'HeadlessChrome/139.0.7258.5 Safari/537.36')"
+      - row "ICEAUTHORITY '********************'":
+        - cell "ICEAUTHORITY"
+        - cell "'********************'"
+      - row "INVOCATION_ID '3224c0f8a03942f796126251cb816e20'":
+        - cell "INVOCATION_ID"
+        - cell "'3224c0f8a03942f796126251cb816e20'"
+      - row "JOURNAL_STREAM '9:21028'":
+        - cell "JOURNAL_STREAM"
+        - cell "'9:21028'"
+      - row "KDE_APPLICATIONS_AS_SCOPE '1'":
+        - cell "KDE_APPLICATIONS_AS_SCOPE"
+        - cell "'1'"
+      - row "KDE_FULL_SESSION 'true'":
+        - cell "KDE_FULL_SESSION"
+        - cell "'true'"
+      - row "KDE_SESSION_UID '1000'":
+        - cell "KDE_SESSION_UID"
+        - cell "'1000'"
+      - row "KDE_SESSION_VERSION '6'":
+        - cell "KDE_SESSION_VERSION"
+        - cell "'6'"
+      - row "LANG 'fr_FR.UTF-8'":
+        - cell "LANG"
+        - cell "'fr_FR.UTF-8'"
+      - row "LANGUAGE ''":
+        - cell "LANGUAGE"
+        - cell "''"
+      - row "LC_ADDRESS 'fr_FR.UTF-8'":
+        - cell "LC_ADDRESS"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_IDENTIFICATION 'fr_FR.UTF-8'":
+        - cell "LC_IDENTIFICATION"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_MEASUREMENT 'fr_FR.UTF-8'":
+        - cell "LC_MEASUREMENT"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_MONETARY 'fr_FR.UTF-8'":
+        - cell "LC_MONETARY"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_NAME 'fr_FR.UTF-8'":
+        - cell "LC_NAME"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_NUMERIC 'fr_FR.UTF-8'":
+        - cell "LC_NUMERIC"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_PAPER 'fr_FR.UTF-8'":
+        - cell "LC_PAPER"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_TELEPHONE 'fr_FR.UTF-8'":
+        - cell "LC_TELEPHONE"
+        - cell "'fr_FR.UTF-8'"
+      - row "LC_TIME 'fr_FR.UTF-8'":
+        - cell "LC_TIME"
+        - cell "'fr_FR.UTF-8'"
+      - row "LOGNAME 'sylvie'":
+        - cell "LOGNAME"
+        - cell "'sylvie'"
+      - row:
+        - cell "LS_COLORS"
+        - cell
+      - row "MAIL '/var/spool/mail/sylvie'":
+        - cell "MAIL"
+        - cell "'/var/spool/mail/sylvie'"
+      - row "MAKEFLAGS ''":
+        - cell "MAKEFLAGS"
+        - cell "''"
+      - row "MAKELEVEL '1'":
+        - cell "MAKELEVEL"
+        - cell "'1'"
+      - row "MAKE_TERMERR '/dev/pts/2'":
+        - cell "MAKE_TERMERR"
+        - cell "'/dev/pts/2'"
+      - row "MAKE_TERMOUT '/dev/pts/2'":
+        - cell "MAKE_TERMOUT"
+        - cell "'/dev/pts/2'"
+      - row "MANAGERPID '658'":
+        - cell "MANAGERPID"
+        - cell "'658'"
+      - row "MEMORY_PRESSURE_WATCH '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/background.slice/plasma-krunner.service/memory.pressure'":
+        - cell "MEMORY_PRESSURE_WATCH"
+        - cell "'/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/background.slice/plasma-krunner.service/memory.pressure'"
+      - row "MEMORY_PRESSURE_WRITE 'c29tZSAyMDAwMDAgMjAwMDAwMAA='":
+        - cell "MEMORY_PRESSURE_WRITE"
+        - cell "'c29tZSAyMDAwMDAgMjAwMDAwMAA='"
+      - row "MFLAGS ''":
+        - cell "MFLAGS"
+        - cell "''"
+      - row "MOTD_SHOWN 'pam'":
+        - cell "MOTD_SHOWN"
+        - cell "'pam'"
+      - row "NO_AT_BRIDGE '1'":
+        - cell "NO_AT_BRIDGE"
+        - cell "'1'"
+      - row "NPM_BIN_PATH '/home/sylvie/.nvm/versions/node/v22.12.0/bin/npm'":
+        - cell "NPM_BIN_PATH"
+        - cell "'/home/sylvie/.nvm/versions/node/v22.12.0/bin/npm'"
+      - row "NVM_BIN '/home/sylvie/.nvm/versions/node/v22.12.0/bin'":
+        - cell "NVM_BIN"
+        - cell "'/home/sylvie/.nvm/versions/node/v22.12.0/bin'"
+      - row "NVM_CD_FLAGS ''":
+        - cell "NVM_CD_FLAGS"
+        - cell "''"
+      - row "NVM_DIR '/home/sylvie/.nvm'":
+        - cell "NVM_DIR"
+        - cell "'/home/sylvie/.nvm'"
+      - row "NVM_INC '/home/sylvie/.nvm/versions/node/v22.12.0/include/node'":
+        - cell "NVM_INC"
+        - cell "'/home/sylvie/.nvm/versions/node/v22.12.0/include/node'"
+      - row "OLDPWD ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/tests/auth')":
+        - cell "OLDPWD"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/tests/auth')"
+      - row "ORIGINAL_XDG_CURRENT_DESKTOP 'KDE'":
+        - cell "ORIGINAL_XDG_CURRENT_DESKTOP"
+        - cell "'KDE'"
+      - row "PAM_KWALLET5_LOGIN '/run/user/1000/kwallet5.socket'":
+        - cell "PAM_KWALLET5_LOGIN"
+        - cell "'/run/user/1000/kwallet5.socket'"
+      - row "PATH ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/bin:/home/sylvie/Documents/01_Documents ' 'Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/bin:/home/sylvie/.nvm/versions/node/v22.12.0/bin:/home/sylvie/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl')":
+        - cell "PATH"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/bin:/home/sylvie/Documents/01_Documents ' 'Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv/bin:/home/sylvie/.nvm/versions/node/v22.12.0/bin:/home/sylvie/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl')"
+      - row "PATH_INFO '/login/'":
+        - cell "PATH_INFO"
+        - cell "'/login/'"
+      - row "PS1 ('\\\\[\\x1b]633;A\\x07\\\\](cq-20250513) ' '\\\\[\\x1b]633;A\\x07\\\\]\\\\[\\\\033[01;32m\\\\][\\\\u@\\\\h\\\\[\\\\033[01;37m\\\\] ' '\\\\W\\\\[\\\\033[01;32m\\\\]]\\\\$\\\\[\\\\033[00m\\\\] ' '\\\\[\\x1b]633;B\\x07\\\\]\\\\[\\x1b]633;B\\x07\\\\]')":
+        - cell "PS1"
+        - cell "('\\\\[\\x1b]633;A\\x07\\\\](cq-20250513) ' '\\\\[\\x1b]633;A\\x07\\\\]\\\\[\\\\033[01;32m\\\\][\\\\u@\\\\h\\\\[\\\\033[01;37m\\\\] ' '\\\\W\\\\[\\\\033[01;32m\\\\]]\\\\$\\\\[\\\\033[00m\\\\] ' '\\\\[\\x1b]633;B\\x07\\\\]\\\\[\\x1b]633;B\\x07\\\\]')"
+      - row "PWD ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513')":
+        - cell "PWD"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513')"
+      - row "QT_AUTO_SCREEN_SCALE_FACTOR '0'":
+        - cell "QT_AUTO_SCREEN_SCALE_FACTOR"
+        - cell "'0'"
+      - row "QT_LINUX_ACCESSIBILITY_ALWAYS_ON '1'":
+        - cell "QT_LINUX_ACCESSIBILITY_ALWAYS_ON"
+        - cell "'1'"
+      - row "QT_WAYLAND_RECONNECT '1'":
+        - cell "QT_WAYLAND_RECONNECT"
+        - cell "'1'"
+      - row "QUERY_STRING ''":
+        - cell "QUERY_STRING"
+        - cell "''"
+      - row "REMOTE_ADDR '127.0.0.1'":
+        - cell "REMOTE_ADDR"
+        - cell "'127.0.0.1'"
+      - row "REMOTE_HOST ''":
+        - cell "REMOTE_HOST"
+        - cell "''"
+      - row "REQUEST_METHOD 'POST'":
+        - cell "REQUEST_METHOD"
+        - cell "'POST'"
+      - row "RUN_MAIN 'true'":
+        - cell "RUN_MAIN"
+        - cell "'true'"
+      - row "SCRIPT_NAME ''":
+        - cell "SCRIPT_NAME"
+        - cell "''"
+      - row "SERVER_NAME 'localhost'":
+        - cell "SERVER_NAME"
+        - cell "'localhost'"
+      - row "SERVER_PORT '8000'":
+        - cell "SERVER_PORT"
+        - cell "'8000'"
+      - row "SERVER_PROTOCOL 'HTTP/1.1'":
+        - cell "SERVER_PROTOCOL"
+        - cell "'HTTP/1.1'"
+      - row "SERVER_SOFTWARE 'WSGIServer/0.2'":
+        - cell "SERVER_SOFTWARE"
+        - cell "'WSGIServer/0.2'"
+      - row "SESSION_MANAGER 'local/comptaquest.com:@/tmp/.ICE-unix/759,unix/comptaquest.com:/tmp/.ICE-unix/759'":
+        - cell "SESSION_MANAGER"
+        - cell "'local/comptaquest.com:@/tmp/.ICE-unix/759,unix/comptaquest.com:/tmp/.ICE-unix/759'"
+      - row "SHELL '/bin/bash'":
+        - cell "SHELL"
+        - cell "'/bin/bash'"
+      - row "SHLVL '1'":
+        - cell "SHLVL"
+        - cell "'1'"
+      - row "SYSTEMD_EXEC_PID '1397'":
+        - cell "SYSTEMD_EXEC_PID"
+        - cell "'1397'"
+      - row "TERM 'xterm-256color'":
+        - cell "TERM"
+        - cell "'xterm-256color'"
+      - row "TERM_PROGRAM 'vscode'":
+        - cell "TERM_PROGRAM"
+        - cell "'vscode'"
+      - row "TERM_PROGRAM_VERSION '1.101.0'":
+        - cell "TERM_PROGRAM_VERSION"
+        - cell "'1.101.0'"
+      - row "TZ 'UTC'":
+        - cell "TZ"
+        - cell "'UTC'"
+      - row "USER 'sylvie'":
+        - cell "USER"
+        - cell "'sylvie'"
+      - row "UV '/home/sylvie/.local/bin/uv'":
+        - cell "UV"
+        - cell "'/home/sylvie/.local/bin/uv'"
+      - row "UV_RUN_RECURSION_DEPTH '1'":
+        - cell "UV_RUN_RECURSION_DEPTH"
+        - cell "'1'"
+      - row "VIRTUAL_ENV ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv')":
+        - cell "VIRTUAL_ENV"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/.venv')"
+      - row "VIRTUAL_ENV_PROMPT '(cq-20250513) '":
+        - cell "VIRTUAL_ENV_PROMPT"
+        - cell "'(cq-20250513) '"
+      - row "VSCODE_GIT_ASKPASS_EXTRA_ARGS '********************'":
+        - cell "VSCODE_GIT_ASKPASS_EXTRA_ARGS"
+        - cell "'********************'"
+      - row "VSCODE_GIT_ASKPASS_MAIN '********************'":
+        - cell "VSCODE_GIT_ASKPASS_MAIN"
+        - cell "'********************'"
+      - row "VSCODE_GIT_ASKPASS_NODE '********************'":
+        - cell "VSCODE_GIT_ASKPASS_NODE"
+        - cell "'********************'"
+      - row "VSCODE_GIT_IPC_HANDLE '/run/user/1000/vscode-git-7b6b819651.sock'":
+        - cell "VSCODE_GIT_IPC_HANDLE"
+        - cell "'/run/user/1000/vscode-git-7b6b819651.sock'"
+      - row "XAUTHORITY '********************'":
+        - cell "XAUTHORITY"
+        - cell "'********************'"
+      - row "XDG_CONFIG_DIRS '/home/sylvie/.config/kdedefaults:/etc/xdg:/usr/share/manjaro-kde-settings/xdg'":
+        - cell "XDG_CONFIG_DIRS"
+        - cell "'/home/sylvie/.config/kdedefaults:/etc/xdg:/usr/share/manjaro-kde-settings/xdg'"
+      - row "XDG_CURRENT_DESKTOP 'KDE'":
+        - cell "XDG_CURRENT_DESKTOP"
+        - cell "'KDE'"
+      - row "XDG_DATA_DIRS '/home/sylvie/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share'":
+        - cell "XDG_DATA_DIRS"
+        - cell "'/home/sylvie/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share'"
+      - row "XDG_MENU_PREFIX 'plasma-'":
+        - cell "XDG_MENU_PREFIX"
+        - cell "'plasma-'"
+      - row "XDG_RUNTIME_DIR '/run/user/1000'":
+        - cell "XDG_RUNTIME_DIR"
+        - cell "'/run/user/1000'"
+      - row "XDG_SEAT 'seat0'":
+        - cell "XDG_SEAT"
+        - cell "'seat0'"
+      - row "XDG_SEAT_PATH '/org/freedesktop/DisplayManager/Seat0'":
+        - cell "XDG_SEAT_PATH"
+        - cell "'/org/freedesktop/DisplayManager/Seat0'"
+      - row "XDG_SESSION_CLASS 'user'":
+        - cell "XDG_SESSION_CLASS"
+        - cell "'user'"
+      - row "XDG_SESSION_DESKTOP 'KDE'":
+        - cell "XDG_SESSION_DESKTOP"
+        - cell "'KDE'"
+      - row "XDG_SESSION_ID '2'":
+        - cell "XDG_SESSION_ID"
+        - cell "'2'"
+      - row "XDG_SESSION_PATH '/org/freedesktop/DisplayManager/Session1'":
+        - cell "XDG_SESSION_PATH"
+        - cell "'/org/freedesktop/DisplayManager/Session1'"
+      - row "XDG_SESSION_TYPE 'x11'":
+        - cell "XDG_SESSION_TYPE"
+        - cell "'x11'"
+      - row "XDG_VTNR '2'":
+        - cell "XDG_VTNR"
+        - cell "'2'"
+      - row "_ '/usr/bin/make'":
+        - cell "_"
+        - cell "'/usr/bin/make'"
+      - row "wsgi.errors <_io.TextIOWrapper name='<stderr>' mode='w' encoding='utf-8'>":
+        - cell "wsgi.errors"
+        - cell "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='utf-8'>"
+      - row "wsgi.file_wrapper <class 'wsgiref.util.FileWrapper'>":
+        - cell "wsgi.file_wrapper"
+        - cell "<class 'wsgiref.util.FileWrapper'>"
+      - row "wsgi.input <django.core.handlers.wsgi.LimitedStream object at 0x7f487f0146a0>":
+        - cell "wsgi.input"
+        - cell "<django.core.handlers.wsgi.LimitedStream object at 0x7f487f0146a0>"
+      - row "wsgi.multiprocess False":
+        - cell "wsgi.multiprocess"
+        - cell "False"
+      - row "wsgi.multithread True":
+        - cell "wsgi.multithread"
+        - cell "True"
+      - row "wsgi.run_once False":
+        - cell "wsgi.run_once"
+        - cell "False"
+      - row "wsgi.url_scheme 'http'":
+        - cell "wsgi.url_scheme"
+        - cell "'http'"
+      - row "wsgi.version (1, 0)":
+        - cell "wsgi.version"
+        - cell "(1, 0)"
+  - heading "Settings" [level=3]
+  - heading "Using settings module config.settings.dev" [level=4]:
+    - text: Using settings module
+    - code: config.settings.dev
+  - table:
+    - rowgroup:
+      - row "Setting Value":
+        - columnheader "Setting"
+        - columnheader "Value"
+    - rowgroup:
+      - 'row "ABSOLUTE_URL_OVERRIDES {}"':
+        - cell "ABSOLUTE_URL_OVERRIDES"
+        - 'cell "{}"'
+      - row "ADMINS []":
+        - cell "ADMINS"
+        - cell "[]"
+      - row "ALLOWED_HOSTS ['*']":
+        - cell "ALLOWED_HOSTS"
+        - cell "['*']"
+      - row "APPEND_SLASH True":
+        - cell "APPEND_SLASH"
+        - cell "True"
+      - row "AUTHENTICATION_BACKENDS '********************'":
+        - cell "AUTHENTICATION_BACKENDS"
+        - cell "'********************'"
+      - row "AUTH_PASSWORD_VALIDATORS '********************'":
+        - cell "AUTH_PASSWORD_VALIDATORS"
+        - cell "'********************'"
+      - row "AUTH_USER_MODEL '********************'":
+        - cell "AUTH_USER_MODEL"
+        - cell "'********************'"
+      - row "BASE_DIR PosixPath('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513')":
+        - cell "BASE_DIR"
+        - cell "PosixPath('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets 2025/cq-20250513')"
+      - 'row "CACHES {''default'': {''BACKEND'': ''django.core.cache.backends.locmem.LocMemCache''}}"':
+        - cell "CACHES"
+        - 'cell "{''default'': {''BACKEND'': ''django.core.cache.backends.locmem.LocMemCache''}}"'
+      - row "CACHE_MIDDLEWARE_ALIAS 'default'":
+        - cell "CACHE_MIDDLEWARE_ALIAS"
+        - cell "'default'"
+      - row "CACHE_MIDDLEWARE_KEY_PREFIX '********************'":
+        - cell "CACHE_MIDDLEWARE_KEY_PREFIX"
+        - cell "'********************'"
+      - row "CACHE_MIDDLEWARE_SECONDS 600":
+        - cell "CACHE_MIDDLEWARE_SECONDS"
+        - cell "600"
+      - row "CITIES_LIGHT_INCLUDE_CITY_TYPES ['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT']":
+        - cell "CITIES_LIGHT_INCLUDE_CITY_TYPES"
+        - cell "['PPL', 'PPLA', 'PPLA2', 'PPLA3', 'PPLA4', 'PPLC', 'PPLF', 'PPLG', 'PPLL', 'PPLR', 'PPLS', 'STLMT']"
+      - row "CITIES_LIGHT_INCLUDE_COUNTRIES ['FR']":
+        - cell "CITIES_LIGHT_INCLUDE_COUNTRIES"
+        - cell "['FR']"
+      - row "CITIES_LIGHT_TRANSLATION_LANGUAGES ['fr', 'en']":
+        - cell "CITIES_LIGHT_TRANSLATION_LANGUAGES"
+        - cell "['fr', 'en']"
+      - 'row "COMPRESSORS {''css'': ''compressor.css.CssCompressor'', ''js'': ''compressor.js.JsCompressor''}"':
+        - cell "COMPRESSORS"
+        - 'cell "{''css'': ''compressor.css.CssCompressor'', ''js'': ''compressor.js.JsCompressor''}"'
+      - row "COMPRESS_CACHEABLE_PRECOMPILERS ()":
+        - cell "COMPRESS_CACHEABLE_PRECOMPILERS"
+        - cell "()"
+      - row "COMPRESS_CACHE_BACKEND 'default'":
+        - cell "COMPRESS_CACHE_BACKEND"
+        - cell "'default'"
+      - row "COMPRESS_CACHE_KEY_FUNCTION '********************'":
+        - cell "COMPRESS_CACHE_KEY_FUNCTION"
+        - cell "'********************'"
+      - row "COMPRESS_CLEAN_CSS_ARGUMENTS ''":
+        - cell "COMPRESS_CLEAN_CSS_ARGUMENTS"
+        - cell "''"
+      - row "COMPRESS_CLEAN_CSS_BINARY 'cleancss'":
+        - cell "COMPRESS_CLEAN_CSS_BINARY"
+        - cell "'cleancss'"
+      - row "COMPRESS_CLOSURE_COMPILER_ARGUMENTS ''":
+        - cell "COMPRESS_CLOSURE_COMPILER_ARGUMENTS"
+        - cell "''"
+      - row "COMPRESS_CLOSURE_COMPILER_BINARY 'java -jar compiler.jar'":
+        - cell "COMPRESS_CLOSURE_COMPILER_BINARY"
+        - cell "'java -jar compiler.jar'"
+      - row "COMPRESS_CSS_HASHING_METHOD 'mtime'":
+        - cell "COMPRESS_CSS_HASHING_METHOD"
+        - cell "'mtime'"
+      - row "COMPRESS_DATA_URI_MAX_SIZE 1024":
+        - cell "COMPRESS_DATA_URI_MAX_SIZE"
+        - cell "1024"
+      - row "COMPRESS_DEBUG_TOGGLE None":
+        - cell "COMPRESS_DEBUG_TOGGLE"
+        - cell "None"
+      - row "COMPRESS_ENABLED False":
+        - cell "COMPRESS_ENABLED"
+        - cell "False"
+      - 'row "COMPRESS_FILTERS {''css'': [''compressor.filters.css_default.CssAbsoluteFilter'', ''compressor.filters.cssmin.rCSSMinFilter''], ''js'': [''compressor.filters.jsmin.rJSMinFilter'']}"':
+        - cell "COMPRESS_FILTERS"
+        - 'cell "{''css'': [''compressor.filters.css_default.CssAbsoluteFilter'', ''compressor.filters.cssmin.rCSSMinFilter''], ''js'': [''compressor.filters.jsmin.rJSMinFilter'']}"'
+      - row "COMPRESS_JINJA2_GET_ENVIRONMENT <function CompressorConf.JINJA2_GET_ENVIRONMENT at 0x7f4892486c00>":
+        - cell "COMPRESS_JINJA2_GET_ENVIRONMENT"
+        - cell "<function CompressorConf.JINJA2_GET_ENVIRONMENT at 0x7f4892486c00>"
+      - row "COMPRESS_MINT_DELAY 30":
+        - cell "COMPRESS_MINT_DELAY"
+        - cell "30"
+      - row "COMPRESS_MTIME_DELAY 10":
+        - cell "COMPRESS_MTIME_DELAY"
+        - cell "10"
+      - row "COMPRESS_OFFLINE False":
+        - cell "COMPRESS_OFFLINE"
+        - cell "False"
+      - 'row "COMPRESS_OFFLINE_CONTEXT {''STATIC_URL'': ''/static/''}"':
+        - cell "COMPRESS_OFFLINE_CONTEXT"
+        - 'cell "{''STATIC_URL'': ''/static/''}"'
+      - row "COMPRESS_OFFLINE_MANIFEST 'manifest.json'":
+        - cell "COMPRESS_OFFLINE_MANIFEST"
+        - cell "'manifest.json'"
+      - row "COMPRESS_OFFLINE_MANIFEST_STORAGE 'compressor.storage.OfflineManifestFileStorage'":
+        - cell "COMPRESS_OFFLINE_MANIFEST_STORAGE"
+        - cell "'compressor.storage.OfflineManifestFileStorage'"
+      - row "COMPRESS_OFFLINE_MANIFEST_STORAGE_ALIAS 'compressor-offine'":
+        - cell "COMPRESS_OFFLINE_MANIFEST_STORAGE_ALIAS"
+        - cell "'compressor-offine'"
+      - row "COMPRESS_OFFLINE_TIMEOUT 31536000":
+        - cell "COMPRESS_OFFLINE_TIMEOUT"
+        - cell "31536000"
+      - row "COMPRESS_OUTPUT_DIR 'CACHE'":
+        - cell "COMPRESS_OUTPUT_DIR"
+        - cell "'CACHE'"
+      - row "COMPRESS_PARSER 'compressor.parser.AutoSelectParser'":
+        - cell "COMPRESS_PARSER"
+        - cell "'compressor.parser.AutoSelectParser'"
+      - row "COMPRESS_PRECOMPILERS ()":
+        - cell "COMPRESS_PRECOMPILERS"
+        - cell "()"
+      - row "COMPRESS_REBUILD_TIMEOUT 2592000":
+        - cell "COMPRESS_REBUILD_TIMEOUT"
+        - cell "2592000"
+      - row "COMPRESS_ROOT ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/staticfiles')":
+        - cell "COMPRESS_ROOT"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/staticfiles')"
+      - row "COMPRESS_STORAGE 'compressor.storage.CompressorFileStorage'":
+        - cell "COMPRESS_STORAGE"
+        - cell "'compressor.storage.CompressorFileStorage'"
+      - row "COMPRESS_STORAGE_ALIAS 'compressor'":
+        - cell "COMPRESS_STORAGE_ALIAS"
+        - cell "'compressor'"
+      - 'row "COMPRESS_TEMPLATE_FILTER_CONTEXT {''STATIC_URL'': ''/static/''}"':
+        - cell "COMPRESS_TEMPLATE_FILTER_CONTEXT"
+        - 'cell "{''STATIC_URL'': ''/static/''}"'
+      - row "COMPRESS_URL '/static/'":
+        - cell "COMPRESS_URL"
+        - cell "'/static/'"
+      - row "COMPRESS_URL_PLACEHOLDER '/__compressor_url_placeholder__/'":
+        - cell "COMPRESS_URL_PLACEHOLDER"
+        - cell "'/__compressor_url_placeholder__/'"
+      - row "COMPRESS_VERBOSE False":
+        - cell "COMPRESS_VERBOSE"
+        - cell "False"
+      - row "COMPRESS_YUGLIFY_BINARY 'yuglify'":
+        - cell "COMPRESS_YUGLIFY_BINARY"
+        - cell "'yuglify'"
+      - row "COMPRESS_YUGLIFY_CSS_ARGUMENTS '--terminal'":
+        - cell "COMPRESS_YUGLIFY_CSS_ARGUMENTS"
+        - cell "'--terminal'"
+      - row "COMPRESS_YUGLIFY_JS_ARGUMENTS '--terminal'":
+        - cell "COMPRESS_YUGLIFY_JS_ARGUMENTS"
+        - cell "'--terminal'"
+      - row "COMPRESS_YUI_BINARY 'java -jar yuicompressor.jar'":
+        - cell "COMPRESS_YUI_BINARY"
+        - cell "'java -jar yuicompressor.jar'"
+      - row "COMPRESS_YUI_CSS_ARGUMENTS ''":
+        - cell "COMPRESS_YUI_CSS_ARGUMENTS"
+        - cell "''"
+      - row "COMPRESS_YUI_JS_ARGUMENTS ''":
+        - cell "COMPRESS_YUI_JS_ARGUMENTS"
+        - cell "''"
+      - row "CRISPY_ALLOWED_TEMPLATE_PACKS 'tailwind'":
+        - cell "CRISPY_ALLOWED_TEMPLATE_PACKS"
+        - cell "'tailwind'"
+      - row "CRISPY_TEMPLATE_PACK 'tailwind'":
+        - cell "CRISPY_TEMPLATE_PACK"
+        - cell "'tailwind'"
+      - row "CSRF_COOKIE_AGE 31449600":
+        - cell "CSRF_COOKIE_AGE"
+        - cell "31449600"
+      - row "CSRF_COOKIE_DOMAIN None":
+        - cell "CSRF_COOKIE_DOMAIN"
+        - cell "None"
+      - row "CSRF_COOKIE_HTTPONLY False":
+        - cell "CSRF_COOKIE_HTTPONLY"
+        - cell "False"
+      - row "CSRF_COOKIE_NAME 'csrftoken'":
+        - cell "CSRF_COOKIE_NAME"
+        - cell "'csrftoken'"
+      - row "CSRF_COOKIE_PATH '/'":
+        - cell "CSRF_COOKIE_PATH"
+        - cell "'/'"
+      - row "CSRF_COOKIE_SAMESITE 'Lax'":
+        - cell "CSRF_COOKIE_SAMESITE"
+        - cell "'Lax'"
+      - row "CSRF_COOKIE_SECURE False":
+        - cell "CSRF_COOKIE_SECURE"
+        - cell "False"
+      - row "CSRF_FAILURE_VIEW 'django.views.csrf.csrf_failure'":
+        - cell "CSRF_FAILURE_VIEW"
+        - cell "'django.views.csrf.csrf_failure'"
+      - row "CSRF_HEADER_NAME 'HTTP_X_CSRFTOKEN'":
+        - cell "CSRF_HEADER_NAME"
+        - cell "'HTTP_X_CSRFTOKEN'"
+      - row "CSRF_TRUSTED_ORIGINS []":
+        - cell "CSRF_TRUSTED_ORIGINS"
+        - cell "[]"
+      - row "CSRF_USE_SESSIONS False":
+        - cell "CSRF_USE_SESSIONS"
+        - cell "False"
+      - 'row "DATABASES {''default'': {''ATOMIC_REQUESTS'': True, ''AUTOCOMMIT'': True, ''CONN_HEALTH_CHECKS'': False, ''CONN_MAX_AGE'': 0, ''ENGINE'': ''django.db.backends.sqlite3'', ''HOST'': '''', ''NAME'': ''/home/sylvie/Documents/01_Documents Slb/11-Informatique '' ''Dev/Projets 2025/cq-20250513/db.sqlite3'', ''OPTIONS'': {}, ''PASSWORD'': ''********************'', ''PORT'': '''', ''TEST'': {''CHARSET'': None, ''COLLATION'': None, ''MIGRATE'': True, ''MIRROR'': None, ''NAME'': None}, ''TIME_ZONE'': None, ''USER'': ''''}}"':
+        - cell "DATABASES"
+        - 'cell "{''default'': {''ATOMIC_REQUESTS'': True, ''AUTOCOMMIT'': True, ''CONN_HEALTH_CHECKS'': False, ''CONN_MAX_AGE'': 0, ''ENGINE'': ''django.db.backends.sqlite3'', ''HOST'': '''', ''NAME'': ''/home/sylvie/Documents/01_Documents Slb/11-Informatique '' ''Dev/Projets 2025/cq-20250513/db.sqlite3'', ''OPTIONS'': {}, ''PASSWORD'': ''********************'', ''PORT'': '''', ''TEST'': {''CHARSET'': None, ''COLLATION'': None, ''MIGRATE'': True, ''MIRROR'': None, ''NAME'': None}, ''TIME_ZONE'': None, ''USER'': ''''}}"'
+      - row "DATABASE_ROUTERS []":
+        - cell "DATABASE_ROUTERS"
+        - cell "[]"
+      - row "DATA_UPLOAD_MAX_MEMORY_SIZE 2621440":
+        - cell "DATA_UPLOAD_MAX_MEMORY_SIZE"
+        - cell "2621440"
+      - row "DATA_UPLOAD_MAX_NUMBER_FIELDS 1000":
+        - cell "DATA_UPLOAD_MAX_NUMBER_FIELDS"
+        - cell "1000"
+      - row "DATA_UPLOAD_MAX_NUMBER_FILES 100":
+        - cell "DATA_UPLOAD_MAX_NUMBER_FILES"
+        - cell "100"
+      - row "DATETIME_FORMAT 'N j, Y, P'":
+        - cell "DATETIME_FORMAT"
+        - cell "'N j, Y, P'"
+      - row "DATETIME_INPUT_FORMATS ['%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M:%S.%f', '%Y-%m-%d %H:%M', '%m/%d/%Y %H:%M:%S', '%m/%d/%Y %H:%M:%S.%f', '%m/%d/%Y %H:%M', '%m/%d/%y %H:%M:%S', '%m/%d/%y %H:%M:%S.%f', '%m/%d/%y %H:%M']":
+        - cell "DATETIME_INPUT_FORMATS"
+        - cell "['%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M:%S.%f', '%Y-%m-%d %H:%M', '%m/%d/%Y %H:%M:%S', '%m/%d/%Y %H:%M:%S.%f', '%m/%d/%Y %H:%M', '%m/%d/%y %H:%M:%S', '%m/%d/%y %H:%M:%S.%f', '%m/%d/%y %H:%M']"
+      - row "DATE_FORMAT 'N j, Y'":
+        - cell "DATE_FORMAT"
+        - cell "'N j, Y'"
+      - row "DATE_INPUT_FORMATS ['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%b %d %Y', '%b %d, %Y', '%d %b %Y', '%d %b, %Y', '%B %d %Y', '%B %d, %Y', '%d %B %Y', '%d %B, %Y']":
+        - cell "DATE_INPUT_FORMATS"
+        - cell "['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%b %d %Y', '%b %d, %Y', '%d %b %Y', '%d %b, %Y', '%B %d %Y', '%B %d, %Y', '%d %B %Y', '%d %B, %Y']"
+      - row "DEBUG True":
+        - cell "DEBUG"
+        - cell "True"
+      - row "DEBUG_PROPAGATE_EXCEPTIONS False":
+        - cell "DEBUG_PROPAGATE_EXCEPTIONS"
+        - cell "False"
+      - row "DECIMAL_SEPARATOR '.'":
+        - cell "DECIMAL_SEPARATOR"
+        - cell "'.'"
+      - row "DEFAULT_AUTO_FIELD 'django.db.models.BigAutoField'":
+        - cell "DEFAULT_AUTO_FIELD"
+        - cell "'django.db.models.BigAutoField'"
+      - row "DEFAULT_CHARSET 'utf-8'":
+        - cell "DEFAULT_CHARSET"
+        - cell "'utf-8'"
+      - row "DEFAULT_EXCEPTION_REPORTER 'django.views.debug.ExceptionReporter'":
+        - cell "DEFAULT_EXCEPTION_REPORTER"
+        - cell "'django.views.debug.ExceptionReporter'"
+      - row "DEFAULT_EXCEPTION_REPORTER_FILTER 'django.views.debug.SafeExceptionReporterFilter'":
+        - cell "DEFAULT_EXCEPTION_REPORTER_FILTER"
+        - cell "'django.views.debug.SafeExceptionReporterFilter'"
+      - row "DEFAULT_FROM_EMAIL 'osynia.devapps@gmail.com'":
+        - cell "DEFAULT_FROM_EMAIL"
+        - cell "'osynia.devapps@gmail.com'"
+      - row "DEFAULT_INDEX_TABLESPACE ''":
+        - cell "DEFAULT_INDEX_TABLESPACE"
+        - cell "''"
+      - row "DEFAULT_TABLESPACE ''":
+        - cell "DEFAULT_TABLESPACE"
+        - cell "''"
+      - row "DEV_APPS ['django.test', 'debug_toolbar']":
+        - cell "DEV_APPS"
+        - cell "['django.test', 'debug_toolbar']"
+      - row "DISALLOWED_USER_AGENTS []":
+        - cell "DISALLOWED_USER_AGENTS"
+        - cell "[]"
+      - row "DJANGO_APPS ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles']":
+        - cell "DJANGO_APPS"
+        - cell "['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles']"
+      - row "DJANGO_MIDDLEWARE ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware']":
+        - cell "DJANGO_MIDDLEWARE"
+        - cell "['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware']"
+      - row "EMAIL_BACKEND 'django.core.mail.backends.smtp.EmailBackend'":
+        - cell "EMAIL_BACKEND"
+        - cell "'django.core.mail.backends.smtp.EmailBackend'"
+      - row "EMAIL_HOST 'smtp.gmail.com'":
+        - cell "EMAIL_HOST"
+        - cell "'smtp.gmail.com'"
+      - row "EMAIL_HOST_PASSWORD '********************'":
+        - cell "EMAIL_HOST_PASSWORD"
+        - cell "'********************'"
+      - row "EMAIL_HOST_USER 'osynia.devapps@gmail.com'":
+        - cell "EMAIL_HOST_USER"
+        - cell "'osynia.devapps@gmail.com'"
+      - row "EMAIL_PORT '587'":
+        - cell "EMAIL_PORT"
+        - cell "'587'"
+      - row "EMAIL_SSL_CERTFILE None":
+        - cell "EMAIL_SSL_CERTFILE"
+        - cell "None"
+      - row "EMAIL_SSL_KEYFILE '********************'":
+        - cell "EMAIL_SSL_KEYFILE"
+        - cell "'********************'"
+      - row "EMAIL_SUBJECT_PREFIX '[Django] '":
+        - cell "EMAIL_SUBJECT_PREFIX"
+        - cell "'[Django] '"
+      - row "EMAIL_TIMEOUT None":
+        - cell "EMAIL_TIMEOUT"
+        - cell "None"
+      - row "EMAIL_USE_LOCALTIME False":
+        - cell "EMAIL_USE_LOCALTIME"
+        - cell "False"
+      - row "EMAIL_USE_SSL False":
+        - cell "EMAIL_USE_SSL"
+        - cell "False"
+      - row "EMAIL_USE_TLS 'True'":
+        - cell "EMAIL_USE_TLS"
+        - cell "'True'"
+      - row "FILE_UPLOAD_DIRECTORY_PERMISSIONS None":
+        - cell "FILE_UPLOAD_DIRECTORY_PERMISSIONS"
+        - cell "None"
+      - row "FILE_UPLOAD_HANDLERS ['django.core.files.uploadhandler.MemoryFileUploadHandler', 'django.core.files.uploadhandler.TemporaryFileUploadHandler']":
+        - cell "FILE_UPLOAD_HANDLERS"
+        - cell "['django.core.files.uploadhandler.MemoryFileUploadHandler', 'django.core.files.uploadhandler.TemporaryFileUploadHandler']"
+      - row "FILE_UPLOAD_MAX_MEMORY_SIZE 2621440":
+        - cell "FILE_UPLOAD_MAX_MEMORY_SIZE"
+        - cell "2621440"
+      - row "FILE_UPLOAD_PERMISSIONS 420":
+        - cell "FILE_UPLOAD_PERMISSIONS"
+        - cell "420"
+      - row "FILE_UPLOAD_TEMP_DIR None":
+        - cell "FILE_UPLOAD_TEMP_DIR"
+        - cell "None"
+      - row "FIRST_DAY_OF_WEEK 0":
+        - cell "FIRST_DAY_OF_WEEK"
+        - cell "0"
+      - row "FIXTURE_DIRS []":
+        - cell "FIXTURE_DIRS"
+        - cell "[]"
+      - row "FORCE_SCRIPT_NAME None":
+        - cell "FORCE_SCRIPT_NAME"
+        - cell "None"
+      - row "FORMAT_MODULE_PATH None":
+        - cell "FORMAT_MODULE_PATH"
+        - cell "None"
+      - row "FORMS_URLFIELD_ASSUME_HTTPS False":
+        - cell "FORMS_URLFIELD_ASSUME_HTTPS"
+        - cell "False"
+      - row "FORM_RENDERER 'django.forms.renderers.DjangoTemplates'":
+        - cell "FORM_RENDERER"
+        - cell "'django.forms.renderers.DjangoTemplates'"
+      - row "IGNORABLE_404_URLS []":
+        - cell "IGNORABLE_404_URLS"
+        - cell "[]"
+      - row "INSTALLED_APPS ['wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds', 'wagtail.sites', 'wagtail.users', 'wagtail.snippets', 'wagtail.documents', 'wagtail.images', 'wagtail.search', 'wagtail.admin', 'wagtail', 'modelcluster', 'taggit', 'compressor', 'tailwind', 'crispy_forms', 'crispy_tailwind', 'django_countries', 'secretbox.users', 'secretbox.dashboard', 'secretbox.tools', 'comptaquest.utils', 'comptaquest.comptas', 'comptaquest.consos', 'comptaquest.healths', 'potionrun.chapters', 'potionrun.performances', 'diarylab', 'sami', 'escapevault', 'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'django.test', 'debug_toolbar']":
+        - cell "INSTALLED_APPS"
+        - cell "['wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds', 'wagtail.sites', 'wagtail.users', 'wagtail.snippets', 'wagtail.documents', 'wagtail.images', 'wagtail.search', 'wagtail.admin', 'wagtail', 'modelcluster', 'taggit', 'compressor', 'tailwind', 'crispy_forms', 'crispy_tailwind', 'django_countries', 'secretbox.users', 'secretbox.dashboard', 'secretbox.tools', 'comptaquest.utils', 'comptaquest.comptas', 'comptaquest.consos', 'comptaquest.healths', 'potionrun.chapters', 'potionrun.performances', 'diarylab', 'sami', 'escapevault', 'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'django.test', 'debug_toolbar']"
+      - row "INTERNAL_IPS []":
+        - cell "INTERNAL_IPS"
+        - cell "[]"
+      - row:
+        - cell "LANGUAGES"
+        - cell
+      - row "LANGUAGES_BIDI ['he', 'ar', 'ar-dz', 'ckb', 'fa', 'ug', 'ur']":
+        - cell "LANGUAGES_BIDI"
+        - cell "['he', 'ar', 'ar-dz', 'ckb', 'fa', 'ug', 'ur']"
+      - row "LANGUAGE_CODE 'fr-fr'":
+        - cell "LANGUAGE_CODE"
+        - cell "'fr-fr'"
+      - row "LANGUAGE_COOKIE_AGE None":
+        - cell "LANGUAGE_COOKIE_AGE"
+        - cell "None"
+      - row "LANGUAGE_COOKIE_DOMAIN None":
+        - cell "LANGUAGE_COOKIE_DOMAIN"
+        - cell "None"
+      - row "LANGUAGE_COOKIE_HTTPONLY False":
+        - cell "LANGUAGE_COOKIE_HTTPONLY"
+        - cell "False"
+      - row "LANGUAGE_COOKIE_NAME 'django_language'":
+        - cell "LANGUAGE_COOKIE_NAME"
+        - cell "'django_language'"
+      - row "LANGUAGE_COOKIE_PATH '/'":
+        - cell "LANGUAGE_COOKIE_PATH"
+        - cell "'/'"
+      - row "LANGUAGE_COOKIE_SAMESITE None":
+        - cell "LANGUAGE_COOKIE_SAMESITE"
+        - cell "None"
+      - row "LANGUAGE_COOKIE_SECURE False":
+        - cell "LANGUAGE_COOKIE_SECURE"
+        - cell "False"
+      - row "LOCALE_PATHS []":
+        - cell "LOCALE_PATHS"
+        - cell "[]"
+      - 'row "LOGGING {}"':
+        - cell "LOGGING"
+        - 'cell "{}"'
+      - row "LOGGING_CONFIG 'logging.config.dictConfig'":
+        - cell "LOGGING_CONFIG"
+        - cell "'logging.config.dictConfig'"
+      - row "LOGIN_REDIRECT_URL 'comptas:dashboard'":
+        - cell "LOGIN_REDIRECT_URL"
+        - cell "'comptas:dashboard'"
+      - row "LOGIN_URL 'users:login'":
+        - cell "LOGIN_URL"
+        - cell "'users:login'"
+      - row "LOGOUT_REDIRECT_URL 'users:login'":
+        - cell "LOGOUT_REDIRECT_URL"
+        - cell "'users:login'"
+      - row "MANAGERS []":
+        - cell "MANAGERS"
+        - cell "[]"
+      - row "MEDIA_ROOT ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/media')":
+        - cell "MEDIA_ROOT"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/media')"
+      - row "MEDIA_URL '/media/'":
+        - cell "MEDIA_URL"
+        - cell "'/media/'"
+      - row "MESSAGE_STORAGE 'django.contrib.messages.storage.fallback.FallbackStorage'":
+        - cell "MESSAGE_STORAGE"
+        - cell "'django.contrib.messages.storage.fallback.FallbackStorage'"
+      - row "MIDDLEWARE ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware', 'debug_toolbar.middleware.DebugToolbarMiddleware', 'threadlocals.middleware.ThreadLocalMiddleware']":
+        - cell "MIDDLEWARE"
+        - cell "['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware', 'debug_toolbar.middleware.DebugToolbarMiddleware', 'threadlocals.middleware.ThreadLocalMiddleware']"
+      - 'row "MIGRATION_MODULES {}"':
+        - cell "MIGRATION_MODULES"
+        - 'cell "{}"'
+      - row "MONTH_DAY_FORMAT 'F j'":
+        - cell "MONTH_DAY_FORMAT"
+        - cell "'F j'"
+      - row "NPM_BIN_PATH '/home/sylvie/.nvm/versions/node/v22.12.0/bin/npm'":
+        - cell "NPM_BIN_PATH"
+        - cell "'/home/sylvie/.nvm/versions/node/v22.12.0/bin/npm'"
+      - row "NUMBER_GROUPING 0":
+        - cell "NUMBER_GROUPING"
+        - cell "0"
+      - row "PASSWORD_HASHERS '********************'":
+        - cell "PASSWORD_HASHERS"
+        - cell "'********************'"
+      - row "PASSWORD_RESET_TIMEOUT '********************'":
+        - cell "PASSWORD_RESET_TIMEOUT"
+        - cell "'********************'"
+      - row "PREPEND_WWW False":
+        - cell "PREPEND_WWW"
+        - cell "False"
+      - row "PROJECT_APPS ['secretbox.users', 'secretbox.dashboard', 'secretbox.tools', 'comptaquest.utils', 'comptaquest.comptas', 'comptaquest.consos', 'comptaquest.healths', 'potionrun.chapters', 'potionrun.performances', 'diarylab', 'sami', 'escapevault']":
+        - cell "PROJECT_APPS"
+        - cell "['secretbox.users', 'secretbox.dashboard', 'secretbox.tools', 'comptaquest.utils', 'comptaquest.comptas', 'comptaquest.consos', 'comptaquest.healths', 'potionrun.chapters', 'potionrun.performances', 'diarylab', 'sami', 'escapevault']"
+      - row "ROOT_URLCONF 'config.urls'":
+        - cell "ROOT_URLCONF"
+        - cell "'config.urls'"
+      - row "SECRET_KEY '********************'":
+        - cell "SECRET_KEY"
+        - cell "'********************'"
+      - row "SECRET_KEY_FALLBACKS '********************'":
+        - cell "SECRET_KEY_FALLBACKS"
+        - cell "'********************'"
+      - row "SECURE_CONTENT_TYPE_NOSNIFF True":
+        - cell "SECURE_CONTENT_TYPE_NOSNIFF"
+        - cell "True"
+      - row "SECURE_CROSS_ORIGIN_OPENER_POLICY 'same-origin'":
+        - cell "SECURE_CROSS_ORIGIN_OPENER_POLICY"
+        - cell "'same-origin'"
+      - row "SECURE_HSTS_INCLUDE_SUBDOMAINS False":
+        - cell "SECURE_HSTS_INCLUDE_SUBDOMAINS"
+        - cell "False"
+      - row "SECURE_HSTS_PRELOAD False":
+        - cell "SECURE_HSTS_PRELOAD"
+        - cell "False"
+      - row "SECURE_HSTS_SECONDS 0":
+        - cell "SECURE_HSTS_SECONDS"
+        - cell "0"
+      - row "SECURE_PROXY_SSL_HEADER None":
+        - cell "SECURE_PROXY_SSL_HEADER"
+        - cell "None"
+      - row "SECURE_REDIRECT_EXEMPT []":
+        - cell "SECURE_REDIRECT_EXEMPT"
+        - cell "[]"
+      - row "SECURE_REFERRER_POLICY 'same-origin'":
+        - cell "SECURE_REFERRER_POLICY"
+        - cell "'same-origin'"
+      - row "SECURE_SSL_HOST None":
+        - cell "SECURE_SSL_HOST"
+        - cell "None"
+      - row "SECURE_SSL_REDIRECT False":
+        - cell "SECURE_SSL_REDIRECT"
+        - cell "False"
+      - row "SERVER_EMAIL 'root@localhost'":
+        - cell "SERVER_EMAIL"
+        - cell "'root@localhost'"
+      - row "SESSION_CACHE_ALIAS 'default'":
+        - cell "SESSION_CACHE_ALIAS"
+        - cell "'default'"
+      - row "SESSION_COOKIE_AGE 2592000":
+        - cell "SESSION_COOKIE_AGE"
+        - cell "2592000"
+      - row "SESSION_COOKIE_DOMAIN None":
+        - cell "SESSION_COOKIE_DOMAIN"
+        - cell "None"
+      - row "SESSION_COOKIE_HTTPONLY True":
+        - cell "SESSION_COOKIE_HTTPONLY"
+        - cell "True"
+      - row "SESSION_COOKIE_NAME 'secretbox'":
+        - cell "SESSION_COOKIE_NAME"
+        - cell "'secretbox'"
+      - row "SESSION_COOKIE_PATH '/'":
+        - cell "SESSION_COOKIE_PATH"
+        - cell "'/'"
+      - row "SESSION_COOKIE_SAMESITE 'Lax'":
+        - cell "SESSION_COOKIE_SAMESITE"
+        - cell "'Lax'"
+      - row "SESSION_COOKIE_SECURE False":
+        - cell "SESSION_COOKIE_SECURE"
+        - cell "False"
+      - row "SESSION_ENGINE 'django.contrib.sessions.backends.db'":
+        - cell "SESSION_ENGINE"
+        - cell "'django.contrib.sessions.backends.db'"
+      - row "SESSION_EXPIRE_AT_BROWSER_CLOSE False":
+        - cell "SESSION_EXPIRE_AT_BROWSER_CLOSE"
+        - cell "False"
+      - row "SESSION_FILE_PATH None":
+        - cell "SESSION_FILE_PATH"
+        - cell "None"
+      - row "SESSION_SAVE_EVERY_REQUEST True":
+        - cell "SESSION_SAVE_EVERY_REQUEST"
+        - cell "True"
+      - row "SESSION_SERIALIZER 'django.contrib.sessions.serializers.JSONSerializer'":
+        - cell "SESSION_SERIALIZER"
+        - cell "'django.contrib.sessions.serializers.JSONSerializer'"
+      - row "SETTINGS_MODULE 'config.settings.dev'":
+        - cell "SETTINGS_MODULE"
+        - cell "'config.settings.dev'"
+      - row "SHORT_DATETIME_FORMAT 'm/d/Y P'":
+        - cell "SHORT_DATETIME_FORMAT"
+        - cell "'m/d/Y P'"
+      - row "SHORT_DATE_FORMAT 'm/d/Y'":
+        - cell "SHORT_DATE_FORMAT"
+        - cell "'m/d/Y'"
+      - row "SIGNING_BACKEND 'django.core.signing.TimestampSigner'":
+        - cell "SIGNING_BACKEND"
+        - cell "'django.core.signing.TimestampSigner'"
+      - row "SILENCED_SYSTEM_CHECKS []":
+        - cell "SILENCED_SYSTEM_CHECKS"
+        - cell "[]"
+      - row "STATICFILES_DIRS ['/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/static']":
+        - cell "STATICFILES_DIRS"
+        - cell "['/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/static']"
+      - row "STATICFILES_FINDERS ['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder', 'compressor.finders.CompressorFinder']":
+        - cell "STATICFILES_FINDERS"
+        - cell "['django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder', 'compressor.finders.CompressorFinder']"
+      - row "STATIC_ROOT ('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/staticfiles')":
+        - cell "STATIC_ROOT"
+        - cell "('/home/sylvie/Documents/01_Documents Slb/11-Informatique Dev/Projets ' '2025/cq-20250513/staticfiles')"
+      - row "STATIC_URL '/static/'":
+        - cell "STATIC_URL"
+        - cell "'/static/'"
+      - 'row "STORAGES {''default'': {''BACKEND'': ''django.core.files.storage.FileSystemStorage''}, ''staticfiles'': {''BACKEND'': ''django.contrib.staticfiles.storage.StaticFilesStorage''}}"':
+        - cell "STORAGES"
+        - 'cell "{''default'': {''BACKEND'': ''django.core.files.storage.FileSystemStorage''}, ''staticfiles'': {''BACKEND'': ''django.contrib.staticfiles.storage.StaticFilesStorage''}}"'
+      - row "TAILWIND_APP_NAME 'theme'":
+        - cell "TAILWIND_APP_NAME"
+        - cell "'theme'"
+      - 'row "TEMPLATES [{''APP_DIRS'': True, ''BACKEND'': ''django.template.backends.django.DjangoTemplates'', ''DIRS'': [''/home/sylvie/Documents/01_Documents Slb/11-Informatique '' ''Dev/Projets 2025/cq-20250513/templates''], ''OPTIONS'': {''context_processors'': [''django.template.context_processors.debug'', ''django.template.context_processors.request'', ''django.contrib.auth.context_processors.auth'', ''django.contrib.messages.context_processors.messages'', ''secretbox.users.context_processors.app_access_permissions'']}}]"':
+        - cell "TEMPLATES"
+        - 'cell "[{''APP_DIRS'': True, ''BACKEND'': ''django.template.backends.django.DjangoTemplates'', ''DIRS'': [''/home/sylvie/Documents/01_Documents Slb/11-Informatique '' ''Dev/Projets 2025/cq-20250513/templates''], ''OPTIONS'': {''context_processors'': [''django.template.context_processors.debug'', ''django.template.context_processors.request'', ''django.contrib.auth.context_processors.auth'', ''django.contrib.messages.context_processors.messages'', ''secretbox.users.context_processors.app_access_permissions'']}}]"'
+      - row "TEST_NON_SERIALIZED_APPS []":
+        - cell "TEST_NON_SERIALIZED_APPS"
+        - cell "[]"
+      - row "TEST_RUNNER 'django.test.runner.DiscoverRunner'":
+        - cell "TEST_RUNNER"
+        - cell "'django.test.runner.DiscoverRunner'"
+      - row "THOUSAND_SEPARATOR ','":
+        - cell "THOUSAND_SEPARATOR"
+        - cell "','"
+      - row "TIERS_APPS ['wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds', 'wagtail.sites', 'wagtail.users', 'wagtail.snippets', 'wagtail.documents', 'wagtail.images', 'wagtail.search', 'wagtail.admin', 'wagtail', 'modelcluster', 'taggit', 'compressor', 'tailwind', 'crispy_forms', 'crispy_tailwind', 'django_countries']":
+        - cell "TIERS_APPS"
+        - cell "['wagtail.contrib.forms', 'wagtail.contrib.redirects', 'wagtail.embeds', 'wagtail.sites', 'wagtail.users', 'wagtail.snippets', 'wagtail.documents', 'wagtail.images', 'wagtail.search', 'wagtail.admin', 'wagtail', 'modelcluster', 'taggit', 'compressor', 'tailwind', 'crispy_forms', 'crispy_tailwind', 'django_countries']"
+      - row "TIERS_MIDDLEWARE ['debug_toolbar.middleware.DebugToolbarMiddleware', 'threadlocals.middleware.ThreadLocalMiddleware']":
+        - cell "TIERS_MIDDLEWARE"
+        - cell "['debug_toolbar.middleware.DebugToolbarMiddleware', 'threadlocals.middleware.ThreadLocalMiddleware']"
+      - row "TIME_FORMAT 'P'":
+        - cell "TIME_FORMAT"
+        - cell "'P'"
+      - row "TIME_INPUT_FORMATS ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M']":
+        - cell "TIME_INPUT_FORMATS"
+        - cell "['%H:%M:%S', '%H:%M:%S.%f', '%H:%M']"
+      - row "TIME_ZONE 'UTC'":
+        - cell "TIME_ZONE"
+        - cell "'UTC'"
+      - row "USE_I18N True":
+        - cell "USE_I18N"
+        - cell "True"
+      - row "USE_THOUSAND_SEPARATOR False":
+        - cell "USE_THOUSAND_SEPARATOR"
+        - cell "False"
+      - row "USE_TZ True":
+        - cell "USE_TZ"
+        - cell "True"
+      - row "USE_X_FORWARDED_HOST False":
+        - cell "USE_X_FORWARDED_HOST"
+        - cell "False"
+      - row "USE_X_FORWARDED_PORT False":
+        - cell "USE_X_FORWARDED_PORT"
+        - cell "False"
+      - row "VERSION '0.0.2'":
+        - cell "VERSION"
+        - cell "'0.0.2'"
+      - row "WAGTAILADMIN_BASE_CSS None":
+        - cell "WAGTAILADMIN_BASE_CSS"
+        - cell "None"
+      - row "WSGI_APPLICATION 'config.wsgi.application'":
+        - cell "WSGI_APPLICATION"
+        - cell "'config.wsgi.application'"
+      - row "X_FRAME_OPTIONS 'DENY'":
+        - cell "X_FRAME_OPTIONS"
+        - cell "'DENY'"
+      - row "YEAR_MONTH_FORMAT 'F Y'":
+        - cell "YEAR_MONTH_FORMAT"
+        - cell "'F Y'"
+- contentinfo:
+  - paragraph:
+    - text: You’re seeing this error because you have
+    - code: DEBUG = True
+    - text: in your Django settings file. Change that to
+    - code: "False"
+    - text: ", and Django will display a standard page generated by the handler for this status code."
+```

@@ -8,126 +8,31 @@
   - link "Tableau de bord":
     - /url: /
     - img "Tableau de bord"
+  - link "EscapeVault":
+    - /url: /escapevault/map/
+    - img "EscapeVault"
   - img "App logo"
-  - heading "Bienvenue dans SecretBox" [level=1]
-  - link "Nouvelle entrée":
-    - /url: /dashboard/add/
-    - img "Nouvelle entrée"
-  - text: Etat
-  - combobox "Etat":
-    - option "Tous" [selected]
-    - option "À faire"
-    - option "En cours"
-    - option "Terminé"
-    - option "Reporté"
-    - option "Annulé"
-  - img
-  - text: Durée min
-  - spinbutton "Durée min"
-  - text: Durée max
-  - spinbutton "Durée max"
-  - text: Description
-  - textbox "Description"
-  - text: Rendez-vous
-  - combobox "Rendez-vous":
-    - option "Tous" [selected]
-    - option "Rendez-vous"
-    - option "Anniversaire"
-    - option "Fête"
-  - img
+  - heading "EscapeVault Map" [level=1]
+  - link "Liste des positions":
+    - /url: /escapevault/list/
+    - img "Liste des positions"
+  - link "Nouvelle position":
+    - /url: /escapevault/add/
+    - img "Nouvelle position"
+  - link "Paramètres":
+    - /url: /escapevault/parameters/
+    - img "Paramètres"
   - text: Catégorie
   - combobox "Catégorie":
     - option "Toutes" [selected]
-    - option "Organisation"
-    - option "Compta"
-    - option "Achats"
-    - option "Sport"
-    - option "Santé"
-    - option "Contact"
-    - option "Informatique"
-    - option "Menage"
-    - option "Jardin"
-    - option "Doudou"
-    - option "Bricoles"
-    - option "Couture"
-    - option "Loisirs"
+    - option "Maison"
+    - option "Nomade"
+    - option "Coup de coeur"
+    - option "Ordinaire"
+    - option "À bannir"
   - img
-  - text: Qui
-  - combobox "Qui":
-    - option "Toutes" [selected]
-    - option "Sylvie"
-    - option "Jean-Christophe"
-    - option "Laurine"
-    - option "Thomas"
-    - option "Odile"
-    - option "Maman"
-    - option "Papa"
-  - img
-  - text: Lieu
-  - combobox "Lieu":
-    - option "Toutes" [selected]
-    - option "Cantin"
-    - option "CHM"
-    - option "Genèse"
-    - option "Partout"
-  - img
-  - text: Fréquence
-  - combobox "Fréquence":
-    - option "Toutes" [selected]
-    - option "une seule fois"
-    - option "Tous les jours"
-    - option "Tous les 2 jours"
-    - option "Tous les 3 jours"
-    - option "Tous les 4 jours"
-    - option "Tous les 5 jours"
-    - option "Toutes les semaines"
-    - option "Tous les 10 jours"
-    - option "Toutes les 2 semaines"
-    - option "Tous les mois"
-    - option "Toutes les 6 semaines"
-    - option "Tous les 2 mois"
-    - option "Tous les 3 mois"
-    - option "Tous les 4 mois"
-    - option "Tous les 6 mois"
-    - option "Tous les ans"
-  - img
-  - text: Date de planification
-  - textbox "Date de planification"
-  - text: _
-  - textbox "_"
-  - text: Priorité
-  - combobox "Priorité":
-    - option "Toutes" [selected]
-    - option "Très faible"
-    - option "Faible"
-    - option "Normale"
-    - option "Moyenne"
-    - option "Élevée"
-    - option "Trés élevée"
-  - img
-  - text: Date de validation
-  - textbox "Date de validation"
-  - text: _
-  - textbox "_"
-  - text: Sans date de validation
-  - checkbox "Sans date de validation"
-  - table:
-    - rowgroup:
-      - row "État Durée Description Rendez-vous Catégorie Qui Lieu Fréquence Planifié Priorité Fait Note Actions":
-        - rowheader "État"
-        - rowheader "Durée"
-        - rowheader "Description"
-        - rowheader "Rendez-vous"
-        - rowheader "Catégorie"
-        - rowheader "Qui"
-        - rowheader "Lieu"
-        - rowheader "Fréquence"
-        - rowheader "Planifié"
-        - rowheader "Priorité"
-        - rowheader "Fait"
-        - rowheader "Note"
-        - rowheader "Actions"
-    - rowgroup
+  - text: "Make this Notebook Trusted to load map: File -> Trust Notebook"
+  - iframe
   - text: © 2025 Osynia
   - navigation:
     - link "contact":
