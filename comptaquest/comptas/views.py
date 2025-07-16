@@ -4,7 +4,7 @@ from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DetailView, FormView, ListView
+from django.views.generic import CreateView, DetailView, FormView, ListView, DeleteView, UpdateView
 
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
                     SelectAccountTypeForm)
@@ -33,8 +33,19 @@ class DashboardView(LoginRequiredMixin, ListView):
         return context
 
 
-class AccountDetailView(LoginRequiredMixin, DetailView):
+class AccountEditView(LoginRequiredMixin, UpdateView):
     template_name = "account_detail.html"
+    model = CurrentAccount
+    context_object_name = "account"
+
+    def get_success_url(self):
+        next_url = self.request.GET.get("next") or self.request.POST.get("next")
+        if next_url:
+            return next_url
+        return reverse("comptas:dashboard")
+
+class AccountDeleteView(LoginRequiredMixin, DeleteView):
+    template_name = "account_confirm_delete.html"
     model = CurrentAccount
     context_object_name = "account"
 

@@ -21,3 +21,6 @@ compose.yml
 # no logs
 debug_db.log
 debug.log
+
+# no perso-data
+default_users.json

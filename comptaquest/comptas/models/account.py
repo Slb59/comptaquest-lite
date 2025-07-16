@@ -89,7 +89,7 @@ class AbstractAccount(models.Model):
         """
         Returns a string representation of the account, including the user's trigram and account name.
         """
-        return f"{self.user.trigram} - {self.name}"
+        return f"{self.user.trigram} - {self.name} - {self.bank_name}"
 
     def get_transaction_sum(self, transaction_type, **filters):
         """
