@@ -36,7 +36,7 @@ class SamiListView(LoginRequiredMixin, ListView):
 class SamiCreateView(LoginRequiredMixin, CreateView):
     model = Sami
     form_class = SamiForm
-    template_name = "generic/add_template.html"
+    template_name = "sami/add_sami.html"
     success_url = reverse_lazy("sami:dashboard")
 
     def get_context_data(self, **kwargs):

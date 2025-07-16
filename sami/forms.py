@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, Field, Layout
+from crispy_forms.layout import Div, Field, Layout, HTML
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -32,15 +32,16 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
                     css_class="grid grid-cols-2 gap-4",
                 ),
                 Div(
-                    Field("bedtime", wrapper_class="col-span-1"),
-                    Field("wakeup", wrapper_class="col-span-1"),
-                    Field("nonstop", wrapper_class="col-span-1"),
-                    Field("energy", wrapper_class="col-span-1"),
-                    Field("naptime", wrapper_class="col-span-1"),
-                    Field("phone", wrapper_class="col-span-1"),
-                    Field("reading", wrapper_class="col-span-1"),
-                    css_class="grid grid-cols-7 gap-4 mt-4",
+                    Field("bedtime", wrapper_class="col-span-1", attrs={"min": 0, "max": 3}, css_class="w-full"),
+                    Field("wakeup", wrapper_class="col-span-1", css_class="w-full"),
+                    Field("nonstop", wrapper_class="col-span-1", css_class="w-full"),
+                    Field("energy", wrapper_class="col-span-1", css_class="w-full"),
+                    Field("naptime", wrapper_class="col-span-1", css_class="w-full"),
+                    Field("phone", wrapper_class="col-span-1", css_class="w-full"),
+                    Field("reading", wrapper_class="col-span-1", css_class="w-full"),
+                    HTML('<div class="col-span-2 pt-2 w-full text-center"><label>Total Sommeil</label><div id="total-sleep" class="text-lg text-center font-semibold">0</div></div>'),    
+                    css_class="grid grid-cols-9 gap-4 mt-4 min-w-0",
                 ),
-                css_class="w-full max-w-2xl",
+                css_class="w-full max-w-4xl",
             )
         )
