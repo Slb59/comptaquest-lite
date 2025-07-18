@@ -3,6 +3,8 @@ from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
+from secretbox.users.models import Member
+
 from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
                       PRIORITY_CHOICES)
 from .models import Todo
@@ -78,6 +80,7 @@ class TodoForm(forms.ModelForm):
         self.fields["description"].label = "Description"
         self.fields["appointment"].label = "Rdv"
         self.fields["category"].label = "Catégorie"
+        self.fields["who"].queryset = Member.objects.order_by("trigram")
         self.fields["who"].label = "Personne"
         self.fields["place"].label = "Lieu"
         self.fields["periodic"].label = "Fréquence"
@@ -129,7 +132,12 @@ class TodoFilterForm(forms.Form):
         choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous")
     )
     category = forms.ChoiceField(choices=[("", "Toutes")] + CATEGORY_CHOICES, required=False, label=_("Catégorie"))
-    who = forms.ChoiceField(choices=[("", "Toutes")] + Todo.WHO_CHOICES, required=False, label=_("Qui"))
+    who = forms.ModelChoiceField(
+        queryset=Member.objects.all().order_by("trigram"),
+        required=False,
+        label=_("Qui"),
+        empty_label="Tous",
+    )
     place = forms.ChoiceField(choices=[("", "Toutes")] + PLACE_CHOICES, required=False, label=_("Lieu"))
     periodic = forms.ChoiceField(choices=[("", "Toutes")] + PERIODIC_CHOICES, required=False, label=_("Fréquence"))
     planned_date_start = forms.DateField(

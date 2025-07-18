@@ -1,6 +1,7 @@
 # secretbox.dashboard.models.py
 from datetime import date, timedelta
 
+from django.conf import settings
 from django.core.validators import (MaxValueValidator, MinValueValidator,
                                     RegexValidator)
 from django.db import models
@@ -98,16 +99,6 @@ class Todo(models.Model):
         ("cancel", "Annulé"),
     ]
 
-    WHO_CHOICES = [
-        ("SLB", "Sylvie"),
-        ("JCB", "Jean-Christophe"),
-        ("LAU", "Laurine"),
-        ("THO", "Thomas"),
-        ("ODI", "Odile"),
-        ("MAM", "Maman"),
-        ("PAP", "Papa"),
-    ]
-
     APPOINTEMENT_CHOICES = [
         ("rdv", "Rendez-vous"),
         ("birthday", "Anniversaire"),
@@ -119,7 +110,7 @@ class Todo(models.Model):
     description = models.TextField()
     appointment = models.CharField(max_length=20, choices=APPOINTEMENT_CHOICES, blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
-    who = models.CharField(max_length=20, choices=WHO_CHOICES, default="SLB")
+    who = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, related_name="todos")
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
     report_date = models.DateField(blank=True, null=True)

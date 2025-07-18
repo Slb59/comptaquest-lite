@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Div, Field, Layout, HTML
+from crispy_forms.layout import HTML, Div, Field, Layout
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -39,7 +39,9 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
                     Field("naptime", wrapper_class="col-span-1", css_class="w-full"),
                     Field("phone", wrapper_class="col-span-1", css_class="w-full"),
                     Field("reading", wrapper_class="col-span-1", css_class="w-full"),
-                    HTML('<div class="col-span-2 pt-2 w-full text-center"><label>Total Sommeil</label><div id="total-sleep" class="text-lg text-center font-semibold">0</div></div>'),    
+                    HTML(
+                        '<div class="col-span-2 pt-2 w-full text-center"><label>Total Sommeil</label><div id="total-sleep" class="text-lg text-center font-semibold">0</div></div>'
+                    ),
                     css_class="grid grid-cols-9 gap-4 mt-4 min-w-0",
                 ),
                 css_class="w-full max-w-4xl",

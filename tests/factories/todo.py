@@ -9,6 +9,7 @@ from secretbox.dashboard.choices import (CATEGORY_CHOICES, PERIODIC_CHOICES,
 from secretbox.dashboard.models import Todo
 from secretbox.tools.models import get_now_date
 
+
 from .member import MemberFactory
 
 
@@ -23,7 +24,7 @@ class TodoFactory(factory.django.DjangoModelFactory):
     description = factory.Faker("sentence")
     appointment = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.APPOINTEMENT_CHOICES])
     category = factory.fuzzy.FuzzyChoice([choice[0] for choice in CATEGORY_CHOICES])
-    who = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.WHO_CHOICES])
+    who = factory.SubFactory(MemberFactory)
     place = factory.fuzzy.FuzzyChoice([choice[0] for choice in PLACE_CHOICES])
     periodic = factory.fuzzy.FuzzyChoice([choice[0] for choice in PERIODIC_CHOICES])
     report_date = factory.LazyFunction(get_now_date)

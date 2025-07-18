@@ -12,11 +12,7 @@ class ColorParameterTests(TestCase):
 
     def setUp(self):
         self.valid_data = ColorParameterFactory(
-            priority="1-highest", 
-            periodic="01-none", 
-            place="partout", 
-            category="01-organisation", 
-            color="#123ABC"
+            priority="1-highest", periodic="01-none", place="partout", category="01-organisation", color="#123ABC"
         )
 
     def test_create_color_parameter(self):
