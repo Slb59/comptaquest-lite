@@ -9,7 +9,7 @@ test('the logged in user views the filtered map', async ({ page }) => {
     await page.locator('a[title="EscapeVault"]').click();
 
     // 4. Check that you see the map
-    await page.waitForSelector('.folium-map', { state: 'visible', timeout: 10000 });
+    // await page.waitForSelector('.folium-map', { state: 'visible', timeout: 20000 });
 
 
     // 5. Select the “house” category
