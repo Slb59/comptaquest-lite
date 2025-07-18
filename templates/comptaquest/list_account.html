@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
-{% load i18n %}
+{% load static crispy_forms_tags i18n %}
 
 {% block content %}
 <div class="main-screen">
@@ -20,6 +19,8 @@
     {% block list_account_content %}
     <div class="max-w-6xl mx-auto px-4">
     <!-- search bar -->
+    {% crispy form %}
+    <!-- list accounts -->
     <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
 
         <table class="min-w-full bg-white">

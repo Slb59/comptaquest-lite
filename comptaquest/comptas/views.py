@@ -5,22 +5,33 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
-                                  ListView, UpdateView)
+                                  ListView, UpdateView, TemplateView)
 
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
-                    SelectAccountTypeForm)
+                    SelectAccountTypeForm, CurrentAccountFilterForm)
 from .models.account import AbstractAccount, CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
+from .choices import ACCOUNT_CHOICES
 
 
-class DashboardView(LoginRequiredMixin, ListView):
+class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "comptaquest/list_account.html"
-    model = CurrentAccount
-    context_object_name = "accounts"
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        form = CurrentAccountFilterForm(self.request.GET or None)
+        accounts = CurrentAccount.objects.all()
+        
+        if form.is_valid():
+            data = form.cleaned_data
+            if data["user"]:
+                accounts = accounts.filter(user=data["user"])
+            if data["bank_name"]:
+                accounts = accounts.filter(bank_name=data["bank_name"])
+            if data["account_type"]:
+                accounts = accounts.filter(account_type=data["account_type"])
 
         try:
             locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
@@ -30,7 +41,8 @@ class DashboardView(LoginRequiredMixin, ListView):
         context["title"] = datetime.today().strftime("%A %d %B %Y")
         context["logo_url"] = "/static/images/logo_cq.png"
         context["current_date"] = datetime.today()
-        context["accounts"] = CurrentAccount.objects.all()
+        context["accounts"] = accounts.order_by("user", "bank_name", "name")
+        context["form"] = form
         return context
 
 
@@ -104,11 +116,8 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context["title"] = _(
-            f"Nouveau {AbstractAccount.AccountTypeChoices(
-                self.account_type).label.lower()}"
-        )
+        account_type_label = dict(ACCOUNT_CHOICES).get(self.account_type, self.account_type)
+        context["title"] = _("Nouveau ") +  account_type_label.lower()
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
         return context

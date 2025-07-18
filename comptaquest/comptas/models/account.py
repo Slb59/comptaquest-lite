@@ -3,18 +3,9 @@ from django.db import models
 from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
-
+from ..choices import ACCOUNT_CHOICES, BANK_CHOICES
 
 class AbstractAccount(models.Model):
-
-    class AccountTypeChoices(models.TextChoices):
-        CURRENT = "Current", _("Compte courant")
-        INVESTMENT = "Investment", _("Compte d'investissement")
-
-    class BankChoices(models.TextChoices):
-        CE = "CE", "CE"
-        CA = "CA", "CA"
-        GMF = "GMF", "GMF"
 
     class StateChoices(models.TextChoices):
         OPEN = "open", _("Ouvert")
@@ -30,8 +21,8 @@ class AbstractAccount(models.Model):
 
     account_type = models.CharField(
         max_length=15,
-        choices=AccountTypeChoices.choices,
-        default=AccountTypeChoices.CURRENT,
+        choices=ACCOUNT_CHOICES,
+        default="Current",
     )
 
     # The last pointed date
@@ -79,7 +70,9 @@ class AbstractAccount(models.Model):
         help_text=_("After the closed date it is not possibile to add transaction or modify this account"),
     )
 
-    bank_name = models.CharField(max_length=15, choices=BankChoices.choices, default=BankChoices.CA)
+    bank_name = models.CharField(
+        max_length=15, choices=BANK_CHOICES, default="CA"
+    )
     description = models.TextField(blank=True, null=True)
 
     class Meta(TypedModelMeta):
