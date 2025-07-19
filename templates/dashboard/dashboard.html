@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
-{% load crispy_forms_tags i18n %}
+{% load static crispy_forms_tags i18n custom_filters%}
 
 {% block content %}
 <div class="main-screen">
@@ -64,16 +63,21 @@
                                     <img src="{% static 'icons/chrono.png' %}" alt="Nouvelle position" class="w-6 h-6">
                                 </a>
                                 <!-- Chip for edit a task -->
-                                <a href="{% url 'dashboard:edit_todo' pk=todo.pk %}" class="round-hicon">
-                                    <img src="{% static 'icons/edit.png' %}" alt="Nouvelle ligne" class="w-6 h-6">
-                                </a>
+                                {% if todo|can_edit_any:request.user %}
+                                    <a href="{% url 'dashboard:edit_todo' pk=todo.pk %}" class="round-hicon">
+                                        <img src="{% static 'icons/edit.png' %}" alt="Nouvelle ligne" class="w-6 h-6">
+                                    </a>
+                                {% endif %}
+                                
                                 <!-- Chip for delete a task -->
-                                <form method="post" action="{% url 'dashboard:delete_todo' pk=todo.pk %}" style="display: inline;">
-                                    {% csrf_token %}
-                                    <button type="submit" class="round-hicon" style="background: none; border: none; padding: 0;">
-                                        <img src="{% static 'icons/delete.png' %}" alt="Supprimer la ligne" class="w-6 h-6">
-                                    </button>
-                                </form>
+                                {% if todo|can_delete:request.user %}
+                                    <form method="post" action="{% url 'dashboard:delete_todo' pk=todo.pk %}" style="display: inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="round-hicon" style="background: none; border: none; padding: 0;">
+                                            <img src="{% static 'icons/delete.png' %}" alt="Supprimer la ligne" class="w-6 h-6">
+                                        </button>
+                                    </form>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}

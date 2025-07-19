@@ -10,6 +10,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import (CreateView, FormView, TemplateView,
                                   UpdateView, View)
+from django.db.models import Q
 
 from .forms import ContactForm, TodoFilterForm, TodoForm
 from .models import Todo
@@ -90,7 +91,16 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         form = TodoFilterForm(self.request.GET or None)
-        todos = Todo.objects.filter(user=self.request.user)
+        user = self.request.user
+        todos = Todo.objects.filter(user=user)
+
+        # Filtrage selon les droits
+        if user.is_superuser:
+            todos = Todo.objects.all()
+        else:
+            todos = Todo.objects.filter(
+                Q(user=user) | Q(who=user)
+            )
 
         if form.is_valid():
             data = form.cleaned_data
@@ -136,6 +146,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             "planned_date", "priority", "category", "periodic", "who", "place", "duration"
         )
         context["form"] = form
+        context["request"] = self.request
 
         return context
 
@@ -147,13 +158,41 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("home")
 
     def get_queryset(self):
-        return Todo.objects.filter(user=self.request.user)
+        user = self.request.user
+        return Todo.objects.filter(Q(user=user) | Q(who=user))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = _("Modifier l'entrée")
         context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
+    
+    def dispatch(self, request, *args, **kwargs):
+        todo = self.get_object()
+        if not todo.can_view(request.user):
+            return HttpResponseForbidden(_("Vous ne pouvez pas voir cet élément."))
+
+        if not (todo.can_edit(request.user) or todo.can_edit_limited(request.user)):
+            return HttpResponseForbidden(_("Vous ne pouvez pas modifier cet élément."))
+        
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        todo = self.get_object()
+        user = self.request.user
+
+        if todo.can_edit_limited(user):
+            # Désactive tous les champs sauf statut et priorité
+            for name, field in form.fields.items():
+                if name not in ["state", "priority"]:
+                    field.disabled = True
+                    field.widget.attrs.update({"class": "readonly bg-gray-100 text-gray-500 pointer-events-none"}) 
+                    
+                else:
+                    field.widget.attrs.update({"class": "editable"}) 
+
+        return form
 
 
 class TodoDeleteView(LoginRequiredMixin, View):
@@ -165,3 +204,9 @@ class TodoDeleteView(LoginRequiredMixin, View):
             todo.note = f"*** supprimé {date.today()} ***\n{todo.note}"
             todo.save()
         return redirect("home")
+
+    def dispatch(self, request, *args, **kwargs):
+        todo = self.get_object()
+        if not todo.can_delete(request.user):
+            return HttpResponseForbidden(_("Vous ne pouvez pas supprimer cet élément."))
+        return super().dispatch(request, *args, **kwargs)

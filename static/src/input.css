@@ -107,3 +107,26 @@
     box-shadow: 0 0 0 4px #78350f;
 }
 
+input.editable,
+select.editable,
+textarea.editable {
+    background-color: #e6ffed;
+    border: 2px solid #22c55e;
+    /* vert */
+}
+
+input.readonly,
+textarea.readonly {
+    background-color: #f9fafb;
+    border: 1px dashed #9ca3af;
+    opacity: 0.7;
+}
+
+select.readonly {
+    background-color: #f3f4f6 !important;
+    color: #6b7280 !important;
+    pointer-events: none !important;
+    border: 1px dashed #9ca3af !important;
+    opacity: 0.7 !important;
+}
+

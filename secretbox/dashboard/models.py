@@ -257,3 +257,18 @@ class Todo(models.Model):
                 return color_param.color
 
         return "#f3faf0"  # Couleur par défaut
+    
+    def can_view(self, user):
+        return user.is_superuser or self.user == user or self.who == user
+
+    def can_edit(self, user):
+        return user.is_superuser or self.user == user
+
+    def can_edit_limited(self, user):
+        return self.who == user and self.user != user and not user.is_superuser
+
+    def can_delete(self, user):
+        return user.is_superuser or self.user == user
+
+    def can_edit_any(self, user):
+        return self.can_edit(user) or self.can_edit_limited(user)
