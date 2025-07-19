@@ -2,6 +2,10 @@
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
+    // prevent to execute tests in parallel
+    fullyParallel: false,
+    workers: 1,
+
     projects: [
         {
             name: 'setup',

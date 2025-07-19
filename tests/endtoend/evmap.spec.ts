@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-
+test.use({ storageState: 'tests/auth/session.json' });
 test('the logged in user views the filtered map', async ({ page }) => {
 
     // 2. Access the dashboard
@@ -9,11 +9,16 @@ test('the logged in user views the filtered map', async ({ page }) => {
     await page.locator('a[title="EscapeVault"]').click();
 
     // 4. Check that you see the map
-    // await page.waitForSelector('.folium-map', { state: 'visible', timeout: 20000 });
+    const iframeElement = await page.waitForSelector('iframe');
+    const frame = await iframeElement.contentFrame();
+    if (!frame) {
+        throw new Error('Impossible d’accéder au contenu de l’iframe.');
+    }
+    await frame.waitForSelector('.folium-map', { state: 'visible', timeout: 20000 });
 
 
     // 5. Select the “house” category
-    await page.selectOption('select[name="category"]', 'maison');
+    await page.selectOption('select[id="id_category"]', 'Maison');
 
     // 6. Check that only “home” POIs are visible
     await expect(page.locator('.folium-marker')).toHaveCount(1);

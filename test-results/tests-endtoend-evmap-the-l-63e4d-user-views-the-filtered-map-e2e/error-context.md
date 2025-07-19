@@ -24,8 +24,8 @@
     - img "Paramètres"
   - text: Catégorie
   - combobox "Catégorie":
-    - option "Toutes" [selected]
-    - option "Maison"
+    - option "Toutes"
+    - option "Maison" [selected]
     - option "Nomade"
     - option "Coup de coeur"
     - option "Ordinaire"

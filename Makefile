@@ -35,6 +35,15 @@ run-front:
 	clear
 	npm run build
 
+run-test:
+	clear
+	cp db.sqlite3 db_test.sqlite3
+	uv run manage.py reset_positions
+	uv run manage.py runserver --settings=config.settings.test &
+	sleep 3
+	npx playwright test
+	pkill -f runserver
+
 deploy:
 	uv pip freeze > requirements.txt
 	rsync -a --exclude-from='.deployignore' . "$(DEPLOY_PATH)"
@@ -52,3 +61,9 @@ loaddata:
 	uv run manage.py loaddata secretbox/tools/loaddata/usergroup.json
 	uv run manage.py loaddata secretbox/tools/loaddata/default_users.json
 	uv run manage.py set_default_password
+
+loaddata-test:
+	uv run manage.py loaddata secretbox/tools/loaddata/colorparameter.json --settings=config.settings.test
+	uv run manage.py loaddata secretbox/tools/loaddata/usergroup.json --settings=config.settings.test
+	uv run manage.py loaddata secretbox/tools/loaddata/default_users.json --settings=config.settings.test
+	uv run manage.py set_default_password --settings=config.settings.test
