@@ -13,8 +13,9 @@
         <img src="{% static 'images/secretbox/logo_sb2.png' %}" alt="Tableau de bord" class="w-6 h-6">
     </a>
 
-    <!-- Chip for diarylab -->
+    
     {% if can_access_diarylab %}
+    <!-- Chip for diarylab -->
     <a href="{% url 'diarylab:list_entries' %}"
         class="round-icon"
         title="DiaryLab">
@@ -22,32 +23,36 @@
     </a>
     {% endif %}
 
-    <!-- Chip for sami -->
+    
     {% if can_access_sami %}
+    <!-- Chip for sami -->
     <a href="{% url 'sami:dashboard' %}"
         class="round-icon" title="Sami">
         <img src="{% static 'images/logo_sami.png' %}" alt="Sami" class="w-6 h-6">
     </a>
     {% endif %}
 
-    <!-- Chip for comptaquest -->
+    
     {% if can_access_comptas %}
+    <!-- Chip for comptaquest -->
     <a href="{% url 'comptas:dashboard' %}"
         class="round-icon" title="ComptaQuest">
         <img src="{% static 'images/logo_cq.png' %}" alt="ComptaQuest" class="w-6 h-6">
     </a>
     {% endif %}
 
-    <!-- Chip for potionrun -->
+    
     {% if can_access_potionrun %}
+    <!-- Chip for potionrun -->
     <a href="{% url 'performances:launch' %}"
         class="round-icon" title="PotionRun">
         <img src="{% static 'images/logo_pr.png' %}" alt="PotionRun" class="w-6 h-6">
     </a>
     {% endif %}
 
-    <!-- Chip for escapevault -->
+    
     {% if can_access_escapevault %}
+    <!-- Chip for escapevault -->
     <a href="{% url 'escapevault:evmap' %}" class="round-icon" title="EscapeVault">
         <img src="{% static 'images/logo_ev.png' %}" alt="EscapeVault" class="w-6 h-6">
     </a>

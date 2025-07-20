@@ -1047,8 +1047,8 @@ input.readonly, textarea.readonly {
   opacity: 0.7;
 }
 select.readonly {
-  background-color: #f3f4f6 !important;
-  color: #6b7280 !important;
+  background-color: #e72828 !important;
+  color: #f00d6f !important;
   pointer-events: none !important;
   border: 1px dashed #9ca3af !important;
   opacity: 0.7 !important;

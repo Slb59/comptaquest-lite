@@ -10,8 +10,10 @@ class Command(BaseCommand):
         NomadePosition.objects.all().delete()
         self.stdout.write("Toutes les NomadePosition supprimées.")
 
-        NomadePositionFactory(category="home")
+        np = NomadePositionFactory(category="home")
+        np.save()
         for _ in range(3):
-            NomadePositionFactory(category="nomade")
+            np = NomadePositionFactory(category="nomade")
+            np.save()
 
         self.stdout.write(self.style.SUCCESS("4 NomadePosition créées."))

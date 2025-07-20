@@ -39,10 +39,12 @@ run-test:
 	clear
 	cp db.sqlite3 db_test.sqlite3
 	uv run manage.py reset_positions
-	uv run manage.py runserver --settings=config.settings.test &
+	uv run manage.py runserver 8001 --settings=config.settings.test &
 	sleep 3
-	npx playwright test
-	pkill -f runserver
+	( \
+		trap 'pkill -f runserver' EXIT; \
+		npx playwright test \
+	)
 
 deploy:
 	uv pip freeze > requirements.txt

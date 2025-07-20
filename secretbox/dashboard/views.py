@@ -1,5 +1,6 @@
 from datetime import date
 
+from crispy_forms.layout import Field
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
@@ -183,16 +184,28 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         user = self.request.user
 
         if todo.can_edit_limited(user):
-            # Désactive tous les champs sauf statut et priorité
             for name, field in form.fields.items():
+                existing_class = field.widget.attrs.get("class", "")
                 if name not in ["state", "priority"]:
                     field.disabled = True
-                    field.widget.attrs.update({"class": "readonly bg-gray-100 text-gray-500 pointer-events-none"}) 
-                    
+                    field.widget.attrs["class"] = f"{existing_class} readonly text-gray-500 pointer-events-none".strip()
+
+                    # Mise à jour du wrap_class du champ dans le layout
+                    for layout_object in form.helper.layout.fields:
+                        if hasattr(layout_object, "fields") and name in layout_object.fields:
+                            layout_object.wrapper_class = "readonly"
+                        elif getattr(layout_object, "name", None) == name:
+                            layout_object.wrapper_class = "readonly"
                 else:
-                    field.widget.attrs.update({"class": "editable"}) 
+                    field.widget.attrs["class"] = f"{existing_class} editable".strip()
+                    for layout_object in form.helper.layout.fields:
+                        if hasattr(layout_object, "fields") and name in layout_object.fields:
+                            layout_object.wrapper_class = "editable"
+                        elif getattr(layout_object, "name", None) == name:
+                            layout_object.wrapper_class = "editable"
 
         return form
+
 
 
 class TodoDeleteView(LoginRequiredMixin, View):
