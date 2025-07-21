@@ -178,34 +178,10 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         
         return super().dispatch(request, *args, **kwargs)
 
-    def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        todo = self.get_object()
-        user = self.request.user
-
-        if todo.can_edit_limited(user):
-            for name, field in form.fields.items():
-                existing_class = field.widget.attrs.get("class", "")
-                if name not in ["state", "priority"]:
-                    field.disabled = True
-                    field.widget.attrs["class"] = f"{existing_class} readonly text-gray-500 pointer-events-none".strip()
-
-                    # Mise à jour du wrap_class du champ dans le layout
-                    for layout_object in form.helper.layout.fields:
-                        if hasattr(layout_object, "fields") and name in layout_object.fields:
-                            layout_object.wrapper_class = "readonly"
-                        elif getattr(layout_object, "name", None) == name:
-                            layout_object.wrapper_class = "readonly"
-                else:
-                    field.widget.attrs["class"] = f"{existing_class} editable".strip()
-                    for layout_object in form.helper.layout.fields:
-                        if hasattr(layout_object, "fields") and name in layout_object.fields:
-                            layout_object.wrapper_class = "editable"
-                        elif getattr(layout_object, "name", None) == name:
-                            layout_object.wrapper_class = "editable"
-
-        return form
-
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user  # pour le formulaire
+        return kwargs
 
 
 class TodoDeleteView(LoginRequiredMixin, View):

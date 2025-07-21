@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
+from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit, Field
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -72,8 +72,8 @@ class TodoForm(forms.ModelForm):
             "note",
         ]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, *args,user=None, instance=None, **kwargs):
+        super().__init__(*args, instance=instance, **kwargs)
 
         self.fields["state"].label = "État"
         self.fields["duration"].label = "Durée"
@@ -86,10 +86,31 @@ class TodoForm(forms.ModelForm):
         self.fields["periodic"].label = "Fréquence"
 
         # Resize the state field
-        self.fields["state"].widget.attrs.update({"class": "w-full sm:w-[150px]", "style": "max-width: 150px;"})
-
+        # self.fields["state"].widget.field_class="w-full sm:w-[150px]"
+        # Field('state', css_id="custom_state_id")
+        Field("state", wrapper_class="w-full sm:w-[150px]")
         # Resize the duration field
-        self.fields["duration"].widget.attrs.update({"class": "w-full sm:w-[90px]", "style": "max-width: 90px;"})
+        Field("state", wrapper_class="w-full sm:w-[90px]")        
+        self.fields["duration"].widget.field_class="w-full sm:w-[90px]"
+
+        if instance and user and instance.can_edit_limited(user):
+            for name, field in self.fields.items():
+                if name not in ["state", "priority"]:
+                    field.disabled = True
+                    Field(name, wrapper_class="readonly")
+                else:
+                    Field(name, wrapper_class="editable")
+
+                # for name, field in self.fields.items():
+
+                #     if name not in ["state", "priority"]:
+                #         field.disabled = True
+
+                #         field.widget.attrs.update({"class": "readonly text-gray-500 pointer-events-none"})
+
+                #     else:
+                #         field.widget.attrs.update({"class": "editable"})
+
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
