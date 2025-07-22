@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4      
       - name: Set up Python
@@ -30,7 +31,8 @@ jobs:
       
   code-quality:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -48,7 +50,8 @@ jobs:
   
   performance-checks:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -61,7 +64,8 @@ jobs:
   
   unit-tests:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -76,17 +80,19 @@ jobs:
           # safety check
 
   playwright-tests:
-    needs:build
-    runs-on: ubuntu-latest
+    needs: build
+    runs-on: 
+      - ubuntu-latest
     steps:
       - name: Run Playwright tests
-      run: |
+        run: |
         npx playwright install
         npx playwright test
 
   integration-tests:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -101,7 +107,8 @@ jobs:
 
   deploy:
     needs: [unit-tests, integration-tests, performance-checks, code-quality]
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Build and deploy
