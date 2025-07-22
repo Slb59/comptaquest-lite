@@ -1,11 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* @tailwind directives */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
-@import 'tailwindcss';
+
+
+
 
 @theme {
     --color-black: #221f1f;
+    --color-gray: #9ca3af;
     --color-grey: #7c9786;
     --color-brown: #b36739;
     --color-darkbrown: #4f1b11;
@@ -13,4 +18,115 @@
     --color-or: #FFD700;
     --color-violet: #8A2BE2;
     --color-vert: #2E8B57;
+    --color-taupe: #d7d4d0;
+    --color-white: #ecddd5;
+    --color-verybrown: #3a2412;
 }
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url("/static/font/Cinzel.ttf");
+}
+
+@media (min-width: 640px) {
+    .main-screen {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .main-screen {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@layer components {
+    .round-icon {
+        @apply w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center hover:bg-gray-500;
+    }
+
+    .round-hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-500;
+    }
+
+    .button-valider {
+        @apply mt-4 font-medium rounded px-5 py-2.5 text-sm bg-brown text-white hover:bg-darkbrown focus:ring-4 focus:ring-or;
+    }
+
+    a.round_hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-500;
+    }
+
+    a.little-round-hicon {
+        @apply w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-500;
+    }
+
+    .name-text {
+        @apply flex-1 no-underline text-inherit;
+    }
+    
+    a.name-text:hover {
+        @apply underline;
+        color: #2A3D66;
+    }
+
+    .main-screen {
+        @apply flex flex-col items-center justify-center pt-4 pb-6 px-4 bg-taupe w-full;
+    }
+
+    .button-valider {
+        @apply mt-4 outline-none text-white bg-brown font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:bg-verybrown;
+    }
+    
+    .position-item {
+        @apply mb-1 p-1 border border-white rounded-lg border-b-white;
+    }
+
+    .bg-brown-100 {
+        @apply backdrop-blur-sm;
+        background-color: rgba(var(--color-brown-rgb), 0.5);
+    }
+
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.button-valider:focus {
+    box-shadow: 0 0 0 4px #fde047;
+}
+.dark .button-valider:focus {
+    box-shadow: 0 0 0 4px #78350f;
+}
+
+input.editable,
+select.editable,
+textarea.editable {
+    background-color: #e6ffed;
+    border: 2px solid #22c55e;
+    /* vert */
+}
+
+input.readonly,
+textarea.readonly {
+    background-color: #f9fafb;
+    border: 1px dashed #9ca3af;
+    opacity: 0.7;
+}
+
+select.readonly {
+    background-color: #e72828 !important;
+    color: #f00d6f !important;
+    pointer-events: none !important;
+    border: 1px dashed #9ca3af !important;
+    opacity: 0.7 !important;
+}
+

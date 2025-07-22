@@ -83,7 +83,7 @@ DEPLOY_PATH=<<path to deploy>>
 
     - creating a branch for a new feature
 ```bash
-    git checkout -b feature/feature_name upstream/main
+    git checkout -b feature/feature_name origin/main
 ```
     - commit the changes
 ```bash
@@ -96,8 +96,8 @@ git push
 
     - Updating from main branch
 ```bash
-git fetch upstream
-git rebase upstream/main
+git fetch origin
+git rebase origin/main
 ```
     
 

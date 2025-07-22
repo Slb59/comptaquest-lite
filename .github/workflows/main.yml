@@ -8,29 +8,31 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4      
       - name: Set up Python
         uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
       
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install uv
-          # uv init
-          uv add django wagtail
           uv sync
       
       - name: Prepare environment
         run: |
-          # cp .env.example .env
-          # python manage.py migrate
-          # python manage.py collectstatic --noinput
+          cp .env.example .env
+          python manage.py migrate
+          python manage.py collectstatic --noinput
       
   code-quality:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
@@ -48,7 +50,8 @@ jobs:
   
   performance-checks:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -61,7 +64,8 @@ jobs:
   
   unit-tests:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -75,9 +79,20 @@ jobs:
           # bandit -r comptaquest
           # safety check
 
+  playwright-tests:
+    needs: build
+    runs-on: 
+      - ubuntu-latest
+    steps:
+      - name: Run Playwright tests
+        run: |
+        npx playwright install
+        npx playwright test
+
   integration-tests:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install pytest
@@ -92,15 +107,15 @@ jobs:
 
   deploy:
     needs: [unit-tests, integration-tests, performance-checks, code-quality]
-    runs-on: ubuntu-latest
+    runs-on: 
+      - ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Build and deploy
         if: github.ref == 'refs/heads/main'
         run: |
-          # Exemple de déploiement (à adapter)
           echo "Déploiement en cours..."
-          # Ajoutez vos commandes de déploiement ici
           # Exemple pour un déploiement sur un serveur :
           # scp -r . user@server:/path/to/deploy
           # ssh user@server "cd /path/to/deploy && docker-compose up -d"
+          uv run manage.py loaddata secretbox/tools/loaddata/colorparameter.json

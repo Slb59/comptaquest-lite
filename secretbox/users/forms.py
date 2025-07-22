@@ -12,47 +12,48 @@ from .models import CQUser, MemberProfile
 
 
 class LoginForm(auth_forms.AuthenticationForm):
-    email = forms.EmailField(
-        label=_("Identifiant"),
-        widget=forms.EmailInput(
-            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
-        ),
-    )
+    # email = forms.EmailField(
+    #     label=_("Identifiant"),
+    #     widget=forms.EmailInput(
+    #         attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+    #     ),
+    # )
     password = forms.CharField(
         label=_("Mot de passe"),
         strip=False,
         widget=forms.PasswordInput(attrs={"placeholder": _("Votre mot de passe"), "class": "form-input"}),
     )
 
+    username = forms.EmailField(
+        label=_("Identifiant"),
+        widget=forms.EmailInput(
+            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+        ),
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_class = "border p-8"
-        # self.helper.form_method = 'GET'
-        # self.helper.form_action = 'comptas:dashboard'
+        self.helper.form_class = "mt-4"
+
         self.helper.layout = Layout(
-            # Div(
-            #     Div('email', css_class="md:w-[50%]"),
-            #     Div('password', css_class="md:w-[50%]"),
-            #     css_class="md:flex md:justify-between"
-            # ),
-            "email",
+            "username",
             "password",
             Submit(
                 "submit",
                 "Se connecter",
-                css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
+                css_class="button-valider",
             ),
         )
 
     def clean(self):
         cleaned_data = super().clean()
-        email = cleaned_data.get("email")
+        email = cleaned_data.get("username")
         password = cleaned_data.get("password")
 
         if email and password:
-            user = authenticate(email=email, password=password)
-            if user is None:
+            self.user_cache = authenticate(email=email, password=password)
+            if self.user_cache is None:
                 raise forms.ValidationError(_("Email ou mot de passe incorrect"))
 
         return cleaned_data
@@ -63,6 +64,9 @@ class LoginForm(auth_forms.AuthenticationForm):
                 _("This account is inactive."),
                 code="inactive",
             )
+
+    def get_user(self):
+        return getattr(self, "user_cache", None)
 
 
 class CQUserCreationForm(auth_forms.UserCreationForm):
@@ -157,6 +161,6 @@ class PasswordResetForm(DjangoPasswordResetForm):
             Submit(
                 "submit",
                 "Réinitialiser le mot de passe",
-                css_class="mt-4 focus:outline-none text-white bg-brown hover:bg-darkbrown focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:focus:ring-yellow-900",
+                css_class="button-valider",
             ),
         )

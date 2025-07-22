@@ -11,7 +11,7 @@ from tests.factories.transaction import (ExpenseTransactionFactory,
                                          TransferTransactionFactory)
 
 
-class TransactionSoftDeleteTests(TestCase):
+class TestTransactionSoftDelete(TestCase):
     def setUp(self):
         """Set up test data."""
         # Create test accounts

@@ -5,28 +5,53 @@
 {% block content %}
 
 <div class="main-screen">
-    <div class="max-w-md w-full space-y-8">
-        {% include "base/logo_header.html" %}
-        <a href="{% url 'diarylab:add_entry' %}">
-            <img src="{% static 'icons/add.png' %}" alt="Nouveau" class="icon">
-        </a>
-        <ul>
-            {% for entry in entries %}
-            <li>
-                <h3>{{ entry.date|date:"l d F Y" }}</h3>
-                <p>{{ entry.content }}</p>
-            </li>
-            {% endfor %}
-        </ul>
 
+    {% include "base/logo_header.html" %}
+    {% if not entry_exists_today %}
+    <a href="{% url 'diarylab:add_entry' %}">
+        <img src="{% static 'icons/add.png' %}" alt="Nouveau" class="icon">
+    </a>
+    {% endif %}
 
-        {% for year in view.get_years %}
-            {% for month in view.get_months %}
-            <a href="{% url 'generate_pdf' year month %}">Download {{ year }}-{{ month|stringformat:"02d" }} PDF</a>
-            {% endfor %}
+    <!-- Display error message if it exists -->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
         {% endfor %}
+    {% endif %}
 
-    </div>
+    <ul>
+        {% for entry in entries %}
+        <li class="entry-item">
+            <div class="entry-date">
+                {{ entry.date|date:"l d F Y" }}
+                <div class="action-icons">
+                    <a href="{% url 'diarylab:edit_entry' entry.id %}">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a href="{% url 'diarylab:delete_entry' entry.id %}">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="entry-content">
+                {{ entry.content }}
+            </div>
+
+        </li>
+        {% endfor %}
+    </ul>
+
+
+    {% for year in view.get_years %}
+        {% for month in view.get_months %}
+        <a href="{% url 'generate_pdf' year month %}">Download {{ year }}-{{ month|stringformat:"02d" }} PDF</a>
+        {% endfor %}
+    {% endfor %}
+
+
 </div>
 
 {% endblock %}

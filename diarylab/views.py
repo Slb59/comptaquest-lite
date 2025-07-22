@@ -1,10 +1,12 @@
 from io import BytesIO
 
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
@@ -16,18 +18,38 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = "diarylab/add_entry.html"
-    success_url = reverse_lazy("diarylab:add_entry")
+    success_url = reverse_lazy("diarylab:list_entries")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["user"] = self.request.user
         context["title"] = _("Diary Lab")
         context["logo_url"] = "/static/images/logo_dl_v02.png"
+
         return context
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        # Check if an entry already exists for the given date
+        entry_date = form.cleaned_data["date"]
+        existing_entry = DiaryEntry.objects.filter(user=self.request.user, date=entry_date).exists()
+
+        if existing_entry:
+            # Add an error to the form
+            form.add_error("date", _("Une entrée existe déjà pour cette date."))
+            # Re-render the form with the error message
+            return self.form_invalid(form)
+
+        # Save the form if no existing entry
+        form.instance.user = self.request.user
+        form.save()
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        # Re-render the form with errors
+        context = self.get_context_data(form=form)
+        return self.render_to_response(context)
+        # return render(self.request, self.template_name, {'form': form})
 
 
 class DiaryEntryListView(LoginRequiredMixin, ListView):
@@ -49,6 +71,13 @@ class DiaryEntryListView(LoginRequiredMixin, ListView):
         months = set(entry.date.month for entry in entries)
         context["years"] = sorted(years)
         context["months"] = sorted(months)
+
+        # Check if there's an entry for today
+        today = timezone.now().date()
+        if entries.filter(date=today).exists():
+            messages.error(self.request, _("Vous avez déjà saisi une pensée aujourd'hui."))
+            context["entry_exists_today"] = entries.filter(date=today).exists()
+
         return context
 
 
@@ -75,3 +104,16 @@ def generate_pdf(request, year, month):
     buffer.close()
     response.write(pdf)
     return response
+
+
+class DiaryEditView(LoginRequiredMixin, UpdateView):
+    model = DiaryEntry
+    form_class = DiaryEntryForm
+    template_name = "diarylab/edit_entry.html"
+    success_url = reverse_lazy("diarylab:list_entries")
+
+
+class DiaryDeleteView(LoginRequiredMixin, DeleteView):
+    model = DiaryEntry
+    template_name = "diarylab/delete_entry.html"
+    success_url = reverse_lazy("diarylab:list_entries")

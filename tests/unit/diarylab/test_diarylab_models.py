@@ -1,4 +1,5 @@
 """Tests for diarylab.models"""
+
 from django.test import TransactionTestCase
 from django.utils import timezone
 
@@ -7,7 +8,7 @@ from tests.factories.diarylab import DiaryEntryFactory
 from tests.factories.member import MemberFactory
 
 
-class DiaryEntryTests(TransactionTestCase):
+class TestDiaryEntry(TransactionTestCase):
     def setUp(self):
         self.user = MemberFactory()
         self.diary_entry = DiaryEntryFactory(user=self.user)

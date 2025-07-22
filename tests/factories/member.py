@@ -1,8 +1,10 @@
 import factory
+import pytest
 
 from secretbox.users.models import Member
 
 
+@pytest.mark.django_db
 class MemberFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating Member instances.

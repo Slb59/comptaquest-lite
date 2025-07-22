@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 
-from config import env
+from config import env, get_version
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -42,6 +42,7 @@ DJANGO_APPS = [
 PROJECT_APPS = [
     "secretbox.users",
     "secretbox.dashboard",
+    "secretbox.tools",
     "comptaquest.utils",
     "comptaquest.comptas",
     "comptaquest.consos",
@@ -50,6 +51,7 @@ PROJECT_APPS = [
     "potionrun.performances",
     "diarylab",
     "sami",
+    "escapevault",
 ]
 
 TIERS_APPS = [
@@ -70,6 +72,7 @@ TIERS_APPS = [
     "tailwind",
     "crispy_forms",
     "crispy_tailwind",
+    "django_countries",
 ]
 
 DEV_APPS = [
@@ -105,6 +108,7 @@ DJANGO_MIDDLEWARE = [
 
 TIERS_MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "threadlocals.middleware.ThreadLocalMiddleware",
 ]
 
 MIDDLEWARE = DJANGO_MIDDLEWARE + TIERS_MIDDLEWARE
@@ -123,6 +127,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "secretbox.users.context_processors.app_access_permissions",
             ],
             # 'loaders': [
             # ('django.template.loaders.cached.Loader', [
@@ -148,6 +153,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ATOMIC_REQUESTS": True,
     }
 }
 
@@ -200,16 +206,17 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # cookie settings
-# SESSION_COOKIE_DOMAIN = None  # Important pour le développement local
-# SESSION_COOKIE_NAME = "comptaquest"
-# SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+SESSION_COOKIE_DOMAIN = None  # Important pour le développement local
+SESSION_COOKIE_NAME = "secretbox"
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
+SESSION_SAVE_EVERY_REQUEST = True
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# SESSION_COOKIE_SECURE = False  # Définir à True en production
+SESSION_COOKIE_SECURE = False  # Définir à True en production
 # SESSION_COOKIE_SAMESITE = "Lax"
 
 # CSRF_COOKIE_NAME = "comptaquest"
 # CSRF_COOKIE_AGE = 60 * 60 * 24 * 30
-# CSRF_COOKIE_SECURE = False  # Définir à True en production
+CSRF_COOKIE_SECURE = False  # Définir à True en production
 # CSRF_COOKIE_SAMESITE = "Lax"
 
 
@@ -224,3 +231,20 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+CITIES_LIGHT_TRANSLATION_LANGUAGES = ["fr", "en"]
+CITIES_LIGHT_INCLUDE_COUNTRIES = ["FR"]
+CITIES_LIGHT_INCLUDE_CITY_TYPES = [
+    "PPL",
+    "PPLA",
+    "PPLA2",
+    "PPLA3",
+    "PPLA4",
+    "PPLC",
+    "PPLF",
+    "PPLG",
+    "PPLL",
+    "PPLR",
+    "PPLS",
+    "STLMT",
+]

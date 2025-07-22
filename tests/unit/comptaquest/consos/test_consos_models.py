@@ -8,7 +8,7 @@ from comptaquest.consos.models import ConsoEdf, ConsoWater, QualityWater
 from tests.factories.place import PlaceFactory
 
 
-class ModelValidationTests(TestCase):
+class TestModelValidation(TestCase):
     def setUp(self):
         self.place = PlaceFactory(name="Test Place", city="Test City")
 

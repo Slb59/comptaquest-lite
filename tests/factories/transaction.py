@@ -1,4 +1,5 @@
 import factory
+import pytest
 
 from comptaquest.comptas.models.transaction import (ExpenseTransaction,
                                                     IncomeTransaction,
@@ -9,6 +10,7 @@ from tests.factories.codification import (CategoryCodificationFactory,
                                           PaymentCodificationFactory)
 
 
+@pytest.mark.django_db
 class ExpenseTransactionFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating ExpenseTransaction instances.
@@ -25,6 +27,7 @@ class ExpenseTransactionFactory(factory.django.DjangoModelFactory):
     payment_method = factory.SubFactory(PaymentCodificationFactory)
 
 
+@pytest.mark.django_db
 class IncomeTransactionFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating IncomeTransaction Instances.
@@ -41,6 +44,7 @@ class IncomeTransactionFactory(factory.django.DjangoModelFactory):
     income_method = factory.SubFactory(IncomeCodificationFactory)
 
 
+@pytest.mark.django_db
 class TransferTransactionFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating TransferTransaction Instances.

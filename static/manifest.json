@@ -1,0 +1,21 @@
+{
+    "name": "SecretBox",
+    "short_name": "SecretBox",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#b36739",
+    "description": "Ma secret box",
+    "icons": [
+        {
+            "src": "/static/images/secretbox/logo_sb_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/images/secretbox/logo_sb_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

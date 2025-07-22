@@ -3,27 +3,13 @@ from django.db import models
 from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
-
-
-class Wallet(models.Model):
-    name = models.CharField(max_length=4, primary_key=True)
-    label = models.CharField(max_length=100)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return f"{self.label}"
-
+from ..choices import ACCOUNT_CHOICES, BANK_CHOICES
 
 class AbstractAccount(models.Model):
 
-    class AccountType(models.TextChoices):
-        CURRENT = "Current", "current"
-        INVESTMENT = "Investment", "investment"
-
-    class Bank(models.TextChoices):
-        CE = "CE", "CE"
-        CA = "CA", "CA"
-        GMF = "GMF", "GMF"
+    class StateChoices(models.TextChoices):
+        OPEN = "open", _("Ouvert")
+        CLOSE = "close", _("Fermé")
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -31,30 +17,33 @@ class AbstractAccount(models.Model):
         related_name="%(class)s_user_accounts",
         db_index=True,
     )
-    name = models.CharField(max_length=50, help_text=_("the account name"))
+    name = models.CharField(max_length=50)
+
     account_type = models.CharField(
         max_length=15,
-        choices=AccountType.choices,
-        default=AccountType.CURRENT,
-        help_text=_("Account could be a current account or an investment account"),
+        choices=ACCOUNT_CHOICES,
+        default="Current",
     )
-    pointed_date = models.DateTimeField(blank=True, null=True, help_text=_("The last pointed date"))
-    current_pointed_date = models.DateTimeField(
+
+    # The last pointed date
+    pointed_date = models.DateField(blank=True, null=True)
+
+    # The account is to be pointed at this date, but not finished
+    current_pointed_date = models.DateField(
         blank=True,
         null=True,
-        help_text=_("The account is to be pointed at this date, but not finished"),
     )
+    # The amount of the balance that is being to be pointed
     current_pointed_balance = models.DecimalField(
         default=0,
         max_digits=8,
         decimal_places=2,
-        help_text=_("The amount of the balance that is being to be pointed"),
     )
+    # The last amount of balance pointed
     current_balance = models.DecimalField(
         default=0,
         max_digits=8,
         decimal_places=2,
-        help_text=_("The last amount of balance pointed"),
     )
 
     average_interest = models.DecimalField(
@@ -73,13 +62,17 @@ class AbstractAccount(models.Model):
         related_name="%(class)s_created_by",
         db_index=True,
     )
+
+    state = models.CharField(max_length=15, choices=StateChoices.choices, default=StateChoices.OPEN)
     closed_date = models.DateTimeField(
         blank=True,
         null=True,
         help_text=_("After the closed date it is not possibile to add transaction or modify this account"),
     )
 
-    bank_name = models.CharField(max_length=15, choices=Bank.choices, default=Bank.CA)
+    bank_name = models.CharField(
+        max_length=15, choices=BANK_CHOICES, default="CA"
+    )
     description = models.TextField(blank=True, null=True)
 
     class Meta(TypedModelMeta):
@@ -89,7 +82,7 @@ class AbstractAccount(models.Model):
         """
         Returns a string representation of the account, including the user's trigram and account name.
         """
-        return f"{self.user.trigram} - {self.name}"
+        return f"{self.user.trigram} - {self.name} - {self.bank_name}"
 
     def get_transaction_sum(self, transaction_type, **filters):
         """

@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class="w-64 p-4 flex items-center space-x-4">
+    <!-- Chip for the list -->
+    <a href="{% url 'sami:list_sami' %}" class="round-hicon">
+        <img src="{% static 'icons/list.png' %}" alt="Liste des données" class="w-8 h-8">
+    </a>
+    <!-- Chip for new sami data -->
+    <a href="{% url 'sami:add_sami' %}" class="round-hicon">
+        <img src="{% static 'icons/add.png' %}" alt="Nouvelle entrée" class="w-8 h-8">
+    </a>
+</div>

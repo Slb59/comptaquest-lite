@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags i18n %}
+
+{% block content %}
+<div class="main-screen">
+    {% include "base/logo_header.html" %}
+    {% include 'navbar/navbar_cq.html' %}
+
+    <!-- Display error message if it exists -->
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- main content-->
+    {% block list_account_content %}
+    <div class="max-w-6xl mx-auto px-4">
+    <!-- search bar -->
+    {% crispy form %}
+    <!-- list accounts -->
+    <div class="overflow-x-auto overflow-y-auto h-[600px] scrollbar">
+
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr class="sticky top-0 bg-brown-100 text-left">
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Qui" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Banque" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Libellé" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Type" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Pointage" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Solde" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Intérêts" %}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{% trans "Actions" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for account in accounts %}
+                <tr>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.user.trigram }} </th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.bank_name }}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.name }}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.get_account_type_display }}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.pointage_date }}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.current_balance }}</th>
+                    <th class="py-2 px-4 border-b table-header" scope="row">{{ account.average_interest }}</th>
+                    <td class="action-icons">
+                        <!-- Pastille for edit account -->
+                        <a href="{% url 'comptas:edit_account' pk=account.pk %}?next={{request.get_full_path}}" class="round-hicon">
+                            <img src="{% static 'icons/edit.png' %}" alt="Modifier" class="w-6 h-6">
+                        </a>                    
+                    
+                        <!-- Pastille for delete account -->
+                        <a href="{% url 'comptas:delete_account' pk=account.pk %}" class="round-hicon">
+                            <img src="{% static 'icons/delete.png' %}" alt="Supprimer" class="w-6 h-6">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    {% endblock list_account_content %}
+    
+</div>
+{% endblock %}

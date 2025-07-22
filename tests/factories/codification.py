@@ -1,10 +1,12 @@
 import factory
+import pytest
 
 from comptaquest.utils.models import (CategoryCodification, Codification,
                                       IncomeCodification, PaymentCodification)
 from tests.factories.member import MemberFactory
 
 
+@pytest.mark.django_db
 class CodificationFactory(factory.django.DjangoModelFactory):
     """
     Factory for creating Codification objects.
@@ -20,6 +22,7 @@ class CodificationFactory(factory.django.DjangoModelFactory):
     codetype = factory.Iterator(Codification.CodeType.values)
 
 
+@pytest.mark.django_db
 class PaymentCodificationFactory(CodificationFactory):
     """
     Factory for creating PaymentCodification objects.
@@ -31,6 +34,7 @@ class PaymentCodificationFactory(CodificationFactory):
     codetype = Codification.CodeType.PAYMENT
 
 
+@pytest.mark.django_db
 class IncomeCodificationFactory(CodificationFactory):
     """
     Factory for creating IncomeCodification objects.
@@ -42,6 +46,7 @@ class IncomeCodificationFactory(CodificationFactory):
     codetype = Codification.CodeType.INCOME
 
 
+@pytest.mark.django_db
 class CategoryCodificationFactory(CodificationFactory):
     """
     Factory for creating CategoryCodification objects.

@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class="w-32 p-4 flex items-center space-x-4">
+    <!-- Chip for the map -->
+    <a href="{% url 'escapevault:evmap' %}" class="round-hicon">
+        <img src="{% static 'icons/boussole.png' %}" alt="Vers la carte" class="w-8 h-8">
+    </a>
+    <!-- Chip for new position -->
+    <a href="{% url 'escapevault:add_position' %}" class="round-hicon">
+        <img src="{% static 'icons/add.png' %}" alt="Nouvelle position" class="w-8 h-8">
+    </a>
+</div>

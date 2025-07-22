@@ -1,6 +1,11 @@
 /* style.css */
+
+:root {
+    --color-brown-rgb: 179, 103, 57;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Cinzel', 'Arial', sans-serif;
     background-color: #f5f5f5;
 }
 
@@ -32,84 +37,138 @@ a.contact-link:hover {
     /* Définit la couleur du soulignement */
 }
 
-a.round-icon {
-    width: 2rem;
-    height: 2rem;
-    background-color: #9ca3af;
-    border-radius: 9999px;
+.flex-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-}
-
-a.round-icon:hover {
-    background-color: #6b7280;
-}
-
-.main-screen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 1 rem;
-    padding-bottom: 1.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    background-color: #d7d4d0;
-    width: 100%;
-}
-
-@media (min-width: 640px) {
-    .main-screen {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    .main-screen {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
-
-
-.button-valider {
-    margin-top: 1rem;
-    outline: none;
-    color: white;
-    background-color: #654321;
-
-    font-weight: 500;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-    padding-top: 0.625rem;
-    padding-bottom: 0.625rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.button-valider:hover {
-    background-color: #3a2412;
-    /* Remplacez par la couleur réelle */
-}
-
-.button-valider:focus {
-    outline: none;
-    box-shadow: 0 0 0 4px #fde047;
-    /* Remplacez par la couleur réelle */
-}
-
-/* Pour le mode sombre*/
-.dark .button-valider:focus {
-    box-shadow: 0 0 0 4px #78350f;
-    /* Remplacez par la couleur réelle */
+    justify-content: space-between;
+    /* Ou "flex-start" si tu veux que tout soit collé à gauche */
+    gap: 1rem;
+    /* espace entre le nom et les icônes */
 }
 
 .icon {
     width: 24px;
     height: 24px;
 }
+
+.entry-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.entry-date {
+    color: #8B4513;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.entry-content {
+    margin-top: 10px;
+    color: #333;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.action-icons {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.action-icons a {
+    margin-right: 10px;
+    color: #333;
+}
+
+.email-container {
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.email-header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.email-body {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.email-button {
+    display: inline-block;
+    background: #4a6baf;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    /* Centre le contenu horizontalement */
+    align-items: center;
+    /* Centre le contenu verticalement */
+    position: relative;
+    /* Position relative pour permettre le positionnement absolu des enfants */
+    padding: 10px;
+    /* Ajoute un peu d'espace autour du pied de page */
+    width: 100%;
+    /* Assure que le pied de page prend toute la largeur */
+}
+
+.footer__copyright {
+    position: absolute;
+    /* Position absolue pour le texte de copyright */
+    left: 10px;
+    /* Aligne le texte de copyright à gauche */
+}
+
+.footer__menu {
+    /* Le menu sera centré grâce à la propriété justify-content: center; sur le pied de page */
+    text-align: center;
+    /* Centre le contenu du menu */
+}
+
+.space-y-4>*+* {
+    margin-top: 1rem;
+}
+
+
+.hover\:bg-gray-500:hover {
+    background-color: #6b7280;
+}
+
+.escapevault-map {
+    width: 80%;
+    height: 100%;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+

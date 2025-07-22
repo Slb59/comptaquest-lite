@@ -1,0 +1,68 @@
+[
+{
+  "model": "dashboard.colorparameter",
+  "pk": 3,
+  "fields": {
+    "priority": "1-highest",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#f52718"
+  }
+},
+{
+  "model": "dashboard.colorparameter",
+  "pk": 4,
+  "fields": {
+    "priority": "2-high",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#f52718"
+  }
+},
+{
+  "model": "dashboard.colorparameter",
+  "pk": 5,
+  "fields": {
+    "priority": "4-normal",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#ebeb2a"
+  }
+},
+{
+  "model": "dashboard.colorparameter",
+  "pk": 6,
+  "fields": {
+    "priority": "3-medium",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#ebeb2a"
+  }
+},
+{
+  "model": "dashboard.colorparameter",
+  "pk": 7,
+  "fields": {
+    "priority": "5-low",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#60ed28"
+  }
+},
+{
+  "model": "dashboard.colorparameter",
+  "pk": 8,
+  "fields": {
+    "priority": "6-verylow",
+    "periodic": "*-Every",
+    "category": "*-Every",
+    "place": "*-Every",
+    "color": "#60ed28"
+  }
+}
+]

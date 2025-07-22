@@ -22,6 +22,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from secretbox.dashboard.views import ContactFormView, DashboardView
+from secretbox.users.views import LoginView
 
 urlpatterns = [
     # admin urls
@@ -29,7 +30,9 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     # path("", include("django_components.urls")),
     # home url
-    path("", DashboardView.as_view(), name="dashboard"),
+    path("", DashboardView.as_view(), name="home"),
+    path("login/", LoginView.as_view(), name="login"),
+    path("dashboard/", include("secretbox.dashboard.urls")),
     path("contact/", ContactFormView.as_view(), name="contact"),
     # comptaquest urls
     path("account/", include("secretbox.users.urls")),
@@ -41,10 +44,14 @@ urlpatterns = [
     path("pr/performances/", include("potionrun.performances.urls")),
     # diarylab urls
     path("diarylab/", include("diarylab.urls")),
+    path("escapevault/", include("escapevault.urls")),
+    path("sami/", include("sami.urls")),
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 
 if apps.is_installed("pattern_library"):
     urlpatterns += [

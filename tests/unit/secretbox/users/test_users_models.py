@@ -61,5 +61,7 @@ class TestModelMember(TestCase):
 
     def test_user_created_date_is_today(self):
         expected_object_name = f"{dateformat.format(timezone.now(), 'Y-m-d')}"
-        format_user_created_date = f"{dateformat.format(self.member_1.profile.created_at, 'Y-m-d')}"
+        format_user_created_date = f"{
+            dateformat.format(self.member_1.profile.created_at, 'Y-m-d')
+        }"
         self.assertEqual(expected_object_name, format_user_created_date)

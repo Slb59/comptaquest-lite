@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "csrftoken",
+      "value": "Dk38tMphQUY3tghXDyG2yRApIpQrsrdw",
+      "domain": "127.0.0.1",
+      "path": "/",
+      "expires": 1784498560.035701,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "secretbox",
+      "value": "0gwqigbab5pg1kdmzlyjdlulzn0cfdnl",
+      "domain": "127.0.0.1",
+      "path": "/",
+      "expires": 1755640960.412875,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
