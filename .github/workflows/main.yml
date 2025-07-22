@@ -1,10 +1,20 @@
 name: SecretBox-Main
 
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+  workflow_dispatch:
+      inputs:
+      application:
+        description: 'Name of application'
+        required: true
+        default: 'SecretBox'
+      page:
+        description: 'Page to navigate to'
+        required: true
+        default: 'dashboard'
+  # push:
+  #   branches: [ main ]
+  # pull_request:
+  #   branches: [ main ]
 
 jobs:
   build:
