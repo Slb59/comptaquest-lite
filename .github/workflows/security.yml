@@ -1,10 +1,20 @@
 name: Security Checks
 
 on:
-  schedule:
-    - cron: 0 0 * * *
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+      inputs:
+      application:
+        description: 'Name of application'
+        required: true
+        default: 'SecretBox'
+      page:
+        description: 'Page to navigate to'
+        required: true
+        default: 'dashboard'
+  # schedule:
+  #   - cron: 0 0 * * *
+  # push:
+  #   branches: [ main ]
 
 jobs:
   security:

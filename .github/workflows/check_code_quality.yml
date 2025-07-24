@@ -1,0 +1,57 @@
+name: SecretBox-Main-Dispatch
+
+on:
+  workflow_dispatch:
+    inputs:
+      application:
+        description: 'Name of application'
+        required: true
+        default: 'SecretBox'
+      page:
+        description: 'Page to navigate to'
+        required: true
+        default: 'dashboard'
+
+jobs:
+
+  build:
+    runs-on: 
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install uv
+          uv sync
+      
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          python manage.py migrate
+          python manage.py collectstatic --noinput
+      
+  code-quality:
+    needs: build
+    runs-on: 
+      - ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+
+      - name: Install Flake8
+        run: |
+          pip install uv
+          uv add flake8
+      - name: Run code quality checks
+        run: |
+          uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
+          uv run black . --check
+          uv run isort . --check --diff
+ 
