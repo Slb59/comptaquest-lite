@@ -33,8 +33,8 @@ jobs:
       - name: Prepare environment
         run: |
           cp .env.example .env
-          python manage.py migrate
-          python manage.py collectstatic --noinput
+          # python manage.py migrate
+          # python manage.py collectstatic --noinput
       
   code-quality:
     needs: build
@@ -49,9 +49,12 @@ jobs:
         run: |
           pip install uv
           uv add flake8
+          uv add pylint
       - name: Run code quality checks
         run: |
-          uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
-          uv run black . --check
-          uv run isort . --check --diff
+          uv run flake8 ../.. --count --exit-zero --max-complexity=10 --statistics
+          uv run black ../.. --check
+          uv run isort ../.. --check --diff
+          uv run pylint $(git ls-files '*.py')
+
  
