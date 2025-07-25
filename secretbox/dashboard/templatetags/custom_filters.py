@@ -15,9 +15,11 @@ def format_title(value):
         return value.strftime("%A %d %B %Y")
     return value
 
+
 @register.filter
 def can_edit_any(todo, user):
     return todo.can_edit_any(user)
+
 
 @register.filter
 def can_delete(todo, user):

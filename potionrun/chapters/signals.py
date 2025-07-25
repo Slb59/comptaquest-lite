@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from .models import Act, Chapter
+from .models import Act, Chapter, Scene
 
 
 @receiver(post_save, sender=Chapter)

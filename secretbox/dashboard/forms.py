@@ -72,7 +72,7 @@ class TodoForm(forms.ModelForm):
             "note",
         ]
 
-    def __init__(self, *args,user=None, instance=None, **kwargs):
+    def __init__(self, *args, user=None, instance=None, **kwargs):
         super().__init__(*args, instance=instance, **kwargs)
 
         self.fields["state"].label = "État"
@@ -88,10 +88,10 @@ class TodoForm(forms.ModelForm):
         # Resize the state field
         # self.fields["state"].widget.field_class="w-full sm:w-[150px]"
         # Field('state', css_id="custom_state_id")
-        Field("state", wrapper_class="w-full sm:w-[150px]")
+        Field("state", wrapper_class = "w-full sm:w-[150px]")
         # Resize the duration field
-        Field("state", wrapper_class="w-full sm:w-[90px]")        
-        self.fields["duration"].widget.field_class="w-full sm:w-[90px]"
+        Field("state", wrapper_class = "w-full sm:w-[90px]")
+        self.fields["duration"].widget.field_class = "w-full sm:w-[90px]"
 
         if instance and user and instance.can_edit_limited(user):
             for name, field in self.fields.items():
@@ -110,7 +110,6 @@ class TodoForm(forms.ModelForm):
 
                 #     else:
                 #         field.widget.attrs.update({"class": "editable"})
-
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"

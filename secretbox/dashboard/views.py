@@ -1,6 +1,6 @@
 from datetime import date
 
-from crispy_forms.layout import Field
+# from crispy_forms.layout import Field
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
@@ -89,65 +89,69 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard/dashboard.html"
 
+    def apply_filters(self, todos, data):
+        """ Apply filters to the queryset """
+        if data["state"]:
+            todos = todos.filter(state=data["state"])
+        if data["category"]:
+            todos = todos.filter(category=data["category"])
+        if data["priority"]:
+            todos = todos.filter(priority=data["priority"])
+        if data["planned_date_start"]:
+            todos = todos.filter(planned_date__gte=data["planned_date_start"])
+        if data["planned_date_end"]:
+            todos = todos.filter(planned_date__lte=data["planned_date_end"])
+        if data["duration_min"] is not None:
+            todos = todos.filter(duration__gte=data["duration_min"])
+        if data["duration_max"] is not None:
+            todos = todos.filter(duration__lte=data["duration_max"])
+        if data["description"]:
+            todos = todos.filter(description__icontains=data["description"])
+        if data["appointment"]:
+            todos = todos.filter(appointment=data["appointment"])
+        if data["who"]:
+            todos = todos.filter(who=data["who"])
+        if data["place"]:
+            todos = todos.filter(place=data["place"])
+        if data["periodic"]:
+            todos = todos.filter(periodic=data["periodic"])
+        if data["done_date_start"]:
+            todos = todos.filter(done_date__gte=data["done_date_start"])
+            todos = todos.exclude(done_date__isnull=True)
+
+        if data["done_date_end"]:
+            todos = todos.filter(done_date__lte=data["done_date_end"])
+            todos = todos.exclude(done_date__isnull=True)
+
+        if data["done_date_isnull"]:
+            todos = todos.filter(done_date__isnull=data["done_date_isnull"])
+
+    def get_queryset_by_rights(self, user):
+        """ Filtrage selon les droits """
+        if user.is_superuser:
+            return Todo.objects.all()
+        return Todo.objects.filter(
+                Q(user=user) | Q(who=user)
+            )
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         form = TodoFilterForm(self.request.GET or None)
         user = self.request.user
-        todos = Todo.objects.filter(user=user)
-
-        # Filtrage selon les droits
-        if user.is_superuser:
-            todos = Todo.objects.all()
-        else:
-            todos = Todo.objects.filter(
-                Q(user=user) | Q(who=user)
-            )
+        todos = self.get_queryset_by_rights(user)
 
         if form.is_valid():
-            data = form.cleaned_data
-            if data["state"]:
-                todos = todos.filter(state=data["state"])
-            if data["category"]:
-                todos = todos.filter(category=data["category"])
-            if data["priority"]:
-                todos = todos.filter(priority=data["priority"])
-            if data["planned_date_start"]:
-                todos = todos.filter(planned_date__gte=data["planned_date_start"])
-            if data["planned_date_end"]:
-                todos = todos.filter(planned_date__lte=data["planned_date_end"])
-            if data["duration_min"] is not None:
-                todos = todos.filter(duration__gte=data["duration_min"])
-            if data["duration_max"] is not None:
-                todos = todos.filter(duration__lte=data["duration_max"])
-            if data["description"]:
-                todos = todos.filter(description__icontains=data["description"])
-            if data["appointment"]:
-                todos = todos.filter(appointment=data["appointment"])
-            if data["who"]:
-                todos = todos.filter(who=data["who"])
-            if data["place"]:
-                todos = todos.filter(place=data["place"])
-            if data["periodic"]:
-                todos = todos.filter(periodic=data["periodic"])
-            if data["done_date_start"]:
-                todos = todos.filter(done_date__gte=data["done_date_start"])
-                todos = todos.exclude(done_date__isnull=True)
+            todos = self.apply_filters(todos, form.cleaned_data)
 
-            if data["done_date_end"]:
-                todos = todos.filter(done_date__lte=data["done_date_end"])
-                todos = todos.exclude(done_date__isnull=True)
-
-            if data["done_date_isnull"]:
-                todos = todos.filter(done_date__isnull=data["done_date_isnull"])
-
-        context["title"] = _("Bienvenue dans SecretBox")
-        context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
-
-        context["todos"] = todos.order_by(
-            "planned_date", "priority", "category", "periodic", "who", "place", "duration"
-        )
-        context["form"] = form
-        context["request"] = self.request
+        context.update({
+            "title": _("Bienvenue dans SecretBox"),
+            "logo_url": "/static/images/secretbox/logo_sb2.png",
+            "todos": todos.order_by(
+                "planned_date", "priority", "category", "periodic", "who", "place", "duration"
+            ),
+            "form": form,
+            "request": self.request,
+        })
 
         return context
 

@@ -28,7 +28,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
             data = form.cleaned_data
             if data["category"]:
                 positions = positions.filter(category=data["category"])
-            
+
         print(positions)
 
         # Add markers for each position
