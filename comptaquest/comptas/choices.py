@@ -1,9 +1,9 @@
 ACCOUNT_CHOICES = [
-    ("Current", "Compte courant"), 
+    ("Current", "Compte courant"),
     ("Investment", "Compte d'investissement")
 ]
 
-BANK_CHOICES =  [
+BANK_CHOICES = [
     ("CE", "CE"),
     ("CA", "CA"),
     ("GMF", "GMF"),

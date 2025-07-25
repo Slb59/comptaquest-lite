@@ -1,4 +1,4 @@
-name: Check-Tests
+name: Tests Check
 
 on:
   workflow_dispatch:
