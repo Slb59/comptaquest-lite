@@ -33,8 +33,6 @@ jobs:
       - name: Prepare environment
         run: |
           cp .env.example .env
-          # python manage.py migrate
-          # python manage.py collectstatic --noinput
       
   code-quality:
     needs: build
