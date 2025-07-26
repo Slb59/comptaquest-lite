@@ -1,7 +1,4 @@
-ACCOUNT_CHOICES = [
-    ("Current", "Compte courant"),
-    ("Investment", "Compte d'investissement")
-]
+ACCOUNT_CHOICES = [("Current", "Compte courant"), ("Investment", "Compte d'investissement")]
 
 BANK_CHOICES = [
     ("CE", "CE"),

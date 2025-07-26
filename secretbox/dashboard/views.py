@@ -9,8 +9,7 @@ from django.urls import reverse_lazy
 from django.utils.dateparse import parse_date
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_GET, require_POST
-from django.views.generic import (CreateView, FormView, TemplateView,
-                                  UpdateView, View)
+from django.views.generic import CreateView, FormView, TemplateView, UpdateView, View
 from django.db.models import Q
 
 from .forms import ContactForm, TodoFilterForm, TodoForm
@@ -90,7 +89,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard/dashboard.html"
 
     def apply_filters(self, todos, data):
-        """ Apply filters to the queryset """
+        """Apply filters to the queryset"""
 
         simple_filters = {
             "state": "state",
@@ -131,12 +130,10 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return todos
 
     def get_queryset_by_rights(self, user):
-        """ Filtrage selon les droits """
+        """Filtrage selon les droits"""
         if user.is_superuser:
             return Todo.objects.all()
-        return Todo.objects.filter(
-                Q(user=user) | Q(who=user)
-            )
+        return Todo.objects.filter(Q(user=user) | Q(who=user))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -147,15 +144,15 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         if form.is_valid():
             todos = self.apply_filters(todos, form.cleaned_data)
 
-        context.update({
-            "title": _("Bienvenue dans SecretBox"),
-            "logo_url": "/static/images/secretbox/logo_sb2.png",
-            "todos": todos.order_by(
-                "planned_date", "priority", "category", "periodic", "who", "place", "duration"
-            ),
-            "form": form,
-            "request": self.request,
-        })
+        context.update(
+            {
+                "title": _("Bienvenue dans SecretBox"),
+                "logo_url": "/static/images/secretbox/logo_sb2.png",
+                "todos": todos.order_by("planned_date", "priority", "category", "periodic", "who", "place", "duration"),
+                "form": form,
+                "request": self.request,
+            }
+        )
 
         return context
 

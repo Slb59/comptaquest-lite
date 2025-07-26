@@ -7,8 +7,7 @@ from django.utils import timezone
 from comptaquest.healths.models import Health, Mutuelle, Secu
 from tests.factories.account import CurrentAccountFactory
 from tests.factories.member import MemberFactory
-from tests.factories.transaction import (ExpenseTransactionFactory,
-                                         IncomeTransactionFactory)
+from tests.factories.transaction import ExpenseTransactionFactory, IncomeTransactionFactory
 
 
 class TestHealthModel(TestCase):

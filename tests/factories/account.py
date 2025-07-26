@@ -1,8 +1,7 @@
 import factory
 import pytest
 
-from comptaquest.comptas.models.account import (CurrentAccount,
-                                                InvestmentAccount)
+from comptaquest.comptas.models.account import CurrentAccount, InvestmentAccount
 from tests.factories.member import MemberFactory
 
 

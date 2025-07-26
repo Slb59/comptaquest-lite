@@ -1,8 +1,7 @@
 import factory
 import pytest
 
-from comptaquest.utils.models import (CategoryCodification, Codification,
-                                      IncomeCodification, PaymentCodification)
+from comptaquest.utils.models import CategoryCodification, Codification, IncomeCodification, PaymentCodification
 from tests.factories.member import MemberFactory
 
 

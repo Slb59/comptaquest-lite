@@ -71,9 +71,7 @@ class AbstractAccount(models.Model):
         help_text=_("After the closed date it is not possibile to add transaction or modify this account"),
     )
 
-    bank_name = models.CharField(
-        max_length=15, choices=BANK_CHOICES, default="CA"
-    )
+    bank_name = models.CharField(max_length=15, choices=BANK_CHOICES, default="CA")
     description = models.TextField(blank=True, null=True)
 
     class Meta(TypedModelMeta):

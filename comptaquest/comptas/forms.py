@@ -3,8 +3,7 @@ from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
-                                        InvestmentAccount, Outgoings)
+from comptaquest.comptas.models import CurrentAccount, ExpenseTransaction, InvestmentAccount, Outgoings
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 from secretbox.users.models import Member
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES
@@ -30,15 +29,8 @@ class SelectAccountTypeForm(forms.Form):
 class CurrentAccountFilterForm(forms.Form):
 
     user = forms.ModelChoiceField(queryset=Member.objects.all(), required=False, label="Propriétaire de compte")
-    bank_name = forms.ChoiceField(
-        label=_("Banque"),
-        choices=[("", "Toutes")] + BANK_CHOICES,
-        required=False
-    )
-    account_type = forms.ChoiceField(
-        label=_("Type de compte"),
-        choices=ACCOUNT_CHOICES
-    )
+    bank_name = forms.ChoiceField(label=_("Banque"), choices=[("", "Toutes")] + BANK_CHOICES, required=False)
+    account_type = forms.ChoiceField(label=_("Type de compte"), choices=ACCOUNT_CHOICES)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

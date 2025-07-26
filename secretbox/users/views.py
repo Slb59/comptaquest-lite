@@ -3,8 +3,7 @@ from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView as DjangoLoginView
 from django.contrib.auth.views import LogoutView as DjangoLogoutView
-from django.contrib.auth.views import \
-    PasswordResetView as DjangoPasswordResetView
+from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _

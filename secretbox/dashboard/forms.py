@@ -5,8 +5,7 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import Member
 
-from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
-                      PRIORITY_CHOICES)
+from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY_CHOICES
 from .models import Todo
 
 
