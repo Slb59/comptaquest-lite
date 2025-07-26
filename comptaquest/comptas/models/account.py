@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 from ..choices import ACCOUNT_CHOICES, BANK_CHOICES
 
+
 class AbstractAccount(models.Model):
 
     class StateChoices(models.TextChoices):

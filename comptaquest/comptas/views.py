@@ -2,14 +2,14 @@ import locale
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, UpdateView, TemplateView)
-
+from django.shortcuts import redirect
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
                     SelectAccountTypeForm, CurrentAccountFilterForm)
-from .models.account import AbstractAccount, CurrentAccount
+from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 from .choices import ACCOUNT_CHOICES
@@ -18,12 +18,11 @@ from .choices import ACCOUNT_CHOICES
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "comptaquest/list_account.html"
 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         form = CurrentAccountFilterForm(self.request.GET or None)
         accounts = CurrentAccount.objects.all()
-        
+
         if form.is_valid():
             data = form.cleaned_data
             if data["user"]:
@@ -117,7 +116,7 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         account_type_label = dict(ACCOUNT_CHOICES).get(self.account_type, self.account_type)
-        context["title"] = _("Nouveau ") +  account_type_label.lower()
+        context["title"] = _("Nouveau ") + account_type_label.lower()
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
         return context

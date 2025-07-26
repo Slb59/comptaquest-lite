@@ -9,9 +9,10 @@ from django.views.generic import (CreateView, DeleteView, ListView,
 
 from .forms import EscapeVaultFilterForm, EscapeVaultForm
 from .models import NomadePosition
+from secretbox.users.mixins import GroupRequiredMixin
 
 
-class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
+class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
     template_name = "escapevault/map.html"
 
     def get_context_data(self, **kwargs):
@@ -28,7 +29,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView):
             data = form.cleaned_data
             if data["category"]:
                 positions = positions.filter(category=data["category"])
-            
+
         print(positions)
 
         # Add markers for each position

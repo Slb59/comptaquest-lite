@@ -1,0 +1,11 @@
+from django.core.exceptions import PermissionDenied
+
+class GroupRequiredMixin:
+    group_name = None  # à définir dans la vue héritée
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_superuser or (
+            self.group_name and request.user.groups.filter(name=self.group_name).exists()
+        ):
+            return super().dispatch(request, *args, **kwargs)
+        raise PermissionDenied

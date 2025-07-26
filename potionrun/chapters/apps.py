@@ -7,4 +7,4 @@ class ChaptersConfig(AppConfig):
 
     def ready(self):
         # Importer les signaux
-        from . import signals
+        from . import signals  # noqa: F401

@@ -32,11 +32,12 @@ class CurrentAccountFilterForm(forms.Form):
     user = forms.ModelChoiceField(queryset=Member.objects.all(), required=False, label="Propriétaire de compte")
     bank_name = forms.ChoiceField(
         label=_("Banque"),
-        choices=[("", "Toutes")]+ BANK_CHOICES,
+        choices=[("", "Toutes")] + BANK_CHOICES,
         required=False
     )
     account_type = forms.ChoiceField(
-        label = _("Type de compte"), choices=ACCOUNT_CHOICES
+        label=_("Type de compte"),
+        choices=ACCOUNT_CHOICES
     )
 
     def __init__(self, *args, **kwargs):
