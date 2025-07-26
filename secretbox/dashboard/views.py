@@ -3,7 +3,7 @@ from datetime import date
 # from crispy_forms.layout import Field
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.dateparse import parse_date
@@ -127,7 +127,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
                 todos = todos.filter(**{lookup: value})
                 if "done_date" in lookup:
                     todos = todos.exclude(done_date__isnull=True)
-        
+
         return todos
 
     def get_queryset_by_rights(self, user):
@@ -175,7 +175,7 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         context["title"] = _("Modifier l'entrée")
         context["logo_url"] = "/static/images/secretbox/logo_sb2.png"
         return context
-    
+
     def dispatch(self, request, *args, **kwargs):
         todo = self.get_object()
         if not todo.can_view(request.user):
@@ -183,7 +183,7 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
 
         if not (todo.can_edit(request.user) or todo.can_edit_limited(request.user)):
             return HttpResponseForbidden(_("Vous ne pouvez pas modifier cet élément."))
-        
+
         return super().dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self):

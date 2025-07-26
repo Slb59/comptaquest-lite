@@ -1,5 +1,6 @@
 from django.core.exceptions import PermissionDenied
 
+
 class GroupRequiredMixin:
     group_name = None  # à définir dans la vue héritée
 
