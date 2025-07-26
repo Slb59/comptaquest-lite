@@ -91,40 +91,44 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def apply_filters(self, todos, data):
         """ Apply filters to the queryset """
-        if data["state"]:
-            todos = todos.filter(state=data["state"])
-        if data["category"]:
-            todos = todos.filter(category=data["category"])
-        if data["priority"]:
-            todos = todos.filter(priority=data["priority"])
-        if data["planned_date_start"]:
-            todos = todos.filter(planned_date__gte=data["planned_date_start"])
-        if data["planned_date_end"]:
-            todos = todos.filter(planned_date__lte=data["planned_date_end"])
-        if data["duration_min"] is not None:
-            todos = todos.filter(duration__gte=data["duration_min"])
-        if data["duration_max"] is not None:
-            todos = todos.filter(duration__lte=data["duration_max"])
-        if data["description"]:
-            todos = todos.filter(description__icontains=data["description"])
-        if data["appointment"]:
-            todos = todos.filter(appointment=data["appointment"])
-        if data["who"]:
-            todos = todos.filter(who=data["who"])
-        if data["place"]:
-            todos = todos.filter(place=data["place"])
-        if data["periodic"]:
-            todos = todos.filter(periodic=data["periodic"])
-        if data["done_date_start"]:
-            todos = todos.filter(done_date__gte=data["done_date_start"])
-            todos = todos.exclude(done_date__isnull=True)
 
-        if data["done_date_end"]:
-            todos = todos.filter(done_date__lte=data["done_date_end"])
-            todos = todos.exclude(done_date__isnull=True)
+        simple_filters = {
+            "state": "state",
+            "category": "category",
+            "priority": "priority",
+            "description": lambda v: {"description__icontains": v},
+            "appointment": "appointment",
+            "who": "who",
+            "place": "place",
+            "periodic": "periodic",
+            "done_date_isnull": lambda v: {"done_date__isnull": v},
+        }
 
-        if data["done_date_isnull"]:
-            todos = todos.filter(done_date__isnull=data["done_date_isnull"])
+        for field, target in simple_filters.items():
+            value = data.get(field)
+            if value:
+                if callable(target):
+                    todos = todos.filter(**target(value))
+                else:
+                    todos = todos.filter(**{target: value})
+
+        range_filters = {
+            "planned_date_start": ("planned_date__gte", "planned_date_start"),
+            "planned_date_end": ("planned_date__lte", "planned_date_end"),
+            "duration_min": ("duration__gte", "duration_min"),
+            "duration_max": ("duration__lte", "duration_max"),
+            "done_date_start": ("done_date__gte", "done_date_start"),
+            "done_date_end": ("done_date__lte", "done_date_end"),
+        }
+
+        for field, (lookup, data_key) in range_filters.items():
+            value = data.get(data_key)
+            if value is not None:
+                todos = todos.filter(**{lookup: value})
+                if "done_date" in lookup:
+                    todos = todos.exclude(done_date__isnull=True)
+        
+        return todos
 
     def get_queryset_by_rights(self, user):
         """ Filtrage selon les droits """

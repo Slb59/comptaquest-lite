@@ -88,9 +88,9 @@ class TodoForm(forms.ModelForm):
         # Resize the state field
         # self.fields["state"].widget.field_class="w-full sm:w-[150px]"
         # Field('state', css_id="custom_state_id")
-        Field("state", wrapper_class = "w-full sm:w-[150px]")
+        Field("state", wrapper_class="w-full sm:w-[150px]")
         # Resize the duration field
-        Field("state", wrapper_class = "w-full sm:w-[90px]")
+        Field("state", wrapper_class="w-full sm:w-[90px]")
         self.fields["duration"].widget.field_class = "w-full sm:w-[90px]"
 
         if instance and user and instance.can_edit_limited(user):

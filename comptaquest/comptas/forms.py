@@ -36,7 +36,8 @@ class CurrentAccountFilterForm(forms.Form):
         required=False
     )
     account_type = forms.ChoiceField(
-        label = _("Type de compte"), choices = ACCOUNT_CHOICES
+        label=_("Type de compte"),
+        choices=ACCOUNT_CHOICES
     )
 
     def __init__(self, *args, **kwargs):
