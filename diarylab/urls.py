@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import DiaryDeleteView, DiaryEditView, DiaryEntryCreateView, DiaryEntryListView, generate_pdf
+from .views import (DiaryDeleteView, DiaryEditView, DiaryEntryCreateView,
+                    DiaryEntryListView, generate_pdf)
 
 app_name = "diarylab"
 

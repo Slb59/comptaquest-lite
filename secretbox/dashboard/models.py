@@ -2,14 +2,16 @@
 from datetime import date, timedelta
 
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
+from django.core.validators import (MaxValueValidator, MinValueValidator,
+                                    RegexValidator)
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import CQUser as User
 
-from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY_CHOICES
+from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
+                      PRIORITY_CHOICES)
 
 HEX_COLOR_VALIDATOR = RegexValidator(
     regex=r"^#[0-9A-Fa-f]{6}$", message="Entrez une couleur au format hexadécimal valide (ex: #1A2B3C)."

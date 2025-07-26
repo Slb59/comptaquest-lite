@@ -5,7 +5,8 @@ from django.db.models import Sum
 from django.utils import timezone
 from django_stubs_ext.db.models import TypedModelMeta
 
-from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction
+from comptaquest.comptas.models.transaction import (ExpenseTransaction,
+                                                    IncomeTransaction)
 from secretbox.users.models import Member
 
 

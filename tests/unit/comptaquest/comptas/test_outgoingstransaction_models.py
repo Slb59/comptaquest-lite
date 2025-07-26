@@ -1,9 +1,11 @@
 from django.test import TestCase
 from django.utils.timezone import now
 
-from comptaquest.comptas.models.outgoingstransaction import ExpenseOutgoingsTransaction
+from comptaquest.comptas.models.outgoingstransaction import \
+    ExpenseOutgoingsTransaction
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.codification import CategoryCodificationFactory, PaymentCodificationFactory
+from tests.factories.codification import (CategoryCodificationFactory,
+                                          PaymentCodificationFactory)
 from tests.factories.outgoings import ExpenseOutgoingsFactory
 
 

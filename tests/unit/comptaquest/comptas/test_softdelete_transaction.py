@@ -4,9 +4,11 @@ from django.db.models import ProtectedError
 from django.test import TestCase
 from django.utils.timezone import now
 
-from comptaquest.comptas.models.transaction import ExpenseTransaction, TransferTransaction
+from comptaquest.comptas.models.transaction import (ExpenseTransaction,
+                                                    TransferTransaction)
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.transaction import ExpenseTransactionFactory, TransferTransactionFactory
+from tests.factories.transaction import (ExpenseTransactionFactory,
+                                         TransferTransactionFactory)
 
 
 class TestTransactionSoftDelete(TestCase):

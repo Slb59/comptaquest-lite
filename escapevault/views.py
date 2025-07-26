@@ -4,11 +4,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DeleteView, ListView, TemplateView, UpdateView
+from django.views.generic import (CreateView, DeleteView, ListView,
+                                  TemplateView, UpdateView)
+
+from secretbox.users.mixins import GroupRequiredMixin
 
 from .forms import EscapeVaultFilterForm, EscapeVaultForm
 from .models import NomadePosition
-from secretbox.users.mixins import GroupRequiredMixin
 
 
 class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):

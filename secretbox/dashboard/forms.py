@@ -1,11 +1,12 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit, Field
+from crispy_forms.layout import HTML, Column, Div, Field, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import Member
 
-from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY_CHOICES
+from .choices import (CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES,
+                      PRIORITY_CHOICES)
 from .models import Todo
 
 

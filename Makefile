@@ -1,8 +1,8 @@
 include .env
 
 quality:
-	uv run black .
 	uv run isort .
+	uv run black .
 	uv run flake8 .
 
 tests:

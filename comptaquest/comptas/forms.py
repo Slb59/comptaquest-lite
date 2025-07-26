@@ -1,11 +1,13 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit, Row, Column
+from crispy_forms.layout import HTML, Column, Div, Layout, Row, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from comptaquest.comptas.models import CurrentAccount, ExpenseTransaction, InvestmentAccount, Outgoings
+from comptaquest.comptas.models import (CurrentAccount, ExpenseTransaction,
+                                        InvestmentAccount, Outgoings)
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 from secretbox.users.models import Member
+
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES
 
 

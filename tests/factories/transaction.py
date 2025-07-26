@@ -1,13 +1,13 @@
 import factory
 import pytest
 
-from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction, TransferTransaction
+from comptaquest.comptas.models.transaction import (ExpenseTransaction,
+                                                    IncomeTransaction,
+                                                    TransferTransaction)
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.codification import (
-    CategoryCodificationFactory,
-    IncomeCodificationFactory,
-    PaymentCodificationFactory,
-)
+from tests.factories.codification import (CategoryCodificationFactory,
+                                          IncomeCodificationFactory,
+                                          PaymentCodificationFactory)
 
 
 @pytest.mark.django_db

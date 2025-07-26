@@ -1,6 +1,7 @@
 from django.urls import path
 
-from .views import TodoCreateView, TodoDeleteView, TodoUpdateView, check_todo_state, todo_mark_done
+from .views import (TodoCreateView, TodoDeleteView, TodoUpdateView,
+                    check_todo_state, todo_mark_done)
 
 app_name = "dashboard"
 

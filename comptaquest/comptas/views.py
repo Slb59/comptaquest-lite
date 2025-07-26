@@ -2,21 +2,19 @@ import locale
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy, reverse
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import CreateView, DeleteView, DetailView, FormView, ListView, UpdateView, TemplateView
 from django.shortcuts import redirect
-from .forms import (
-    CurrentAccountForm,
-    InvestmentAccountForm,
-    OutgoingsForm,
-    SelectAccountTypeForm,
-    CurrentAccountFilterForm,
-)
+from django.urls import reverse, reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
+                                  ListView, TemplateView, UpdateView)
+
+from .choices import ACCOUNT_CHOICES
+from .forms import (CurrentAccountFilterForm, CurrentAccountForm,
+                    InvestmentAccountForm, OutgoingsForm,
+                    SelectAccountTypeForm)
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
-from .choices import ACCOUNT_CHOICES
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):

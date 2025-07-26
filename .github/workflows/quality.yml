@@ -50,9 +50,9 @@ jobs:
           uv add pylint
       - name: Run code quality checks
         run: |
-          uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
-          uv run black . --check
           uv run isort . --check --diff
+          uv run black . --check
+          uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
           uv run pylint $(git ls-files '*.py')
 
  

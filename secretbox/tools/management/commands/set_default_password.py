@@ -1,5 +1,6 @@
-from secretbox.users.models import Member
 from django.core.management.base import BaseCommand
+
+from secretbox.users.models import Member
 
 
 class Command(BaseCommand):
