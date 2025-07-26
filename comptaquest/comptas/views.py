@@ -2,11 +2,11 @@ import locale
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, UpdateView, TemplateView)
-from django.urls import reverse, redirect
+from django.shortcuts import redirect
 from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
                     SelectAccountTypeForm, CurrentAccountFilterForm)
 from .models.account import CurrentAccount
