@@ -5,9 +5,11 @@ from django.views.generic import CreateView, ListView, TemplateView
 
 from .forms import SamiForm
 from .models import Sami
+from secretbox.users.mixins import GroupRequiredMixin
 
+GroupRequiredMixin.group_name = "sami_access"
 
-class SamiDashboardView(LoginRequiredMixin, TemplateView):
+class SamiDashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
 
     template_name = "sami/dashboard.html"
 
@@ -18,7 +20,7 @@ class SamiDashboardView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class SamiListView(LoginRequiredMixin, ListView):
+class SamiListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
     model = Sami
     template_name = "sami/list.html"
     context_object_name = "samis"
@@ -33,7 +35,7 @@ class SamiListView(LoginRequiredMixin, ListView):
         return context
 
 
-class SamiCreateView(LoginRequiredMixin, CreateView):
+class SamiCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
     model = Sami
     form_class = SamiForm
     template_name = "sami/add_sami.html"

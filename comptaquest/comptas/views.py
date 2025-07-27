@@ -7,7 +7,7 @@ from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
                                   ListView, TemplateView, UpdateView)
-
+from secretbox.users.mixins import GroupRequiredMixin
 from .choices import ACCOUNT_CHOICES
 from .forms import (CurrentAccountFilterForm, CurrentAccountForm,
                     InvestmentAccountForm, OutgoingsForm,
@@ -16,8 +16,9 @@ from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 
+GroupRequiredMixin.group_name = "comptas_access"
 
-class DashboardView(LoginRequiredMixin, TemplateView):
+class DashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
     template_name = "comptaquest/list_account.html"
 
     def get_context_data(self, **kwargs):
@@ -47,7 +48,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class AccountEditView(LoginRequiredMixin, UpdateView):
+class AccountEditView(LoginRequiredMixin, UpdateView, GroupRequiredMixin):
     template_name = "account_detail.html"
     model = CurrentAccount
     context_object_name = "account"
@@ -59,13 +60,13 @@ class AccountEditView(LoginRequiredMixin, UpdateView):
         return reverse("comptas:dashboard")
 
 
-class AccountDeleteView(LoginRequiredMixin, DeleteView):
+class AccountDeleteView(LoginRequiredMixin, DeleteView, GroupRequiredMixin):
     template_name = "account_confirm_delete.html"
     model = CurrentAccount
     context_object_name = "account"
 
 
-class AccountTypeSelectView(FormView):
+class AccountTypeSelectView(FormView, GroupRequiredMixin):
     template_name = "generic/add_template.html"
     form_class = SelectAccountTypeForm
     success_url = reverse_lazy("comptas:account-create")
@@ -82,7 +83,7 @@ class AccountTypeSelectView(FormView):
         return context
 
 
-class AccountCreateView(LoginRequiredMixin, CreateView):
+class AccountCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
     template_name = "generic/add_template.html"
     success_url = reverse_lazy("comptas:dashboard")
 
@@ -124,7 +125,7 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class OutgoingsView(LoginRequiredMixin, ListView):
+class OutgoingsView(LoginRequiredMixin, ListView, GroupRequiredMixin):
     template_name = "outgoings.html"
     model = Outgoings
     context_object_name = "outgoings"
@@ -135,13 +136,13 @@ class OutgoingsView(LoginRequiredMixin, ListView):
         return context
 
 
-class OutgoingsDetailView(LoginRequiredMixin, DetailView):
+class OutgoingsDetailView(LoginRequiredMixin, DetailView, GroupRequiredMixin):
     template_name = "outgoings_detail.html"
     model = Outgoings
     context_object_name = "outgoings"
 
 
-class OutgoingsCreateView(LoginRequiredMixin, CreateView):
+class OutgoingsCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
     template_name = "outgoings_create.html"
     model = Outgoings
     form_class = OutgoingsForm
@@ -152,19 +153,19 @@ class OutgoingsCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class BalanceSheetView(LoginRequiredMixin, ListView):
+class BalanceSheetView(LoginRequiredMixin, ListView, GroupRequiredMixin):
     template_name = "balance_sheet.html"
 
 
-class TransactionsView(LoginRequiredMixin, ListView):
+class TransactionsView(LoginRequiredMixin, ListView, GroupRequiredMixin):
     template_name = "transactions.html"
 
 
-class TransactionDetailView(LoginRequiredMixin, DetailView):
+class TransactionDetailView(LoginRequiredMixin, DetailView, GroupRequiredMixin):
     template_name = "transaction_detail.html"
     model = Transaction
 
 
-class TransactionCreateView(LoginRequiredMixin, CreateView):
+class TransactionCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
     template_name = "transaction_create.html"
     model = Transaction

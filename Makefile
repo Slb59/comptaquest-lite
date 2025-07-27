@@ -17,8 +17,8 @@ tests-secretbox:
 
 tests-escapevault:
 	uv run manage.py create_test_user
-	uv run pytest tests/unit/test_escapevault_models.py tests/integration/escapevault --html=tests/htmlcov/escapevault.html
-	npx playwright test
+	uv run pytest tests/unit/escapevault tests/integration/escapevault --html=tests/htmlcov/escapevault.html
+	npx playwright test tests/endtoend/escapevault
 	npx playwright show-report
 
 tests-sami:
