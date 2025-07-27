@@ -1,5 +1,6 @@
-from django.core.exceptions import PermissionDenied
 import logging
+
+from django.core.exceptions import PermissionDenied
 
 
 class GroupRequiredMixin:

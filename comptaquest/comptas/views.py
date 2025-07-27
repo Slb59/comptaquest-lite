@@ -5,18 +5,32 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
-                                  ListView, TemplateView, UpdateView)
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    FormView,
+    ListView,
+    TemplateView,
+    UpdateView,
+)
+
 from secretbox.users.mixins import GroupRequiredMixin
+
 from .choices import ACCOUNT_CHOICES
-from .forms import (CurrentAccountFilterForm, CurrentAccountForm,
-                    InvestmentAccountForm, OutgoingsForm,
-                    SelectAccountTypeForm)
+from .forms import (
+    CurrentAccountFilterForm,
+    CurrentAccountForm,
+    InvestmentAccountForm,
+    OutgoingsForm,
+    SelectAccountTypeForm,
+)
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 
 GroupRequiredMixin.group_name = "comptas_access"
+
 
 class DashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
     template_name = "comptaquest/list_account.html"

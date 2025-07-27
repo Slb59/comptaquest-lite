@@ -3,8 +3,10 @@ import pytest
 
 from comptaquest.comptas.models.outgoings import ExpenseOutgoings
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.codification import (CategoryCodificationFactory,
-                                          PaymentCodificationFactory)
+from tests.factories.codification import (
+    CategoryCodificationFactory,
+    PaymentCodificationFactory,
+)
 from tests.factories.member import MemberFactory
 
 

@@ -1,8 +1,13 @@
 from django.urls import path
 
-from .views import (ConsosEdfCreateView, ConsosEdfDetailView, ConsosEdfView,
-                    ConsosWaterCreateView, ConsosWaterDetailView,
-                    ConsosWaterView)
+from .views import (
+    ConsosEdfCreateView,
+    ConsosEdfDetailView,
+    ConsosEdfView,
+    ConsosWaterCreateView,
+    ConsosWaterDetailView,
+    ConsosWaterView,
+)
 
 app_name = "consos"
 

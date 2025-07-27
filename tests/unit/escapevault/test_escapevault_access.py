@@ -1,32 +1,24 @@
-from django.test import TestCase
 from django.contrib.auth.models import Group
+from django.test import TestCase
 from django.urls import reverse
 
 from tests.factories.members import MemberFactory
+
 
 class EscapeVaultAccessTest(TestCase):
     def setUp(self):
         self.url = reverse("escapevault:evmap")
 
         # user with no group
-        self.user_no_group = MemberFactory(
-            email="user1@example.com", trigram="us1", password="pass"
-        )
+        self.user_no_group = MemberFactory(email="user1@example.com", trigram="us1", password="pass")
 
         # user with group
-        self.user_with_group = MemberFactory(
-            email="user2@example.com", trigram="us2", password="pass"
-        )
+        self.user_with_group = MemberFactory(email="user2@example.com", trigram="us2", password="pass")
         group = Group.objects.create(name="escapevault_access")
         self.user_with_group.groups.add(group)
 
         # superuser
-        self.superuser = MemberFactory(
-            trigram="adm", 
-            password="pass", 
-            email="admin@example.com", 
-            superuser=True
-        )
+        self.superuser = MemberFactory(trigram="adm", password="pass", email="admin@example.com", superuser=True)
 
     def test_access_denied_for_anonymous(self):
         response = self.client.get(self.url)

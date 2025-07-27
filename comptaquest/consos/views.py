@@ -1,8 +1,10 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView
+
 from secretbox.users.mixins import GroupRequiredMixin
 
 GroupRequiredMixin.group_name = "comptas_access"
+
 
 class ConsosWaterView(LoginRequiredMixin, ListView, GroupRequiredMixin):
     template_name = "consos_water.html"

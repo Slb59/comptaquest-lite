@@ -1,3 +1,8 @@
+"""Définit les formulaires basés sur les modèles de l'application.
+
+Utilisés pour la création et la mise à jour des objets via des vues
+"""
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout, Submit
 from django import forms

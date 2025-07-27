@@ -3,11 +3,13 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView, TemplateView
 
-from .forms import SamiForm
-from .models import Sami
 from secretbox.users.mixins import GroupRequiredMixin
 
+from .forms import SamiForm
+from .models import Sami
+
 GroupRequiredMixin.group_name = "sami_access"
+
 
 class SamiDashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
 

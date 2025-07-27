@@ -1,3 +1,8 @@
+"""Defines forms based on the application's templates.
+
+Used for creating and updating objects via views
+"""
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Field, Layout
 from django import forms

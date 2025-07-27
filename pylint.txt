@@ -1,0 +1,1578 @@
+************* Module comptaquest.comptas.forms
+comptaquest/comptas/forms.py:56:0: C0301: Line too long (112/100) (line-too-long)
+comptaquest/comptas/forms.py:99:0: C0301: Line too long (269/100) (line-too-long)
+comptaquest/comptas/forms.py:124:0: C0301: Line too long (265/100) (line-too-long)
+comptaquest/comptas/forms.py:22:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:39:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:40:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:40:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/forms.py:107:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:108:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:108:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/forms.py:131:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:132:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:132:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/forms.py:144:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:145:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/forms.py:145:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.comptas.migrations.0001_initial
+comptaquest/comptas/migrations/0001_initial.py:22:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:29:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:64:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:66:0: C0301: Line too long (113/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:70:0: C0301: Line too long (118/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:85:0: C0301: Line too long (113/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:91:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:96:0: C0301: Line too long (116/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:103:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:109:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:112:0: C0301: Line too long (101/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:137:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:159:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:162:0: C0301: Line too long (103/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:205:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:227:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:230:0: C0301: Line too long (102/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:273:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:275:0: C0301: Line too long (113/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:279:0: C0301: Line too long (118/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:294:0: C0301: Line too long (113/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:300:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:305:0: C0301: Line too long (116/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:312:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:318:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:321:0: C0301: Line too long (104/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:346:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:363:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:389:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:394:0: C0301: Line too long (118/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:409:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:416:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:485:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:492:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:561:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:583:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:586:0: C0301: Line too long (104/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:807:0: C0301: Line too long (103/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:811:0: C0301: Line too long (103/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:819:0: C0301: Line too long (104/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:823:0: C0301: Line too long (104/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:863:0: C0301: Line too long (105/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:867:0: C0301: Line too long (105/100) (line-too-long)
+comptaquest/comptas/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/comptas/migrations/0001_initial.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.comptas.migrations.0002_wallet
+comptaquest/comptas/migrations/0002_wallet.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/migrations/0002_wallet.py:1:0: C0103: Module name "0002_wallet" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/comptas/migrations/0002_wallet.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.comptas.migrations.0003_delete_wallet
+comptaquest/comptas/migrations/0003_delete_wallet.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/migrations/0003_delete_wallet.py:1:0: C0103: Module name "0003_delete_wallet" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/comptas/migrations/0003_delete_wallet.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.comptas.migrations.0004_currentaccount_state_investmentaccount_state_and_more
+comptaquest/comptas/migrations/0004_currentaccount_state_investmentaccount_state_and_more.py:16:0: C0301: Line too long (116/100) (line-too-long)
+comptaquest/comptas/migrations/0004_currentaccount_state_investmentaccount_state_and_more.py:21:0: C0301: Line too long (116/100) (line-too-long)
+comptaquest/comptas/migrations/0004_currentaccount_state_investmentaccount_state_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/migrations/0004_currentaccount_state_investmentaccount_state_and_more.py:1:0: C0103: Module name "0004_currentaccount_state_investmentaccount_state_and_more" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/comptas/migrations/0004_currentaccount_state_investmentaccount_state_and_more.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.comptas.models
+comptaquest/comptas/models/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module comptaquest.comptas.models.account
+comptaquest/comptas/models/account.py:58:0: C0301: Line too long (120/100) (line-too-long)
+comptaquest/comptas/models/account.py:72:0: C0301: Line too long (107/100) (line-too-long)
+comptaquest/comptas/models/account.py:83:0: C0301: Line too long (102/100) (line-too-long)
+comptaquest/comptas/models/account.py:109:0: C0301: Line too long (105/100) (line-too-long)
+comptaquest/comptas/models/account.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/account.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/account.py:12:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/account.py:12:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/account.py:78:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/account.py:78:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/account.py:85:18: E1101: Instance of 'ForeignKey' has no 'trigram' member (no-member)
+comptaquest/comptas/models/account.py:123:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/account.py:131:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.comptas.models.fund
+comptaquest/comptas/models/fund.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module comptaquest.comptas.models.ledger
+comptaquest/comptas/models/ledger.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/ledger.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/ledger.py:7:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/ledger.py:7:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+************* Module comptaquest.comptas.models.outgoings
+comptaquest/comptas/models/outgoings.py:45:0: C0301: Line too long (114/100) (line-too-long)
+comptaquest/comptas/models/outgoings.py:47:0: C0301: Line too long (107/100) (line-too-long)
+comptaquest/comptas/models/outgoings.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/outgoings.py:27:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/outgoings.py:27:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/outgoings.py:33:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/outgoings.py:33:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/outgoings.py:62:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/outgoings.py:62:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.comptas.models.outgoingstransaction
+comptaquest/comptas/models/outgoingstransaction.py:16:0: C0301: Line too long (108/100) (line-too-long)
+comptaquest/comptas/models/outgoingstransaction.py:17:0: C0301: Line too long (126/100) (line-too-long)
+comptaquest/comptas/models/outgoingstransaction.py:46:0: C0301: Line too long (104/100) (line-too-long)
+comptaquest/comptas/models/outgoingstransaction.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/outgoingstransaction.py:20:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/outgoingstransaction.py:20:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/outgoingstransaction.py:88:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/outgoingstransaction.py:88:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.comptas.models.transaction
+comptaquest/comptas/models/transaction.py:76:0: C0301: Line too long (111/100) (line-too-long)
+comptaquest/comptas/models/transaction.py:94:0: C0301: Line too long (108/100) (line-too-long)
+comptaquest/comptas/models/transaction.py:162:0: C0301: Line too long (103/100) (line-too-long)
+comptaquest/comptas/models/transaction.py:225:0: C0301: Line too long (101/100) (line-too-long)
+comptaquest/comptas/models/transaction.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/transaction.py:97:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:97:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/transaction.py:103:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:103:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/comptas/models/transaction.py:150:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:150:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transaction.py:167:0: W0613: Unused argument 'args' (unused-argument)
+comptaquest/comptas/models/transaction.py:167:0: W0613: Unused argument 'kwargs' (unused-argument)
+comptaquest/comptas/models/transaction.py:182:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:182:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transaction.py:197:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:197:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transaction.py:212:4: W2301: Unnecessary ellipsis constant (unnecessary-ellipsis)
+comptaquest/comptas/models/transaction.py:215:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transaction.py:215:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transaction.py:238:23: E1130: bad operand type for unary -: DecimalField (invalid-unary-operand-type)
+************* Module comptaquest.comptas.models.transactiontype
+comptaquest/comptas/models/transactiontype.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/models/transactiontype.py:33:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transactiontype.py:33:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transactiontype.py:57:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transactiontype.py:57:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/comptas/models/transactiontype.py:90:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/models/transactiontype.py:90:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.comptas.urls
+comptaquest/comptas/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/urls.py:18:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module comptaquest.comptas.views
+comptaquest/comptas/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/comptas/views.py:21:0: E0611: No name 'CurrentAccountFilterForm' in module 'comptaquest.comptas.forms' (no-name-in-module)
+comptaquest/comptas/views.py:35:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:41:19: E1101: Class 'CurrentAccount' has no 'objects' member (no-member)
+comptaquest/comptas/views.py:65:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:65:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/comptas/views.py:77:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:77:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/comptas/views.py:83:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:83:0: R0901: Too many ancestors (8/7) (too-many-ancestors)
+comptaquest/comptas/views.py:100:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:100:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/comptas/views.py:115:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+comptaquest/comptas/views.py:109:8: W0201: Attribute 'account_type' defined outside __init__ (attribute-defined-outside-init)
+comptaquest/comptas/views.py:142:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:142:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/comptas/views.py:149:31: E1101: Class 'Outgoings' has no 'objects' member (no-member)
+comptaquest/comptas/views.py:153:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:153:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/comptas/views.py:159:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:159:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/comptas/views.py:170:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:170:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/comptas/views.py:174:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:174:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/comptas/views.py:178:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:178:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/comptas/views.py:183:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/comptas/views.py:183:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+************* Module comptaquest.consos.migrations.0001_initial
+comptaquest/consos/migrations/0001_initial.py:19:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:28:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:42:0: C0301: Line too long (119/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:62:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:76:0: C0301: Line too long (119/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:77:0: C0301: Line too long (119/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:97:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:114:0: C0301: Line too long (107/100) (line-too-long)
+comptaquest/consos/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/consos/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/consos/migrations/0001_initial.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.consos.models
+comptaquest/consos/models.py:56:0: C0301: Line too long (110/100) (line-too-long)
+comptaquest/consos/models.py:160:0: C0301: Line too long (118/100) (line-too-long)
+comptaquest/consos/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/consos/models.py:27:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/models.py:27:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+comptaquest/consos/models.py:67:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.consos.urls
+comptaquest/consos/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/consos/urls.py:12:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module comptaquest.consos.views
+comptaquest/consos/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/consos/views.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:9:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/consos/views.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:13:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/consos/views.py:17:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:17:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/consos/views.py:21:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:21:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/consos/views.py:25:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:25:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/consos/views.py:29:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/consos/views.py:29:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+************* Module comptaquest.healths.migrations.0001_initial
+comptaquest/healths/migrations/0001_initial.py:22:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:23:0: C0301: Line too long (103/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:46:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:47:0: C0301: Line too long (105/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:79:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:105:0: C0301: Line too long (115/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:111:0: C0301: Line too long (115/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:117:0: C0301: Line too long (107/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:125:0: C0301: Line too long (106/100) (line-too-long)
+comptaquest/healths/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/healths/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/healths/migrations/0001_initial.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.healths.models
+comptaquest/healths/models.py:34:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/healths/models.py:49:0: C0301: Line too long (110/100) (line-too-long)
+comptaquest/healths/models.py:50:0: C0301: Line too long (119/100) (line-too-long)
+comptaquest/healths/models.py:69:0: C0301: Line too long (110/100) (line-too-long)
+comptaquest/healths/models.py:96:0: C0301: Line too long (110/100) (line-too-long)
+comptaquest/healths/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/healths/models.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/healths/models.py:12:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+comptaquest/healths/models.py:110:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/healths/models.py:110:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/healths/models.py:125:18: E1101: Instance of 'ForeignKey' has no 'trigram' member (no-member)
+comptaquest/healths/models.py:130:15: E1101: Instance of 'OneToOneField' has no 'income_transaction' member (no-member)
+comptaquest/healths/models.py:130:53: E1101: Instance of 'OneToOneField' has no 'income_transaction' member (no-member)
+************* Module comptaquest.healths.urls
+comptaquest/healths/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/healths/urls.py:5:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module comptaquest.healths.views
+comptaquest/healths/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/healths/views.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/healths/views.py:9:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+comptaquest/healths/views.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/healths/views.py:13:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+comptaquest/healths/views.py:17:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/healths/views.py:17:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+************* Module comptaquest.utils.migrations.0001_initial
+comptaquest/utils/migrations/0001_initial.py:20:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/utils/migrations/0001_initial.py:26:0: C0301: Line too long (108/100) (line-too-long)
+comptaquest/utils/migrations/0001_initial.py:87:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/utils/migrations/0001_initial.py:105:0: C0301: Line too long (117/100) (line-too-long)
+comptaquest/utils/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/utils/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+comptaquest/utils/migrations/0001_initial.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module comptaquest.utils.models
+comptaquest/utils/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/utils/models.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:7:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:7:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/utils/models.py:11:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:11:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+comptaquest/utils/models.py:30:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:31:4: C0116: Missing function or method docstring (missing-function-docstring)
+comptaquest/utils/models.py:30:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+comptaquest/utils/models.py:35:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:38:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:38:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/utils/models.py:42:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:43:4: C0116: Missing function or method docstring (missing-function-docstring)
+comptaquest/utils/models.py:42:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+comptaquest/utils/models.py:47:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:48:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:48:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/utils/models.py:54:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:55:4: C0116: Missing function or method docstring (missing-function-docstring)
+comptaquest/utils/models.py:54:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+comptaquest/utils/models.py:59:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:60:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:60:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+comptaquest/utils/models.py:66:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:78:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:89:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:92:0: W0613: Unused argument 'args' (unused-argument)
+comptaquest/utils/models.py:92:0: W0613: Unused argument 'kwargs' (unused-argument)
+comptaquest/utils/models.py:96:4: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/models.py:96:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module comptaquest.utils.urls
+comptaquest/utils/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/utils/urls.py:5:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module comptaquest.utils.views
+comptaquest/utils/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+comptaquest/utils/views.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+comptaquest/utils/views.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module config
+config/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+config/__init__.py:14:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+************* Module config.settings.dev
+config/settings/dev.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+config/settings/dev.py:1:0: W0401: Wildcard import base (wildcard-import)
+config/settings/dev.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, os, BASE_DIR, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
+************* Module config.settings.production
+config/settings/production.py:6:1: W0511: TODO : définir les paramètres de l'envoi de mail (fixme)
+config/settings/production.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+config/settings/production.py:1:0: W0401: Wildcard import base (wildcard-import)
+config/settings/production.py:1:0: W0614: Unused import(s) DEBUG, os, BASE_DIR, VERSION, SECRET_KEY, ALLOWED_HOSTS, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
+************* Module config.settings.test
+config/settings/test.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+config/settings/test.py:1:0: W0401: Wildcard import base (wildcard-import)
+config/settings/test.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, DATABASES, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
+************* Module diarylab.admin
+diarylab/admin.py:69:0: C0301: Line too long (113/100) (line-too-long)
+diarylab/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/admin.py:56:8: C0415: Import outside toplevel (csv) (import-outside-toplevel)
+diarylab/admin.py:57:8: C0415: Import outside toplevel (io.StringIO) (import-outside-toplevel)
+diarylab/admin.py:59:8: C0415: Import outside toplevel (django.http.HttpResponse) (import-outside-toplevel)
+diarylab/admin.py:54:28: W0613: Unused argument 'request' (unused-argument)
+************* Module diarylab.forms
+diarylab/forms.py:36:0: C0301: Line too long (269/100) (line-too-long)
+diarylab/forms.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+diarylab/forms.py:14:4: C0115: Missing class docstring (missing-class-docstring)
+diarylab/forms.py:14:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module diarylab.migrations.0001_initial
+diarylab/migrations/0001_initial.py:20:0: C0301: Line too long (117/100) (line-too-long)
+diarylab/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+diarylab/migrations/0001_initial.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module diarylab.migrations.0002_alter_diaryentry_date
+diarylab/migrations/0002_alter_diaryentry_date.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/migrations/0002_alter_diaryentry_date.py:1:0: C0103: Module name "0002_alter_diaryentry_date" doesn't conform to snake_case naming style (invalid-name)
+diarylab/migrations/0002_alter_diaryentry_date.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module diarylab.migrations.0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:26:0: C0301: Line too long (109/100) (line-too-long)
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:32:0: C0301: Line too long (105/100) (line-too-long)
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:39:0: C0301: Line too long (111/100) (line-too-long)
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:1:0: C0103: Module name "0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more" doesn't conform to snake_case naming style (invalid-name)
+diarylab/migrations/0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module diarylab.migrations.0004_alter_diaryentry_content_alter_diaryentry_date_and_more
+diarylab/migrations/0004_alter_diaryentry_content_alter_diaryentry_date_and_more.py:27:0: C0301: Line too long (114/100) (line-too-long)
+diarylab/migrations/0004_alter_diaryentry_content_alter_diaryentry_date_and_more.py:42:0: C0301: Line too long (111/100) (line-too-long)
+diarylab/migrations/0004_alter_diaryentry_content_alter_diaryentry_date_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/migrations/0004_alter_diaryentry_content_alter_diaryentry_date_and_more.py:1:0: C0103: Module name "0004_alter_diaryentry_content_alter_diaryentry_date_and_more" doesn't conform to snake_case naming style (invalid-name)
+diarylab/migrations/0004_alter_diaryentry_content_alter_diaryentry_date_and_more.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module diarylab.models
+diarylab/models.py:25:0: C0301: Line too long (107/100) (line-too-long)
+diarylab/models.py:65:0: C0301: Line too long (111/100) (line-too-long)
+diarylab/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/models.py:52:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module diarylab.urls
+diarylab/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/urls.py:11:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module diarylab.views
+diarylab/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+diarylab/views.py:21:0: C0115: Missing class docstring (missing-class-docstring)
+diarylab/views.py:21:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+diarylab/views.py:39:25: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+diarylab/views.py:59:0: C0115: Missing class docstring (missing-class-docstring)
+diarylab/views.py:59:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+diarylab/views.py:65:15: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+diarylab/views.py:88:0: C0116: Missing function or method docstring (missing-function-docstring)
+diarylab/views.py:95:14: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+diarylab/views.py:113:0: C0115: Missing class docstring (missing-class-docstring)
+diarylab/views.py:113:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+diarylab/views.py:120:0: C0115: Missing class docstring (missing-class-docstring)
+diarylab/views.py:120:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+************* Module escapevault.admin
+escapevault/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/admin.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/admin.py:41:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/admin.py:41:28: W0613: Unused argument 'request' (unused-argument)
+************* Module escapevault.forms
+escapevault/forms.py:51:0: C0301: Line too long (110/100) (line-too-long)
+escapevault/forms.py:53:0: C0301: Line too long (113/100) (line-too-long)
+escapevault/forms.py:89:0: C0301: Line too long (274/100) (line-too-long)
+escapevault/forms.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/forms.py:21:4: C0115: Missing class docstring (missing-class-docstring)
+escapevault/forms.py:21:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module reset_positions
+escapevault/management/commands/reset_positions.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/management/commands/reset_positions.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/management/commands/reset_positions.py:11:8: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+escapevault/management/commands/reset_positions.py:20:26: E1101: Instance of 'Style' has no 'SUCCESS' member (no-member)
+escapevault/management/commands/reset_positions.py:10:0: W0613: Unused argument 'kwargs' (unused-argument)
+************* Module escapevault.migrations.0001_initial
+escapevault/migrations/0001_initial.py:19:0: C0301: Line too long (112/100) (line-too-long)
+escapevault/migrations/0001_initial.py:29:0: C0301: Line too long (105/100) (line-too-long)
+escapevault/migrations/0001_initial.py:30:0: C0301: Line too long (106/100) (line-too-long)
+escapevault/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+escapevault/migrations/0001_initial.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module escapevault.migrations.0002_alter_nomadeposition_closing_date_and_more
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:20:0: C0301: Line too long (110/100) (line-too-long)
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:26:0: C0301: Line too long (111/100) (line-too-long)
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:60:0: C0301: Line too long (110/100) (line-too-long)
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:1:0: C0103: Module name "0002_alter_nomadeposition_closing_date_and_more" doesn't conform to snake_case naming style (invalid-name)
+escapevault/migrations/0002_alter_nomadeposition_closing_date_and_more.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module escapevault.migrations.0003_nomadeposition_link_to_site_and_more
+escapevault/migrations/0003_nomadeposition_link_to_site_and_more.py:24:0: C0301: Line too long (112/100) (line-too-long)
+escapevault/migrations/0003_nomadeposition_link_to_site_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/migrations/0003_nomadeposition_link_to_site_and_more.py:1:0: C0103: Module name "0003_nomadeposition_link_to_site_and_more" doesn't conform to snake_case naming style (invalid-name)
+escapevault/migrations/0003_nomadeposition_link_to_site_and_more.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module escapevault.migrations.0004_alter_nomadeposition_category
+escapevault/migrations/0004_alter_nomadeposition_category.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/migrations/0004_alter_nomadeposition_category.py:1:0: C0103: Module name "0004_alter_nomadeposition_category" doesn't conform to snake_case naming style (invalid-name)
+escapevault/migrations/0004_alter_nomadeposition_category.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module escapevault.migrations.0005_alter_nomadeposition_category_and_more
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:35:0: C0301: Line too long (104/100) (line-too-long)
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:41:0: C0301: Line too long (103/100) (line-too-long)
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:49:0: C0301: Line too long (118/100) (line-too-long)
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:1:0: C0103: Module name "0005_alter_nomadeposition_category_and_more" doesn't conform to snake_case naming style (invalid-name)
+escapevault/migrations/0005_alter_nomadeposition_category_and_more.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module escapevault.models
+escapevault/models.py:27:0: C0301: Line too long (142/100) (line-too-long)
+escapevault/models.py:61:0: C0301: Line too long (112/100) (line-too-long)
+escapevault/models.py:62:0: C0301: Line too long (112/100) (line-too-long)
+escapevault/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/models.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:18:0: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:51:4: C0115: Missing class docstring (missing-class-docstring)
+escapevault/models.py:82:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:85:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:92:4: C0115: Missing class docstring (missing-class-docstring)
+escapevault/models.py:92:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+escapevault/models.py:96:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:103:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:104:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+escapevault/models.py:109:4: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/models.py:110:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+************* Module escapevault.templatetags.filters
+escapevault/templatetags/filters.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/templatetags/filters.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
+escapevault/templatetags/filters.py:12:11: W0718: Catching too general exception Exception (broad-exception-caught)
+************* Module escapevault.urls
+escapevault/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/urls.py:12:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module escapevault.views
+escapevault/views.py:65:0: C0301: Line too long (104/100) (line-too-long)
+escapevault/views.py:143:0: C0301: Line too long (111/100) (line-too-long)
+escapevault/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+escapevault/views.py:17:0: E0611: No name 'EscapeVaultFilterForm' in module 'escapevault.forms' (no-name-in-module)
+escapevault/views.py:23:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:35:20: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+escapevault/views.py:77:18: W0212: Access to a protected member _repr_html_ of a client class (protected-access)
+escapevault/views.py:86:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:96:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:96:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+escapevault/views.py:109:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:109:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+escapevault/views.py:115:15: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+escapevault/views.py:120:20: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+escapevault/views.py:134:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:134:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+escapevault/views.py:172:0: C0115: Missing class docstring (missing-class-docstring)
+escapevault/views.py:172:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+************* Module main
+main.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+main.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module manage
+manage.py:11:8: C0415: Import outside toplevel (django.core.management.execute_from_command_line) (import-outside-toplevel)
+************* Module potionrun.chapters
+potionrun/chapters/__init__.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/chapters/__init__.py:1:0: C0103: Constant name "default_app_config" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module potionrun.chapters.admin
+potionrun/chapters/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/chapters/admin.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/admin.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/admin.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/admin.py:25:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/admin.py:32:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module potionrun.chapters.apps
+potionrun/chapters/apps.py:14:8: C0415: Import outside toplevel (.signals) (import-outside-toplevel)
+potionrun/chapters/apps.py:14:8: W0611: Unused signals imported from  (unused-import)
+************* Module potionrun.chapters.migrations.0001_initial
+potionrun/chapters/migrations/0001_initial.py:17:0: C0301: Line too long (117/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:22:0: C0301: Line too long (113/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:23:0: C0301: Line too long (112/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:34:0: C0301: Line too long (117/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:72:0: C0301: Line too long (117/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:76:0: C0301: Line too long (103/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:83:0: C0301: Line too long (107/100) (line-too-long)
+potionrun/chapters/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/chapters/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+potionrun/chapters/migrations/0001_initial.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module potionrun.chapters.models
+potionrun/chapters/models.py:31:0: C0301: Line too long (115/100) (line-too-long)
+potionrun/chapters/models.py:32:0: C0301: Line too long (107/100) (line-too-long)
+potionrun/chapters/models.py:47:0: C0301: Line too long (105/100) (line-too-long)
+potionrun/chapters/models.py:48:0: C0301: Line too long (108/100) (line-too-long)
+potionrun/chapters/models.py:51:0: C0301: Line too long (110/100) (line-too-long)
+potionrun/chapters/models.py:64:0: C0301: Line too long (108/100) (line-too-long)
+potionrun/chapters/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/chapters/models.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:18:4: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:18:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+potionrun/chapters/models.py:23:4: E0307: __str__ does not return str (invalid-str-returned)
+potionrun/chapters/models.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+potionrun/chapters/models.py:30:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:36:4: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:36:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+potionrun/chapters/models.py:46:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:53:4: C0115: Missing class docstring (missing-class-docstring)
+potionrun/chapters/models.py:53:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+potionrun/chapters/models.py:64:55: E1101: Instance of 'TextField' has no 'split' member (no-member)
+************* Module potionrun.chapters.signals
+potionrun/chapters/signals.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/chapters/signals.py:13:12: E1101: Class 'Act' has no 'objects' member (no-member)
+potionrun/chapters/signals.py:8:25: W0613: Unused argument 'sender' (unused-argument)
+potionrun/chapters/signals.py:8:0: W0613: Unused argument 'kwargs' (unused-argument)
+potionrun/chapters/signals.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+potionrun/chapters/signals.py:21:12: E1101: Class 'Scene' has no 'objects' member (no-member)
+potionrun/chapters/signals.py:17:21: W0613: Unused argument 'sender' (unused-argument)
+potionrun/chapters/signals.py:17:0: W0613: Unused argument 'kwargs' (unused-argument)
+************* Module potionrun.performances.urls
+potionrun/performances/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/performances/urls.py:5:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module potionrun.performances.views
+potionrun/performances/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+potionrun/performances/views.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+potionrun/performances/views.py:7:0: R0901: Too many ancestors (9/7) (too-many-ancestors)
+************* Module sami.admin
+sami/admin.py:35:0: C0301: Line too long (113/100) (line-too-long)
+sami/admin.py:39:0: C0301: Line too long (116/100) (line-too-long)
+sami/admin.py:41:0: C0301: Line too long (118/100) (line-too-long)
+sami/admin.py:42:0: C0301: Line too long (115/100) (line-too-long)
+sami/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/admin.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.forms
+sami/forms.py:40:0: C0301: Line too long (113/100) (line-too-long)
+sami/forms.py:48:0: C0301: Line too long (179/100) (line-too-long)
+sami/forms.py:16:0: C0115: Missing class docstring (missing-class-docstring)
+sami/forms.py:18:4: C0115: Missing class docstring (missing-class-docstring)
+sami/forms.py:18:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module sami.migrations.0001_initial
+sami/migrations/0001_initial.py:23:0: C0301: Line too long (117/100) (line-too-long)
+sami/migrations/0001_initial.py:24:0: C0301: Line too long (103/100) (line-too-long)
+sami/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+sami/migrations/0001_initial.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.migrations.0002_alter_sami_date
+sami/migrations/0002_alter_sami_date.py:19:0: C0301: Line too long (104/100) (line-too-long)
+sami/migrations/0002_alter_sami_date.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/migrations/0002_alter_sami_date.py:1:0: C0103: Module name "0002_alter_sami_date" doesn't conform to snake_case naming style (invalid-name)
+sami/migrations/0002_alter_sami_date.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.migrations.0003_alter_sami_date
+sami/migrations/0003_alter_sami_date.py:19:0: C0301: Line too long (104/100) (line-too-long)
+sami/migrations/0003_alter_sami_date.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/migrations/0003_alter_sami_date.py:1:0: C0103: Module name "0003_alter_sami_date" doesn't conform to snake_case naming style (invalid-name)
+sami/migrations/0003_alter_sami_date.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.migrations.0004_alter_sami_date
+sami/migrations/0004_alter_sami_date.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/migrations/0004_alter_sami_date.py:1:0: C0103: Module name "0004_alter_sami_date" doesn't conform to snake_case naming style (invalid-name)
+sami/migrations/0004_alter_sami_date.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.migrations.0005_sami_outsidetime_sami_administrative_sami_computer_and_more
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:20:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:29:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:38:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:47:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:56:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:65:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:74:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:83:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:92:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:101:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:110:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:119:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:128:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:137:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:146:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:155:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:164:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:173:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:182:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:191:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:200:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:209:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:218:0: C0301: Line too long (118/100) (line-too-long)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:1:0: C0103: Module name "0005_sami_outsidetime_sami_administrative_sami_computer_and_more" doesn't conform to snake_case naming style (invalid-name)
+sami/migrations/0005_sami_outsidetime_sami_administrative_sami_computer_and_more.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module sami.models
+sami/models.py:166:0: C0301: Line too long (121/100) (line-too-long)
+sami/models.py:172:0: C0301: Line too long (158/100) (line-too-long)
+sami/models.py:189:0: C0301: Line too long (113/100) (line-too-long)
+sami/models.py:206:0: C0301: Line too long (144/100) (line-too-long)
+sami/models.py:212:0: C0301: Line too long (128/100) (line-too-long)
+sami/models.py:218:0: C0301: Line too long (126/100) (line-too-long)
+sami/models.py:227:0: C0301: Line too long (113/100) (line-too-long)
+sami/models.py:283:0: C0301: Line too long (101/100) (line-too-long)
+sami/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/models.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+sami/models.py:156:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:160:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:164:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:170:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:176:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:180:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:184:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:188:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:192:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:196:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:200:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:204:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:210:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:216:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:222:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:226:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:230:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:234:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:238:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:242:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:242:4: C0103: Attribute name "Outsidetime_description" doesn't conform to snake_case naming style (invalid-name)
+sami/models.py:246:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:250:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:254:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:258:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:262:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:266:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:270:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:274:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:278:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:282:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:286:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:290:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:294:4: C0116: Missing function or method docstring (missing-function-docstring)
+sami/models.py:300:4: C0115: Missing class docstring (missing-class-docstring)
+sami/models.py:300:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+sami/models.py:10:0: R0904: Too many public methods (33/20) (too-many-public-methods)
+************* Module sami.urls
+sami/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/urls.py:5:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module sami.views
+sami/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+sami/views.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+sami/views.py:25:0: C0115: Missing class docstring (missing-class-docstring)
+sami/views.py:25:0: R0901: Too many ancestors (10/7) (too-many-ancestors)
+sami/views.py:31:15: E1101: Class 'Sami' has no 'objects' member (no-member)
+sami/views.py:40:0: C0115: Missing class docstring (missing-class-docstring)
+sami/views.py:40:0: R0901: Too many ancestors (13/7) (too-many-ancestors)
+************* Module secretbox.dashboard.admin
+secretbox/dashboard/admin.py:60:0: C0301: Line too long (117/100) (line-too-long)
+secretbox/dashboard/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/admin.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/admin.py:41:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/admin.py:58:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.dashboard.forms
+secretbox/dashboard/forms.py:26:0: C0301: Line too long (108/100) (line-too-long)
+secretbox/dashboard/forms.py:28:0: C0301: Line too long (110/100) (line-too-long)
+secretbox/dashboard/forms.py:112:0: C0301: Line too long (108/100) (line-too-long)
+secretbox/dashboard/forms.py:142:0: C0301: Line too long (252/100) (line-too-long)
+secretbox/dashboard/forms.py:16:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/forms.py:61:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/forms.py:62:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/forms.py:62:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module secretbox.dashboard.migrations.0001_initial
+secretbox/dashboard/migrations/0001_initial.py:20:0: C0301: Line too long (117/100) (line-too-long)
+secretbox/dashboard/migrations/0001_initial.py:76:0: C0301: Line too long (117/100) (line-too-long)
+secretbox/dashboard/migrations/0001_initial.py:124:0: C0301: Line too long (118/100) (line-too-long)
+secretbox/dashboard/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/migrations/0001_initial.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:44:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:111:0: C0301: Line too long (117/100) (line-too-long)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:192:0: C0301: Line too long (105/100) (line-too-long)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:202:0: C0301: Line too long (109/100) (line-too-long)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:1:0: C0103: Module name "0002_remove_todo_date_remove_todo_done_todo_done_date_and_more" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/migrations/0002_remove_todo_date_remove_todo_done_todo_done_date_and_more.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.dashboard.migrations.0003_alter_todo_planned_date_alter_todo_who
+secretbox/dashboard/migrations/0003_alter_todo_planned_date_alter_todo_who.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/migrations/0003_alter_todo_planned_date_alter_todo_who.py:1:0: C0103: Module name "0003_alter_todo_planned_date_alter_todo_who" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/migrations/0003_alter_todo_planned_date_alter_todo_who.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.dashboard.migrations.0004_alter_todo_planned_date
+secretbox/dashboard/migrations/0004_alter_todo_planned_date.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/migrations/0004_alter_todo_planned_date.py:1:0: C0103: Module name "0004_alter_todo_planned_date" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/migrations/0004_alter_todo_planned_date.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.dashboard.models
+secretbox/dashboard/models.py:15:0: C0301: Line too long (104/100) (line-too-long)
+secretbox/dashboard/models.py:25:0: C0301: Line too long (104/100) (line-too-long)
+secretbox/dashboard/models.py:26:0: C0301: Line too long (104/100) (line-too-long)
+secretbox/dashboard/models.py:33:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/dashboard/models.py:41:0: C0301: Line too long (109/100) (line-too-long)
+secretbox/dashboard/models.py:43:0: C0301: Line too long (110/100) (line-too-long)
+secretbox/dashboard/models.py:51:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/dashboard/models.py:107:0: C0301: Line too long (106/100) (line-too-long)
+secretbox/dashboard/models.py:109:0: C0301: Line too long (102/100) (line-too-long)
+secretbox/dashboard/models.py:111:0: C0301: Line too long (113/100) (line-too-long)
+secretbox/dashboard/models.py:246:0: C0301: Line too long (104/100) (line-too-long)
+secretbox/dashboard/models.py:247:0: C0301: Line too long (103/100) (line-too-long)
+secretbox/dashboard/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/models.py:30:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/models.py:30:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+secretbox/dashboard/models.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:40:4: E0211: Method 'get_color_parameter_coverage' has no argument (no-method-argument)
+secretbox/dashboard/models.py:42:22: E1101: Class 'ColorParameter' has no 'objects' member (no-member)
+secretbox/dashboard/models.py:120:4: E0307: __str__ does not return str (invalid-str-returned)
+secretbox/dashboard/models.py:123:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:126:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/models.py:165:8: C0103: Variable name "PERIODIC_DAYS_MAPPING" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/models.py:220:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/models.py:244:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:253:26: E1101: Class 'ColorParameter' has no 'objects' member (no-member)
+secretbox/dashboard/models.py:259:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:262:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:265:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:268:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/models.py:271:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.dashboard.templatetags.custom_filters
+secretbox/dashboard/templatetags/custom_filters.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/templatetags/custom_filters.py:10:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/templatetags/custom_filters.py:20:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/templatetags/custom_filters.py:25:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.dashboard.urls
+secretbox/dashboard/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/urls.py:11:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module secretbox.dashboard.views
+secretbox/dashboard/views.py:39:0: C0301: Line too long (106/100) (line-too-long)
+secretbox/dashboard/views.py:53:0: C0301: Line too long (118/100) (line-too-long)
+secretbox/dashboard/views.py:151:0: C0301: Line too long (120/100) (line-too-long)
+secretbox/dashboard/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/dashboard/views.py:15:0: E0611: No name 'TodoFilterForm' in module 'secretbox.dashboard.forms' (no-name-in-module)
+secretbox/dashboard/views.py:19:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/views.py:19:0: R0901: Too many ancestors (9/7) (too-many-ancestors)
+secretbox/dashboard/views.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/views.py:47:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/views.py:65:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/views.py:71:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/views.py:71:0: R0901: Too many ancestors (12/7) (too-many-ancestors)
+secretbox/dashboard/views.py:88:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/views.py:135:19: E1101: Class 'Todo' has no 'objects' member (no-member)
+secretbox/dashboard/views.py:136:15: E1101: Class 'Todo' has no 'objects' member (no-member)
+secretbox/dashboard/views.py:160:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/views.py:160:0: R0901: Too many ancestors (12/7) (too-many-ancestors)
+secretbox/dashboard/views.py:168:15: E1101: Class 'Todo' has no 'objects' member (no-member)
+secretbox/dashboard/views.py:192:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/dashboard/views.py:194:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/dashboard/views.py:194:19: W0613: Unused argument 'request' (unused-argument)
+secretbox/dashboard/views.py:194:0: W0613: Unused argument 'args' (unused-argument)
+secretbox/dashboard/views.py:194:0: W0613: Unused argument 'kwargs' (unused-argument)
+secretbox/dashboard/views.py:203:15: E1101: Instance of 'TodoDeleteView' has no 'get_object' member (no-member)
+************* Module secretbox.tools.apps
+secretbox/tools/apps.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/apps.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.tools.date_filters
+secretbox/tools/date_filters.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/date_filters.py:9:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/tools/date_filters.py:12:11: W0718: Catching too general exception Exception (broad-exception-caught)
+************* Module create_test_user
+secretbox/tools/management/commands/create_test_user.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/management/commands/create_test_user.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/tools/management/commands/create_test_user.py:16:30: E1101: Instance of 'Style' has no 'SUCCESS' member (no-member)
+secretbox/tools/management/commands/create_test_user.py:18:30: E1101: Instance of 'Style' has no 'WARNING' member (no-member)
+************* Module set_default_password
+secretbox/tools/management/commands/set_default_password.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/management/commands/set_default_password.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.tools.merge_report
+secretbox/tools/merge_report.py:4:0: C0301: Line too long (113/100) (line-too-long)
+secretbox/tools/merge_report.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/merge_report.py:4:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+secretbox/tools/merge_report.py:4:63: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+secretbox/tools/merge_report.py:19:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+************* Module secretbox.tools.models
+secretbox/tools/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/models.py:7:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/tools/models.py:11:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/tools/models.py:35:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.tools.session
+secretbox/tools/session.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/session.py:6:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.tools.tooltip
+secretbox/tools/tooltip.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/tools/tooltip.py:7:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/tools/tooltip.py:1:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+************* Module secretbox.users.admin
+secretbox/users/admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/admin.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/admin.py:58:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.users.apps
+secretbox/users/apps.py:14:8: C0415: Import outside toplevel (.signals) (import-outside-toplevel)
+secretbox/users/apps.py:14:8: W0611: Unused signals imported from  (unused-import)
+************* Module secretbox.users.context_processors
+secretbox/users/context_processors.py:5:0: C0301: Line too long (108/100) (line-too-long)
+secretbox/users/context_processors.py:6:0: C0301: Line too long (106/100) (line-too-long)
+secretbox/users/context_processors.py:7:0: C0301: Line too long (110/100) (line-too-long)
+secretbox/users/context_processors.py:8:0: C0301: Line too long (114/100) (line-too-long)
+secretbox/users/context_processors.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/context_processors.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module secretbox.users.forms
+secretbox/users/forms.py:23:0: C0301: Line too long (103/100) (line-too-long)
+secretbox/users/forms.py:29:0: C0301: Line too long (106/100) (line-too-long)
+secretbox/users/forms.py:35:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/users/forms.py:94:0: C0301: Line too long (102/100) (line-too-long)
+secretbox/users/forms.py:95:0: C0301: Line too long (118/100) (line-too-long)
+secretbox/users/forms.py:159:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/users/forms.py:19:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/forms.py:77:0: R0901: Too many ancestors (9/7) (too-many-ancestors)
+secretbox/users/forms.py:80:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/forms.py:80:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+secretbox/users/forms.py:88:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/forms.py:93:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/forms.py:98:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/forms.py:98:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+secretbox/users/forms.py:136:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/forms.py:145:31: E1101: Class 'MemberProfile' has no 'objects' member (no-member)
+secretbox/users/forms.py:145:21: W0612: Unused variable 'created' (unused-variable)
+secretbox/users/forms.py:152:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.users.management.commands.list_users
+secretbox/users/management/commands/list_users.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/management/commands/list_users.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/management/commands/list_users.py:9:8: C0103: Variable name "User" doesn't conform to snake_case naming style (invalid-name)
+secretbox/users/management/commands/list_users.py:8:0: W0613: Unused argument 'kwargs' (unused-argument)
+************* Module secretbox.users.managers
+secretbox/users/managers.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+************* Module secretbox.users.migrations.0001_initial
+secretbox/users/migrations/0001_initial.py:40:0: C0301: Line too long (117/100) (line-too-long)
+secretbox/users/migrations/0001_initial.py:56:0: C0301: Line too long (138/100) (line-too-long)
+secretbox/users/migrations/0001_initial.py:62:0: C0301: Line too long (104/100) (line-too-long)
+secretbox/users/migrations/0001_initial.py:86:0: C0301: Line too long (134/100) (line-too-long)
+secretbox/users/migrations/0001_initial.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/migrations/0001_initial.py:1:0: C0103: Module name "0001_initial" doesn't conform to snake_case naming style (invalid-name)
+secretbox/users/migrations/0001_initial.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.users.migrations.0002_cquser_last_email_change_cquser_last_password_change_and_more
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:16:0: C0301: Line too long (105/100) (line-too-long)
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:21:0: C0301: Line too long (113/100) (line-too-long)
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:26:0: C0301: Line too long (108/100) (line-too-long)
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:1:0: C0103: Module name "0002_cquser_last_email_change_cquser_last_password_change_and_more" doesn't conform to snake_case naming style (invalid-name)
+secretbox/users/migrations/0002_cquser_last_email_change_cquser_last_password_change_and_more.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module secretbox.users.mixins
+secretbox/users/mixins.py:10:0: C0301: Line too long (120/100) (line-too-long)
+secretbox/users/mixins.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/mixins.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/mixins.py:9:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/mixins.py:13:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+secretbox/users/mixins.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+************* Module secretbox.users.models
+secretbox/users/models.py:22:0: C0301: Line too long (111/100) (line-too-long)
+secretbox/users/models.py:24:0: C0301: Line too long (111/100) (line-too-long)
+secretbox/users/models.py:26:0: C0301: Line too long (105/100) (line-too-long)
+secretbox/users/models.py:47:0: C0301: Line too long (110/100) (line-too-long)
+secretbox/users/models.py:71:0: C0301: Line too long (108/100) (line-too-long)
+secretbox/users/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/models.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:12:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:12:4: R0901: Too many ancestors (9/7) (too-many-ancestors)
+secretbox/users/models.py:42:8: W0621: Redefining name 'settings' from outer scope (line 1) (redefined-outer-name)
+secretbox/users/models.py:42:8: W0404: Reimport 'settings' (imported line 1) (reimported)
+secretbox/users/models.py:42:8: C0415: Import outside toplevel (django.conf.settings) (import-outside-toplevel)
+secretbox/users/models.py:43:8: C0415: Import outside toplevel (django.core.mail.send_mail) (import-outside-toplevel)
+secretbox/users/models.py:61:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:61:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+secretbox/users/models.py:70:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:76:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:76:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+secretbox/users/models.py:80:29: E1101: Instance of 'OneToOneField' has no 'trigram' member (no-member)
+secretbox/users/models.py:86:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/models.py:88:19: E1101: Instance of 'ImageField' has no 'url' member (no-member)
+secretbox/users/models.py:92:29: E1101: Instance of 'OneToOneField' has no 'trigram' member (no-member)
+secretbox/users/models.py:95:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:96:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/models.py:95:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+secretbox/users/models.py:100:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:102:4: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/models.py:102:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+secretbox/users/models.py:108:4: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/models.py:110:19: E1101: Instance of 'Member' has no '_profile' member; maybe 'profile'? (no-member)
+secretbox/users/models.py:111:15: E1101: Class 'MemberProfile' has no 'DoesNotExist' member (no-member)
+secretbox/users/models.py:112:19: E1101: Class 'MemberProfile' has no 'objects' member (no-member)
+************* Module secretbox.users.signals
+secretbox/users/signals.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/signals.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+secretbox/users/signals.py:10:8: E1101: Class 'MemberProfile' has no 'objects' member (no-member)
+secretbox/users/signals.py:8:24: W0613: Unused argument 'sender' (unused-argument)
+secretbox/users/signals.py:8:0: W0613: Unused argument 'kwargs' (unused-argument)
+************* Module secretbox.users.urls
+secretbox/users/urls.py:42:0: C0301: Line too long (107/100) (line-too-long)
+secretbox/users/urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/urls.py:6:0: C0103: Constant name "app_name" doesn't conform to UPPER_CASE naming style (invalid-name)
+************* Module secretbox.users.views
+secretbox/users/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+secretbox/users/views.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/views.py:18:0: R0901: Too many ancestors (9/7) (too-many-ancestors)
+secretbox/users/views.py:49:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/views.py:49:0: R0901: Too many ancestors (8/7) (too-many-ancestors)
+secretbox/users/views.py:74:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/views.py:74:0: R0901: Too many ancestors (12/7) (too-many-ancestors)
+secretbox/users/views.py:100:0: C0115: Missing class docstring (missing-class-docstring)
+secretbox/users/views.py:100:0: R0901: Too many ancestors (9/7) (too-many-ancestors)
+************* Module templates.dashboard.url-view-update
+templates/dashboard/url-view-update.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+templates/dashboard/url-view-update.py:1:0: C0103: Module name "url-view-update" doesn't conform to snake_case naming style (invalid-name)
+templates/dashboard/url-view-update.py:4:0: E0401: Unable to import 'templates.dashboard.views' (import-error)
+************* Module tests.conftest
+tests/conftest.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/conftest.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.factories.account
+tests/factories/account.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/account.py:14:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/account.py:14:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/account.py:29:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/account.py:29:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.codification
+tests/factories/codification.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/codification.py:19:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/codification.py:19:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/codification.py:35:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/codification.py:35:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/codification.py:47:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/codification.py:47:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/codification.py:59:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/codification.py:59:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.colorparameters
+tests/factories/colorparameters.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/colorparameters.py:15:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/colorparameters.py:16:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/colorparameters.py:16:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.diarylab
+tests/factories/diarylab.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/diarylab.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/diarylab.py:13:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/diarylab.py:13:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.member
+tests/factories/member.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/member.py:13:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/member.py:13:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.nomadeposition
+tests/factories/nomadeposition.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/nomadeposition.py:16:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/nomadeposition.py:17:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/nomadeposition.py:17:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/nomadeposition.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.factories.outgoings
+tests/factories/outgoings.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/outgoings.py:19:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/outgoings.py:19:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.place
+tests/factories/place.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/place.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/place.py:10:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/place.py:10:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.sami
+tests/factories/sami.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/sami.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/sami.py:11:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/sami.py:11:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.todo
+tests/factories/todo.py:37:0: C0301: Line too long (119/100) (line-too-long)
+tests/factories/todo.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/todo.py:20:0: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/todo.py:21:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/todo.py:21:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.factories.transaction
+tests/factories/transaction.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/factories/transaction.py:23:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/transaction.py:23:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/transaction.py:40:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/transaction.py:40:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/factories/transaction.py:57:4: C0115: Missing class docstring (missing-class-docstring)
+tests/factories/transaction.py:57:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tests.integration.escapevault.test_admin_export_csv
+tests/integration/escapevault/test_admin_export_csv.py:11:0: C0301: Line too long (107/100) (line-too-long)
+tests/integration/escapevault/test_admin_export_csv.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/integration/escapevault/test_admin_export_csv.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module tests.integration.escapevault.test_ev_views
+tests/integration/escapevault/test_ev_views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/integration/escapevault/test_ev_views.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/escapevault/test_ev_views.py:18:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:24:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:34:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:46:24: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+tests/integration/escapevault/test_ev_views.py:48:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:53:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:59:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:80:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:86:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/escapevault/test_ev_views.py:90:25: E1101: Class 'NomadePosition' has no 'objects' member (no-member)
+************* Module test_dashboard_views
+tests/integration/secretbox/test_dashboard_views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/integration/secretbox/test_dashboard_views.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_dashboard_views.py:13:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:13:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:17:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:17:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:22:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_dashboard_views.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:39:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:56:15: E1101: Class 'Todo' has no 'objects' member (no-member)
+tests/integration/secretbox/test_dashboard_views.py:58:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:71:15: E1101: Class 'Todo' has no 'objects' member (no-member)
+tests/integration/secretbox/test_dashboard_views.py:74:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_dashboard_views.py:87:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:91:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:97:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:120:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
+tests/integration/secretbox/test_dashboard_views.py:127:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_dashboard_views.py:140:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:144:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_dashboard_views.py:152:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module test_users_urls
+tests/integration/secretbox/test_users_urls.py:66:0: C0301: Line too long (101/100) (line-too-long)
+tests/integration/secretbox/test_users_urls.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/integration/secretbox/test_users_urls.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_users_urls.py:11:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:19:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:27:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:31:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:35:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:39:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:43:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:48:0: C0115: Missing class docstring (missing-class-docstring)
+tests/integration/secretbox/test_users_urls.py:53:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:53:4: C0103: Method name "test_login_GET" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_users_urls.py:58:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:58:4: C0103: Method name "test_profile_GET_authenticated" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_users_urls.py:63:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:63:4: C0103: Method name "test_profile_GET_unauthenticated" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_users_urls.py:68:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:73:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/integration/secretbox/test_users_urls.py:83:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_account_models
+tests/unit/comptaquest/comptas/test_account_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:16:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:19:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:22:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:25:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:28:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:31:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:34:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:37:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:43:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:46:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:51:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:57:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:61:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_account_models.py:65:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_expense_transaction_models
+tests/unit/comptaquest/comptas/test_expense_transaction_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_expense_transaction_models.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_expense_transaction_models.py:24:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_fund_models
+tests/unit/comptaquest/comptas/test_fund_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_fund_models.py:7:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_fund_models.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_ledger_models
+tests/unit/comptaquest/comptas/test_ledger_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_ledger_models.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_ledger_models.py:14:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_ledger_models.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_ledger_models.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_outgoings_models
+tests/unit/comptaquest/comptas/test_outgoings_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_outgoings_models.py:12:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_outgoings_models.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_outgoings_models.py:34:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_outgoings_models.py:44:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_outgoingstransaction_models
+tests/unit/comptaquest/comptas/test_outgoingstransaction_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_outgoingstransaction_models.py:13:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_outgoingstransaction_models.py:25:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.comptas.test_softdelete_transaction
+tests/unit/comptaquest/comptas/test_softdelete_transaction.py:32:0: C0301: Line too long (101/100) (line-too-long)
+tests/unit/comptaquest/comptas/test_softdelete_transaction.py:132:0: C0301: Line too long (111/100) (line-too-long)
+tests/unit/comptaquest/comptas/test_softdelete_transaction.py:137:0: C0301: Line too long (113/100) (line-too-long)
+tests/unit/comptaquest/comptas/test_softdelete_transaction.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_softdelete_transaction.py:18:0: C0115: Missing class docstring (missing-class-docstring)
+************* Module tests.unit.comptaquest.comptas.test_transfer_transaction_models
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:32:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:31:12: C2801: Unnecessarily calls dunder method __str__. Use str built-in function. (unnecessary-dunder-call)
+tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:35:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.consos.test_consos_models
+tests/unit/comptaquest/consos/test_consos_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:18:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:24:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/consos/test_consos_models.py:53:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.comptaquest.healths.test_healths_models
+tests/unit/comptaquest/healths/test_healths_models.py:21:0: C0301: Line too long (110/100) (line-too-long)
+tests/unit/comptaquest/healths/test_healths_models.py:23:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/comptaquest/healths/test_healths_models.py:25:0: C0301: Line too long (108/100) (line-too-long)
+tests/unit/comptaquest/healths/test_healths_models.py:112:0: C0301: Line too long (104/100) (line-too-long)
+tests/unit/comptaquest/healths/test_healths_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:16:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:27:20: E1101: Class 'Secu' has no 'objects' member (no-member)
+tests/unit/comptaquest/healths/test_healths_models.py:34:24: E1101: Class 'Mutuelle' has no 'objects' member (no-member)
+tests/unit/comptaquest/healths/test_healths_models.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:53:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:65:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:77:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:88:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:100:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/healths/test_healths_models.py:114:16: E1101: Class 'Secu' has no 'objects' member (no-member)
+tests/unit/comptaquest/healths/test_healths_models.py:121:20: E1101: Class 'Mutuelle' has no 'objects' member (no-member)
+************* Module tests.unit.comptaquest.utils.test_utils_models
+tests/unit/comptaquest/utils/test_utils_models.py:12:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/comptaquest/utils/test_utils_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:14:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:20:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:25:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:29:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:33:20: E1101: Class 'File' has no 'objects' member (no-member)
+tests/unit/comptaquest/utils/test_utils_models.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:45:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:49:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:53:25: E1101: Class 'Parameter' has no 'objects' member (no-member)
+tests/unit/comptaquest/utils/test_utils_models.py:60:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/comptaquest/utils/test_utils_models.py:65:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.diarylab.test_diarylab_models
+tests/unit/diarylab/test_diarylab_models.py:34:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/diarylab/test_diarylab_models.py:35:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/diarylab/test_diarylab_models.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/diarylab/test_diarylab_models.py:18:25: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+tests/unit/diarylab/test_diarylab_models.py:30:8: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+tests/unit/diarylab/test_diarylab_models.py:37:18: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+tests/unit/diarylab/test_diarylab_models.py:49:23: E1101: Class 'DiaryEntry' has no 'objects' member (no-member)
+tests/unit/diarylab/test_diarylab_models.py:46:8: W0612: Unused variable 'other_entry' (unused-variable)
+************* Module test_escapevault_access
+tests/unit/escapevault/test_escapevault_access.py:13:0: C0301: Line too long (101/100) (line-too-long)
+tests/unit/escapevault/test_escapevault_access.py:16:0: C0301: Line too long (103/100) (line-too-long)
+tests/unit/escapevault/test_escapevault_access.py:21:0: C0301: Line too long (113/100) (line-too-long)
+tests/unit/escapevault/test_escapevault_access.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/escapevault/test_escapevault_access.py:5:0: E0401: Unable to import 'tests.factories.members' (import-error)
+tests/unit/escapevault/test_escapevault_access.py:5:0: E0611: No name 'members' in module 'tests.factories' (no-name-in-module)
+tests/unit/escapevault/test_escapevault_access.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/escapevault/test_escapevault_access.py:23:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_access.py:28:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_access.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_access.py:38:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module test_escapevault_models
+tests/unit/escapevault/test_escapevault_models.py:73:0: C0301: Line too long (117/100) (line-too-long)
+tests/unit/escapevault/test_escapevault_models.py:78:0: C0301: Line too long (102/100) (line-too-long)
+tests/unit/escapevault/test_escapevault_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/escapevault/test_escapevault_models.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/escapevault/test_escapevault_models.py:71:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/escapevault/test_escapevault_models.py:72:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_models.py:80:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_models.py:86:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_models.py:101:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/escapevault/test_escapevault_models.py:102:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/escapevault/test_escapevault_models.py:110:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module chapters.test_models
+tests/unit/potionrun/chapters/test_models.py:10:0: C0301: Line too long (106/100) (line-too-long)
+tests/unit/potionrun/chapters/test_models.py:24:0: C0301: Line too long (113/100) (line-too-long)
+tests/unit/potionrun/chapters/test_models.py:37:0: C0301: Line too long (118/100) (line-too-long)
+tests/unit/potionrun/chapters/test_models.py:49:0: C0301: Line too long (102/100) (line-too-long)
+tests/unit/potionrun/chapters/test_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/potionrun/chapters/test_models.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/potionrun/chapters/test_models.py:10:23: E1101: Class 'Chapter' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:12:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:17:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:21:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/potionrun/chapters/test_models.py:23:23: E1101: Class 'Chapter' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:24:19: E1101: Class 'Act' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:31:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:35:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:37:12: E1101: Class 'Act' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:39:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:44:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/potionrun/chapters/test_models.py:46:23: E1101: Class 'Chapter' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:47:19: E1101: Class 'Act' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:48:21: E1101: Class 'Scene' has no 'objects' member (no-member)
+tests/unit/potionrun/chapters/test_models.py:52:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:56:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:60:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:63:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/potionrun/chapters/test_models.py:64:16: E1101: Class 'Scene' has no 'objects' member (no-member)
+************* Module tests.unit.secretbox.dashboard.test_colorparameters_admin
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:36:0: C0301: Line too long (111/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:10:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:14:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:21:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:25:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:29:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:33:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_admin.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.secretbox.dashboard.test_colorparameters_models
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:19:0: C0301: Line too long (114/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:45:0: C0301: Line too long (152/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:49:0: C0301: Line too long (106/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:15:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:22:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:23:25: E1101: Class 'ColorParameter' has no 'objects' member (no-member)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:26:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:36:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:42:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:48:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.secretbox.dashboard.test_todo_models
+tests/unit/secretbox/dashboard/test_todo_models.py:160:0: C0301: Line too long (107/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_todo_models.py:204:0: C0301: Line too long (107/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_todo_models.py:261:0: C0301: Line too long (108/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_todo_models.py:265:0: C0301: Line too long (104/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_todo_models.py:283:0: C0301: Line too long (104/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_todo_models.py:264:9: W0511: Todo correspondant exactement (fixme)
+tests/unit/secretbox/dashboard/test_todo_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:11:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:25:16: W0612: Unused variable 'message' (unused-variable)
+tests/unit/secretbox/dashboard/test_todo_models.py:155:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:175:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:199:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:219:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:239:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:256:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:267:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:271:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/dashboard/test_todo_models.py:281:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.secretbox.users.test_users_models
+tests/unit/secretbox/users/test_users_models.py:48:0: C0301: Line too long (101/100) (line-too-long)
+tests/unit/secretbox/users/test_users_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/secretbox/users/test_users_models.py:9:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/secretbox/users/test_users_models.py:15:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/users/test_users_models.py:28:12: E1120: No value for argument 'email' in method call (no-value-for-parameter)
+tests/unit/secretbox/users/test_users_models.py:28:12: E1120: No value for argument 'password' in method call (no-value-for-parameter)
+tests/unit/secretbox/users/test_users_models.py:30:12: E1120: No value for argument 'password' in method call (no-value-for-parameter)
+tests/unit/secretbox/users/test_users_models.py:34:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/users/test_users_models.py:35:8: C0103: Variable name "User" doesn't conform to snake_case naming style (invalid-name)
+tests/unit/secretbox/users/test_users_models.py:50:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/users/test_users_models.py:54:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/users/test_users_models.py:58:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/secretbox/users/test_users_models.py:62:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module tests.unit.test_sami_models
+tests/unit/test_sami_models.py:65:0: C0301: Line too long (109/100) (line-too-long)
+tests/unit/test_sami_models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tests/unit/test_sami_models.py:6:0: C0115: Missing class docstring (missing-class-docstring)
+tests/unit/test_sami_models.py:10:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/test_sami_models.py:13:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/test_sami_models.py:27:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/test_sami_models.py:40:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/test_sami_models.py:52:4: C0116: Missing function or method docstring (missing-function-docstring)
+tests/unit/test_sami_models.py:64:4: C0116: Missing function or method docstring (missing-function-docstring)
+************* Module wagtail_hooks
+wagtail_hooks.py:9:0: C0301: Line too long (103/100) (line-too-long)
+wagtail_hooks.py:24:0: C0301: Line too long (113/100) (line-too-long)
+wagtail_hooks.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+wagtail_hooks.py:3:0: E0401: Unable to import 'wagtail.admin.edit_handlers' (import-error)
+wagtail_hooks.py:3:0: E0611: No name 'edit_handlers' in module 'wagtail.admin' (no-name-in-module)
+wagtail_hooks.py:4:0: E0611: No name 'BaseSetting' in module 'wagtail.contrib.settings.models' (no-name-in-module)
+wagtail_hooks.py:8:0: C0115: Missing class docstring (missing-class-docstring)
+wagtail_hooks.py:17:4: C0115: Missing class docstring (missing-class-docstring)
+wagtail_hooks.py:17:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+wagtail_hooks.py:8:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+wagtail_hooks.py:22:0: C0115: Missing class docstring (missing-class-docstring)
+wagtail_hooks.py:27:4: C0115: Missing class docstring (missing-class-docstring)
+wagtail_hooks.py:27:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+wagtail_hooks.py:22:0: R0903: Too few public methods (0/2) (too-few-public-methods)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[84:101]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[130:147]
+                            ("01-none", "une seule fois"),
+                            ("02-everyday", "Tous les jours"),
+                            ("03-every2days", "Tous les 2 jours"),
+                            ("04-every3days", "Tous les 3 jours"),
+                            ("05-every4days", "Tous les 4 jours"),
+                            ("06-every5days", "Tous les 5 jours"),
+                            ("07-everyweek", "Toutes les semaines"),
+                            ("08-every10days", "Tous les 10 jours"),
+                            ("09-every2weeks", "Toutes les 2 semaines"),
+                            ("10-everymonth", "Tous les mois"),
+                            ("11-every6weeks", "Toutes les 6 semaines"),
+                            ("12-every2months", "Tous les 2 mois"),
+                            ("13-every3months", "Tous les 3 mois"),
+                            ("14-every4months", "Tous les 4 mois"),
+                            ("15-every6months", "Tous les 6 mois"),
+                            ("16-everyyear", "Tous les ans"),
+                        ], (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.choices:[16:32]
+==secretbox.dashboard.migrations.0001_initial:[84:100]
+    ("01-none", "une seule fois"),
+    ("02-everyday", "Tous les jours"),
+    ("03-every2days", "Tous les 2 jours"),
+    ("04-every3days", "Tous les 3 jours"),
+    ("05-every4days", "Tous les 4 jours"),
+    ("06-every5days", "Tous les 5 jours"),
+    ("07-everyweek", "Toutes les semaines"),
+    ("08-every10days", "Tous les 10 jours"),
+    ("09-every2weeks", "Toutes les 2 semaines"),
+    ("10-everymonth", "Tous les mois"),
+    ("11-every6weeks", "Toutes les 6 semaines"),
+    ("12-every2months", "Tous les 2 mois"),
+    ("13-every3months", "Tous les 3 mois"),
+    ("14-every4months", "Tous les 4 mois"),
+    ("15-every6months", "Tous les 6 mois"),
+    ("16-everyyear", "Tous les ans"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[40:54]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[155:169]
+                            ("01-organisation", "Organisation"),
+                            ("02-compta", "Compta"),
+                            ("03-achat", "Achats"),
+                            ("04-sport", "Sport"),
+                            ("05-sante", "Santé"),
+                            ("06-contact", "Contact"),
+                            ("07-informatique", "Informatique"),
+                            ("08-menage", "Menage"),
+                            ("09-jardin", "Jardin"),
+                            ("10-doudou", "Doudou"),
+                            ("11-bricoles", "Bricoles"),
+                            ("12-couture", "Couture"),
+                            ("13-loisirs", "Loisirs"),
+                        ], (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.choices:[35:48]
+==secretbox.dashboard.migrations.0001_initial:[40:53]
+    ("01-organisation", "Organisation"),
+    ("02-compta", "Compta"),
+    ("03-achat", "Achats"),
+    ("04-sport", "Sport"),
+    ("05-sante", "Santé"),
+    ("06-contact", "Contact"),
+    ("07-informatique", "Informatique"),
+    ("08-menage", "Menage"),
+    ("09-jardin", "Jardin"),
+    ("10-doudou", "Doudou"),
+    ("11-bricoles", "Bricoles"),
+    ("12-couture", "Couture"),
+    ("13-loisirs", "Loisirs"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[106:117]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[111:122]
+                (
+                    "priority",
+                    models.CharField(
+                        choices=[
+                            ("6-verylow", "Très faible"),
+                            ("5-low", "Faible"),
+                            ("4-normal", "Normale"),
+                            ("3-medium", "Moyenne"),
+                            ("2-high", "Élevée"),
+                            ("1-highest", "Trés élevée"),
+                        ], (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==diarylab.migrations.0001_initial:[24:34]
+==sami.migrations.0001_initial:[97:107]
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="%(class)s_user_diaries",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+            ],
+            options={ (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==escapevault.migrations.0004_alter_nomadeposition_category:[9:19]
+==escapevault.migrations.0005_alter_nomadeposition_category_and_more:[13:23]
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name="nomadeposition",
+            name="category",
+            field=models.CharField(
+                choices=[
+                    ("home", "Maison"),
+                    ("nomade", "Nomade"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[109:117]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[63:71]
+                        choices=[
+                            ("6-verylow", "Très faible"),
+                            ("5-low", "Faible"),
+                            ("4-normal", "Normale"),
+                            ("3-medium", "Moyenne"),
+                            ("2-high", "Élevée"),
+                            ("1-highest", "Trés élevée"),
+                        ], (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.forms:[41:50]
+==secretbox.users.forms:[46:55]
+            Submit(
+                "submit",
+                "Se connecter",
+                css_class="button-valider",
+            ),
+        )
+
+    def clean(self):
+        cleaned_data = super().clean() (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==sami.migrations.0001_initial:[10:20]
+==secretbox.dashboard.migrations.0001_initial:[7:17]
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.CreateModel( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.utils.migrations.0001_initial:[7:17]
+==diarylab.migrations.0001_initial:[7:17]
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.CreateModel( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.comptas.forms:[116:123]
+==escapevault.forms:[81:88]
+            Div(
+                Submit(
+                    "submit",
+                    "Valider",
+                    css_class="button-valider",
+                ),
+                HTML( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.comptas.forms:[91:98]
+==diarylab.forms:[28:35]
+            Div(
+                Submit(
+                    "submit",
+                    "Valider",
+                    css_class="button-valider",
+                ),
+                HTML( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[61:67]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[94:100]
+                        choices=[
+                            ("SLB", "Sylvie"),
+                            ("JCB", "Jean-Christophe"),
+                            ("LAU", "Laurine"),
+                            ("THO", "Thomas"),
+                            ("ODI", "Odile"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.choices:[7:13]
+==secretbox.dashboard.migrations.0001_initial:[110:116]
+    ("6-verylow", "Très faible"),
+    ("5-low", "Faible"),
+    ("4-normal", "Normale"),
+    ("3-medium", "Moyenne"),
+    ("2-high", "Élevée"),
+    ("1-highest", "Trés élevée"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==sami.migrations.0002_alter_sami_date:[11:18]
+==sami.migrations.0003_alter_sami_date:[11:18]
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name="sami",
+            name="date",
+            field=models.DateField( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==diarylab.models:[31:39]
+==sami.models:[145:152]
+    )
+
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="%(class)s_user_diaries",
+        db_index=True, (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==diarylab.migrations.0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more:[13:20]
+==diarylab.migrations.0004_alter_diaryentry_content_alter_diaryentry_date_and_more:[13:20]
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
+
+    operations = [
+        migrations.AlterField(
+            model_name="diaryentry",
+            name="content", (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.utils.migrations.0001_initial:[55:61]
+==secretbox.users.migrations.0001_initial:[112:118]
+            fields=[],
+            options={
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
+            }, (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==tests.unit.comptaquest.comptas.test_expense_transaction_models:[16:21]
+==tests.unit.comptaquest.comptas.test_outgoingstransaction_models:[16:21]
+            date_transaction=now(),
+            amount=100,
+            account=self.account,
+            category=CategoryCodificationFactory(),
+            payment_method=PaymentCodificationFactory(), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[80:85]
+==secretbox.dashboard.models:[92:97]
+                    ("todo", "À faire"),
+                    ("in_progress", "En cours"),
+                    ("done", "Terminé"),
+                    ("report", "Reporté"),
+                    ("cancel", "Annulé"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.migrations.0001_initial:[23:28]
+==secretbox.dashboard.migrations.0002_remove_todo_date_remove_todo_done_todo_done_date_and_more:[79:84]
+                        choices=[
+                            ("todo", "À faire"),
+                            ("in_progress", "En cours"),
+                            ("done", "Terminé"),
+                            ("report", "Reporté"), (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==secretbox.dashboard.admin:[23:28]
+==secretbox.dashboard.forms:[67:72]
+                    "appointment",
+                    "category",
+                    "who",
+                    "place",
+                    "periodic", (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==escapevault.templatetags.filters:[4:13]
+==secretbox.tools.date_filters:[4:13]
+register = template.Library()
+
+
+@register.filter
+def parse_iso_date(value):
+    try:
+        return datetime.fromisoformat(value)
+    except Exception:
+        return value (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.consos.migrations.0001_initial:[8:16]
+==escapevault.migrations.0001_initial:[8:16]
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = []
+
+    operations = [
+        migrations.CreateModel( (duplicate-code)
+wagtail_hooks.py:1:0: R0801: Similar lines in 2 files
+==comptaquest.comptas.models.account:[60:65]
+==comptaquest.comptas.models.outgoings:[52:57]
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="%(class)s_created_by",
+        db_index=True, (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 6.04/10 (previous run: 6.08/10, -0.04)
+

@@ -9,12 +9,14 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+
 from secretbox.users.mixins import GroupRequiredMixin
 
 from .forms import DiaryEntryForm
 from .models import DiaryEntry
 
 GroupRequiredMixin.group_name = "diarylab_access"
+
 
 class DiaryEntryCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
     model = DiaryEntry

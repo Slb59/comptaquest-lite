@@ -4,8 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
 from .outgoings import ExpenseOutgoings, IncomeOutgoings, TransferOutgoings
-from .transaction import (ExpenseTransaction, IncomeTransaction,
-                          TransferTransaction)
+from .transaction import ExpenseTransaction, IncomeTransaction, TransferTransaction
 
 
 class OutgoingsTransaction(models.Model):

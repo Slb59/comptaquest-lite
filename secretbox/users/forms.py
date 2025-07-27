@@ -1,11 +1,16 @@
+"""Defines forms based on the application's templates.
+
+Used for creating and updating objects via views
+"""
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Layout, Submit
 from django import forms
-from django.contrib.auth import authenticate
-from django.contrib.auth import forms as auth_forms
-from django.contrib.auth.forms import \
-    PasswordResetForm as DjangoPasswordResetForm
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import authenticate, forms as auth_forms
+from django.contrib.auth.forms import (
+    PasswordResetForm as DjangoPasswordResetForm,
+    UserChangeForm,
+)
 from django.utils.translation import gettext_lazy as _
 
 from .models import CQUser, MemberProfile

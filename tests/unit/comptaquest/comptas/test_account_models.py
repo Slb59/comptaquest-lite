@@ -2,8 +2,10 @@ import pytest
 from django.test import TestCase
 
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.transaction import (ExpenseTransactionFactory,
-                                         IncomeTransactionFactory)
+from tests.factories.transaction import (
+    ExpenseTransactionFactory,
+    IncomeTransactionFactory,
+)
 
 
 @pytest.mark.django_db

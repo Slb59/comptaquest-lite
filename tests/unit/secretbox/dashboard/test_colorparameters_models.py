@@ -2,9 +2,13 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 
-from secretbox.dashboard.models import (CATEGORY_CHOICES, PERIODIC_CHOICES,
-                                        PLACE_CHOICES, PRIORITY_CHOICES,
-                                        ColorParameter)
+from secretbox.dashboard.models import (
+    CATEGORY_CHOICES,
+    PERIODIC_CHOICES,
+    PLACE_CHOICES,
+    PRIORITY_CHOICES,
+    ColorParameter,
+)
 from tests.factories.colorparameters import ColorParameterFactory
 
 
