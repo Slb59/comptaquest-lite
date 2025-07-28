@@ -17,15 +17,14 @@ from django.views.generic import (
 
 from secretbox.users.mixins import GroupRequiredMixin
 
+from .account_current_model import CurrentAccount
 from .choices import ACCOUNT_CHOICES
 from .filters import CurrentAccountFilterForm
 from .forms import (
-    CurrentAccountForm,
-    InvestmentAccountForm,
+    AccountForm,
     OutgoingsForm,
     SelectAccountTypeForm,
 )
-from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
 
@@ -103,9 +102,6 @@ class AccountCreateView(ComptasBaseView, CreateView):
     template_name = "generic/add_template.html"
     success_url = reverse_lazy("comptas:dashboard")
 
-    # model = CurrentAccount
-    # form_class = CurrentAccountForm
-
     def dispatch(self, request, *args, **kwargs):
         # Make sure the account type is set
         self.account_type = request.session.get("selected_account_type")
@@ -114,10 +110,7 @@ class AccountCreateView(ComptasBaseView, CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def get_form_class(self):
-        if self.account_type == "Current":
-            return CurrentAccountForm
-        else:
-            return InvestmentAccountForm
+        return AccountForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()

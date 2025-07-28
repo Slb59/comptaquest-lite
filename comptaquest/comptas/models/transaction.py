@@ -4,7 +4,7 @@ from django.db.models import ProtectedError
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
-from .account import CurrentAccount
+from ..account_current_model import CurrentAccount
 from .ledger import Ledger
 from .transactiontype import Expense, Income, Transfer
 

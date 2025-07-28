@@ -1,11 +1,9 @@
-import random
+import secrets
 from datetime import datetime
 
 import factory
 import factory.fuzzy
 import pytest
-import secrets
-
 from django_countries import countries
 from faker import Faker
 

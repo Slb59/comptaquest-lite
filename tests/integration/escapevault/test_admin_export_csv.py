@@ -8,11 +8,11 @@ from tests.factories.nomadeposition import NomadePositionFactory
 class NomadePositionAdminTests(TestCase):
     def setUp(self):
         self.admin_user = MemberFactory(
-            trigram="adm", 
-            email="admin@example.com", 
+            trigram="adm",
+            email="admin@example.com",
             password="password",  # nosec: B106
-            is_superuser=True, 
-            is_staff=True
+            is_superuser=True,
+            is_staff=True,
         )
         self.admin_user.save()
         self.client = Client()

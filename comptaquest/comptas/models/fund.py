@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from .account import InvestmentAccount
+from ..account_investment_model import InvestmentAccount
 
 
 class FundDistribution(models.Model):

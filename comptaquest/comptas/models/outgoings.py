@@ -4,7 +4,7 @@ from django.core.validators import MaxLengthValidator
 from django.db import models
 from django_stubs_ext.db.models import TypedModelMeta
 
-from .account import CurrentAccount
+from ..account_current_model import CurrentAccount
 from .transactiontype import Expense, Income, Transfer
 
 

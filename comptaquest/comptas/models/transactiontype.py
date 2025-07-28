@@ -7,7 +7,7 @@ from comptaquest.utils.models import (
     PaymentCodification,
 )
 
-from .account import CurrentAccount
+from ..account_current_model import CurrentAccount
 
 
 class Expense(models.Model):

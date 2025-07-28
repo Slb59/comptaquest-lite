@@ -1,8 +1,7 @@
-import random
+import secrets
 from datetime import date, datetime, timedelta
 
 from django.utils import timezone
-import secrets
 
 
 def get_now_date():
