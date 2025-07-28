@@ -18,13 +18,13 @@ from django.views.generic import (
 from secretbox.users.mixins import GroupRequiredMixin
 
 from .choices import ACCOUNT_CHOICES
+from .filters import CurrentAccountFilterForm
 from .forms import (
     CurrentAccountForm,
     InvestmentAccountForm,
     OutgoingsForm,
     SelectAccountTypeForm,
 )
-from .filters import CurrentAccountFilterForm
 from .models.account import CurrentAccount
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction

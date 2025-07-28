@@ -4,8 +4,11 @@ quality:
 	uv run isort .
 	uv run black .
 	uv run flake8 .
+	uv run pylint . --ignore=migrations,venv > tests/output/pylint.txt
+	uv run bandit -r . --exclude venv,migrations -o tests/output/bandit.txt -f txt
 
 tests:
+	uv run pytest --benchmark-only
 	uv run pytest
 	npx playwright test
 

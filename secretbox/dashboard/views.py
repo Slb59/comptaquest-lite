@@ -12,8 +12,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import CreateView, FormView, TemplateView, UpdateView, View
 
-from .forms import ContactForm, TodoForm
 from .filters import TodoFilterForm
+from .forms import ContactForm, TodoForm
 from .models import Todo
 
 

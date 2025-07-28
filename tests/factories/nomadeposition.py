@@ -4,6 +4,8 @@ from datetime import datetime
 import factory
 import factory.fuzzy
 import pytest
+import secrets
+
 from django_countries import countries
 from faker import Faker
 
@@ -33,5 +35,5 @@ class NomadePositionFactory(factory.django.DjangoModelFactory):
     def reviews(self):
         return [
             {"text": fake.text(max_nb_chars=200), "date": datetime.now().isoformat()}
-            for _ in range(random.randint(1, 3))
+            for _ in range(secrets.randbelow(3) + 1)
         ]

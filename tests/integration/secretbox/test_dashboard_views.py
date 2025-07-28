@@ -23,7 +23,10 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
     def setUp(self):
         activate("fr")
         self.client = Client()
-        self.user = MemberFactory(email="test@test.com", password="password")
+        self.user = MemberFactory(
+            email="test@test.com", 
+            password="password"  # nosec: B106
+        )
         self.url = reverse("dashboard:add_todo")
 
     def test_redirect_if_not_logged_in(self):

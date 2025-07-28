@@ -3,6 +3,7 @@ from django.views.generic import CreateView, DetailView, ListView
 
 from secretbox.users.mixins import GroupRequiredMixin
 
+
 class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
     group_name = "comptas_access"
 

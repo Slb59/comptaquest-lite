@@ -8,8 +8,10 @@ from secretbox.users.mixins import GroupRequiredMixin
 from .forms import SamiForm
 from .models import Sami
 
+
 class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
     group_name = "sami_access"
+
 
 class SamiDashboardView(ComptasBaseView, TemplateView):
 

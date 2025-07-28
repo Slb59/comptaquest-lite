@@ -14,8 +14,8 @@ from django.views.generic import (
 
 from secretbox.users.mixins import GroupRequiredMixin
 
-from .forms import EscapeVaultForm
 from .filters import EscapeVaultFilterForm
+from .forms import EscapeVaultForm
 from .models import NomadePosition
 
 
