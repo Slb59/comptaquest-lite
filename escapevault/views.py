@@ -14,13 +14,16 @@ from django.views.generic import (
 
 from secretbox.users.mixins import GroupRequiredMixin
 
-from .forms import EscapeVaultFilterForm, EscapeVaultForm
+from .forms import EscapeVaultForm
+from .filters import EscapeVaultFilterForm
 from .models import NomadePosition
 
-GroupRequiredMixin.group_name = "escapevault_access"
+
+class EscapeVaultBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "escapevault_access"
 
 
-class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
+class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
 
     template_name = "escapevault/map.html"
 
@@ -83,7 +86,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
         return context
 
 
-class EscapeVaultParametersView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
+class EscapeVaultParametersView(EscapeVaultBaseView, TemplateView):
     template_name = "escapevault/parameters.html"
 
     def get_context_data(self, **kwargs):
@@ -93,7 +96,7 @@ class EscapeVaultParametersView(LoginRequiredMixin, TemplateView, GroupRequiredM
         return context
 
 
-class EscapeVaultCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
+class EscapeVaultCreateView(EscapeVaultBaseView, CreateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "generic/add_template.html"
@@ -106,7 +109,7 @@ class EscapeVaultCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
         return context
 
 
-class EscapeVaultListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
+class EscapeVaultListView(EscapeVaultBaseView, ListView):
     model = NomadePosition
     template_name = "escapevault/list_position.html"
     context_object_name = "positions"
@@ -131,7 +134,7 @@ class EscapeVaultListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
         return context
 
 
-class EscapeVaultEditView(LoginRequiredMixin, UpdateView, GroupRequiredMixin):
+class EscapeVaultEditView(EscapeVaultBaseView, UpdateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "escapevault/edit_position.html"
@@ -169,7 +172,7 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView, GroupRequiredMixin):
         return super().form_valid(form)
 
 
-class EscapeVaultDeleteView(LoginRequiredMixin, DeleteView, GroupRequiredMixin):
+class EscapeVaultDeleteView(EscapeVaultBaseView, DeleteView):
     model = NomadePosition
     template_name = "escapevault/delete_position.html"
     success_url = reverse_lazy("escapevault:list_positions")

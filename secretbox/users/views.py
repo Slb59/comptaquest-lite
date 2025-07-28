@@ -30,8 +30,6 @@ class LoginView(DjangoLoginView):
         print("\n=== Authentification ===")
         login(self.request, form.get_user())
         response = super().form_valid(form)
-        print(f"User.is_authenticated: {self.request.user.is_authenticated}")
-        print(f"Session: {dict(self.request.session)}")
         return response
 
     def get_context_data(self, **kwargs):

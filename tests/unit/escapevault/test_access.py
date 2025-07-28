@@ -2,7 +2,7 @@ from django.contrib.auth.models import Group
 from django.test import TestCase
 from django.urls import reverse
 
-from tests.factories.members import MemberFactory
+from tests.factories.member import MemberFactory
 
 
 class EscapeVaultAccessTest(TestCase):
@@ -18,7 +18,7 @@ class EscapeVaultAccessTest(TestCase):
         self.user_with_group.groups.add(group)
 
         # superuser
-        self.superuser = MemberFactory(trigram="adm", password="pass", email="admin@example.com", superuser=True)
+        self.superuser = MemberFactory(trigram="adm", password="pass", email="admin@example.com", is_superuser=True)
 
     def test_access_denied_for_anonymous(self):
         response = self.client.get(self.url)

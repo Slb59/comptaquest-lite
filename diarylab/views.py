@@ -15,10 +15,12 @@ from secretbox.users.mixins import GroupRequiredMixin
 from .forms import DiaryEntryForm
 from .models import DiaryEntry
 
-GroupRequiredMixin.group_name = "diarylab_access"
+
+class DialylabBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "diarylab_access"
 
 
-class DiaryEntryCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
+class DiaryEntryCreateView(DialylabBaseView, CreateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = "diarylab/add_entry.html"
@@ -56,7 +58,7 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
         # return render(self.request, self.template_name, {'form': form})
 
 
-class DiaryEntryListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
+class DiaryEntryListView(DialylabBaseView, ListView):
     model = DiaryEntry
     template_name = "diarylab/list_entries.html"
     context_object_name = "entries"
@@ -110,14 +112,14 @@ def generate_pdf(request, year, month):
     return response
 
 
-class DiaryEditView(LoginRequiredMixin, UpdateView, GroupRequiredMixin):
+class DiaryEditView(DialylabBaseView, UpdateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = "diarylab/edit_entry.html"
     success_url = reverse_lazy("diarylab:list_entries")
 
 
-class DiaryDeleteView(LoginRequiredMixin, DeleteView, GroupRequiredMixin):
+class DiaryDeleteView(DialylabBaseView, DeleteView):
     model = DiaryEntry
     template_name = "diarylab/delete_entry.html"
     success_url = reverse_lazy("diarylab:list_entries")

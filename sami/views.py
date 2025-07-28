@@ -8,10 +8,10 @@ from secretbox.users.mixins import GroupRequiredMixin
 from .forms import SamiForm
 from .models import Sami
 
-GroupRequiredMixin.group_name = "sami_access"
+class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "sami_access"
 
-
-class SamiDashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
+class SamiDashboardView(ComptasBaseView, TemplateView):
 
     template_name = "sami/dashboard.html"
 
@@ -22,7 +22,7 @@ class SamiDashboardView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
         return context
 
 
-class SamiListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
+class SamiListView(ComptasBaseView, ListView):
     model = Sami
     template_name = "sami/list.html"
     context_object_name = "samis"
@@ -37,7 +37,7 @@ class SamiListView(LoginRequiredMixin, ListView, GroupRequiredMixin):
         return context
 
 
-class SamiCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
+class SamiCreateView(ComptasBaseView, CreateView):
     model = Sami
     form_class = SamiForm
     template_name = "sami/add_sami.html"

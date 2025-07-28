@@ -3,28 +3,29 @@ from django.views.generic import CreateView, DetailView, ListView
 
 from secretbox.users.mixins import GroupRequiredMixin
 
-GroupRequiredMixin.group_name = "comptas_access"
+class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "comptas_access"
 
 
-class ConsosWaterView(LoginRequiredMixin, ListView, GroupRequiredMixin):
+class ConsosWaterView(ComptasBaseView, ListView):
     template_name = "consos_water.html"
 
 
-class ConsosEdfView(LoginRequiredMixin, ListView, GroupRequiredMixin):
+class ConsosEdfView(ComptasBaseView, ListView):
     template_name = "consos_edf.html"
 
 
-class ConsosEdfCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
+class ConsosEdfCreateView(ComptasBaseView, CreateView):
     template_name = "consos_edf_create.html"
 
 
-class ConsosWaterCreateView(LoginRequiredMixin, CreateView, GroupRequiredMixin):
+class ConsosWaterCreateView(ComptasBaseView, CreateView):
     template_name = "consos_water_create.html"
 
 
-class ConsosEdfDetailView(LoginRequiredMixin, DetailView, GroupRequiredMixin):
+class ConsosEdfDetailView(ComptasBaseView, DetailView):
     template_name = "consos_edf_detail.html"
 
 
-class ConsosWaterDetailView(LoginRequiredMixin, DetailView, GroupRequiredMixin):
+class ConsosWaterDetailView(ComptasBaseView, DetailView):
     template_name = "consos_water_detail.html"
