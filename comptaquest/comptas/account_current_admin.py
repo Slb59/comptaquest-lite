@@ -10,10 +10,18 @@ class CurrentAccountAdmin(admin.ModelAdmin):
     search_fields = ("name", "user__email", "user__trigram")
     readonly_fields = ("current_balance",)
     fieldsets = (
-        (None, {"fields": ("user", "name", "bank_name", "account_type", "description")}),
-        ("Pointage", {"fields": ("pointed_date", "current_pointed_date", "current_pointed_balance")}),
-        ("Détails", {"fields": ("average_interest", "ledger_analysis", "state", "closed_date")}),
-        ("Métadonnées", {"fields": ("created_date", "created_by", "current_balance")}),
+        (None, 
+            {"fields": ("user", "name", "bank_name", "account_type", "description")}
+        ),
+        ("Pointage", 
+            {"fields": ("pointed_date", "current_pointed_date", "current_pointed_balance")}
+        ),
+        ("Détails", 
+            {"fields": ("average_interest", "ledger_analysis", "state", "closed_date")}
+        ),
+        ("Métadonnées", 
+            {"fields": ("created_date", "created_by", "current_balance")}
+        ),
     )
 
     def save_model(self, request, obj, form, change):

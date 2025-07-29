@@ -21,7 +21,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from secretbox.dashboard.views import ContactFormView, DashboardView
+from secretbox.dashboard.contact_views import ContactFormView
+from secretbox.dashboard.todo_views import DashboardView
 from secretbox.users.views import LoginView
 
 urlpatterns = [

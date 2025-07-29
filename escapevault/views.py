@@ -1,3 +1,6 @@
+"""Views for the escapevault application.
+    Dashboard, edit, create, delete, and list views.
+"""
 import folium
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin

@@ -20,7 +20,10 @@ class InvestmentAccount(AbstractAccount):
         Calcule la somme totale du portefeuille basé sur les actifs liés.
         """
         total = self.assets.aggregate(
-            total_value=Sum(F("quantity") * F("price"), output_field=DecimalField(max_digits=16, decimal_places=4))
+            total_value=Sum(
+                F("quantity") * F("price"), 
+                output_field=DecimalField(max_digits=16, decimal_places=4)
+            )
         )["total_value"] or Decimal("0.0")
         return total
 
@@ -50,9 +53,19 @@ class InvestmentAsset(models.Model):
         verbose_name=_("Type"),
     )
 
-    quantity = models.DecimalField(max_digits=12, decimal_places=4, default=0, verbose_name=_("Quantity"))
+    quantity = models.DecimalField(
+        max_digits=12, 
+        decimal_places=4, 
+        default=0, 
+        verbose_name=_("Quantité")
+    )
 
-    price = models.DecimalField(max_digits=12, decimal_places=4, default=0, verbose_name=_("Current price"))
+    price = models.DecimalField(
+        max_digits=12, 
+        decimal_places=4, 
+        default=0, 
+        verbose_name=_("Cours ")
+    )
 
     def get_valuation(self) -> Decimal:
         """

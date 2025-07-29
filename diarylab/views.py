@@ -1,3 +1,6 @@
+"""Views for the diarylab application.
+    Dashboard, edit, create, delete, and list views.
+"""
 from io import BytesIO
 
 from django.contrib import messages

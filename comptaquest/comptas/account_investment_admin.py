@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import InvestmentAccount, InvestmentAsset
+from .account_investment_model import InvestmentAccount, InvestmentAsset
 
 
 class InvestmentAssetInline(admin.TabularInline):

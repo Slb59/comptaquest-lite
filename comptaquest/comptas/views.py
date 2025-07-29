@@ -1,3 +1,6 @@
+"""Views for the comptaquest.comptas application.
+    Dashboard, edit, create, delete, and list views.
+"""
 import locale
 from datetime import datetime
 

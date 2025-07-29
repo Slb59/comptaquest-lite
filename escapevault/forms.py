@@ -9,7 +9,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from .models import NomadePosition
-
+from secretbox.tools.form_helpers import action_buttons
 
 class EscapeVaultForm(forms.ModelForm):
     new_review = forms.CharField(
@@ -79,17 +79,8 @@ class EscapeVaultForm(forms.ModelForm):
                 Div("closing_date", css_class="w-full sm:col-span-2"),
                 css_class="grid grid-cols-5 gap-4",
             ),
-            Div(
-                Submit(
-                    "submit",
-                    "Valider",
-                    css_class="button-valider",
-                ),
-                HTML(
-                    '<a href="{% url \'escapevault:list_positions\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
-                ),
-                css_class="flex space-x-4",
-            ),
+            action_buttons(back_url_name="escapevault:list_positions", back_label="Liste"),
+
         )
 
         # Insert the new_review field at the end of the form, just before the submit button

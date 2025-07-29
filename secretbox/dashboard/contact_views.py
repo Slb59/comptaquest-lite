@@ -1,9 +1,12 @@
+"""Views for contact model on the dashboard application
+    Dashboard, edit, create, delete, and list views.
+"""
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
-from .forms import ContactForm
+from .contact_forms import ContactForm
 
 
 class ContactFormView(LoginRequiredMixin, FormView):

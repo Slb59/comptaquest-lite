@@ -9,7 +9,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.users.models import Member
-
+from secretbox.tools.form_helpers import action_buttons
 from .todo_model import Todo
 
 
@@ -82,15 +82,5 @@ class TodoForm(forms.ModelForm):
             "planned_date",
             "priority",
             "note",
-            Div(
-                Submit(
-                    "submit",
-                    "Valider",
-                    css_class="button-valider",
-                ),
-                HTML(
-                    '<a href="{% url \'home\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
-                ),
-                css_class="flex space-x-4",
-            ),
+            action_buttons(back_url_name="home", back_label="Liste"),            
         )

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import (
+from .todo_views import (
     TodoCreateView,
     TodoDeleteView,
     TodoUpdateView,

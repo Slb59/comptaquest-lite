@@ -52,7 +52,10 @@ class AbstractAccount(models.Model):
         help_text=_("The average interest that is expected for"),
     )
 
-    ledger_analysis = models.BooleanField(default=True, help_text=_("If the account is include in the ledger analysis"))
+    ledger_analysis = models.BooleanField(
+        default=True, 
+        help_text=_("If the account is include in the ledger analysis")
+    )
 
     created_date = models.DateTimeField(blank=True, null=True)
     created_by = models.ForeignKey(

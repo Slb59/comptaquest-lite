@@ -164,3 +164,19 @@ python_classes = ["Test*"]
 testpaths = ["tests"]
 addopts = "--reuse-db"
 markers = "django_db: marks tests as requiring database access"
+
+[tool.pylint.'MAIN']
+ignore = ["migrations", ".venv", "__pycache__", ".vscode", "mypy_cache"]
+jobs = 1
+
+[tool.pylint.messages_control]
+disable = [
+  "C0114",  # Missing module docstring
+  "C0115",  # Missing class docstring
+  "C0116",  # Missing function or method docstring
+  "C0415",  # Import outside toplevel
+  "R0903",  # Too few public methods
+]
+
+[tool.pylint.format]
+max-line-length = 100

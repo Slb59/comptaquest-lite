@@ -1,3 +1,6 @@
+"""Views for todo model on the dashboard application
+    Dashboard, edit, create, delete, and list views.
+"""
 from datetime import date
 
 # from crispy_forms.layout import Field
@@ -13,7 +16,7 @@ from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import CreateView, TemplateView, UpdateView, View
 
 from .filters import TodoFilterForm
-from .forms import TodoForm
+from .todo_forms import TodoForm
 from .todo_model import Todo
 
 

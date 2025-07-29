@@ -16,7 +16,7 @@ from comptaquest.comptas.models import (
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
 from .choices import ACCOUNT_CHOICES
-
+from secretbox.tools.form_helpers import action_buttons
 
 class SelectAccountTypeForm(forms.Form):
     account_type = forms.ChoiceField(label="Type de compte", choices=ACCOUNT_CHOICES)
@@ -84,17 +84,7 @@ class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
                     css_class="grid grid-cols-3 gap-4",
                 ),
                 "description",
-                Div(
-                    Submit(
-                        "submit",
-                        "Valider",
-                        css_class="button-valider",
-                    ),
-                    HTML(
-                        '<a href="{% url \'comptas:dashboard\' %}" class="inline-block mt-4 focus:outline-none text-white bg-gray-500 hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:focus:ring-gray-900">Liste</a>'
-                    ),
-                    css_class="flex space-x-4",
-                ),
+                action_buttons(back_url_name="comptas:dashboard", back_label="Liste"),
             )
         )
 
