@@ -112,18 +112,37 @@ class AccountCreateView(ComptasBaseView, CreateView):
             return redirect("comptas:account-select")  # return to the first step
         return super().dispatch(request, *args, **kwargs)
 
+    def get_model_class(self):
+        if self.account_type == "Investment":
+            return InvestmentAccount
+        else:
+            return CurrentAccount
+
     def get_form_class(self):
-        return AccountForm
+        class DynamicAccountForm(AccountForm):
+            class Meta(AccountForm.Meta):
+                model = self.get_model_class()
+
+        return DynamicAccountForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        return kwargs  # no additional data at this time
+        kwargs["account_type"] = self.account_type
+        return kwargs
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
         instance.account_type = self.account_type
         instance.save()
+
+        if self.account_type == "Investment":
+            formset = PortfolioFormSet(self.request.POST, instance=instance)
+            if formset.is_valid():
+                formset.save()
+            else:
+                return self.form_invalid(form)
+
         # clear session after use
         del self.request.session["selected_account_type"]
         return super().form_valid(form)
@@ -134,6 +153,11 @@ class AccountCreateView(ComptasBaseView, CreateView):
         context["title"] = _("Nouveau ") + account_type_label.lower()
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
+        if self.account_type == "Investment":
+            if self.request.POST:
+                context["portfolio_formset"] = PortfolioFormSet(self.request.POST)
+            else:
+                context["portfolio_formset"] = PortfolioFormSet()
         return context
 
 

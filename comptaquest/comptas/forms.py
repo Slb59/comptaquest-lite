@@ -7,9 +7,9 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Layout, Submit
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from django.forms import inlineformset_factory
 
 from comptaquest.comptas.models import (
-    CurrentAccount,
     ExpenseTransaction,
     Outgoings,
 )
@@ -17,6 +17,9 @@ from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
 from .choices import ACCOUNT_CHOICES
 from secretbox.tools.form_helpers import action_buttons
+from .account_investment_model import InvestmentAccount, InvestmentAsset
+from .account_abstract_model import AbstractAccount
+
 
 class SelectAccountTypeForm(forms.Form):
     account_type = forms.ChoiceField(label="Type de compte", choices=ACCOUNT_CHOICES)
@@ -34,10 +37,17 @@ class SelectAccountTypeForm(forms.Form):
             )
         )
 
+PortfolioFormSet = inlineformset_factory(
+    InvestmentAccount,
+    InvestmentAsset,
+    fields=("designation", "asset_type", "quantity", "price"),
+    extra=1,
+    can_delete=True
+)
 
 class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
     class Meta:
-        model = CurrentAccount
+        model = AbstractAccount
         exclude = ["account_type", "created_at", "created_by"]
 
     def __init__(self, *args, **kwargs):

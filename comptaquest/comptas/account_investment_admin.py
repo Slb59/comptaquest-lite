@@ -17,9 +17,9 @@ class InvestmentAssetInline(admin.TabularInline):
 
 @admin.register(InvestmentAccount)
 class InvestmentAccountAdmin(admin.ModelAdmin):
-    list_display = ("user", "name", "bank_name", "current_balance")
+    list_display = ("account_type","user", "name", "bank_name", "current_balance")
     inlines = [InvestmentAssetInline]
-    readonly_fields = ("current_balance",)
+    readonly_fields = ("current_balance", "account_type")
 
     def save_model(self, request, obj, form, change):
         """
@@ -34,3 +34,7 @@ class InvestmentAccountAdmin(admin.ModelAdmin):
         """
         super().save_related(request, form, formsets, change)
         form.instance.recalculate_balance()
+
+    def get_queryset(self, request):
+        qs = super().get_queryset(request)
+        return qs.filter(account_type="Investment")
