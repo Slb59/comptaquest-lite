@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
-from .models import ColorParameter, Todo
+from .colorparameter_model import ColorParameter
+from .todo_model import Todo
 
 
 @admin.register(Todo)

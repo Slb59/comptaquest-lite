@@ -16,7 +16,7 @@ from secretbox.dashboard.choices import (
 )
 from secretbox.users.models import Member
 
-from .models import Todo
+from .todo_model import Todo
 
 
 class TodoFilterForm(forms.Form):
