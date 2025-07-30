@@ -111,12 +111,11 @@ class TestTodoModel(TestCase):
         """Test that who choices are valid"""
 
         # Test invalid who
-        self.todo.who = "invalid_who"
-        with self.assertRaises(ValidationError):
-            self.todo.full_clean()
+        with self.assertRaises(ValueError):
+            self.todo.who.set(["invalid_user"])
 
         # Test valid who
-        self.todo.who = "SLB"
+        self.todo.who.set([self.user])
         try:
             self.todo.full_clean()  # This should not raise an error
         except ValidationError:
@@ -251,6 +250,35 @@ class TestTodoModel(TestCase):
         # Check if the dates are updated and state is set to "done"
         self.assertEqual(instance.state, "done")
         self.assertEqual(instance.done_date, mock_date)
+    
+    def test_multiple_users_can_be_assigned_to_who(self):
+        user2 = MemberFactory()
+        user3 = MemberFactory()
+        self.todo.who.set([self.user, user2, user3])
+
+        self.assertEqual(self.todo.who.count(), 3)
+        self.assertIn(user2, self.todo.who.all())
+
+    def test_related_name_todos_on_user(self):
+        self.todo.who.set([self.user])
+        self.assertIn(self.todo, self.user.todos.all())
+
+    def test_empty_who_field_is_allowed(self):
+        self.todo.who.set([])  # champ vide
+        self.todo.full_clean()  # ne doit pas lever d’erreur
+
+    def test_who_field_persists_after_save(self):
+        user2 = MemberFactory()
+        self.todo.who.set([user2])
+        self.todo.save()
+
+        todo_from_db = type(self.todo).objects.get(pk=self.todo.pk)
+        self.assertIn(user2, todo_from_db.who.all())
+
+    def test_removing_user_from_who(self):
+        self.todo.who.set([self.user])
+        self.todo.who.remove(self.user)
+        self.assertEqual(self.todo.who.count(), 0)
 
 
 class GetColorTestCase(TestCase):
@@ -258,7 +286,7 @@ class GetColorTestCase(TestCase):
         # ColorParameter précis
         self.color_hex = "#123ABC"
         self.param = ColorParameterFactory(
-            priority="4-normal", periodicity="weekly", category="work", place="office", color=self.color_hex
+            priority="4-normal", periodic="weekly", category="work", place="office", color=self.color_hex
         )
 
         # Todo correspondant exactement
@@ -280,7 +308,7 @@ class GetColorTestCase(TestCase):
 
     def test_get_color_with_place_every(self):
         ColorParameterFactory(
-            priority="4-normal", periodicity="weekly", category="work", place="*-Every", color="#EEEEEE"
+            priority="4-normal", periodic="weekly", category="work", place="*-Every", color="#EEEEEE"
         )
 
         todo = TodoFactory(

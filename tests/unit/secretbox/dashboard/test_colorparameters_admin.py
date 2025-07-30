@@ -3,7 +3,7 @@ from django.test import RequestFactory, TestCase
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.dashboard.admin import ColorParameterAdmin
-from secretbox.dashboard.models import ColorParameter
+from secretbox.dashboard.colorparameter_model import ColorParameter
 from tests.factories.colorparameters import ColorParameterFactory
 
 
@@ -19,11 +19,11 @@ class ColorParameterAdminTest(TestCase):
         self.request = RequestFactory().get("/admin/")
 
     def test_list_display_fields(self):
-        expected_fields = ("priority", "periodicity", "category", "place", "color_display")
+        expected_fields = ("priority", "periodic", "category", "place", "color_display")
         self.assertEqual(self.admin.get_list_display(self.request), expected_fields)
 
     def test_list_filter_fields(self):
-        expected_filters = ("priority", "periodicity", "category", "place")
+        expected_filters = ("priority", "periodic", "category", "place")
         self.assertEqual(self.admin.list_filter, expected_filters)
 
     def test_search_fields(self):

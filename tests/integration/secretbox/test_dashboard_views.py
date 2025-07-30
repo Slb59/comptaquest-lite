@@ -4,7 +4,7 @@ from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate
 
-from secretbox.dashboard.models import Todo
+from secretbox.dashboard.todo_model import Todo
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 

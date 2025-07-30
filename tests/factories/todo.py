@@ -10,7 +10,7 @@ from secretbox.dashboard.choices import (
     PLACE_CHOICES,
     PRIORITY_CHOICES,
 )
-from secretbox.dashboard.models import Todo
+from secretbox.dashboard.todo_model import Todo
 from secretbox.tools.models import get_now_date
 
 from .member import MemberFactory
@@ -27,7 +27,6 @@ class TodoFactory(factory.django.DjangoModelFactory):
     description = factory.Faker("sentence")
     appointment = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.APPOINTEMENT_CHOICES])
     category = factory.fuzzy.FuzzyChoice([choice[0] for choice in CATEGORY_CHOICES])
-    who = factory.SubFactory(MemberFactory)
     place = factory.fuzzy.FuzzyChoice([choice[0] for choice in PLACE_CHOICES])
     periodic = factory.fuzzy.FuzzyChoice([choice[0] for choice in PERIODIC_CHOICES])
     report_date = factory.LazyFunction(get_now_date)
@@ -36,3 +35,21 @@ class TodoFactory(factory.django.DjangoModelFactory):
 
     done_date = factory.LazyAttribute(lambda obj: get_now_date() if factory.fuzzy.FuzzyChoice([True, False]) else None)
     note = factory.Faker("text")
+
+    @factory.post_generation
+    def who(self, create, extracted, **kwargs):
+        """
+        manage ManyToMany relation after object creation.
+        `extracted` could be a list of users or a single user.
+        """
+        if not create:
+            # Si on fait build() au lieu de create(), on ne touche pas aux relations M2M
+            return
+
+        if extracted:
+            for user in extracted:
+                self.who.add(user)
+        else:
+            # Par défaut : ajouter un seul membre factice
+            user = MemberFactory()
+            self.who.add(user)

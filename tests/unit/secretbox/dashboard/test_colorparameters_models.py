@@ -2,13 +2,13 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 
-from secretbox.dashboard.models import (
+from secretbox.dashboard.todo_model import (
     CATEGORY_CHOICES,
     PERIODIC_CHOICES,
     PLACE_CHOICES,
     PRIORITY_CHOICES,
-    ColorParameter,
 )
+from secretbox.dashboard.colorparameter_model import ColorParameter
 from tests.factories.colorparameters import ColorParameterFactory
 
 
@@ -27,7 +27,7 @@ class ColorParameterTests(TestCase):
         with self.assertRaises(IntegrityError):
             ColorParameterFactory(
                 priority="1-highest",
-                periodicity="01-none",
+                periodic="01-none",
                 place="partout",
                 category="01-organisation",
                 color="#123ABC",
