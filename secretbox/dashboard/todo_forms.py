@@ -4,12 +4,13 @@ Used for creating and updating objects via views
 """
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Field, Layout, Submit
+from crispy_forms.layout import Field, Layout
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from secretbox.users.models import Member
 from secretbox.tools.form_helpers import action_buttons
+from secretbox.users.models import Member
+
 from .todo_model import Todo
 
 
@@ -39,7 +40,9 @@ class TodoForm(forms.ModelForm):
         self.fields["appointment"].label = _("Rdv")
         self.fields["category"].label = _("Catégorie")
         self.fields["who"].queryset = Member.objects.order_by("trigram")
-        self.fields["who"].widget = forms.SelectMultiple(attrs={"class": "form-control"})
+        self.fields["who"].widget = forms.SelectMultiple(
+            attrs={"class": "form-control"}
+        )
         self.fields["who"].label = _("Personnes")
         self.fields["place"].label = _("Lieu")
         self.fields["periodic"].label = _("Fréquence")
@@ -82,5 +85,5 @@ class TodoForm(forms.ModelForm):
             "planned_date",
             "priority",
             "note",
-            action_buttons(back_url_name="home", back_label="Liste"),            
+            action_buttons(back_url_name="home", back_label="Liste"),
         )

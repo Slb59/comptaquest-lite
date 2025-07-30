@@ -26,6 +26,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="todo",
             name="who",
-            field=models.ManyToManyField(blank=True, related_name="todos", to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(
+                blank=True, related_name="todos", to=settings.AUTH_USER_MODEL
+            ),
         ),
     ]

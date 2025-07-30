@@ -31,7 +31,12 @@ class HealthManager(models.Manager):
         if year is None:
             year = timezone.now().year
 
-        return self.filter(user=user, date__year=year).aggregate(total_expenses=Sum("amount"))["total_expenses"] or 0
+        return (
+            self.filter(user=user, date__year=year).aggregate(
+                total_expenses=Sum("amount")
+            )["total_expenses"]
+            or 0
+        )
 
 
 class Secu(models.Model):
@@ -46,8 +51,12 @@ class Secu(models.Model):
     """
 
     theoritical_date = models.DateField(default=timezone.now, db_index=True)
-    amount = models.DecimalField(max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)])
-    withheld_amount = models.DecimalField(max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)])
+    amount = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)]
+    )
+    withheld_amount = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)]
+    )
     income_transaction = models.ForeignKey(
         IncomeTransaction,
         on_delete=models.CASCADE,
@@ -66,7 +75,9 @@ class Mutuelle(models.Model):
     """
 
     theorical_date = models.DateField(default=timezone.now, db_index=True)
-    amount = models.DecimalField(max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)])
+    amount = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)]
+    )
     income_transaction = models.ForeignKey(
         IncomeTransaction,
         on_delete=models.CASCADE,
@@ -93,7 +104,9 @@ class Health(models.Model):
 
     objects = HealthManager()
     date = models.DateField(default=timezone.now, db_index=True)
-    amount = models.DecimalField(max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)])
+    amount = models.DecimalField(
+        max_digits=6, decimal_places=2, default=0, validators=[MinValueValidator(0)]
+    )
     expense_transaction = models.ForeignKey(
         ExpenseTransaction,
         on_delete=models.CASCADE,
@@ -103,9 +116,13 @@ class Health(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(Member, on_delete=models.CASCADE, related_name="user_healths")
+    user = models.ForeignKey(
+        Member, on_delete=models.CASCADE, related_name="user_healths"
+    )
     secu = models.OneToOneField(Secu, on_delete=models.CASCADE, related_name="secu")
-    mutuelle = models.OneToOneField(Mutuelle, on_delete=models.CASCADE, related_name="mutuelle")
+    mutuelle = models.OneToOneField(
+        Mutuelle, on_delete=models.CASCADE, related_name="mutuelle"
+    )
 
     class Meta(TypedModelMeta):
         verbose_name = "health"
@@ -127,7 +144,10 @@ class Health(models.Model):
     @property
     def reimbursement_total(self):
         """Calculate total reimbursements."""
-        return self.secu.income_transaction.amount + self.mutuelle.income_transaction.amount
+        return (
+            self.secu.income_transaction.amount
+            + self.mutuelle.income_transaction.amount
+        )
 
     @property
     def remains_amount(self):

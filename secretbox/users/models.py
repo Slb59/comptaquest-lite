@@ -19,11 +19,19 @@ class CQUser(auth_models.AbstractUser):
     username = None
     email = models.EmailField(_("email address"), unique=True, max_length=50)
     trigram = models.CharField(max_length=5, blank=False)
-    usertype = models.CharField(max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True)
+    usertype = models.CharField(
+        max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True
+    )
 
-    last_password_change = models.DateTimeField(_("Dernier changement de mot de passe"), null=True, blank=True)
-    last_email_change = models.DateTimeField(_("Dernier changement d'email"), null=True, blank=True)
-    last_trigram_change = models.DateTimeField(_("Dernier changement de trigram"), null=True, blank=True)
+    last_password_change = models.DateTimeField(
+        _("Dernier changement de mot de passe"), null=True, blank=True
+    )
+    last_email_change = models.DateTimeField(
+        _("Dernier changement d'email"), null=True, blank=True
+    )
+    last_trigram_change = models.DateTimeField(
+        _("Dernier changement de trigram"), null=True, blank=True
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["trigram"]
@@ -68,7 +76,9 @@ class CQUser(auth_models.AbstractUser):
 
 
 class BaseUserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="_profile")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="_profile"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     avatar = models.ImageField(blank=True, upload_to="profile_images")

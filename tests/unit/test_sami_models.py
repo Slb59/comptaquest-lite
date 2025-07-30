@@ -62,7 +62,12 @@ class SamiModelTest(TestCase):
         self.assertEqual(self.sami.total_idea, expected)
 
     def test_total_sami(self):
-        expected = self.sami.total_sleep + self.sami.total_food + self.sami.total_move + self.sami.total_idea
+        expected = (
+            self.sami.total_sleep
+            + self.sami.total_food
+            + self.sami.total_move
+            + self.sami.total_idea
+        )
         self.assertEqual(self.sami.total_sami, expected)
 
     def test_field_validators_boundaries(self):

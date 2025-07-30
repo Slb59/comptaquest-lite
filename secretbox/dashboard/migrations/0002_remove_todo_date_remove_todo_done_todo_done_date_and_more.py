@@ -41,7 +41,11 @@ class Migration(migrations.Migration):
             name="appointment",
             field=models.CharField(
                 blank=True,
-                choices=[("rdv", "Rendez-vous"), ("birthday", "Anniversaire"), ("festival", "Fête")],
+                choices=[
+                    ("rdv", "Rendez-vous"),
+                    ("birthday", "Anniversaire"),
+                    ("festival", "Fête"),
+                ],
                 max_length=20,
                 null=True,
             ),
@@ -108,7 +112,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="ColorParameter",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 (
                     "priority",
                     models.CharField(
@@ -199,7 +211,8 @@ class Migration(migrations.Migration):
             options={
                 "constraints": [
                     models.UniqueConstraint(
-                        fields=("priority", "periodic", "category", "place"), name="unique_color_combination"
+                        fields=("priority", "periodic", "category", "place"),
+                        name="unique_color_combination",
                     )
                 ],
             },

@@ -32,16 +32,64 @@ class SamiAdmin(admin.ModelAdmin):
         ("Informations générales", {"fields": ("user", "date", "weight")}),
         (
             "Sommeil",
-            {"fields": ("bedtime", "wakeup", "nonstop", "energy", "naptime", "phone", "reading", "total_sleep")},
+            {
+                "fields": (
+                    "bedtime",
+                    "wakeup",
+                    "nonstop",
+                    "energy",
+                    "naptime",
+                    "phone",
+                    "reading",
+                    "total_sleep",
+                )
+            },
         ),
         (
             "Alimentation",
-            {"fields": ("fruits", "vegetables", "meals", "desserts", "sugardrinks", "nosugardrinks", "total_food")},
+            {
+                "fields": (
+                    "fruits",
+                    "vegetables",
+                    "meals",
+                    "desserts",
+                    "sugardrinks",
+                    "nosugardrinks",
+                    "total_food",
+                )
+            },
         ),
-        ("Mouvement", {"fields": ("homework", "garden", "Outsidetime", "endurancesport", "yogasport", "total_move")}),
-        ("Idées", {"fields": ("videogames", "papergames", "administrative", "computer", "youtube", "total_idea")}),
+        (
+            "Mouvement",
+            {
+                "fields": (
+                    "homework",
+                    "garden",
+                    "Outsidetime",
+                    "endurancesport",
+                    "yogasport",
+                    "total_move",
+                )
+            },
+        ),
+        (
+            "Idées",
+            {
+                "fields": (
+                    "videogames",
+                    "papergames",
+                    "administrative",
+                    "computer",
+                    "youtube",
+                    "total_idea",
+                )
+            },
+        ),
         ("Total général", {"fields": ("total_sami",)}),
-        ("Dates de création", {"classes": ("collapse",), "fields": ("created_at", "updated_at")}),
+        (
+            "Dates de création",
+            {"classes": ("collapse",), "fields": ("created_at", "updated_at")},
+        ),
     )
 
     def has_add_permission(self, request):

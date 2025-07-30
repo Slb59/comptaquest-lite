@@ -32,13 +32,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="nomadeposition",
             name="city",
-            field=models.TextField(max_length=40, validators=[escapevault.models.validate_city_format]),
+            field=models.TextField(
+                max_length=40, validators=[escapevault.models.validate_city_format]
+            ),
         ),
         migrations.AlterField(
             model_name="nomadeposition",
             name="country",
             field=django_countries.fields.CountryField(
-                countries=escapevault.models.NomadePosition.NomadeCountries, default="FR", max_length=2
+                countries=escapevault.models.NomadePosition.NomadeCountries,
+                default="FR",
+                max_length=2,
             ),
         ),
         migrations.AlterField(
@@ -46,7 +50,10 @@ class Migration(migrations.Migration):
             name="stars",
             field=models.IntegerField(
                 default=0,
-                validators=[django.core.validators.MinValueValidator(1), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(1),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
     ]

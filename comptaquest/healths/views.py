@@ -1,6 +1,7 @@
 """Views for the comptaquest.healths application.
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView
 

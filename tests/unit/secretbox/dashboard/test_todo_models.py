@@ -31,7 +31,9 @@ class TestTodoModel(TestCase):
         new_date = self.todo.planned_date - timedelta(days=1)
         result, message = self.todo.validate_element(new_date)
         self.assertFalse(result)
-        self.assertEqual(message, "La date doit être postérieure à la date planifiée actuelle.")
+        self.assertEqual(
+            message, "La date doit être postérieure à la date planifiée actuelle."
+        )
         self.assertNotEqual(self.todo.planned_date, new_date)
 
     def test_next_date_daily(self):
@@ -156,7 +158,9 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state "done"
-        instance = TodoFactory(report_date=date(2025, 10, 9), planned_date=date(2025, 10, 9), state="done")
+        instance = TodoFactory(
+            report_date=date(2025, 10, 9), planned_date=date(2025, 10, 9), state="done"
+        )
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -200,7 +204,9 @@ class TestTodoModel(TestCase):
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(report_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            report_date=date(2025, 6, 20), planned_date=date(2025, 6, 20), state="todo"
+        )
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -215,12 +221,16 @@ class TestTodoModel(TestCase):
         self.assertEqual(instance.planned_date, planned_date_expected)
         self.assertEqual(instance.state, "report")
 
-    def test_new_day_with_non_done_state_and_planned_date_is_past_and_report_date_is_none(self):
+    def test_new_day_with_non_done_state_and_planned_date_is_past_and_report_date_is_none(
+        self,
+    ):
 
         mock_date = date(2025, 6, 24)
 
         # Create an instance of YourModel with state other than "done"
-        instance = TodoFactory(report_date=None, planned_date=date(2025, 6, 20), state="todo")
+        instance = TodoFactory(
+            report_date=None, planned_date=date(2025, 6, 20), state="todo"
+        )
 
         # Call the new_day method
         instance.new_day(mock_date)
@@ -250,7 +260,7 @@ class TestTodoModel(TestCase):
         # Check if the dates are updated and state is set to "done"
         self.assertEqual(instance.state, "done")
         self.assertEqual(instance.done_date, mock_date)
-    
+
     def test_multiple_users_can_be_assigned_to_who(self):
         user2 = MemberFactory()
         user3 = MemberFactory()
@@ -286,11 +296,17 @@ class GetColorTestCase(TestCase):
         # ColorParameter précis
         self.color_hex = "#123ABC"
         self.param = ColorParameterFactory(
-            priority="4-normal", periodic="weekly", category="work", place="office", color=self.color_hex
+            priority="4-normal",
+            periodic="weekly",
+            category="work",
+            place="office",
+            color=self.color_hex,
         )
 
         # Todo correspondant exactement
-        self.todo = TodoFactory(priority="4-normal", periodic="weekly", category="work", place="office")
+        self.todo = TodoFactory(
+            priority="4-normal", periodic="weekly", category="work", place="office"
+        )
 
     def test_get_color_exact_match(self):
         color = self.todo.get_color()
@@ -308,7 +324,11 @@ class GetColorTestCase(TestCase):
 
     def test_get_color_with_place_every(self):
         ColorParameterFactory(
-            priority="4-normal", periodic="weekly", category="work", place="*-Every", color="#EEEEEE"
+            priority="4-normal",
+            periodic="weekly",
+            category="work",
+            place="*-Every",
+            color="#EEEEEE",
         )
 
         todo = TodoFactory(

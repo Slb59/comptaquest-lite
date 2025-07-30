@@ -20,33 +20,59 @@ from .todo_model import Todo
 
 
 class TodoFilterForm(forms.Form):
-    state = forms.ChoiceField(choices=[("", "Tous")] + Todo.STATE_CHOICES, required=False, label="Etat")
+    state = forms.ChoiceField(
+        choices=[("", "Tous")] + Todo.STATE_CHOICES, required=False, label="Etat"
+    )
     duration_min = forms.IntegerField(required=False, min_value=0, label="Durée min")
     duration_max = forms.IntegerField(required=False, min_value=0, label="Durée max")
     description = forms.CharField(required=False)
     appointment = forms.ChoiceField(
-        choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES, required=False, label=_("Rendez-vous")
+        choices=[("", "Tous")] + Todo.APPOINTEMENT_CHOICES,
+        required=False,
+        label=_("Rendez-vous"),
     )
-    category = forms.ChoiceField(choices=[("", "Toutes")] + CATEGORY_CHOICES, required=False, label=_("Catégorie"))
+    category = forms.ChoiceField(
+        choices=[("", "Toutes")] + CATEGORY_CHOICES,
+        required=False,
+        label=_("Catégorie"),
+    )
     who = forms.ModelChoiceField(
         queryset=Member.objects.all().order_by("trigram"),
         required=False,
         label=_("Qui"),
         empty_label="Tous",
     )
-    place = forms.ChoiceField(choices=[("", "Toutes")] + PLACE_CHOICES, required=False, label=_("Lieu"))
-    periodic = forms.ChoiceField(choices=[("", "Toutes")] + PERIODIC_CHOICES, required=False, label=_("Fréquence"))
+    place = forms.ChoiceField(
+        choices=[("", "Toutes")] + PLACE_CHOICES, required=False, label=_("Lieu")
+    )
+    periodic = forms.ChoiceField(
+        choices=[("", "Toutes")] + PERIODIC_CHOICES,
+        required=False,
+        label=_("Fréquence"),
+    )
     planned_date_start = forms.DateField(
-        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de planification")
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("Date de planification"),
     )
-    planned_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
-    priority = forms.ChoiceField(choices=[("", "Toutes")] + PRIORITY_CHOICES, required=False, label=_("Priorité"))
+    planned_date_end = forms.DateField(
+        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_")
+    )
+    priority = forms.ChoiceField(
+        choices=[("", "Toutes")] + PRIORITY_CHOICES, required=False, label=_("Priorité")
+    )
     done_date_start = forms.DateField(
-        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("Date de validation")
+        required=False,
+        widget=forms.DateInput(attrs={"type": "date"}),
+        label=_("Date de validation"),
     )
-    done_date_end = forms.DateField(required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_"))
+    done_date_end = forms.DateField(
+        required=False, widget=forms.DateInput(attrs={"type": "date"}), label=_("_")
+    )
     note = forms.CharField(required=False)
-    done_date_isnull = forms.BooleanField(required=False, label="Sans date de validation")
+    done_date_isnull = forms.BooleanField(
+        required=False, label="Sans date de validation"
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

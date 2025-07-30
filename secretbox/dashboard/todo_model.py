@@ -13,7 +13,8 @@ from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY
 from .colorparameter_model import ColorParameter
 
 HEX_COLOR_VALIDATOR = RegexValidator(
-    regex=r"^#[0-9A-Fa-f]{6}$", message="Entrez une couleur au format hexadécimal valide (ex: #1A2B3C)."
+    regex=r"^#[0-9A-Fa-f]{6}$",
+    message="Entrez une couleur au format hexadécimal valide (ex: #1A2B3C).",
 )
 
 
@@ -78,16 +79,28 @@ class Todo(models.Model):
     ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
-    duration = models.IntegerField(default=30, validators=[MinValueValidator(10), MaxValueValidator(800)])
+    duration = models.IntegerField(
+        default=30, validators=[MinValueValidator(10), MaxValueValidator(800)]
+    )
     description = models.TextField()
-    appointment = models.CharField(max_length=20, choices=APPOINTEMENT_CHOICES, blank=True, null=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="01-organisation")
-    who = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="todos", blank=True)
+    appointment = models.CharField(
+        max_length=20, choices=APPOINTEMENT_CHOICES, blank=True, null=True
+    )
+    category = models.CharField(
+        max_length=20, choices=CATEGORY_CHOICES, default="01-organisation"
+    )
+    who = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name="todos", blank=True
+    )
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
-    periodic = models.CharField(max_length=20, choices=PERIODIC_CHOICES, default="partout")
+    periodic = models.CharField(
+        max_length=20, choices=PERIODIC_CHOICES, default="partout"
+    )
     report_date = models.DateField(blank=True, null=True)
     planned_date = models.DateField(default=(date.today() + timedelta(days=1)))
-    priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default="4-normal")
+    priority = models.CharField(
+        max_length=20, choices=PRIORITY_CHOICES, default="4-normal"
+    )
     done_date = models.DateField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
 
@@ -120,7 +133,9 @@ class Todo(models.Model):
             return False, _("Cette tâche est déjà terminée ou annulée.")
 
         if new_date <= self.planned_date:
-            return False, _("La date doit être postérieure à la date planifiée actuelle.")
+            return False, _(
+                "La date doit être postérieure à la date planifiée actuelle."
+            )
 
         self.planned_date = new_date
         self.report_date = None
@@ -217,10 +232,30 @@ class Todo(models.Model):
 
     def get_color(self) -> str:
         filters = [
-            Q(priority=self.priority, periodic=self.periodic, category=self.category, place=self.place),
-            Q(priority=self.priority, periodic=self.periodic, category=self.category, place="*-Every"),
-            Q(priority=self.priority, periodic=self.periodic, category="*-Every", place="*-Every"),
-            Q(priority=self.priority, periodic="*-Every", category="*-Every", place="*-Every"),
+            Q(
+                priority=self.priority,
+                periodic=self.periodic,
+                category=self.category,
+                place=self.place,
+            ),
+            Q(
+                priority=self.priority,
+                periodic=self.periodic,
+                category=self.category,
+                place="*-Every",
+            ),
+            Q(
+                priority=self.priority,
+                periodic=self.periodic,
+                category="*-Every",
+                place="*-Every",
+            ),
+            Q(
+                priority=self.priority,
+                periodic="*-Every",
+                category="*-Every",
+                place="*-Every",
+            ),
         ]
 
         for f in filters:
@@ -231,13 +266,21 @@ class Todo(models.Model):
         return "#f3faf0"  # Couleur par défaut
 
     def can_view(self, user):
-        return user.is_superuser or self.user == user or self.who.filter(pk=user.pk).exists()
+        return (
+            user.is_superuser
+            or self.user == user
+            or self.who.filter(pk=user.pk).exists()
+        )
 
     def can_edit(self, user):
         return user.is_superuser or self.user == user
 
     def can_edit_limited(self, user):
-        return self.who.filter(pk=user.pk).exists() and self.user != user and not user.is_superuser
+        return (
+            self.who.filter(pk=user.pk).exists()
+            and self.user != user
+            and not user.is_superuser
+        )
 
     def can_delete(self, user):
         return user.is_superuser or self.user == user

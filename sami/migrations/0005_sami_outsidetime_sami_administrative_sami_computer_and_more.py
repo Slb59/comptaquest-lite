@@ -17,7 +17,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -26,7 +29,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -35,7 +41,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -44,7 +53,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -53,7 +65,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -62,7 +77,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 3",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(3)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(3),
+                ],
             ),
         ),
         migrations.AddField(
@@ -71,7 +89,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -80,7 +101,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -89,7 +113,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -98,7 +125,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -107,7 +137,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -116,7 +149,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -125,7 +161,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 2",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(2)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(2),
+                ],
             ),
         ),
         migrations.AddField(
@@ -134,7 +173,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -143,7 +185,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AddField(
@@ -152,7 +197,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -161,7 +209,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 3",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(3)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(3),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -170,7 +221,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -179,7 +233,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 4",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(4)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(4),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -188,7 +245,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 5",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(5)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(5),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -197,7 +257,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 2",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(2)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(2),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -206,7 +269,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 3",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(3)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(3),
+                ],
             ),
         ),
         migrations.AlterField(
@@ -215,7 +281,10 @@ class Migration(migrations.Migration):
             field=models.IntegerField(
                 default=0,
                 help_text="Saisir une valeur entre 0 et 3",
-                validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(3)],
+                validators=[
+                    django.core.validators.MinValueValidator(0),
+                    django.core.validators.MaxValueValidator(3),
+                ],
             ),
         ),
     ]

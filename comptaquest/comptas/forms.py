@@ -4,21 +4,21 @@ Utilisés pour la création et la mise à jour des objets via des vues
 """
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit
+from crispy_forms.layout import Div, Layout, Submit
 from django import forms
-from django.utils.translation import gettext_lazy as _
 from django.forms import inlineformset_factory
+from django.utils.translation import gettext_lazy as _
 
 from comptaquest.comptas.models import (
     ExpenseTransaction,
     Outgoings,
 )
+from secretbox.tools.form_helpers import action_buttons
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
-from .choices import ACCOUNT_CHOICES
-from secretbox.tools.form_helpers import action_buttons
-from .account_investment_model import InvestmentAccount, InvestmentAsset
 from .account_abstract_model import AbstractAccount
+from .account_investment_model import InvestmentAccount, InvestmentAsset
+from .choices import ACCOUNT_CHOICES
 
 
 class SelectAccountTypeForm(forms.Form):
@@ -37,13 +37,15 @@ class SelectAccountTypeForm(forms.Form):
             )
         )
 
+
 PortfolioFormSet = inlineformset_factory(
     InvestmentAccount,
     InvestmentAsset,
     fields=("designation", "asset_type", "quantity", "price"),
     extra=1,
-    can_delete=True
+    can_delete=True,
 )
+
 
 class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
     class Meta:

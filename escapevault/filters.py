@@ -13,7 +13,9 @@ from .models import NomadePosition
 
 class EscapeVaultFilterForm(forms.Form):
     category = forms.ChoiceField(
-        choices=[("", "Toutes")] + NomadePosition.CATEGORY_CHOICES, required=False, label=_("Catégorie")
+        choices=[("", "Toutes")] + NomadePosition.CATEGORY_CHOICES,
+        required=False,
+        label=_("Catégorie"),
     )
 
     def __init__(self, *args, **kwargs):

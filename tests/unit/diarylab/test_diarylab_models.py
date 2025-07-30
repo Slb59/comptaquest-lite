@@ -31,8 +31,12 @@ class TestDiaryEntry(TransactionTestCase):
 
         # Create another entry with a different date
         now_entry = DiaryEntryFactory(user=self.user, date=timezone.now().date())
-        older_entry = DiaryEntryFactory(user=self.user, date=(timezone.now() - timezone.timedelta(days=2)).date())
-        newer_entry = DiaryEntryFactory(user=self.user, date=(timezone.now() + timezone.timedelta(days=1)).date())
+        older_entry = DiaryEntryFactory(
+            user=self.user, date=(timezone.now() - timezone.timedelta(days=2)).date()
+        )
+        newer_entry = DiaryEntryFactory(
+            user=self.user, date=(timezone.now() + timezone.timedelta(days=1)).date()
+        )
 
         entries = DiaryEntry.objects.all()
         self.assertEqual(entries[0].date, older_entry.date)
@@ -71,7 +75,9 @@ class TestDiaryEntry(TransactionTestCase):
         entry = DiaryEntryFactory()
 
         # Test created_at
-        self.assertLessEqual(timezone.now() - entry.created_at, timezone.timedelta(minutes=1))
+        self.assertLessEqual(
+            timezone.now() - entry.created_at, timezone.timedelta(minutes=1)
+        )
 
         # Test that updated_at is set
         self.assertIsNotNone(entry.updated_at)
@@ -81,4 +87,6 @@ class TestDiaryEntry(TransactionTestCase):
         entry.content = "New content"
         entry.save()
         self.assertNotEqual(entry.updated_at, original_updated_at)
-        self.assertLessEqual(timezone.now() - entry.updated_at, timezone.timedelta(minutes=1))
+        self.assertLessEqual(
+            timezone.now() - entry.updated_at, timezone.timedelta(minutes=1)
+        )

@@ -17,7 +17,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Todo",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 (
                     "state",
                     models.CharField(
@@ -73,7 +81,12 @@ class Migration(migrations.Migration):
                 (
                     "place",
                     models.CharField(
-                        choices=[("cantin", "Cantin"), ("chm", "CHM"), ("genese", "Genèse"), ("partout", "Partout")],
+                        choices=[
+                            ("cantin", "Cantin"),
+                            ("chm", "CHM"),
+                            ("genese", "Genèse"),
+                            ("partout", "Partout"),
+                        ],
                         default="partout",
                         max_length=20,
                     ),
@@ -121,7 +134,13 @@ class Migration(migrations.Migration):
                 ),
                 ("done", models.DateField()),
                 ("note", models.TextField(blank=True, null=True)),
-                ("user", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

@@ -10,7 +10,10 @@ import secretbox.tools.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("diarylab", "0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more"),
+        (
+            "diarylab",
+            "0003_alter_diaryentry_content_alter_diaryentry_created_at_and_more",
+        ),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -24,7 +27,8 @@ class Migration(migrations.Migration):
             model_name="diaryentry",
             name="date",
             field=models.DateField(
-                default=secretbox.tools.models.get_now_date, help_text="Date à laquelle cette pensée a été écrite"
+                default=secretbox.tools.models.get_now_date,
+                help_text="Date à laquelle cette pensée a été écrite",
             ),
         ),
         migrations.AlterField(
@@ -39,6 +43,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name="diaryentry",
-            constraint=models.UniqueConstraint(fields=("user", "date"), name="unique_entry_per_user_per_date"),
+            constraint=models.UniqueConstraint(
+                fields=("user", "date"), name="unique_entry_per_user_per_date"
+            ),
         ),
     ]

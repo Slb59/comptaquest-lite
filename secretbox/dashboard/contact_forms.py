@@ -19,9 +19,13 @@ class ContactForm(forms.Form):
     ]
     name = forms.CharField(label=_("Ton nom"), max_length=100, required=True)
     email = forms.EmailField(label=_("Ton Email"), required=True)
-    reason = forms.ChoiceField(label=_("Pourquoi me contactes-tu ?"), choices=REASON_CHOICES, required=True)
+    reason = forms.ChoiceField(
+        label=_("Pourquoi me contactes-tu ?"), choices=REASON_CHOICES, required=True
+    )
     subject = forms.CharField(label=_("Sujet"), max_length=200, required=False)
-    message = forms.CharField(label=_("Ton message"), widget=forms.Textarea(attrs={"rows": 4}), required=True)
+    message = forms.CharField(
+        label=_("Ton message"), widget=forms.Textarea(attrs={"rows": 4}), required=True
+    )
     subscribe = forms.BooleanField(label=_("Souscris à ma newsletter"), required=False)
 
     def __init__(self, *args, **kwargs):
@@ -49,6 +53,10 @@ class ContactForm(forms.Form):
 
         if subject and message:
             if len(subject) < 5:
-                self.add_error("subject", "The subject must be at least 5 characters long.")
+                self.add_error(
+                    "subject", "The subject must be at least 5 characters long."
+                )
             if len(message) < 10:
-                self.add_error("message", "The message must be at least 10 characters long.")
+                self.add_error(
+                    "message", "The message must be at least 10 characters long."
+                )

@@ -6,7 +6,10 @@ to ensure consistency between models, forms and display.
 
 from django.utils.translation import gettext_lazy as _
 
-ACCOUNT_CHOICES = [("Current", _("Compte bancaire")), ("Investment", _("Compte d'investissement"))]
+ACCOUNT_CHOICES = [
+    ("Current", _("Compte bancaire")),
+    ("Investment", _("Compte d'investissement")),
+]
 
 BANK_CHOICES = [
     ("CE", "CE"),

@@ -28,8 +28,15 @@ class Chapter(models.Model):
 
 
 class Act(models.Model):
-    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name="acts", verbose_name=_("Chapitre"))
-    number = models.PositiveSmallIntegerField(_("Numéro"), choices=[(i, f"Acte {i}") for i in range(1, 8)])
+    chapter = models.ForeignKey(
+        Chapter,
+        on_delete=models.CASCADE,
+        related_name="acts",
+        verbose_name=_("Chapitre"),
+    )
+    number = models.PositiveSmallIntegerField(
+        _("Numéro"), choices=[(i, f"Acte {i}") for i in range(1, 8)]
+    )
     short = models.TextField(_("Titre"), blank=True)
     description = models.TextField(_("Description"), blank=True)
 
@@ -44,11 +51,17 @@ class Act(models.Model):
 
 
 class Scene(models.Model):
-    act = models.ForeignKey(Act, on_delete=models.CASCADE, related_name="scenes", verbose_name=_("Acte"))
-    number = models.PositiveSmallIntegerField(_("Numéro"), choices=[(i, f"Scène {i}") for i in range(1, 4)])
+    act = models.ForeignKey(
+        Act, on_delete=models.CASCADE, related_name="scenes", verbose_name=_("Acte")
+    )
+    number = models.PositiveSmallIntegerField(
+        _("Numéro"), choices=[(i, f"Scène {i}") for i in range(1, 4)]
+    )
     short = models.TextField(_("Titre"), blank=True)
 
-    instructions = models.TextField(_("Instructions"), help_text="Format: => Instruction 1\n=> Instruction 2")
+    instructions = models.TextField(
+        _("Instructions"), help_text="Format: => Instruction 1\n=> Instruction 2"
+    )
 
     class Meta(TypedModelMeta):
         verbose_name = _("Scène")
@@ -61,4 +74,8 @@ class Scene(models.Model):
 
     def get_instructions_list(self):
         """Retourne les instructions sous forme de liste"""
-        return [instruction.strip() for instruction in self.instructions.split("\n") if instruction.strip()]
+        return [
+            instruction.strip()
+            for instruction in self.instructions.split("\n")
+            if instruction.strip()
+        ]

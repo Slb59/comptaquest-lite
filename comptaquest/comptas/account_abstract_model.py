@@ -53,8 +53,7 @@ class AbstractAccount(models.Model):
     )
 
     ledger_analysis = models.BooleanField(
-        default=True, 
-        help_text=_("If the account is include in the ledger analysis")
+        default=True, help_text=_("If the account is include in the ledger analysis")
     )
 
     created_date = models.DateTimeField(blank=True, null=True)
@@ -69,7 +68,9 @@ class AbstractAccount(models.Model):
     closed_date = models.DateTimeField(
         blank=True,
         null=True,
-        help_text=_("After the closed date it is not possibile to add transaction or modify this account"),
+        help_text=_(
+            "After the closed date it is not possibile to add transaction or modify this account"
+        ),
     )
 
     bank_name = models.CharField(max_length=15, choices=BANK_CHOICES, default="CA")
@@ -106,7 +107,12 @@ class AbstractAccount(models.Model):
             raise ValueError(f"Unknown transaction type: {transaction_type}")
 
         # Use the dynamically determined related name
-        return getattr(self, related_name).filter(**filters).aggregate(Sum("amount"))["amount__sum"] or 0
+        return (
+            getattr(self, related_name)
+            .filter(**filters)
+            .aggregate(Sum("amount"))["amount__sum"]
+            or 0
+        )
 
     def recalculate_balance(self):
         """

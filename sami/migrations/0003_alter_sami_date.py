@@ -16,7 +16,9 @@ class Migration(migrations.Migration):
             model_name="sami",
             name="date",
             field=models.DateField(
-                default=datetime.datetime(2025, 6, 15, 20, 38, 31, 613853, tzinfo=datetime.timezone.utc)
+                default=datetime.datetime(
+                    2025, 6, 15, 20, 38, 31, 613853, tzinfo=datetime.timezone.utc
+                )
             ),
         ),
     ]

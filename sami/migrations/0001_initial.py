@@ -20,8 +20,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Sami",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("date", models.DateField(default=datetime.datetime(2025, 6, 13, 17, 21, 34, 786521))),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date",
+                    models.DateField(
+                        default=datetime.datetime(2025, 6, 13, 17, 21, 34, 786521)
+                    ),
+                ),
                 ("weight", models.IntegerField(default=0)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("updated_at", models.DateTimeField(auto_now=True)),

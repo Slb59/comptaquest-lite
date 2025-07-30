@@ -2,13 +2,13 @@ from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 
+from secretbox.dashboard.colorparameter_model import ColorParameter
 from secretbox.dashboard.todo_model import (
     CATEGORY_CHOICES,
     PERIODIC_CHOICES,
     PLACE_CHOICES,
     PRIORITY_CHOICES,
 )
-from secretbox.dashboard.colorparameter_model import ColorParameter
 from tests.factories.colorparameters import ColorParameterFactory
 
 
@@ -16,7 +16,11 @@ class ColorParameterTests(TestCase):
 
     def setUp(self):
         self.valid_data = ColorParameterFactory(
-            priority="1-highest", periodic="01-none", place="partout", category="01-organisation", color="#123ABC"
+            priority="1-highest",
+            periodic="01-none",
+            place="partout",
+            category="01-organisation",
+            color="#123ABC",
         )
 
     def test_create_color_parameter(self):
@@ -46,7 +50,12 @@ class ColorParameterTests(TestCase):
         )
 
     def test_get_color_parameter_coverage(self):
-        total = len(PRIORITY_CHOICES) * len(PERIODIC_CHOICES) * len(CATEGORY_CHOICES) * len(PLACE_CHOICES)
+        total = (
+            len(PRIORITY_CHOICES)
+            * len(PERIODIC_CHOICES)
+            * len(CATEGORY_CHOICES)
+            * len(PLACE_CHOICES)
+        )
         coverage = ColorParameter.get_color_parameter_coverage()
         self.assertTrue(coverage.startswith("1 /"))
         self.assertIn(f"{round(100 * 1 / total, 2)}%", coverage)

@@ -17,13 +17,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Codification",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("description", models.CharField(blank=True, max_length=300)),
                 (
                     "state",
                     models.CharField(
-                        choices=[("Actif", "actif"), ("Inactif", "inactif")], default="Actif", max_length=10
+                        choices=[("Actif", "actif"), ("Inactif", "inactif")],
+                        default="Actif",
+                        max_length=10,
                     ),
                 ),
                 (
@@ -84,7 +94,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="File",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("description", models.CharField(blank=True, max_length=300)),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
@@ -102,7 +120,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Parameter",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("description", models.CharField(blank=True, max_length=300)),
                 ("value", models.CharField(max_length=100)),

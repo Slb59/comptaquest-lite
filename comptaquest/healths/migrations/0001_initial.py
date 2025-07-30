@@ -19,8 +19,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Mutuelle",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("theorical_date", models.DateField(db_index=True, default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "theorical_date",
+                    models.DateField(db_index=True, default=django.utils.timezone.now),
+                ),
                 (
                     "amount",
                     models.DecimalField(
@@ -43,8 +54,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Secu",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("theoritical_date", models.DateField(db_index=True, default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "theoritical_date",
+                    models.DateField(db_index=True, default=django.utils.timezone.now),
+                ),
                 (
                     "amount",
                     models.DecimalField(
@@ -76,8 +98,19 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Health",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("date", models.DateField(db_index=True, default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "date",
+                    models.DateField(db_index=True, default=django.utils.timezone.now),
+                ),
                 (
                     "amount",
                     models.DecimalField(
@@ -102,19 +135,25 @@ class Migration(migrations.Migration):
                 (
                     "user",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="user_healths", to="users.member"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="user_healths",
+                        to="users.member",
                     ),
                 ),
                 (
                     "mutuelle",
                     models.OneToOneField(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="mutuelle", to="healths.mutuelle"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="mutuelle",
+                        to="healths.mutuelle",
                     ),
                 ),
                 (
                     "secu",
                     models.OneToOneField(
-                        on_delete=django.db.models.deletion.CASCADE, related_name="secu", to="healths.secu"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="secu",
+                        to="healths.secu",
                     ),
                 ),
             ],
@@ -122,7 +161,11 @@ class Migration(migrations.Migration):
                 "verbose_name": "health",
                 "verbose_name_plural": "healths",
                 "ordering": ["-date"],
-                "indexes": [models.Index(fields=["user", "date"], name="healths_hea_user_id_e042ad_idx")],
+                "indexes": [
+                    models.Index(
+                        fields=["user", "date"], name="healths_hea_user_id_e042ad_idx"
+                    )
+                ],
             },
         ),
     ]

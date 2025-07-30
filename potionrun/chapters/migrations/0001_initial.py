@@ -14,13 +14,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Chapter",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=100, verbose_name="Nom")),
                 ("description", models.TextField(verbose_name="Description/Objectif")),
                 ("created_at", models.DateTimeField(auto_now_add=True)),
                 ("updated_at", models.DateTimeField(auto_now=True)),
-                ("completed_sessions", models.PositiveIntegerField(default=0, verbose_name="Séances réalisées")),
-                ("associated_routes", models.PositiveIntegerField(default=0, verbose_name="Parcours associés")),
+                (
+                    "completed_sessions",
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Séances réalisées"
+                    ),
+                ),
+                (
+                    "associated_routes",
+                    models.PositiveIntegerField(
+                        default=0, verbose_name="Parcours associés"
+                    ),
+                ),
             ],
             options={
                 "verbose_name": "Chapitre",
@@ -31,7 +49,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Act",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 (
                     "number",
                     models.PositiveSmallIntegerField(
@@ -48,7 +74,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("short", models.TextField(blank=True, verbose_name="Titre")),
-                ("description", models.TextField(blank=True, verbose_name="Description")),
+                (
+                    "description",
+                    models.TextField(blank=True, verbose_name="Description"),
+                ),
                 (
                     "chapter",
                     models.ForeignKey(
@@ -69,18 +98,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Scene",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 (
                     "number",
                     models.PositiveSmallIntegerField(
-                        choices=[(1, "Scène 1"), (2, "Scène 2"), (3, "Scène 3")], verbose_name="Numéro"
+                        choices=[(1, "Scène 1"), (2, "Scène 2"), (3, "Scène 3")],
+                        verbose_name="Numéro",
                     ),
                 ),
                 ("short", models.TextField(blank=True, verbose_name="Titre")),
                 (
                     "instructions",
                     models.TextField(
-                        help_text="Format: => Instruction 1\n=> Instruction 2", verbose_name="Instructions"
+                        help_text="Format: => Instruction 1\n=> Instruction 2",
+                        verbose_name="Instructions",
                     ),
                 ),
                 (

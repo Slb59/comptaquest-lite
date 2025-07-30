@@ -22,7 +22,9 @@ class TestUserUrls(TestCase):
 
     def test_password_change_done_url_resolves(self):
         url = reverse("users:password_change_done")
-        self.assertEqual(resolve(url).func.view_class, auth_views.PasswordChangeDoneView)
+        self.assertEqual(
+            resolve(url).func.view_class, auth_views.PasswordChangeDoneView
+        )
 
     def test_password_reset_url_resolves(self):
         url = reverse("users:password_reset")
@@ -34,11 +36,15 @@ class TestUserUrls(TestCase):
 
     def test_password_reset_confirm_url_resolves(self):
         url = reverse("users:password_reset_confirm", args=["uidb64", "token"])
-        self.assertEqual(resolve(url).func.view_class, auth_views.PasswordResetConfirmView)
+        self.assertEqual(
+            resolve(url).func.view_class, auth_views.PasswordResetConfirmView
+        )
 
     def test_password_reset_complete_url_resolves(self):
         url = reverse("users:password_reset_complete")
-        self.assertEqual(resolve(url).func.view_class, auth_views.PasswordResetCompleteView)
+        self.assertEqual(
+            resolve(url).func.view_class, auth_views.PasswordResetCompleteView
+        )
 
     def test_profile_url_resolves(self):
         url = reverse("users:profile")
@@ -63,7 +69,9 @@ class TestUserViews(TestCase):
     def test_profile_GET_unauthenticated(self):
         response = self.client.get(reverse("users:profile"))
         self.assertEqual(response.status_code, 302)  # Should redirect to login
-        self.assertRedirects(response, f'/login/?next={reverse("account:profile")}', status_code=302)
+        self.assertRedirects(
+            response, f'/login/?next={reverse("account:profile")}', status_code=302
+        )
 
     def test_password_change_authenticated(self):
         self.client.login(email=self.member.email, password="password")
@@ -76,7 +84,9 @@ class TestUserViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Test password reset POST
-        response = self.client.post(reverse("users:password_reset"), {"email": "test@example.com"})
+        response = self.client.post(
+            reverse("users:password_reset"), {"email": "test@example.com"}
+        )
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse("users:password_reset_done"))
 

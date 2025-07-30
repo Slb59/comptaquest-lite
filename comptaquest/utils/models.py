@@ -23,8 +23,12 @@ class Codification(models.Model):
     )
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=300, blank=True)
-    state = models.CharField(max_length=10, choices=CodeStatus.choices, default=CodeStatus.ACTIF)
-    codetype = models.CharField(max_length=15, choices=CodeType.choices, default=CodeType.PAYMENT)
+    state = models.CharField(
+        max_length=10, choices=CodeStatus.choices, default=CodeStatus.ACTIF
+    )
+    codetype = models.CharField(
+        max_length=15, choices=CodeType.choices, default=CodeType.PAYMENT
+    )
 
 
 class PaymentCodificationManager(models.Manager):

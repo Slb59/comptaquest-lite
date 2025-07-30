@@ -1,8 +1,10 @@
-from crispy_forms.layout import Div, HTML, Submit
+from crispy_forms.layout import HTML, Div, Submit
 from django.urls import reverse
 
 
-def action_buttons(submit_label="Valider", back_url_name=None, back_label="Retour", back_css_class=None):
+def action_buttons(
+    submit_label="Valider", back_url_name=None, back_label="Retour", back_css_class=None
+):
     """
     Generate a crispy-forms Div with a Submit button and a link button.
 

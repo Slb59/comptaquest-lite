@@ -158,7 +158,9 @@ class Sami(models.Model):
 
     @property
     def wakeup_description(self):
-        return _("Heure de réveil (0: < 5h30, 3: 5h30-7h30, 2: 7h30-8h00, 1: 8h00-9h00, 0: >9h00)")
+        return _(
+            "Heure de réveil (0: < 5h30, 3: 5h30-7h30, 2: 7h30-8h00, 1: 8h00-9h00, 0: >9h00)"
+        )
 
     @property
     def nonstop_description(self):
@@ -182,11 +184,21 @@ class Sami(models.Model):
 
     @property
     def reading_description(self):
-        return _("Lecture (3: > 30mn,2: <30mn concentrée, 1: <30mn non concentrée, 0: si absence)")
+        return _(
+            "Lecture (3: > 30mn,2: <30mn concentrée, 1: <30mn non concentrée, 0: si absence)"
+        )
 
     @property
     def total_sleep(self):
-        return self.bedtime + self.wakeup + self.nonstop + self.energy + self.naptime + self.phone + self.reading
+        return (
+            self.bedtime
+            + self.wakeup
+            + self.nonstop
+            + self.energy
+            + self.naptime
+            + self.phone
+            + self.reading
+        )
 
     @property
     def total_sleep_description(self):
@@ -224,7 +236,14 @@ class Sami(models.Model):
 
     @property
     def total_food(self):
-        return self.fruits + self.vegetables + self.meals + self.desserts + self.sugardrinks + self.nosugardrinks
+        return (
+            self.fruits
+            + self.vegetables
+            + self.meals
+            + self.desserts
+            + self.sugardrinks
+            + self.nosugardrinks
+        )
 
     @property
     def total_food_description(self):
@@ -236,7 +255,9 @@ class Sami(models.Model):
 
     @property
     def garden_description(self):
-        return _("5 si > 2h,  4 si entre 1h et 2h, 3 si 30mn-1h, 2 si < 30mn,   0 sinon")
+        return _(
+            "5 si > 2h,  4 si entre 1h et 2h, 3 si 30mn-1h, 2 si < 30mn,   0 sinon"
+        )
 
     @property
     def Outsidetime_description(self):
@@ -244,7 +265,9 @@ class Sami(models.Model):
 
     @property
     def endurancesport_description(self):
-        return _("Natation-course-velo: 5 si > 1h ,4 si entre 30mn et 1h ,2 si <30mn, 0 si rien")
+        return _(
+            "Natation-course-velo: 5 si > 1h ,4 si entre 30mn et 1h ,2 si <30mn, 0 si rien"
+        )
 
     @property
     def yogasport_description(self):
@@ -252,7 +275,13 @@ class Sami(models.Model):
 
     @property
     def total_move(self):
-        return self.homework + self.garden + self.Outsidetime + self.endurancesport + self.yogasport
+        return (
+            self.homework
+            + self.garden
+            + self.Outsidetime
+            + self.endurancesport
+            + self.yogasport
+        )
 
     @property
     def total_move_description(self):
@@ -280,7 +309,13 @@ class Sami(models.Model):
 
     @property
     def total_idea(self):
-        return self.computer + self.youtube + self.administrative + self.papergames + self.videogames
+        return (
+            self.computer
+            + self.youtube
+            + self.administrative
+            + self.papergames
+            + self.videogames
+        )
 
     @property
     def total_idea_description(self):

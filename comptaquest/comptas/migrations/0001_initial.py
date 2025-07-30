@@ -19,14 +19,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="TransferTransaction",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("date_transaction", models.DateTimeField(db_index=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
-                ("date_pointed", models.DateTimeField(blank=True, db_index=True, null=True)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
+                (
+                    "date_pointed",
+                    models.DateTimeField(blank=True, db_index=True, null=True),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
                 ("updatable", models.BooleanField(default=True)),
@@ -61,13 +77,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="CurrentAccount",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(help_text="the account name", max_length=50)),
-                ("pointed_date", models.DateTimeField(blank=True, help_text="The last pointed date", null=True)),
+                (
+                    "pointed_date",
+                    models.DateTimeField(
+                        blank=True, help_text="The last pointed date", null=True
+                    ),
+                ),
                 (
                     "current_pointed_date",
                     models.DateTimeField(
-                        blank=True, help_text="The account is to be pointed at this date, but not finished", null=True
+                        blank=True,
+                        help_text="The account is to be pointed at this date, but not finished",
+                        null=True,
                     ),
                 ),
                 (
@@ -82,18 +113,27 @@ class Migration(migrations.Migration):
                 (
                     "current_balance",
                     models.DecimalField(
-                        decimal_places=2, default=0, help_text="The last amount of balance pointed", max_digits=8
+                        decimal_places=2,
+                        default=0,
+                        help_text="The last amount of balance pointed",
+                        max_digits=8,
                     ),
                 ),
                 (
                     "average_interest",
                     models.DecimalField(
-                        decimal_places=2, default=0, help_text="The average interest that is expected for", max_digits=8
+                        decimal_places=2,
+                        default=0,
+                        help_text="The average interest that is expected for",
+                        max_digits=8,
                     ),
                 ),
                 (
                     "ledger_analysis",
-                    models.BooleanField(default=True, help_text="If the account is include in the ledger analysis"),
+                    models.BooleanField(
+                        default=True,
+                        help_text="If the account is include in the ledger analysis",
+                    ),
                 ),
                 ("created_date", models.DateTimeField(blank=True, null=True)),
                 (
@@ -106,10 +146,17 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "bank_name",
-                    models.CharField(choices=[("CE", "CE"), ("CA", "CA"), ("GMF", "GMF")], default="CA", max_length=15),
+                    models.CharField(
+                        choices=[("CE", "CE"), ("CA", "CA"), ("GMF", "GMF")],
+                        default="CA",
+                        max_length=15,
+                    ),
                 ),
                 ("description", models.TextField(blank=True, null=True)),
-                ("account_type", models.CharField(default="Current", editable=False, max_length=15)),
+                (
+                    "account_type",
+                    models.CharField(default="Current", editable=False, max_length=15),
+                ),
                 (
                     "created_by",
                     models.ForeignKey(
@@ -134,7 +181,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="ExpenseOutgoings",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("last_integrated_date", models.DateTimeField(blank=True, null=True)),
                 (
@@ -152,14 +207,22 @@ class Migration(migrations.Migration):
                 ),
                 ("start_date", models.DateTimeField(blank=True, null=True)),
                 ("end_date", models.DateTimeField(blank=True, null=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
-                ("outgoings_type", models.CharField(default="Expense", editable=False, max_length=15)),
+                (
+                    "outgoings_type",
+                    models.CharField(default="Expense", editable=False, max_length=15),
+                ),
                 (
                     "account",
                     models.ForeignKey(
@@ -202,7 +265,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="IncomeOutgoings",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("last_integrated_date", models.DateTimeField(blank=True, null=True)),
                 (
@@ -220,14 +291,22 @@ class Migration(migrations.Migration):
                 ),
                 ("start_date", models.DateTimeField(blank=True, null=True)),
                 ("end_date", models.DateTimeField(blank=True, null=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
-                ("outgoings_type", models.CharField(default="Income", editable=False, max_length=15)),
+                (
+                    "outgoings_type",
+                    models.CharField(default="Income", editable=False, max_length=15),
+                ),
                 (
                     "account",
                     models.ForeignKey(
@@ -270,13 +349,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="InvestmentAccount",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(help_text="the account name", max_length=50)),
-                ("pointed_date", models.DateTimeField(blank=True, help_text="The last pointed date", null=True)),
+                (
+                    "pointed_date",
+                    models.DateTimeField(
+                        blank=True, help_text="The last pointed date", null=True
+                    ),
+                ),
                 (
                     "current_pointed_date",
                     models.DateTimeField(
-                        blank=True, help_text="The account is to be pointed at this date, but not finished", null=True
+                        blank=True,
+                        help_text="The account is to be pointed at this date, but not finished",
+                        null=True,
                     ),
                 ),
                 (
@@ -291,18 +385,27 @@ class Migration(migrations.Migration):
                 (
                     "current_balance",
                     models.DecimalField(
-                        decimal_places=2, default=0, help_text="The last amount of balance pointed", max_digits=8
+                        decimal_places=2,
+                        default=0,
+                        help_text="The last amount of balance pointed",
+                        max_digits=8,
                     ),
                 ),
                 (
                     "average_interest",
                     models.DecimalField(
-                        decimal_places=2, default=0, help_text="The average interest that is expected for", max_digits=8
+                        decimal_places=2,
+                        default=0,
+                        help_text="The average interest that is expected for",
+                        max_digits=8,
                     ),
                 ),
                 (
                     "ledger_analysis",
-                    models.BooleanField(default=True, help_text="If the account is include in the ledger analysis"),
+                    models.BooleanField(
+                        default=True,
+                        help_text="If the account is include in the ledger analysis",
+                    ),
                 ),
                 ("created_date", models.DateTimeField(blank=True, null=True)),
                 (
@@ -315,10 +418,19 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "bank_name",
-                    models.CharField(choices=[("CE", "CE"), ("CA", "CA"), ("GMF", "GMF")], default="CA", max_length=15),
+                    models.CharField(
+                        choices=[("CE", "CE"), ("CA", "CA"), ("GMF", "GMF")],
+                        default="CA",
+                        max_length=15,
+                    ),
                 ),
                 ("description", models.TextField(blank=True, null=True)),
-                ("account_type", models.CharField(default="Investment", editable=False, max_length=15)),
+                (
+                    "account_type",
+                    models.CharField(
+                        default="Investment", editable=False, max_length=15
+                    ),
+                ),
                 (
                     "created_by",
                     models.ForeignKey(
@@ -343,9 +455,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="FundHistory",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("date_value", models.DateTimeField(blank=True, null=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
                 ("notes", models.CharField(blank=True, max_length=300)),
                 (
                     "investment_account",
@@ -360,7 +483,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="FundDistribution",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("fund_name", models.CharField(max_length=50)),
                 (
                     "prct",
@@ -386,12 +517,24 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="Ledger",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("start_date", models.DateTimeField(blank=True, null=True)),
                 ("end_date", models.DateTimeField(blank=True, null=True)),
                 (
                     "status",
-                    models.CharField(choices=[("Closed", "closed"), ("Open", "open")], default="Open", max_length=15),
+                    models.CharField(
+                        choices=[("Closed", "closed"), ("Open", "open")],
+                        default="Open",
+                        max_length=15,
+                    ),
                 ),
                 (
                     "user",
@@ -406,14 +549,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="IncomeTransaction",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("date_transaction", models.DateTimeField(db_index=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
-                ("date_pointed", models.DateTimeField(blank=True, db_index=True, null=True)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
+                (
+                    "date_pointed",
+                    models.DateTimeField(blank=True, db_index=True, null=True),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
                 ("updatable", models.BooleanField(default=True)),
@@ -482,14 +641,30 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="ExpenseTransaction",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("date_transaction", models.DateTimeField(db_index=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
-                ("date_pointed", models.DateTimeField(blank=True, db_index=True, null=True)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
+                (
+                    "date_pointed",
+                    models.DateTimeField(blank=True, db_index=True, null=True),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
                 ("updatable", models.BooleanField(default=True)),
@@ -558,7 +733,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="TransferOutgoings",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
                 ("name", models.CharField(max_length=50)),
                 ("last_integrated_date", models.DateTimeField(blank=True, null=True)),
                 (
@@ -576,14 +759,22 @@ class Migration(migrations.Migration):
                 ),
                 ("start_date", models.DateTimeField(blank=True, null=True)),
                 ("end_date", models.DateTimeField(blank=True, null=True)),
-                ("amount", models.DecimalField(decimal_places=2, default=0, max_digits=8)),
+                (
+                    "amount",
+                    models.DecimalField(decimal_places=2, default=0, max_digits=8),
+                ),
                 (
                     "description",
                     models.TextField(
-                        blank=True, null=True, validators=[django.core.validators.MaxLengthValidator(500)]
+                        blank=True,
+                        null=True,
+                        validators=[django.core.validators.MaxLengthValidator(500)],
                     ),
                 ),
-                ("outgoings_type", models.CharField(default="Transfer", editable=False, max_length=15)),
+                (
+                    "outgoings_type",
+                    models.CharField(default="Transfer", editable=False, max_length=15),
+                ),
                 (
                     "account",
                     models.ForeignKey(
@@ -804,11 +995,15 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="incometransaction",
-            index=models.Index(fields=["account", "transaction_type"], name="idx_income_account_type"),
+            index=models.Index(
+                fields=["account", "transaction_type"], name="idx_income_account_type"
+            ),
         ),
         migrations.AddIndex(
             model_name="incometransaction",
-            index=models.Index(fields=["date_transaction", "account"], name="idx_income_date_account"),
+            index=models.Index(
+                fields=["date_transaction", "account"], name="idx_income_date_account"
+            ),
         ),
         migrations.AddIndex(
             model_name="incometransaction",
@@ -816,11 +1011,15 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="expensetransaction",
-            index=models.Index(fields=["account", "transaction_type"], name="idx_expense_account_type"),
+            index=models.Index(
+                fields=["account", "transaction_type"], name="idx_expense_account_type"
+            ),
         ),
         migrations.AddIndex(
             model_name="expensetransaction",
-            index=models.Index(fields=["date_transaction", "account"], name="idx_expense_date_account"),
+            index=models.Index(
+                fields=["date_transaction", "account"], name="idx_expense_date_account"
+            ),
         ),
         migrations.AddIndex(
             model_name="expensetransaction",
@@ -860,11 +1059,15 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="transfertransaction",
-            index=models.Index(fields=["account", "transaction_type"], name="idx_transfer_account_type"),
+            index=models.Index(
+                fields=["account", "transaction_type"], name="idx_transfer_account_type"
+            ),
         ),
         migrations.AddIndex(
             model_name="transfertransaction",
-            index=models.Index(fields=["date_transaction", "account"], name="idx_transfer_date_account"),
+            index=models.Index(
+                fields=["date_transaction", "account"], name="idx_transfer_date_account"
+            ),
         ),
         migrations.AddIndex(
             model_name="transfertransaction",

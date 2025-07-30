@@ -16,7 +16,9 @@ class TestModelValidation(TestCase):
         self.assertEqual(str(self.place), "Test Place - Test City")
 
     def test_conso_water_yearly_quantity(self):
-        water_conso = ConsoWater.objects.create(place=self.place, quantity=100, date=timezone.now())
+        water_conso = ConsoWater.objects.create(
+            place=self.place, quantity=100, date=timezone.now()
+        )
 
         yearly_quantity = water_conso.yearly_quantity()
         self.assertIsInstance(yearly_quantity, int)
@@ -54,7 +56,9 @@ class TestModelValidation(TestCase):
         current_year = timezone.now().year
 
         # Test Water Consumption Yearly Total
-        ConsoWater.objects.create(place=self.place, quantity=100, date=timezone.now(), amount=50.00)
+        ConsoWater.objects.create(
+            place=self.place, quantity=100, date=timezone.now(), amount=50.00
+        )
         water_yearly_total = ConsoWater.objects.yearly_total(current_year)
         self.assertEqual(water_yearly_total, Decimal("50.00"))
 

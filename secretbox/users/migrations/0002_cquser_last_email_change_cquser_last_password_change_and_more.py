@@ -13,16 +13,22 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="cquser",
             name="last_email_change",
-            field=models.DateTimeField(blank=True, null=True, verbose_name="Dernier changement d'email"),
+            field=models.DateTimeField(
+                blank=True, null=True, verbose_name="Dernier changement d'email"
+            ),
         ),
         migrations.AddField(
             model_name="cquser",
             name="last_password_change",
-            field=models.DateTimeField(blank=True, null=True, verbose_name="Dernier changement de mot de passe"),
+            field=models.DateTimeField(
+                blank=True, null=True, verbose_name="Dernier changement de mot de passe"
+            ),
         ),
         migrations.AddField(
             model_name="cquser",
             name="last_trigram_change",
-            field=models.DateTimeField(blank=True, null=True, verbose_name="Dernier changement de trigram"),
+            field=models.DateTimeField(
+                blank=True, null=True, verbose_name="Dernier changement de trigram"
+            ),
         ),
     ]

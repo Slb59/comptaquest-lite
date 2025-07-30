@@ -16,7 +16,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="NomadePosition",
             fields=[
-                ("id", models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4,
+                        editable=False,
+                        primary_key=True,
+                        serialize=False,
+                    ),
+                ),
                 ("name", models.CharField(max_length=255)),
                 ("address", models.TextField()),
                 ("city", models.TextField()),
@@ -26,8 +34,18 @@ class Migration(migrations.Migration):
                 ("opening_date", models.DateField(blank=True, null=True)),
                 ("closing_date", models.DateField(blank=True, null=True)),
                 ("category", models.CharField(max_length=100)),
-                ("latitude", models.DecimalField(blank=True, decimal_places=6, max_digits=9, null=True)),
-                ("longitude", models.DecimalField(blank=True, decimal_places=6, max_digits=9, null=True)),
+                (
+                    "latitude",
+                    models.DecimalField(
+                        blank=True, decimal_places=6, max_digits=9, null=True
+                    ),
+                ),
+                (
+                    "longitude",
+                    models.DecimalField(
+                        blank=True, decimal_places=6, max_digits=9, null=True
+                    ),
+                ),
             ],
             options={
                 "verbose_name": "Nomade Position",

@@ -14,18 +14,37 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="currentaccount",
             name="state",
-            field=models.CharField(choices=[("Open", "Ouvert"), ("Close", "Fermé")], default="Open", max_length=15),
+            field=models.CharField(
+                choices=[("Open", "Ouvert"), ("Close", "Fermé")],
+                default="Open",
+                max_length=15,
+            ),
         ),
         migrations.AlterField(
             model_name="investmentaccount",
             name="state",
-            field=models.CharField(choices=[("Open", "Ouvert"), ("Close", "Fermé")], default="Open", max_length=15),
+            field=models.CharField(
+                choices=[("Open", "Ouvert"), ("Close", "Fermé")],
+                default="Open",
+                max_length=15,
+            ),
         ),
         migrations.CreateModel(
             name="InvestmentAsset",
             fields=[
-                ("id", models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
-                ("designation", models.CharField(max_length=100, verbose_name="Designation")),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "designation",
+                    models.CharField(max_length=100, verbose_name="Designation"),
+                ),
                 (
                     "asset_type",
                     models.CharField(
@@ -41,10 +60,23 @@ class Migration(migrations.Migration):
                         verbose_name="Type",
                     ),
                 ),
-                ("quantity", models.DecimalField(decimal_places=4, default=0, max_digits=12, verbose_name="Quantity")),
+                (
+                    "quantity",
+                    models.DecimalField(
+                        decimal_places=4,
+                        default=0,
+                        max_digits=12,
+                        verbose_name="Quantity",
+                    ),
+                ),
                 (
                     "price",
-                    models.DecimalField(decimal_places=4, default=0, max_digits=12, verbose_name="Current price"),
+                    models.DecimalField(
+                        decimal_places=4,
+                        default=0,
+                        max_digits=12,
+                        verbose_name="Current price",
+                    ),
                 ),
                 (
                     "account",

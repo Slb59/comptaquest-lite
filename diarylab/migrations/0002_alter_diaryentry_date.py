@@ -15,6 +15,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="diaryentry",
             name="date",
-            field=models.DateField(default=datetime.datetime(2025, 6, 8, 10, 41, 11, 638273)),
+            field=models.DateField(
+                default=datetime.datetime(2025, 6, 8, 10, 41, 11, 638273)
+            ),
         ),
     ]

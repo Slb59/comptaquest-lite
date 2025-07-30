@@ -17,7 +17,7 @@ class InvestmentAssetInline(admin.TabularInline):
 
 @admin.register(InvestmentAccount)
 class InvestmentAccountAdmin(admin.ModelAdmin):
-    list_display = ("account_type","user", "name", "bank_name", "current_balance")
+    list_display = ("account_type", "user", "name", "bank_name", "current_balance")
     inlines = [InvestmentAssetInline]
     readonly_fields = ("current_balance", "account_type")
 

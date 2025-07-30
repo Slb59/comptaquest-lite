@@ -37,7 +37,12 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
                     css_class="grid grid-cols-2 gap-4",
                 ),
                 Div(
-                    Field("bedtime", wrapper_class="col-span-1", attrs={"min": 0, "max": 3}, css_class="w-full"),
+                    Field(
+                        "bedtime",
+                        wrapper_class="col-span-1",
+                        attrs={"min": 0, "max": 3},
+                        css_class="w-full",
+                    ),
                     Field("wakeup", wrapper_class="col-span-1", css_class="w-full"),
                     Field("nonstop", wrapper_class="col-span-1", css_class="w-full"),
                     Field("energy", wrapper_class="col-span-1", css_class="w-full"),

@@ -18,4 +18,6 @@ def update_act_stats(sender, instance, created, **kwargs):
     if created:
         # Création des scènes par défaut
         for i in range(1, 4):
-            Scene.objects.create(act=instance, number=i, instructions=f"Scène {i} par défaut")
+            Scene.objects.create(
+                act=instance, number=i, instructions=f"Scène {i} par défaut"
+            )

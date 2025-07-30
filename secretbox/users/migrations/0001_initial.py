@@ -31,7 +31,9 @@ class Migration(migrations.Migration):
                 ("password", models.CharField(max_length=128, verbose_name="password")),
                 (
                     "last_login",
-                    models.DateTimeField(blank=True, null=True, verbose_name="last login"),
+                    models.DateTimeField(
+                        blank=True, null=True, verbose_name="last login"
+                    ),
                 ),
                 (
                     "is_superuser",
@@ -59,11 +61,15 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "date_joined",
-                    models.DateTimeField(default=django.utils.timezone.now, verbose_name="date joined"),
+                    models.DateTimeField(
+                        default=django.utils.timezone.now, verbose_name="date joined"
+                    ),
                 ),
                 (
                     "email",
-                    models.EmailField(max_length=50, unique=True, verbose_name="email address"),
+                    models.EmailField(
+                        max_length=50, unique=True, verbose_name="email address"
+                    ),
                 ),
                 ("trigram", models.CharField(max_length=5)),
                 (
@@ -151,6 +157,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddIndex(
             model_name="cquser",
-            index=models.Index(fields=["-trigram"], name="users_cquse_trigram_c24a3a_idx"),
+            index=models.Index(
+                fields=["-trigram"], name="users_cquse_trigram_c24a3a_idx"
+            ),
         ),
     ]

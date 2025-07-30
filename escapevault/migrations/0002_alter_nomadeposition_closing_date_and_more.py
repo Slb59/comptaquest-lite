@@ -17,13 +17,18 @@ class Migration(migrations.Migration):
             model_name="nomadeposition",
             name="closing_date",
             field=models.CharField(
-                blank=True, max_length=5, null=True, validators=[escapevault.models.validate_day_month_format]
+                blank=True,
+                max_length=5,
+                null=True,
+                validators=[escapevault.models.validate_day_month_format],
             ),
         ),
         migrations.AlterField(
             model_name="nomadeposition",
             name="id",
-            field=models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID"),
+            field=models.BigAutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
             model_name="nomadeposition",
@@ -57,7 +62,10 @@ class Migration(migrations.Migration):
             model_name="nomadeposition",
             name="opening_date",
             field=models.CharField(
-                blank=True, max_length=5, null=True, validators=[escapevault.models.validate_day_month_format]
+                blank=True,
+                max_length=5,
+                null=True,
+                validators=[escapevault.models.validate_day_month_format],
             ),
         ),
     ]

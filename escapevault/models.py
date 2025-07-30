@@ -24,7 +24,9 @@ def validate_day_month_format(value):
 class NomadePosition(models.Model):
     """
     Model representing a nomade position.
-    This nomade is not affected to a user. Any connected user that has the access to the escapevault application can see, update or delete it.
+    This nomade is not affected to a user.
+    Any connected user that has the access to the escapevault application can see,
+    update or delete it.
     """
 
     CATEGORY_HOME = "home"
@@ -51,18 +53,28 @@ class NomadePosition(models.Model):
     class NomadeCountries(Countries):
         only = ["CA", "FR", "DE", "IT", "JP", "RU", "GB"]
 
-    country = CountryField(countries=NomadeCountries, default="FR", blank_label="(select country)")
+    country = CountryField(
+        countries=NomadeCountries, default="FR", blank_label="(select country)"
+    )
 
     # Rating System
-    stars = models.IntegerField(default=0, validators=[MinValueValidator(1), MaxValueValidator(5)])
+    stars = models.IntegerField(
+        default=0, validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     reviews = models.JSONField(default=list)
 
     # Opening and Closing Dates
-    opening_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
-    closing_date = models.CharField(max_length=5, validators=[validate_day_month_format], null=True, blank=True)
+    opening_date = models.CharField(
+        max_length=5, validators=[validate_day_month_format], null=True, blank=True
+    )
+    closing_date = models.CharField(
+        max_length=5, validators=[validate_day_month_format], null=True, blank=True
+    )
 
     # Category and Position
-    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_PLAIN)
+    category = models.CharField(
+        max_length=100, choices=CATEGORY_CHOICES, default=CATEGORY_PLAIN
+    )
     latitude = models.DecimalField(
         max_digits=9,
         decimal_places=6,
@@ -103,11 +115,9 @@ class NomadePosition(models.Model):
     def get_opening_date_display(self):
         if self.opening_date:
             return self.opening_date
-        else:
-            return ""
+        return ""
 
     def get_closing_date_display(self):
         if self.closing_date:
             return self.closing_date
-        else:
-            return ""
+        return ""

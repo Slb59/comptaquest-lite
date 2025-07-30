@@ -1,6 +1,7 @@
 """Views for secretbox.users application
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -57,7 +58,9 @@ class LogoutView(LoginRequiredMixin, DjangoLogoutView):
             # Nettoyage supplémentaire si nécessaire
             pass
         if not request.session.test_cookie_worked():
-            messages.error(request, "Les cookies doivent être activés pour cette fonctionnalité.")
+            messages.error(
+                request, "Les cookies doivent être activés pour cette fonctionnalité."
+            )
             return redirect("users:login")
         return super().dispatch(request, *args, **kwargs)
 

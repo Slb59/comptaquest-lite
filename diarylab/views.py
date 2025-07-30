@@ -1,6 +1,7 @@
 """Views for the diarylab application.
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 from io import BytesIO
 
 from django.contrib import messages
@@ -41,7 +42,9 @@ class DiaryEntryCreateView(DialylabBaseView, CreateView):
         form.instance.user = self.request.user
         # Check if an entry already exists for the given date
         entry_date = form.cleaned_data["date"]
-        existing_entry = DiaryEntry.objects.filter(user=self.request.user, date=entry_date).exists()
+        existing_entry = DiaryEntry.objects.filter(
+            user=self.request.user, date=entry_date
+        ).exists()
 
         if existing_entry:
             # Add an error to the form
@@ -84,7 +87,9 @@ class DiaryEntryListView(DialylabBaseView, ListView):
         # Check if there's an entry for today
         today = timezone.now().date()
         if entries.filter(date=today).exists():
-            messages.error(self.request, _("Vous avez déjà saisi une pensée aujourd'hui."))
+            messages.error(
+                self.request, _("Vous avez déjà saisi une pensée aujourd'hui.")
+            )
             context["entry_exists_today"] = entries.filter(date=today).exists()
 
         return context
@@ -92,12 +97,16 @@ class DiaryEntryListView(DialylabBaseView, ListView):
 
 def generate_pdf(request, year, month):
     response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f'attachment; filename="{year}{month:02d}-pensees.pdf"'
+    response["Content-Disposition"] = (
+        f'attachment; filename="{year}{month:02d}-pensees.pdf"'
+    )
 
     buffer = BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
 
-    entries = DiaryEntry.objects.filter(user=request.user, date__year=year, date__month=month)
+    entries = DiaryEntry.objects.filter(
+        user=request.user, date__year=year, date__month=month
+    )
 
     for entry in entries:
         p.setFont("Helvetica", 12)

@@ -21,7 +21,9 @@ class Migration(migrations.Migration):
             model_name="nomadeposition",
             name="city",
             field=models.TextField(
-                help_text="Nom de la ville", max_length=40, validators=[escapevault.models.validate_city_format]
+                help_text="Nom de la ville",
+                max_length=40,
+                validators=[escapevault.models.validate_city_format],
             ),
         ),
     ]

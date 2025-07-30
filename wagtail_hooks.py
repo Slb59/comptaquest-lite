@@ -6,8 +6,12 @@ from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 @register_setting(icon="user")
 class CustomAuthSettings(BaseSetting):
-    login_page_title = models.CharField(max_length=255, blank=True, verbose_name=_("Login page title"))
-    login_page_subtitle = models.TextField(blank=True, verbose_name=_("Login page subtitle"))
+    login_page_title = models.CharField(
+        max_length=255, blank=True, verbose_name=_("Login page title")
+    )
+    login_page_subtitle = models.TextField(
+        blank=True, verbose_name=_("Login page subtitle")
+    )
 
     panels = [
         FieldPanel("login_page_title"),
@@ -21,7 +25,9 @@ class CustomAuthSettings(BaseSetting):
 @register_setting(icon="log-out")
 class LogoutSettings(BaseSetting):
     logout_message = models.TextField(
-        verbose_name=_("Message de déconnexion"), blank=True, help_text=_("Message affiché après la déconnexion")
+        verbose_name=_("Message de déconnexion"),
+        blank=True,
+        help_text=_("Message affiché après la déconnexion"),
     )
 
     class Meta:

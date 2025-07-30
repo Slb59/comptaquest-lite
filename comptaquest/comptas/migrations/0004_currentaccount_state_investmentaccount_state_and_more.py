@@ -13,12 +13,20 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="currentaccount",
             name="state",
-            field=models.CharField(choices=[("open", "Ouvert"), ("close", "Fermé")], default="open", max_length=15),
+            field=models.CharField(
+                choices=[("open", "Ouvert"), ("close", "Fermé")],
+                default="open",
+                max_length=15,
+            ),
         ),
         migrations.AddField(
             model_name="investmentaccount",
             name="state",
-            field=models.CharField(choices=[("open", "Ouvert"), ("close", "Fermé")], default="open", max_length=15),
+            field=models.CharField(
+                choices=[("open", "Ouvert"), ("close", "Fermé")],
+                default="open",
+                max_length=15,
+            ),
         ),
         migrations.AlterField(
             model_name="currentaccount",

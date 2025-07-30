@@ -21,8 +21,8 @@ class InvestmentAccount(AbstractAccount):
         """
         total = self.assets.aggregate(
             total_value=Sum(
-                F("quantity") * F("price"), 
-                output_field=DecimalField(max_digits=16, decimal_places=4)
+                F("quantity") * F("price"),
+                output_field=DecimalField(max_digits=16, decimal_places=4),
             )
         )["total_value"] or Decimal("0.0")
         return total
@@ -36,7 +36,9 @@ class InvestmentAccount(AbstractAccount):
 
 
 class InvestmentAsset(models.Model):
-    account = models.ForeignKey("InvestmentAccount", on_delete=models.CASCADE, related_name="assets")
+    account = models.ForeignKey(
+        "InvestmentAccount", on_delete=models.CASCADE, related_name="assets"
+    )
 
     designation = models.CharField(max_length=100, verbose_name=_("Designation"))
 
@@ -54,17 +56,11 @@ class InvestmentAsset(models.Model):
     )
 
     quantity = models.DecimalField(
-        max_digits=12, 
-        decimal_places=4, 
-        default=0, 
-        verbose_name=_("Quantité")
+        max_digits=12, decimal_places=4, default=0, verbose_name=_("Quantité")
     )
 
     price = models.DecimalField(
-        max_digits=12, 
-        decimal_places=4, 
-        default=0, 
-        verbose_name=_("Cours ")
+        max_digits=12, decimal_places=4, default=0, verbose_name=_("Cours ")
     )
 
     def get_valuation(self) -> Decimal:
@@ -74,4 +70,6 @@ class InvestmentAsset(models.Model):
         return self.quantity * self.price
 
     def __str__(self):
-        return f"{self.designation} ({self.asset_type}) - {self.quantity} * {self.price}"
+        return (
+            f"{self.designation} ({self.asset_type}) - {self.quantity} * {self.price}"
+        )

@@ -1,6 +1,7 @@
 """Views for the comptaquest.comptas application.
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 import locale
 from datetime import datetime
 
@@ -21,6 +22,7 @@ from django.views.generic import (
 from secretbox.users.mixins import GroupRequiredMixin
 
 from .account_current_model import CurrentAccount
+from .account_investment_model import InvestmentAccount, InvestmentAsset
 from .choices import ACCOUNT_CHOICES
 from .filters import CurrentAccountFilterForm
 from .forms import (
@@ -91,7 +93,9 @@ class AccountTypeSelectView(FormView, ComptasBaseView):
 
     def form_valid(self, form):
         # Stocke le type de compte dans la session
-        self.request.session["selected_account_type"] = form.cleaned_data["account_type"]
+        self.request.session["selected_account_type"] = form.cleaned_data[
+            "account_type"
+        ]
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -137,7 +141,7 @@ class AccountCreateView(ComptasBaseView, CreateView):
         instance.save()
 
         if self.account_type == "Investment":
-            formset = PortfolioFormSet(self.request.POST, instance=instance)
+            formset = InvestmentAsset(self.request.POST, instance=instance)
             if formset.is_valid():
                 formset.save()
             else:
@@ -149,15 +153,17 @@ class AccountCreateView(ComptasBaseView, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        account_type_label = dict(ACCOUNT_CHOICES).get(self.account_type, self.account_type)
+        account_type_label = dict(ACCOUNT_CHOICES).get(
+            self.account_type, self.account_type
+        )
         context["title"] = _("Nouveau ") + account_type_label.lower()
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
         if self.account_type == "Investment":
             if self.request.POST:
-                context["portfolio_formset"] = PortfolioFormSet(self.request.POST)
+                context["portfolio_formset"] = InvestmentAsset(self.request.POST)
             else:
-                context["portfolio_formset"] = PortfolioFormSet()
+                context["portfolio_formset"] = InvestmentAsset()
         return context
 
 

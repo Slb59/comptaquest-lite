@@ -25,7 +25,9 @@ class TodoFactory(factory.django.DjangoModelFactory):
     state = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.STATE_CHOICES])
     duration = factory.fuzzy.FuzzyInteger(low=10, high=800)
     description = factory.Faker("sentence")
-    appointment = factory.fuzzy.FuzzyChoice([choice[0] for choice in Todo.APPOINTEMENT_CHOICES])
+    appointment = factory.fuzzy.FuzzyChoice(
+        [choice[0] for choice in Todo.APPOINTEMENT_CHOICES]
+    )
     category = factory.fuzzy.FuzzyChoice([choice[0] for choice in CATEGORY_CHOICES])
     place = factory.fuzzy.FuzzyChoice([choice[0] for choice in PLACE_CHOICES])
     periodic = factory.fuzzy.FuzzyChoice([choice[0] for choice in PERIODIC_CHOICES])
@@ -33,7 +35,9 @@ class TodoFactory(factory.django.DjangoModelFactory):
     planned_date = factory.LazyAttribute(lambda obj: get_now_date() + timedelta(days=1))
     priority = factory.fuzzy.FuzzyChoice([choice[0] for choice in PRIORITY_CHOICES])
 
-    done_date = factory.LazyAttribute(lambda obj: get_now_date() if factory.fuzzy.FuzzyChoice([True, False]) else None)
+    done_date = factory.LazyAttribute(
+        lambda obj: get_now_date() if factory.fuzzy.FuzzyChoice([True, False]) else None
+    )
     note = factory.Faker("text")
 
     @factory.post_generation

@@ -7,7 +7,7 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Column, Layout, Row
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import get_user_model
+
 from secretbox.users.models import Member
 
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES
@@ -16,14 +16,10 @@ from .choices import ACCOUNT_CHOICES, BANK_CHOICES
 class CurrentAccountFilterForm(forms.Form):
 
     user = forms.ModelChoiceField(
-        queryset=Member.objects.all(), 
-        required=False, 
-        label="Propriétaire de compte"
+        queryset=Member.objects.all(), required=False, label="Propriétaire de compte"
     )
     bank_name = forms.ChoiceField(
-        label=_("Banque"), 
-        choices=[("", "Toutes")] + BANK_CHOICES, 
-        required=False
+        label=_("Banque"), choices=[("", "Toutes")] + BANK_CHOICES, required=False
     )
     account_type = forms.ChoiceField(label=_("Type de compte"), choices=ACCOUNT_CHOICES)
 

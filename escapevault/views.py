@@ -1,6 +1,7 @@
 """Views for the escapevault application.
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 import folium
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -35,7 +36,9 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
         form = EscapeVaultFilterForm(self.request.GET or None)
 
         # Create a base map centered around a specific location
-        the_map = folium.Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
+        the_map = folium.Map(
+            location=[45.4769, 9.1516], zoom_start=5
+        )  # Centered on France
 
         # Fetch all nomadic positions from the database
         positions = NomadePosition.objects.filter()
@@ -58,7 +61,9 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
 
             if position.latitude and position.longitude:
 
-                edit_url = reverse("escapevault:edit_position", kwargs={"pk": position.pk})
+                edit_url = reverse(
+                    "escapevault:edit_position", kwargs={"pk": position.pk}
+                )
                 edit_url += f"?next={self.request.get_full_path()}"
                 popup_html = f"""
                 <div>
@@ -68,7 +73,11 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
                 </div>"""
 
                 if position.opening_date or position.closing_date:
-                    tooltip_label = f"{position.name} ({position.opening_date}-{position.closing_date})"
+                    tooltip_label = f"{position.name} "
+                    tooltip_label += (
+                        f"({position.opening_date} - {position.closing_date})"
+                    )
+
                 else:
                     tooltip_label = position.name
 
@@ -146,7 +155,9 @@ class EscapeVaultEditView(EscapeVaultBaseView, UpdateView):
         form = super().get_form(form_class)
         next_url = self.request.GET.get("next")
         if next_url:
-            form.fields["next"] = forms.CharField(widget=forms.HiddenInput(), initial=next_url, required=False)
+            form.fields["next"] = forms.CharField(
+                widget=forms.HiddenInput(), initial=next_url, required=False
+            )
         return form
 
     def get_success_url(self):
@@ -168,7 +179,9 @@ class EscapeVaultEditView(EscapeVaultBaseView, UpdateView):
             position = form.instance
             existing_reviews = position.reviews or []
 
-            existing_reviews.append({"text": new_review_text, "date": now().isoformat()})
+            existing_reviews.append(
+                {"text": new_review_text, "date": now().isoformat()}
+            )
 
             position.reviews = existing_reviews
 

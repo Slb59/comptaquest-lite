@@ -18,11 +18,17 @@ class TestHealthModel(TestCase):
         self.user = MemberFactory()
         self.account = CurrentAccountFactory(user=self.user)
 
-        self.income_transaction_secu = IncomeTransactionFactory(account=self.account, amount=Decimal("25.00"))
+        self.income_transaction_secu = IncomeTransactionFactory(
+            account=self.account, amount=Decimal("25.00")
+        )
 
-        self.income_transaction_mutuelle = IncomeTransactionFactory(account=self.account, amount=Decimal("20.00"))
+        self.income_transaction_mutuelle = IncomeTransactionFactory(
+            account=self.account, amount=Decimal("20.00")
+        )
 
-        self.expense_transaction = ExpenseTransactionFactory(account=self.account, amount=Decimal("100.00"))
+        self.expense_transaction = ExpenseTransactionFactory(
+            account=self.account, amount=Decimal("100.00")
+        )
 
         self.secu = Secu.objects.create(
             theoritical_date=timezone.now(),
@@ -48,7 +54,9 @@ class TestHealthModel(TestCase):
             mutuelle=self.mutuelle,
         )
 
-        self.assertEqual(str(health), f"{self.user.trigram} - Test Health Expense - {health.date}")
+        self.assertEqual(
+            str(health), f"{self.user.trigram} - Test Health Expense - {health.date}"
+        )
 
     def test_reimbursement_total(self):
         health = Health(
@@ -109,7 +117,9 @@ class TestHealthModel(TestCase):
             mutuelle=self.mutuelle,
         )
 
-        expense_transaction2 = ExpenseTransactionFactory(account=self.account, amount=Decimal("100.00"))
+        expense_transaction2 = ExpenseTransactionFactory(
+            account=self.account, amount=Decimal("100.00")
+        )
 
         secu2 = Secu.objects.create(
             theoritical_date=timezone.now(),

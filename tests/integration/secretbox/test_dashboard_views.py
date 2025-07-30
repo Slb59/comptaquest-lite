@@ -23,7 +23,9 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
     def setUp(self):
         activate("fr")
         self.client = Client()
-        self.user = MemberFactory(email="test@test.com", password="password")  # nosec: B106
+        self.user = MemberFactory(
+            email="test@test.com", password="password"
+        )  # nosec: B106
         self.url = reverse("dashboard:add_todo")
 
     def test_redirect_if_not_logged_in(self):
@@ -53,7 +55,9 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         }
         response = self.client.post(self.url, data)
         self.assertRedirectsToDashboard(response)
-        assert Todo.objects.filter(description="Faire le ménage", user=self.user).exists()
+        assert Todo.objects.filter(
+            description="Faire le ménage", user=self.user
+        ).exists()
 
     def test_create_todo_missing_required_field(self):
         self.client.force_login(self.user)

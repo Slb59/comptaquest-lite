@@ -86,6 +86,7 @@ dependencies = [
     "pyflakes==3.3.2",
     "pygments==2.19.1",
     "pylint>=3.3.7",
+    "pylint-django>=2.6.1",
     "pytest==8.3.5",
     "pytest-benchmark==5.1.0",
     "pytest-cov==6.1.1",
@@ -138,7 +139,7 @@ dev = [
 ]
 
 [tool.black]
-line_length = 120
+line_length = 88
 target_version = ['py38']
 
 [tool.isort]
@@ -166,11 +167,17 @@ addopts = "--reuse-db"
 markers = "django_db: marks tests as requiring database access"
 
 [tool.pylint.'MAIN']
-ignore = ["migrations", ".venv", "__pycache__", ".vscode", "mypy_cache"]
+ignore = [
+  "migrations", ".venv", "__pycache__", 
+  ".vscode", "mypy_cache", "wagtail_hooks.py"]
+load-plugins = ["pylint_django"]
+django-settings-module = "config.settings.dev" 
 jobs = 1
 
 [tool.pylint.messages_control]
 disable = [
+  "no-member",  # Django models
+  "too-many-ancestors",   # vues Django
   "C0114",  # Missing module docstring
   "C0115",  # Missing class docstring
   "C0116",  # Missing function or method docstring

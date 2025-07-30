@@ -1,6 +1,7 @@
 """Views for todo model on the dashboard application
-    Dashboard, edit, create, delete, and list views.
+Dashboard, edit, create, delete, and list views.
 """
+
 from datetime import date
 
 # from crispy_forms.layout import Field
@@ -28,7 +29,11 @@ def check_todo_state(request, pk):
 
     if todo.state in ("done", "cancel"):
         return JsonResponse(
-            {"can_validate": False, "message": _("Cette tâche est déjà terminée ou annulée.")}, status=400
+            {
+                "can_validate": False,
+                "message": _("Cette tâche est déjà terminée ou annulée."),
+            },
+            status=400,
         )
 
     return JsonResponse({"can_validate": True})
@@ -42,20 +47,32 @@ def todo_mark_done(request, pk):
     success = todo.check_if_state_is_cancel_or_done()
 
     if not success:
-        return JsonResponse({"success": False, "message": _("Cette tâche est déjà terminée ou annulée.")}, status=400)
+        return JsonResponse(
+            {
+                "success": False,
+                "message": _("Cette tâche est déjà terminée ou annulée."),
+            },
+            status=400,
+        )
 
     new_date_str = request.POST.get("new_date")
 
     if not new_date_str:
-        return JsonResponse({"success": False, "message": _("Date manquante.")}, status=400)
+        return JsonResponse(
+            {"success": False, "message": _("Date manquante.")}, status=400
+        )
     new_date = parse_date(new_date_str)
     if not new_date:
-        return JsonResponse({"success": False, "message": _("Date invalide.")}, status=400)
+        return JsonResponse(
+            {"success": False, "message": _("Date invalide.")}, status=400
+        )
 
     success, message = todo.validate_element(new_date)
 
     if success:
-        return JsonResponse({"success": True, "done_date": todo.done_date.strftime("%Y-%m-%d")})
+        return JsonResponse(
+            {"success": True, "done_date": todo.done_date.strftime("%Y-%m-%d")}
+        )
     else:
         return JsonResponse({"success": False, "message": message})
 
@@ -140,7 +157,15 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             {
                 "title": _("Bienvenue dans SecretBox"),
                 "logo_url": "/static/images/secretbox/logo_sb2.png",
-                "todos": todos.order_by("planned_date", "priority", "category", "periodic", "who", "place", "duration"),
+                "todos": todos.order_by(
+                    "planned_date",
+                    "priority",
+                    "category",
+                    "periodic",
+                    "who",
+                    "place",
+                    "duration",
+                ),
                 "form": form,
                 "request": self.request,
             }

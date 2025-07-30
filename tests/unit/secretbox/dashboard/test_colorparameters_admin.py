@@ -32,9 +32,7 @@ class ColorParameterAdminTest(TestCase):
 
     def test_color_display_renders_correct_html(self):
         rendered = self.admin.color_display(self.obj)
-        expected_html = (
-            '<div style="width: 60px; height: 20px; background-color: #123ABC; border: 1px solid #ccc;"></div>'
-        )
+        expected_html = '<div style="width: 60px; height: 20px; background-color: #123ABC; border: 1px solid #ccc;"></div>'
         self.assertHTMLEqual(rendered, expected_html)
 
     def test_color_display_label(self):

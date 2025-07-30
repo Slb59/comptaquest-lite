@@ -25,7 +25,9 @@ class NomadePositionFactory(factory.django.DjangoModelFactory):
 
     opening_date = factory.Faker("date", pattern="%d/%m")
     closing_date = factory.Faker("date", pattern="%d/%m")
-    category = factory.fuzzy.FuzzyChoice([choice[0] for choice in NomadePosition.CATEGORY_CHOICES])
+    category = factory.fuzzy.FuzzyChoice(
+        [choice[0] for choice in NomadePosition.CATEGORY_CHOICES]
+    )
     latitude = factory.fuzzy.FuzzyDecimal(low=-90.0, high=90.0)
     longitude = factory.fuzzy.FuzzyDecimal(low=-90.0, high=90.0)
 

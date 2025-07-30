@@ -2,13 +2,13 @@ import factory
 import pytest
 from factory.django import DjangoModelFactory
 
+from secretbox.dashboard.colorparameter_model import ColorParameter
 from secretbox.dashboard.todo_model import (
     CATEGORY_CHOICES,
     PERIODIC_CHOICES,
     PLACE_CHOICES,
     PRIORITY_CHOICES,
 )
-from secretbox.dashboard.colorparameter_model import ColorParameter
 
 
 @pytest.mark.django_db

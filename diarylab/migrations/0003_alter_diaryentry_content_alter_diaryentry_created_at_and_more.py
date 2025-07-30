@@ -18,25 +18,33 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name="diaryentry",
             name="content",
-            field=models.TextField(blank=True, help_text="The main content of the diary entry"),
+            field=models.TextField(
+                blank=True, help_text="The main content of the diary entry"
+            ),
         ),
         migrations.AlterField(
             model_name="diaryentry",
             name="created_at",
-            field=models.DateTimeField(auto_now_add=True, help_text="Timestamp when this entry was created"),
+            field=models.DateTimeField(
+                auto_now_add=True, help_text="Timestamp when this entry was created"
+            ),
         ),
         migrations.AlterField(
             model_name="diaryentry",
             name="date",
             field=models.DateField(
-                default=datetime.datetime(2025, 6, 13, 17, 21, 34, 784458, tzinfo=datetime.timezone.utc),
+                default=datetime.datetime(
+                    2025, 6, 13, 17, 21, 34, 784458, tzinfo=datetime.timezone.utc
+                ),
                 help_text="Date when this diary entry was written",
             ),
         ),
         migrations.AlterField(
             model_name="diaryentry",
             name="updated_at",
-            field=models.DateTimeField(auto_now=True, help_text="Timestamp when this entry was last modified"),
+            field=models.DateTimeField(
+                auto_now=True, help_text="Timestamp when this entry was last modified"
+            ),
         ),
         migrations.AlterField(
             model_name="diaryentry",

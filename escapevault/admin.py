@@ -32,7 +32,10 @@ class NomadePositionAdmin(admin.ModelAdmin):
         ("Informations principales", {"fields": ["name", "address"]}),
         ("Localisation", {"fields": ["city", "country", "latitude", "longitude"]}),
         ("Évaluation", {"fields": ["stars", "reviews"]}),
-        ("Dates et catégorie", {"fields": ["opening_date", "closing_date", "category"]}),
+        (
+            "Dates et catégorie",
+            {"fields": ["opening_date", "closing_date", "category"]},
+        ),
     ]
 
     # Actions personnalisées

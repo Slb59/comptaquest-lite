@@ -1,7 +1,9 @@
 from bs4 import BeautifulSoup
 
 # Load the HTML files
-with open("tests/htmlcov/integration_report.html", "r") as f1, open("tests/htmlcov/unit_report.html", "r") as f2:
+with open("tests/htmlcov/integration_report.html", "r") as f1, open(
+    "tests/htmlcov/unit_report.html", "r"
+) as f2:
     soup1 = BeautifulSoup(f1, "html.parser")
     soup2 = BeautifulSoup(f2, "html.parser")
 

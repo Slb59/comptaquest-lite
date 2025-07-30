@@ -4,12 +4,14 @@ Used for creating and updating objects via views
 """
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML, Div, Layout, Submit
+from crispy_forms.layout import Div, Layout
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from .models import NomadePosition
 from secretbox.tools.form_helpers import action_buttons
+
+from .models import NomadePosition
+
 
 class EscapeVaultForm(forms.ModelForm):
     new_review = forms.CharField(
@@ -48,9 +50,13 @@ class EscapeVaultForm(forms.ModelForm):
         self.fields["closing_date"].label = _("Date de fermeture")
 
         # Resize the city and country field
-        self.fields["city"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
+        self.fields["city"].widget.attrs.update(
+            {"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"}
+        )
 
-        self.fields["country"].widget.attrs.update({"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"})
+        self.fields["country"].widget.attrs.update(
+            {"class": "h-full sm:h-[60px]", "style": "max-height: 40px;"}
+        )
 
         self.helper = FormHelper()
         self.helper.form_class = "border p-8"
@@ -79,8 +85,9 @@ class EscapeVaultForm(forms.ModelForm):
                 Div("closing_date", css_class="w-full sm:col-span-2"),
                 css_class="grid grid-cols-5 gap-4",
             ),
-            action_buttons(back_url_name="escapevault:list_positions", back_label="Liste"),
-
+            action_buttons(
+                back_url_name="escapevault:list_positions", back_label="Liste"
+            ),
         )
 
         # Insert the new_review field at the end of the form, just before the submit button

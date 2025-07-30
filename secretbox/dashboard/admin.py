@@ -58,7 +58,8 @@ class ColorParameterAdmin(admin.ModelAdmin):
 
     def color_display(self, obj):
         return format_html(
-            '<div style="width: 60px; height: 20px; background-color: {}; border: 1px solid #ccc;"></div>', obj.color
+            '<div style="width: 60px; height: 20px; background-color: {}; border: 1px solid #ccc;"></div>',
+            obj.color,
         )
 
     color_display.short_description = _("Couleur")
