@@ -13,7 +13,11 @@ from django.contrib.auth.forms import (
 )
 from django.utils.translation import gettext_lazy as _
 
-from .models import CQUser, MemberProfile
+from django.contrib.auth import get_user_model
+
+CQUser = get_user_model()
+
+from .models import MemberProfile
 
 
 class LoginForm(auth_forms.AuthenticationForm):

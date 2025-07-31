@@ -6,7 +6,9 @@ from django.utils import timezone
 from django_stubs_ext.db.models import TypedModelMeta
 
 from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction
-from secretbox.users.models import Member
+from django.contrib.auth import get_user_model
+
+Member = get_user_model()
 
 
 class HealthManager(models.Manager):

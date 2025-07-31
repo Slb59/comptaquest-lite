@@ -77,7 +77,7 @@ class Todo(models.Model):
         ("birthday", "Anniversaire"),
         ("festival", "Fête"),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
     duration = models.IntegerField(
         default=30, validators=[MinValueValidator(10), MaxValueValidator(800)]

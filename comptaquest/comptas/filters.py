@@ -8,7 +8,9 @@ from crispy_forms.layout import Column, Layout, Row
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from secretbox.users.models import Member
+from django.contrib.auth import get_user_model
+
+Member = get_user_model()
 
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES
 

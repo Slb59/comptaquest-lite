@@ -109,15 +109,16 @@ class TestTodoModel(TestCase):
         except ValidationError:
             self.fail("full_clean() raised ValidationError unexpectedly!")
 
+    def test_who_invalid_choices(self):
+        """Test that who choices are not valid"""
+        with self.assertRaises(ValueError):
+            self.todo.who.set(["invalid_user"])
+    
     def test_who_choices(self):
         """Test that who choices are valid"""
 
-        # Test invalid who
-        with self.assertRaises(ValueError):
-            self.todo.who.set(["invalid_user"])
-
-        # Test valid who
         self.todo.who.set([self.user])
+        self.assertIn(self.user, self.todo.who.all())
         try:
             self.todo.full_clean()  # This should not raise an error
         except ValidationError:

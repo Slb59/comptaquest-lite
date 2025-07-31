@@ -9,7 +9,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.form_helpers import action_buttons
-from secretbox.users.models import Member
+from django.conf import settings
 
 from .todo_model import Todo
 
@@ -39,7 +39,7 @@ class TodoForm(forms.ModelForm):
         self.fields["description"].label = _("Description")
         self.fields["appointment"].label = _("Rdv")
         self.fields["category"].label = _("Catégorie")
-        self.fields["who"].queryset = Member.objects.order_by("trigram")
+        self.fields["who"].queryset = settings.AUTH_USER_MODEL.objects.order_by("trigram")
         self.fields["who"].widget = forms.SelectMultiple(
             attrs={"class": "form-control"}
         )

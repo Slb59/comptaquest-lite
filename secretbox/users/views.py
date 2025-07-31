@@ -16,7 +16,10 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
-from .models import CQUser
+
+from django.contrib.auth import get_user_model
+
+CQUser = get_user_model()
 
 
 class LoginView(DjangoLoginView):

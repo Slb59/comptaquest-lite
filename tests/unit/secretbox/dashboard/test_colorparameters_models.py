@@ -29,13 +29,22 @@ class ColorParameterTests(TestCase):
 
     def test_unique_combination_constraint(self):
         with self.assertRaises(IntegrityError):
-            ColorParameterFactory(
+            cp1 = ColorParameter(
                 priority="1-highest",
                 periodic="01-none",
                 place="partout",
                 category="01-organisation",
                 color="#123ABC",
             )
+            cp2 = ColorParameter(
+                priority="1-highest",
+                periodic="01-none",
+                place="partout",
+                category="01-organisation",
+                color="#123ABC",
+            )
+            cp1.save()
+            cp2.save()
 
     def test_invalid_hex_color_raises_validation_error(self):
         invalid_data = self.valid_data

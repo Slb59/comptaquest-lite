@@ -14,7 +14,10 @@ from secretbox.dashboard.choices import (
     PLACE_CHOICES,
     PRIORITY_CHOICES,
 )
-from secretbox.users.models import Member
+
+from django.contrib.auth import get_user_model
+
+Member = get_user_model()
 
 from .todo_model import Todo
 

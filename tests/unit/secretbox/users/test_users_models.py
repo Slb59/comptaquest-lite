@@ -2,8 +2,9 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.utils import dateformat, timezone
 
-from secretbox.users.models import Member
 from tests.factories.member import MemberFactory
+
+Member = get_user_model()
 
 
 class TestModelMember(TestCase):

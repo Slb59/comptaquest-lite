@@ -4,8 +4,8 @@ from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate
 
-from secretbox.dashboard.todo_model import Todo
 from tests.factories.member import MemberFactory
+from secretbox.dashboard.todo_model import Todo
 from tests.factories.todo import TodoFactory
 
 
@@ -24,7 +24,9 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         activate("fr")
         self.client = Client()
         self.user = MemberFactory(
-            email="test@test.com", password="password"
+            email="test@test.com", 
+            password="password", 
+            trigram="us1"
         )  # nosec: B106
         self.url = reverse("dashboard:add_todo")
 
