@@ -3,7 +3,7 @@ from datetime import date
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate
-
+from django.contrib.auth.models import Group
 from tests.factories.member import MemberFactory
 from secretbox.dashboard.todo_model import Todo
 from tests.factories.todo import TodoFactory
@@ -28,6 +28,8 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
             password="password", 
             trigram="us1"
         )  # nosec: B106
+        group = Group.objects.create(name="comptaquest_access")
+        self.user_with_group.groups.add(group)
         self.url = reverse("dashboard:add_todo")
 
     def test_redirect_if_not_logged_in(self):
@@ -96,6 +98,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
 
     def test_logged_in_user_can_access_update_form(self):
         self.client.force_login(self.user)
+
         response = self.client.get(self.url)
         assert response.status_code == 200
         assert "Nouvelle entrée" in response.content.decode()

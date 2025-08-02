@@ -6,11 +6,14 @@ from django_stubs_ext.db.models import TypedModelMeta
 
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES, STATE_CHOICES
 
+from django.contrib.auth import get_user_model
+
+Member = get_user_model()
 
 class AbstractAccount(models.Model):
 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        Member,
         on_delete=models.CASCADE,
         related_name="%(class)s_user_accounts",
         db_index=True,
@@ -58,7 +61,7 @@ class AbstractAccount(models.Model):
 
     created_date = models.DateTimeField(blank=True, null=True)
     created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        Member,
         on_delete=models.CASCADE,
         related_name="%(class)s_created_by",
         db_index=True,
