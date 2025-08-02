@@ -113,7 +113,7 @@ class TestTodoModel(TestCase):
         """Test that who choices are not valid"""
         with self.assertRaises(ValueError):
             self.todo.who.set(["invalid_user"])
-    
+
     def test_who_choices(self):
         """Test that who choices are valid"""
 

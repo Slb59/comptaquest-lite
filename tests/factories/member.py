@@ -1,6 +1,5 @@
 import factory
 import pytest
-
 from django.contrib.auth import get_user_model
 
 Member = get_user_model()

@@ -6,6 +6,7 @@ Contains optional fields allowing you to dynamically filter database objects.
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Column, Layout, Row
 from django import forms
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.dashboard.choices import (
@@ -14,8 +15,6 @@ from secretbox.dashboard.choices import (
     PLACE_CHOICES,
     PRIORITY_CHOICES,
 )
-
-from django.contrib.auth import get_user_model
 
 Member = get_user_model()
 

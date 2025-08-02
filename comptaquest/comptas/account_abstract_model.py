@@ -1,4 +1,4 @@
-from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import gettext_lazy as _
@@ -6,9 +6,8 @@ from django_stubs_ext.db.models import TypedModelMeta
 
 from .choices import ACCOUNT_CHOICES, BANK_CHOICES, STATE_CHOICES
 
-from django.contrib.auth import get_user_model
-
 Member = get_user_model()
+
 
 class AbstractAccount(models.Model):
 

@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
 from django.db import models
@@ -6,7 +7,6 @@ from django.utils import timezone
 from django_stubs_ext.db.models import TypedModelMeta
 
 from comptaquest.comptas.models.transaction import ExpenseTransaction, IncomeTransaction
-from django.contrib.auth import get_user_model
 
 Member = get_user_model()
 

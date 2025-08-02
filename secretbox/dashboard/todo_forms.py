@@ -6,11 +6,10 @@ Used for creating and updating objects via views
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Field, Layout
 from django import forms
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.form_helpers import action_buttons
-from django.conf import settings
-from django.contrib.auth import get_user_model
 
 Member = get_user_model()
 from .todo_model import Todo

@@ -7,8 +7,6 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
-from secretbox.users.models import CQUser as User
-
 from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY_CHOICES
 from .colorparameter_model import ColorParameter
 

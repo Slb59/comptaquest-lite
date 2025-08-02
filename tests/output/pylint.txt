@@ -1,10 +1,3 @@
-************* Module escapevault.models
-escapevault/models.py:116:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-escapevault/models.py:122:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-************* Module escapevault.views
-escapevault/views.py:92:18: W0212: Access to a protected member _repr_html_ of a client class (protected-access)
-************* Module escapevault.templatetags.filters
-escapevault/templatetags/filters.py:12:11: W0718: Catching too general exception Exception (broad-exception-caught)
 ************* Module sami.models
 sami/models.py:168:0: C0301: Line too long (121/100) (line-too-long)
 sami/models.py:174:0: C0301: Line too long (158/100) (line-too-long)
@@ -16,6 +9,8 @@ sami/models.py:10:0: R0904: Too many public methods (33/20) (too-many-public-met
 ************* Module sami.forms
 sami/forms.py:53:0: C0301: Line too long (179/100) (line-too-long)
 sami/forms.py:20:8: W5104: Use explicit fields instead of exclude in ModelForm (modelform-uses-exclude)
+************* Module comptaquest.comptas.filters
+comptaquest/comptas/filters.py:14:0: C0413: Import "from .choices import ACCOUNT_CHOICES, BANK_CHOICES" should be placed at the top of the module (wrong-import-position)
 ************* Module comptaquest.comptas.forms
 comptaquest/comptas/forms.py:53:8: W5104: Use explicit fields instead of exclude in ModelForm (modelform-uses-exclude)
 ************* Module comptaquest.comptas.admin
@@ -24,7 +19,7 @@ comptaquest/comptas/admin.py:3:0: W0401: Wildcard import account_investment_admi
 comptaquest/comptas/admin.py:2:0: W0614: Unused import(s) CurrentAccountAdmin, admin and CurrentAccount from wildcard import of account_current_admin (unused-wildcard-import)
 comptaquest/comptas/admin.py:3:0: W0614: Unused import(s) InvestmentAssetInline, InvestmentAccountAdmin, InvestmentAccount and InvestmentAsset from wildcard import of account_investment_admin (unused-wildcard-import)
 ************* Module comptaquest.comptas.account_abstract_model
-comptaquest/comptas/account_abstract_model.py:84:0: C0301: Line too long (102/100) (line-too-long)
+comptaquest/comptas/account_abstract_model.py:86:0: C0301: Line too long (102/100) (line-too-long)
 ************* Module comptaquest.comptas.views
 comptaquest/comptas/views.py:120:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 comptaquest/comptas/views.py:114:8: W0201: Attribute 'account_type' defined outside __init__ (attribute-defined-outside-init)
@@ -65,26 +60,23 @@ tests/unit/diarylab/test_diarylab_models.py:50:8: W0612: Unused variable 'other_
 tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:32:0: C0301: Line too long (114/100) (line-too-long)
 tests/unit/comptaquest/comptas/test_transfer_transaction_models.py:31:12: C2801: Unnecessarily calls dunder method __str__. Use str built-in function. (unnecessary-dunder-call)
 ************* Module tests.unit.secretbox.users.test_users_models
-tests/unit/secretbox/users/test_users_models.py:28:12: E1120: No value for argument 'email' in method call (no-value-for-parameter)
-tests/unit/secretbox/users/test_users_models.py:28:12: E1120: No value for argument 'password' in method call (no-value-for-parameter)
-tests/unit/secretbox/users/test_users_models.py:30:12: E1120: No value for argument 'password' in method call (no-value-for-parameter)
-tests/unit/secretbox/users/test_users_models.py:35:8: C0103: Variable name "User" doesn't conform to snake_case naming style (invalid-name)
+tests/unit/secretbox/users/test_users_models.py:36:8: C0103: Variable name "User" doesn't conform to snake_case naming style (invalid-name)
 ************* Module tests.unit.secretbox.dashboard.test_todo_models
-tests/unit/secretbox/dashboard/test_todo_models.py:306:9: W0511: Todo correspondant exactement (fixme)
+tests/unit/secretbox/dashboard/test_todo_models.py:307:9: W0511: Todo correspondant exactement (fixme)
 tests/unit/secretbox/dashboard/test_todo_models.py:25:16: W0612: Unused variable 'message' (unused-variable)
-tests/unit/secretbox/dashboard/test_todo_models.py:11:0: R0904: Too many public methods (23/20) (too-many-public-methods)
+tests/unit/secretbox/dashboard/test_todo_models.py:11:0: R0904: Too many public methods (24/20) (too-many-public-methods)
 ************* Module tests.unit.secretbox.dashboard.test_colorparameters_admin
 tests/unit/secretbox/dashboard/test_colorparameters_admin.py:35:0: C0301: Line too long (123/100) (line-too-long)
 ************* Module tests.unit.secretbox.dashboard.test_colorparameters_models
-tests/unit/secretbox/dashboard/test_colorparameters_models.py:49:0: C0301: Line too long (152/100) (line-too-long)
+tests/unit/secretbox/dashboard/test_colorparameters_models.py:58:0: C0301: Line too long (152/100) (line-too-long)
 ************* Module tests.integration.secretbox.test_users_urls
 tests/integration/secretbox/test_users_urls.py:59:4: C0103: Method name "test_login_GET" doesn't conform to snake_case naming style (invalid-name)
 tests/integration/secretbox/test_users_urls.py:64:4: C0103: Method name "test_profile_GET_authenticated" doesn't conform to snake_case naming style (invalid-name)
 tests/integration/secretbox/test_users_urls.py:69:4: C0103: Method name "test_profile_GET_unauthenticated" doesn't conform to snake_case naming style (invalid-name)
 ************* Module tests.integration.secretbox.test_dashboard_views
-tests/integration/secretbox/test_dashboard_views.py:13:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:17:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:124:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
+tests/integration/secretbox/test_dashboard_views.py:14:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:18:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:128:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
 ************* Module tests.factories.account
 tests/factories/account.py:4:0: E0401: Unable to import 'comptaquest.comptas.models.account' (import-error)
 tests/factories/account.py:4:0: E0611: No name 'account' in module 'comptaquest.comptas.models' (no-name-in-module)
@@ -101,21 +93,24 @@ secretbox/users/models.py:50:8: W0404: Reimport 'settings' (imported line 1) (re
 ************* Module secretbox.users.urls
 secretbox/users/urls.py:42:0: C0301: Line too long (107/100) (line-too-long)
 ************* Module secretbox.users.forms
-secretbox/users/forms.py:23:0: C0301: Line too long (103/100) (line-too-long)
-secretbox/users/forms.py:159:21: W0612: Unused variable 'created' (unused-variable)
+secretbox/users/forms.py:25:0: C0301: Line too long (103/100) (line-too-long)
+secretbox/users/forms.py:18:0: C0413: Import "from .models import MemberProfile" should be placed at the top of the module (wrong-import-position)
+secretbox/users/forms.py:161:21: W0612: Unused variable 'created' (unused-variable)
 ************* Module secretbox.users.mixins
 secretbox/users/mixins.py:19:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 ************* Module secretbox.users.signals
-secretbox/users/signals.py:8:24: W0613: Unused argument 'sender' (unused-argument)
+secretbox/users/signals.py:11:24: W0613: Unused argument 'sender' (unused-argument)
 ************* Module secretbox.users.apps
 secretbox/users/apps.py:14:8: W0611: Unused signals imported from  (unused-import)
 ************* Module secretbox.users.management.commands.list_users
 secretbox/users/management/commands/list_users.py:9:8: C0103: Variable name "User" doesn't conform to snake_case naming style (invalid-name)
 ************* Module secretbox.dashboard.todo_model
-secretbox/dashboard/todo_model.py:26:0: C0301: Line too long (101/100) (line-too-long)
-secretbox/dashboard/todo_model.py:113:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-secretbox/dashboard/todo_model.py:154:8: C0103: Variable name "PERIODIC_DAYS_MAPPING" doesn't conform to snake_case naming style (invalid-name)
-secretbox/dashboard/todo_model.py:209:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/todo_model.py:24:0: C0301: Line too long (101/100) (line-too-long)
+secretbox/dashboard/todo_model.py:111:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/todo_model.py:152:8: C0103: Variable name "PERIODIC_DAYS_MAPPING" doesn't conform to snake_case naming style (invalid-name)
+secretbox/dashboard/todo_model.py:207:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+************* Module secretbox.dashboard.filters
+secretbox/dashboard/filters.py:21:0: C0413: Import "from .todo_model import Todo" should be placed at the top of the module (wrong-import-position)
 ************* Module secretbox.dashboard.colorparameter_model
 secretbox/dashboard/colorparameter_model.py:49:0: C0301: Line too long (110/100) (line-too-long)
 secretbox/dashboard/colorparameter_model.py:41:4: E0211: Method 'get_color_parameter_coverage' has no argument (no-method-argument)
@@ -124,11 +119,12 @@ secretbox/dashboard/todo_views.py:72:4: R1705: Unnecessary "else" after "return"
 ************* Module secretbox.dashboard.admin
 secretbox/dashboard/admin.py:61:0: C0301: Line too long (107/100) (line-too-long)
 ************* Module secretbox.dashboard.todo_forms
-secretbox/dashboard/todo_forms.py:65:0: C0301: Line too long (112/100) (line-too-long)
+secretbox/dashboard/todo_forms.py:66:0: C0301: Line too long (112/100) (line-too-long)
+secretbox/dashboard/todo_forms.py:15:0: C0413: Import "from .todo_model import Todo" should be placed at the top of the module (wrong-import-position)
 ************* Module secretbox.dashboard.templatetags.__init__
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==secretbox.dashboard.contact_forms:[41:50]
-==secretbox.users.forms:[52:61]
+==secretbox.users.forms:[54:63]
             Submit(
                 "submit",
                 "Se connecter",
@@ -139,10 +135,9 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
     def clean(self):
         cleaned_data = super().clean() (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
-==comptaquest.comptas.filters:[26:33]
-==secretbox.dashboard.filters:[77:85]
+==comptaquest.comptas.filters:[27:34]
+==secretbox.dashboard.filters:[79:87]
         super().__init__(*args, **kwargs)
-
         self.helper = FormHelper()
         self.helper.form_method = "get"
         self.helper.form_class = "p-4 bg-gray-100 rounded mb-4"
@@ -153,7 +148,8 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
 ==diarylab.models:[37:45]
 ==sami.models:[145:152]
     )
-
+    # Foreign key to the user model
+    # Delete the diary entry if the user is deleted
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -161,12 +157,12 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
         db_index=True, (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==secretbox.dashboard.admin:[24:29]
-==secretbox.dashboard.todo_forms:[23:28]
-            "appointment",
-            "category",
-            "who",
-            "place",
-            "periodic", (duplicate-code)
+==secretbox.dashboard.todo_forms:[24:29]
+                    "appointment",
+                    "category",
+                    "who",
+                    "place",
+                    "periodic", (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==tests.unit.comptaquest.comptas.test_expense_transaction_models:[16:21]
 ==tests.unit.comptaquest.comptas.test_outgoingstransaction_models:[16:21]
@@ -175,27 +171,7 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
             account=self.account,
             category=CategoryCodificationFactory(),
             payment_method=PaymentCodificationFactory(), (duplicate-code)
-secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
-==comptaquest.comptas.account_abstract_model:[59:64]
-==comptaquest.comptas.models.outgoings:[58:63]
-    created_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name="%(class)s_created_by",
-        db_index=True, (duplicate-code)
-secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
-==escapevault.templatetags.filters:[4:13]
-==secretbox.tools.date_filters:[4:13]
-register = template.Library()
-
-
-@register.filter
-def parse_iso_date(value):
-    try:
-        return datetime.fromisoformat(value)
-    except Exception:
-        return value (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.67/10 (previous run: 9.37/10, +0.31)
+Your code has been rated at 9.72/10 (previous run: 9.72/10, +0.00)
 

@@ -3,7 +3,7 @@ Dashboard, edit, create, delete, and list views.
 """
 
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     LoginView as DjangoLoginView,
@@ -16,8 +16,6 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
-
-from django.contrib.auth import get_user_model
 
 CQUser = get_user_model()
 

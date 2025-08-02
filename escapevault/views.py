@@ -2,7 +2,6 @@
 Dashboard, edit, create, delete, and list views.
 """
 
-import folium
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
@@ -15,6 +14,7 @@ from django.views.generic import (
     TemplateView,
     UpdateView,
 )
+from folium import CustomIcon, Map, Marker, Popup
 
 from secretbox.users.mixins import GroupRequiredMixin
 
@@ -36,9 +36,7 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
         form = EscapeVaultFilterForm(self.request.GET or None)
 
         # Create a base map centered around a specific location
-        the_map = folium.Map(
-            location=[45.4769, 9.1516], zoom_start=5
-        )  # Centered on France
+        the_map = Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
 
         # Fetch all nomadic positions from the database
         positions = NomadePosition.objects.filter()
@@ -53,7 +51,7 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
         # Add markers for each position
         for position in positions:
 
-            icon = folium.CustomIcon(
+            icon = CustomIcon(
                 icon_image=position.get_category_image(),
                 icon_size=(50, 50),
                 icon_anchor=(0, 0),
@@ -81,14 +79,16 @@ class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
                 else:
                     tooltip_label = position.name
 
-                folium.Marker(
+                Marker(
                     location=[position.latitude, position.longitude],
-                    popup=folium.Popup(popup_html, max_width=250),
+                    popup=Popup(popup_html, max_width=250),
                     tooltip=tooltip_label,
                     icon=icon,
                 ).add_to(the_map)
 
         # Convert the map to HTML
+        # Folium has no public method to convert the map to HTML
+        # pylint: disable=protected-access
         the_map = the_map._repr_html_()
 
         context["title"] = _("EscapeVault Map")
