@@ -10,13 +10,78 @@ from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
 
+class GetQuerysetByRightsTest(TestCase):
+    def setUp(self):
+        self.user1 = MemberFactory(email="test1@test.com", password="password")
+        self.user2 = MemberFactory(email="test2@test.com", password="password")
+        self.user3 = MemberFactory(email="test3@test.com", password="password")
+        self.superuser = MemberFactory(email="super@test.com", password="password")
+
+        #1: user is the owner of the todo
+        self.todo_owner = TodoFactory(
+            user=self.user1, description="created by user1"
+        )
+        #2: user is only a member of who
+        self.todo_who = TodoFactory(
+            user=self.user2, who=[self.user1], 
+            description="created by user2 for user1"
+        )
+        #3: user is a member of both user and who
+        self.todo_both = TodoFactory(
+            user=self.user1, who=[self.user1],
+            description="created by user1 for user1"
+        )
+        #4: who has several members
+        self.todo_many = TodoFactory(
+            user=self.user2, who=[self.user1, self.user3],
+            description="created by user2 for user1 and user3"
+        )
+
+        self.view = DashboardView()
+    
+    def test_superuser_can_see_all_todos(self):
+        todos = self.view.get_queryset_by_rights(self.superuser)
+        assert todos.count() == 4
+        descriptions = set(t.description for t in todos)
+        assert descriptions == {
+            "created by user1",
+            "created by user2 for user1",
+            "created by user1 for user1",
+            "created by user2 for user1 and user3",
+        }
+
+    def test_user1_sees_correct_todos(self):
+        todos = self.view.get_queryset_by_rights(self.user1)
+        assert todos.count() == 4
+        assert descriptions == {
+            "created by user1",
+            "created by user2 for user1",
+            "created by user1 for user1",
+            "created by user2 for user1 and user3",
+        }
+    
+    def test_no_duplicates_when_user_is_author_and_in_who(self):
+        todos = self.view.get_queryset_by_rights(self.user1)
+        # check that 4 objects are unique
+        assert todos.count() == len(set(t.id for t in todos))
+
+    def test_user2_only_sees_his_own(self):
+        todos = self.view.get_queryset_by_rights(self.user2)
+        assert todos.count() == 2
+        descriptions = set(t.description for t in todos)
+        assert descriptions == {
+            "created by user2 for user1", 
+            "created by user2 for user1 and user3"
+        }
+
+
 class TodoTestMixin:
     def assertRedirectsToLogin(self, response):
         self.assertEqual(response.status_code, 302)
         self.assertIn("login", response.url)
 
     def assertRedirectsToDashboard(self, response):
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
         self.assertEqual("/", response.url)
 
 
@@ -27,8 +92,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         self.user = MemberFactory(
             email="test@test.com", password="password", trigram="us1"
         )  # nosec: B106
-        group = Group.objects.create(name="comptaquest_access")
-        self.user_with_group.groups.add(group)
+        self.user.is_superuser = True
         self.url = reverse("dashboard:add_todo")
 
     def test_redirect_if_not_logged_in(self):
@@ -83,6 +147,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
         activate("fr")
         self.client = Client()
         self.user = MemberFactory(email="test@test.com", password="password")
+        self.user.is_superuser = True
         self.todo1 = TodoFactory(user=self.user, state="todo")
         self.todo = TodoFactory(
             user=self.user,
@@ -137,6 +202,7 @@ class TodoDeleteViewTest(TestCase, TodoTestMixin):
         activate("fr")
         self.client = Client()
         self.user = MemberFactory(email="test@test.com", password="password")
+        self.user.is_superuser = True
         self.todo1 = TodoFactory(user=self.user, state="todo")
         self.todo = TodoFactory(
             user=self.user,

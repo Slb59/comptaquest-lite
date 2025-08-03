@@ -142,7 +142,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         """Filtrage selon les droits"""
         if user.is_superuser:
             return Todo.objects.all()
-        return Todo.objects.filter(Q(user=user) | Q(who=user))
+        return Todo.objects.filter(Q(user=user) | Q(who=user)).distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
