@@ -1,11 +1,11 @@
 from datetime import date
 
-from django.contrib.auth.models import Group
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate
 
 from secretbox.dashboard.todo_model import Todo
+from secretbox.dashboard.todo_views import DashboardView
 from tests.factories.member import MemberFactory
 from tests.factories.todo import TodoFactory
 
@@ -17,28 +17,25 @@ class GetQuerysetByRightsTest(TestCase):
         self.user3 = MemberFactory(email="test3@test.com", password="password")
         self.superuser = MemberFactory(email="super@test.com", password="password")
 
-        #1: user is the owner of the todo
-        self.todo_owner = TodoFactory(
-            user=self.user1, description="created by user1"
-        )
-        #2: user is only a member of who
+        # 1: user is the owner of the todo
+        self.todo_owner = TodoFactory(user=self.user1, description="created by user1")
+        # 2: user is only a member of who
         self.todo_who = TodoFactory(
-            user=self.user2, who=[self.user1], 
-            description="created by user2 for user1"
+            user=self.user2, who=[self.user1], description="created by user2 for user1"
         )
-        #3: user is a member of both user and who
+        # 3: user is a member of both user and who
         self.todo_both = TodoFactory(
-            user=self.user1, who=[self.user1],
-            description="created by user1 for user1"
+            user=self.user1, who=[self.user1], description="created by user1 for user1"
         )
-        #4: who has several members
+        # 4: who has several members
         self.todo_many = TodoFactory(
-            user=self.user2, who=[self.user1, self.user3],
-            description="created by user2 for user1 and user3"
+            user=self.user2,
+            who=[self.user1, self.user3],
+            description="created by user2 for user1 and user3",
         )
 
         self.view = DashboardView()
-    
+
     def test_superuser_can_see_all_todos(self):
         todos = self.view.get_queryset_by_rights(self.superuser)
         assert todos.count() == 4
@@ -53,13 +50,14 @@ class GetQuerysetByRightsTest(TestCase):
     def test_user1_sees_correct_todos(self):
         todos = self.view.get_queryset_by_rights(self.user1)
         assert todos.count() == 4
+        descriptions = set(t.description for t in todos)
         assert descriptions == {
             "created by user1",
             "created by user2 for user1",
             "created by user1 for user1",
             "created by user2 for user1 and user3",
         }
-    
+
     def test_no_duplicates_when_user_is_author_and_in_who(self):
         todos = self.view.get_queryset_by_rights(self.user1)
         # check that 4 objects are unique
@@ -70,8 +68,8 @@ class GetQuerysetByRightsTest(TestCase):
         assert todos.count() == 2
         descriptions = set(t.description for t in todos)
         assert descriptions == {
-            "created by user2 for user1", 
-            "created by user2 for user1 and user3"
+            "created by user2 for user1",
+            "created by user2 for user1 and user3",
         }
 
 

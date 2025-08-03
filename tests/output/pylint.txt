@@ -1,10 +1,7 @@
 ************* Module sami.models
-sami/models.py:168:0: C0301: Line too long (121/100) (line-too-long)
-sami/models.py:174:0: C0301: Line too long (158/100) (line-too-long)
-sami/models.py:218:0: C0301: Line too long (144/100) (line-too-long)
-sami/models.py:224:0: C0301: Line too long (128/100) (line-too-long)
-sami/models.py:230:0: C0301: Line too long (126/100) (line-too-long)
-sami/models.py:263:4: C0103: Attribute name "Outsidetime_description" doesn't conform to snake_case naming style (invalid-name)
+sami/models.py:221:0: C0301: Line too long (144/100) (line-too-long)
+sami/models.py:227:0: C0301: Line too long (128/100) (line-too-long)
+sami/models.py:233:0: C0301: Line too long (126/100) (line-too-long)
 sami/models.py:10:0: R0904: Too many public methods (33/20) (too-many-public-methods)
 ************* Module sami.forms
 sami/forms.py:53:0: C0301: Line too long (179/100) (line-too-long)
@@ -74,9 +71,10 @@ tests/integration/secretbox/test_users_urls.py:59:4: C0103: Method name "test_lo
 tests/integration/secretbox/test_users_urls.py:64:4: C0103: Method name "test_profile_GET_authenticated" doesn't conform to snake_case naming style (invalid-name)
 tests/integration/secretbox/test_users_urls.py:69:4: C0103: Method name "test_profile_GET_unauthenticated" doesn't conform to snake_case naming style (invalid-name)
 ************* Module tests.integration.secretbox.test_dashboard_views
-tests/integration/secretbox/test_dashboard_views.py:14:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:18:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:128:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
+tests/integration/secretbox/test_dashboard_views.py:13:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
+tests/integration/secretbox/test_dashboard_views.py:77:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:81:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:191:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
 ************* Module tests.factories.account
 tests/factories/account.py:4:0: E0401: Unable to import 'comptaquest.comptas.models.account' (import-error)
 tests/factories/account.py:4:0: E0611: No name 'account' in module 'comptaquest.comptas.models' (no-name-in-module)
@@ -158,11 +156,11 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==secretbox.dashboard.admin:[24:29]
 ==secretbox.dashboard.todo_forms:[24:29]
-                    "appointment",
-                    "category",
-                    "who",
-                    "place",
-                    "periodic", (duplicate-code)
+            "appointment",
+            "category",
+            "who",
+            "place",
+            "periodic", (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==tests.unit.comptaquest.comptas.test_expense_transaction_models:[16:21]
 ==tests.unit.comptaquest.comptas.test_outgoingstransaction_models:[16:21]
@@ -173,5 +171,5 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
             payment_method=PaymentCodificationFactory(), (duplicate-code)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.72/10 (previous run: 9.72/10, +0.00)
+Your code has been rated at 9.73/10 (previous run: 9.72/10, +0.01)
 
