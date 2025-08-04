@@ -50,7 +50,9 @@ class SamiMetrics:
 
     @property
     def total_sami(self):
-        return self.sami.total_sleep
-        +self.sami.total_food
-        +self.sami.total_move
-        +self.sami.total_idea
+        return (
+            self.total_sleep
+            +self.total_food
+            +self.total_move
+            +self.total_idea
+        )

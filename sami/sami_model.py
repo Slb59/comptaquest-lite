@@ -4,7 +4,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
-from secretbox.tools.models import get_now_date
+from secretbox.tools.date_tools import get_now_date
+from secretbox.tools.models_tools import bounded_integer_field
 
 
 class Sami(models.Model):
@@ -66,14 +67,6 @@ class Sami(models.Model):
         db_index=True,
     )
 
-    def bounded_integer_field(
-        min_value: int, max_value: int, help_text: str, default=0
-    ):
-        return models.IntegerField(
-            validators=[MinValueValidator(min_value), MaxValueValidator(max_value)],
-            help_text=_(help_text),
-            default=default,
-        )
 
     @property
     def metrics(self):

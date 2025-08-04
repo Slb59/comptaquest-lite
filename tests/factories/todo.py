@@ -11,7 +11,7 @@ from secretbox.dashboard.choices import (
     PRIORITY_CHOICES,
 )
 from secretbox.dashboard.todo_model import Todo
-from secretbox.tools.models import get_now_date
+from secretbox.tools.date_tools import get_now_date
 
 from .member import MemberFactory
 

@@ -10,7 +10,7 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
-from .models import Sami
+from .sami_model import Sami
 
 
 class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
