@@ -2,9 +2,10 @@
 Dashboard, edit, create, delete, and list views.
 """
 
+import logging
+
 from datetime import date
 
-# from crispy_forms.layout import Field
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
@@ -20,6 +21,8 @@ from .filters import TodoFilterForm
 from .todo_forms import TodoForm
 from .todo_model import Todo
 
+
+logger = logging.getLogger(__name__)
 
 @login_required
 @require_GET
@@ -139,7 +142,11 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return todos
 
     def get_queryset_by_rights(self, user):
-        """Filtrage selon les droits"""
+        """Filtering by rights"""
+        logger.info(
+            _("Recherche dans Dashboard get_queryset_by_rights par l'utilisateur %s"), 
+            user
+        )
         if user.is_superuser:
             return Todo.objects.all()
         return Todo.objects.filter(Q(user=user) | Q(who=user)).distinct()

@@ -3,6 +3,7 @@ from datetime import date
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate
+from django.utils.translation import gettext_lazy as _
 
 from secretbox.dashboard.todo_model import Todo
 from secretbox.dashboard.todo_views import DashboardView
@@ -16,6 +17,7 @@ class GetQuerysetByRightsTest(TestCase):
         self.user2 = MemberFactory(email="test2@test.com", password="password")
         self.user3 = MemberFactory(email="test3@test.com", password="password")
         self.superuser = MemberFactory(email="super@test.com", password="password")
+        self.superuser.is_superuser = True
 
         # 1: user is the owner of the todo
         self.todo_owner = TodoFactory(user=self.user1, description="created by user1")
@@ -39,6 +41,7 @@ class GetQuerysetByRightsTest(TestCase):
     def test_superuser_can_see_all_todos(self):
         todos = self.view.get_queryset_by_rights(self.superuser)
         assert todos.count() == 4
+
         descriptions = set(t.description for t in todos)
         assert descriptions == {
             "created by user1",
@@ -79,8 +82,15 @@ class TodoTestMixin:
         self.assertIn("login", response.url)
 
     def assertRedirectsToDashboard(self, response):
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual("/", response.url)
+        if hasattr(response, "url"):
+                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.url, "/")
+        else:
+            # Debug
+            print("Form errors:", response.context.get("form").errors)
+            raise AssertionError(
+                _("Pas de redirection : le formulaire a probablement échoué")
+            )
 
 
 class TodoCreateViewTest(TestCase, TodoTestMixin):
@@ -110,7 +120,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
             "state": "todo",
             "appointment": "rdv",
             "category": "01-organisation",
-            "who": "SLB",
+            "who": [self.user],
             "place": "cantin",
             "periodic": "02-everyday",
             "planned_date": "2025-06-10",
