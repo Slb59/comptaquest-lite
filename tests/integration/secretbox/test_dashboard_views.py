@@ -83,7 +83,7 @@ class TodoTestMixin:
 
     def assertRedirectsToDashboard(self, response):
         if hasattr(response, "url"):
-                self.assertEqual(response.status_code, 200)
+                self.assertEqual(response.status_code, 302)
                 self.assertEqual(response.url, "/")
         else:
             # Debug
@@ -115,30 +115,39 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
 
     def test_create_todo_valid_post(self):
         self.client.force_login(self.user)
+
+        # build a todo without saving it
+        todo = TodoFactory.build(user=self.user)
+
         data = {
-            "description": "Faire le ménage",
-            "state": "todo",
-            "appointment": "rdv",
-            "category": "01-organisation",
-            "who": [self.user],
-            "place": "cantin",
-            "periodic": "02-everyday",
-            "planned_date": "2025-06-10",
-            "priority": "4-normal",
-            "duration": 30,
-            "note": "À faire rapidement",
+            "description": todo.description,
+            "state": todo.state,
+            "appointment": todo.appointment,
+            "category": todo.category,
+            "who": [self.user.pk],
+            "place": todo.place,
+            "periodic": todo.periodic,
+            "planned_date": todo.planned_date.strftime("%Y-%m-%d"),
+            "priority": todo.priority,
+            "duration": todo.duration,
+            "note": todo.note,
         }
+
         response = self.client.post(self.url, data)
         self.assertRedirectsToDashboard(response)
         assert Todo.objects.filter(
-            description="Faire le ménage", user=self.user
+            description=todo.description, user=self.user
         ).exists()
 
     def test_create_todo_missing_required_field(self):
         self.client.force_login(self.user)
+
+        # build a todo without saving it
+        todo = TodoFactory.build(user=self.user)
+
         data = {
-            # "description" est requis mais absent ici
-            "state": "todo",
+            # "description" is required but absent here
+            "state": todo.state,
         }
         response = self.client.post(self.url, data)
         assert response.status_code == 200  # Form is shown again
