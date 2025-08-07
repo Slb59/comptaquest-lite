@@ -95,6 +95,10 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+    def form_invalid(self, form):
+        logger.warning(f"Form invalid:{self.__class__.__name__} {form.errors}")
+        return super().form_invalid(form)
 
 
 class DashboardView(LoginRequiredMixin, TemplateView):

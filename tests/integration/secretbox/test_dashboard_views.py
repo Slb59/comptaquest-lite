@@ -1,3 +1,4 @@
+import logging
 from datetime import date
 
 from django.test import Client, TestCase
@@ -124,7 +125,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
             "state": todo.state,
             "appointment": todo.appointment,
             "category": todo.category,
-            "who": [self.user.pk],
+            "who": [],
             "place": todo.place,
             "periodic": todo.periodic,
             "planned_date": todo.planned_date.strftime("%Y-%m-%d"),
@@ -134,6 +135,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
         }
 
         response = self.client.post(self.url, data)
+
         self.assertRedirectsToDashboard(response)
         assert Todo.objects.filter(
             description=todo.description, user=self.user

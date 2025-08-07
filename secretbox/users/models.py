@@ -105,6 +105,9 @@ class MemberProfile(BaseUserProfile):
 class MemberManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(usertype=CQUser.UserTypes.MEMBER)
+    
+    def get_by_natural_key(self, email):
+        return self.get(email=email)
 
 
 class Member(CQUser):
@@ -112,7 +115,7 @@ class Member(CQUser):
     class Meta(TypedModelMeta):
         proxy = True
 
-    member = MemberManager()
+    objects = MemberManager()
 
     @property
     def profile(self):

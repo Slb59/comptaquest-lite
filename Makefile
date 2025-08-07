@@ -72,3 +72,4 @@ loaddata-test:
 	uv run manage.py loaddata secretbox/tools/loaddata/usergroup.json --settings=config.settings.test
 	uv run manage.py loaddata secretbox/tools/loaddata/default_users.json --settings=config.settings.test
 	uv run manage.py set_default_password --settings=config.settings.test
+
