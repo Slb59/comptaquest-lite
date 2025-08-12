@@ -1,7 +1,6 @@
 # secretbox.dashboard.models.py
 from datetime import date, timedelta
 
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db import models
@@ -23,8 +22,10 @@ class Todo(models.Model):
     """
     Model representing a task to be accomplished in the system.
 
-    This model allows you to manage tasks with their status, priority, category and assignment.
-    It also includes the ability to schedule recurring tasks and associate them with a specific user.
+    This model allows you to manage tasks
+    with their status, priority, category and assignment.
+    It also includes the ability to schedule recurring tasks
+    and associate them with a specific user.
 
     Attributs:
         state (CharField): État de la tâche avec les choix suivants :
@@ -79,9 +80,7 @@ class Todo(models.Model):
         ("festival", "Fête"),
     ]
     user = models.ForeignKey(
-        User, 
-        on_delete=models.CASCADE,
-        related_name="created_todos"
+        User, on_delete=models.CASCADE, related_name="created_todos"
     )
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
     duration = models.IntegerField(
@@ -94,11 +93,7 @@ class Todo(models.Model):
     category = models.CharField(
         max_length=20, choices=CATEGORY_CHOICES, default="01-organisation"
     )
-    who = models.ManyToManyField(
-        User, 
-        related_name="assigned_todos", 
-        blank=True
-    )
+    who = models.ManyToManyField(User, related_name="assigned_todos", blank=True)
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(
         max_length=20, choices=PERIODIC_CHOICES, default="partout"
@@ -119,8 +114,7 @@ class Todo(models.Model):
             return False, _("Cette tâche est déjà terminée")
         if self.state == "cancel":
             return False, _("Cette tâche est déjà annulée")
-        else:
-            return True, ""
+        return True, ""
 
     def validate_element(self, new_date, date_to_validate=date.today()):
         """
@@ -218,8 +212,7 @@ class Todo(models.Model):
             self.done_date = date_of_done
             self.save()
             return True
-        else:
-            return False
+        return False
 
     def get_planned_date_display(self):
         """

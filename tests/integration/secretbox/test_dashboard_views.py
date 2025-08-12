@@ -1,10 +1,8 @@
-import logging
 from datetime import date
 
 from django.test import Client, TestCase
 from django.urls import reverse
-from django.utils.translation import activate
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import activate, gettext_lazy as _
 
 from secretbox.dashboard.todo_model import Todo
 from secretbox.dashboard.todo_views import DashboardView
@@ -84,8 +82,8 @@ class TodoTestMixin:
 
     def assertRedirectsToDashboard(self, response):
         if hasattr(response, "url"):
-                self.assertEqual(response.status_code, 302)
-                self.assertEqual(response.url, "/")
+            self.assertEqual(response.status_code, 302)
+            self.assertEqual(response.url, "/")
         else:
             # Debug
             print("Form errors:", response.context.get("form").errors)
@@ -184,25 +182,26 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
 
         response = self.client.get(self.url)
         assert response.status_code == 200
-        assert "Nouvelle entrée" in response.content.decode()
+        assert "Modifier l'entrée" in response.content.decode()
 
     def test_update_todo_valid_post(self):
         self.client.force_login(self.user)
+        data = {
+            "description": "Updated description",
+            "state": self.todo.state,
+            "category": self.todo.category,
+            "who": self.todo.who,
+            "place": self.todo.place,
+            "priority": self.todo.priority,
+            "periodic": self.todo.periodic,
+            "planned_date": self.todo.planned_date,
+            "appointment": self.todo.appointment,
+            "duration": self.todo.duration,
+            "note": self.todo.note or "",
+        }
         response = self.client.post(
             self.url,
-            {
-                "description": "Updated description",
-                "state": self.todo.state,
-                "category": self.todo.category,
-                "who": self.todo.who,
-                "place": self.todo.place,
-                "priority": self.todo.priority,
-                "periodic": self.todo.periodic,
-                "planned_date": self.todo.planned_date,
-                "appointment": self.todo.appointment,
-                "duration": self.todo.duration,
-                "note": self.todo.note or "",
-            },
+            data,
             follow=True,
         )
         assert response.status_code == 200

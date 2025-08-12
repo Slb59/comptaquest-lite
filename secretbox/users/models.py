@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import models as auth_models
+from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
@@ -47,12 +48,11 @@ class CQUser(auth_models.AbstractUser):
 
     def request_app_modification(self, requested_apps):
         """Envoie un mail à l'administrateur pour demander la modification des apps"""
-        from django.conf import settings
-        from django.core.mail import send_mail
 
         subject = f"Demande de modification d'applications pour {self.trigram}"
         message = f"""
-        L'utilisateur {self.trigram} ({self.email}) a demandé une modification de ses applications autorisées.
+        L'utilisateur {self.trigram} ({self.email})
+        a demandé une modification de ses applications autorisées.
         Applications demandées : {', '.join(requested_apps)}
 
         Veuillez traiter cette demande via l'interface d'administration.
@@ -105,7 +105,7 @@ class MemberProfile(BaseUserProfile):
 class MemberManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(usertype=CQUser.UserTypes.MEMBER)
-    
+
     def get_by_natural_key(self, email):
         return self.get(email=email)
 

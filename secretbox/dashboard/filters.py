@@ -16,9 +16,9 @@ from secretbox.dashboard.choices import (
     PRIORITY_CHOICES,
 )
 
-Member = get_user_model()
-
 from .todo_model import Todo
+
+Member = get_user_model()
 
 
 class TodoFilterForm(forms.Form):

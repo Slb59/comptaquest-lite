@@ -40,7 +40,7 @@ class TodoForm(forms.ModelForm):
         self.fields["duration"].label = _("Durée")
         self.fields["description"].label = _("Description")
         self.fields["appointment"].label = _("Rdv")
-        self.fields["category"].label = _("Catégorie")     
+        self.fields["category"].label = _("Catégorie")
         self.fields["who"].label = _("Personnes")
         self.fields["place"].label = _("Lieu")
         self.fields["periodic"].label = _("Fréquence")
@@ -50,8 +50,7 @@ class TodoForm(forms.ModelForm):
         # Resize the duration field
         self.fields["duration"].widget.field_class = "w-full sm:w-[90px]"
         self.fields["who"].widget = forms.CheckboxSelectMultiple()
-        
-        
+
         print(user)
         if instance and user and instance.can_edit_limited(user):
             for name, field in self.fields.items():

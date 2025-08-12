@@ -73,7 +73,8 @@ class Transaction(models.Model):
         date_pointed (DateTimeField): The date the transaction was reconciled or pointed.
         description (TextField): A brief description or details about the transaction.
         updatable (BooleanField): Indicates whether the transaction can be updated.
-        transaction_type (CharField): Specifies the type of transaction (Expense, Income, Transfer, Outgoings).
+        transaction_type (CharField):
+        Specifies the type of transaction (Expense, Income, Transfer, Outgoings).
 
     Usage:
         # Normal transaction
@@ -91,7 +92,8 @@ class Transaction(models.Model):
             print("Cannot delete - one or both transactions are pointed")
 
         # To query only active transactions
-        active_transactions = ExpenseTransaction.objects.filter(status=Transaction.TransactionStatus.ACTIVE)
+        active_transactions =
+        ExpenseTransaction.objects.filter(status=Transaction.TransactionStatus.ACTIVE)
     """
 
     class TransactionType(models.TextChoices):
@@ -238,7 +240,8 @@ class TransferTransaction(Transaction, Transfer):
         ]
 
     def __str__(self):
-        return f"Transfer {self.date_transaction}-{self.amount}: {self.account}->{self.link_account}"
+        transfer_title = f"Transfer {self.date_transaction}-{self.amount}"
+        return f"{transfer_title}: {self.account}->{self.link_account}"
 
     def save(self, *args, **kwargs):
         # Check if this is a new transaction without a link

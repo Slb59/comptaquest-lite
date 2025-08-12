@@ -12,9 +12,12 @@ class OutgoingsTransaction(models.Model):
     Represents a transaction associated with recurring outgoings.
 
     Attributes:
-        last_transaction (ForeignKey): A reference to the last transaction in the outgoing sequence.
-        previous_transaction (ForeignKey): A reference to the previous transaction in the outgoing sequence.
-        outgoings_transaction_type (CharField): Specifies the type of the outgoing transaction (Expense, Income, or Transfer).
+        last_transaction (ForeignKey):
+        A reference to the last transaction in the outgoing sequence.
+        previous_transaction (ForeignKey):
+        A reference to the previous transaction in the outgoing sequence.
+        outgoings_transaction_type (CharField):
+        Specifies the type of the outgoing transaction (Expense, Income, or Transfer).
     """
 
     class OutgoingsTransactionType(models.TextChoices):
@@ -42,8 +45,10 @@ class OutgoingsTransaction(models.Model):
         Validates the integrity of the OutgoingsTransaction instance.
 
         Ensures that:
-        - `last_transaction` and `previous_transaction` do not reference the same object as `self`.
-        - Circular references are prevented in the `last_transaction` and `previous_transaction` chains.
+        - `last_transaction` and `previous_transaction`
+        do not reference the same object as `self`.
+        - Circular references are prevented in the
+        `last_transaction` and `previous_transaction` chains.
 
         Raises:
             ValidationError: If any validation check fails.

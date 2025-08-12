@@ -1,11 +1,12 @@
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
 from secretbox.tools.date_tools import get_now_date
 from secretbox.tools.models_tools import bounded_integer_field
+
+from .descriptions import SAMI_DESCRIPTIONS
 
 
 class Sami(models.Model):
@@ -67,7 +68,6 @@ class Sami(models.Model):
         db_index=True,
     )
 
-
     @property
     def metrics(self):
         from .samimetrics_model import SamiMetrics
@@ -76,6 +76,9 @@ class Sami(models.Model):
 
     def __str__(self):
         return f"Sami data {self.date}"
+
+    def get_description(self, field: str) -> str:
+        return SAMI_DESCRIPTIONS.get(field, "")
 
     class Meta(TypedModelMeta):
         verbose_name = _("Sami")

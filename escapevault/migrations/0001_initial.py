@@ -2,8 +2,9 @@
 
 import django.core.validators
 import django_countries.fields
-import escapevault.models
 from django.db import migrations, models
+
+import escapevault.models
 
 
 class Migration(migrations.Migration):

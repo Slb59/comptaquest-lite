@@ -3,7 +3,6 @@ Dashboard, edit, create, delete, and list views.
 """
 
 import logging
-
 from datetime import date
 
 from django.contrib.auth.decorators import login_required
@@ -18,12 +17,11 @@ from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import CreateView, TemplateView, UpdateView, View
 
 from .filters import TodoFilterForm
-
-from .todo_model import Todo
 from .todo_forms import TodoForm
-
+from .todo_model import Todo
 
 logger = logging.getLogger(__name__)
+
 
 @login_required
 @require_GET
@@ -95,7 +93,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         todo = form.save(commit=False)
-        todo.user = self.request.user        
+        todo.user = self.request.user
         todo.save()
 
         # Afficher les assignés
@@ -103,10 +101,9 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
         assignees = todo.who.all()
         print(f"Assignés: {[user.trigram for user in assignees]}")
         todo.save()
-        
+
         return super().form_valid(form)
-        
-    
+
     def form_invalid(self, form):
         logger.warning(f"Form invalid:{self.__class__.__name__} {form.errors}")
         return super().form_invalid(form)
@@ -115,6 +112,7 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
         kwargs = super().get_form_kwargs()
         kwargs["user"] = self.request.user
         return kwargs
+
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard/dashboard.html"
@@ -163,8 +161,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
     def get_queryset_by_rights(self, user):
         """Filtering by rights"""
         logger.info(
-            _("Recherche dans Dashboard get_queryset_by_rights par l'utilisateur %s"), 
-            user
+            _("Recherche dans Dashboard get_queryset_by_rights par l'utilisateur %s"),
+            user,
         )
         if user.is_superuser:
             return Todo.objects.all()

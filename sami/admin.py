@@ -104,20 +104,25 @@ class SamiAdmin(admin.ModelAdmin):
 
     def get_total_sleep(self, obj):
         return obj.metrics.total_sleep
+
     get_total_sleep.short_description = _("Total Sommeil")
 
     def get_total_food(self, obj):
         return obj.metrics.total_food
+
     get_total_food.short_description = _("Total Alimentation")
 
     def get_total_move(self, obj):
         return obj.metrics.total_move
+
     get_total_move.short_description = _("Total Mouvement")
 
     def get_total_idea(self, obj):
         return obj.metrics.total_idea
+
     get_total_idea.short_description = _("Total Idées")
 
     def get_total_sami(self, obj):
         return obj.metrics.total_sami
+
     get_total_sami.short_description = _("Total Sami")

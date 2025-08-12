@@ -16,7 +16,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Utilisateur {email} créé"))
         else:
             self.stdout.write(self.style.WARNING(f"L'utilisateur {email} existe déjà."))
-        
+
         # test user
         email = "test.user@test.com"
         password = "motdepasse"
@@ -26,4 +26,3 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Utilisateur {email} créé"))
         else:
             self.stdout.write(self.style.WARNING(f"L'utilisateur {email} existe déjà."))
-        

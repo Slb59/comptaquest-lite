@@ -17,7 +17,33 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
 
     class Meta:
         model = Sami
-        exclude = [""]
+        fields = [
+            "date",
+            "weight",
+            "bedtime",
+            "wakeup",
+            "nonstop",
+            "energy",
+            "naptime",
+            "phone",
+            "reading",
+            "fruits",
+            "vegetables",
+            "meals",
+            "desserts",
+            "sugardrinks",
+            "nosugardrinks",
+            "homework",
+            "garden",
+            "outsidetime",
+            "endurancesport",
+            "yogasport",
+            "videogames",
+            "papergames",
+            "administrative",
+            "computer",
+            "youtube",
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

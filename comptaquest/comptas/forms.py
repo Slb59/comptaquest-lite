@@ -50,7 +50,7 @@ PortfolioFormSet = inlineformset_factory(
 class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
     class Meta:
         model = AbstractAccount
-        exclude = ["account_type", "created_at", "created_by"]
+        fields = ["name", "bank_name", "pointed_date"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
