@@ -125,7 +125,7 @@ class TodoCreateViewTest(TestCase, TodoTestMixin):
             "state": todo.state,
             "appointment": todo.appointment,
             "category": todo.category,
-            "who": [],
+            "who": [self.user.pk],
             "place": todo.place,
             "periodic": todo.periodic,
             "planned_date": todo.planned_date.strftime("%Y-%m-%d"),

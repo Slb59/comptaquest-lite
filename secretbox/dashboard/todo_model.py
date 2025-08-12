@@ -2,6 +2,7 @@
 from datetime import date, timedelta
 
 from django.conf import settings
+from django.contrib.auth import get_user_model
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 from django.db import models
 from django.db.models import Q
@@ -9,6 +10,8 @@ from django.utils.translation import gettext_lazy as _
 
 from .choices import CATEGORY_CHOICES, PERIODIC_CHOICES, PLACE_CHOICES, PRIORITY_CHOICES
 from .colorparameter_model import ColorParameter
+
+User = get_user_model()
 
 HEX_COLOR_VALIDATOR = RegexValidator(
     regex=r"^#[0-9A-Fa-f]{6}$",
@@ -75,7 +78,11 @@ class Todo(models.Model):
         ("birthday", "Anniversaire"),
         ("festival", "Fête"),
     ]
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        User, 
+        on_delete=models.CASCADE,
+        related_name="created_todos"
+    )
     state = models.CharField(max_length=20, choices=STATE_CHOICES, default="todo")
     duration = models.IntegerField(
         default=30, validators=[MinValueValidator(10), MaxValueValidator(800)]
@@ -88,7 +95,9 @@ class Todo(models.Model):
         max_length=20, choices=CATEGORY_CHOICES, default="01-organisation"
     )
     who = models.ManyToManyField(
-        settings.AUTH_USER_MODEL, related_name="todos", blank=True
+        User, 
+        related_name="assigned_todos", 
+        blank=True
     )
     place = models.CharField(max_length=20, choices=PLACE_CHOICES, default="partout")
     periodic = models.CharField(

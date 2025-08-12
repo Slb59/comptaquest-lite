@@ -11,8 +11,9 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.form_helpers import action_buttons
 
-Member = get_user_model()
 from .todo_model import Todo
+
+Member = get_user_model()
 
 
 class TodoForm(forms.ModelForm):
@@ -39,23 +40,19 @@ class TodoForm(forms.ModelForm):
         self.fields["duration"].label = _("Durée")
         self.fields["description"].label = _("Description")
         self.fields["appointment"].label = _("Rdv")
-        self.fields["category"].label = _("Catégorie")
-        self.fields["who"].queryset = Member.objects.order_by("trigram")
-        self.fields["who"].widget = forms.SelectMultiple(
-            attrs={"class": "form-control"}
-        )
+        self.fields["category"].label = _("Catégorie")     
         self.fields["who"].label = _("Personnes")
         self.fields["place"].label = _("Lieu")
         self.fields["periodic"].label = _("Fréquence")
 
         # Resize the state field
-        # self.fields["state"].widget.field_class="w-full sm:w-[150px]"
-        # Field('state', css_id="custom_state_id")
         Field("state", wrapper_class="w-full sm:w-[150px]")
         # Resize the duration field
-        Field("state", wrapper_class="w-full sm:w-[90px]")
         self.fields["duration"].widget.field_class = "w-full sm:w-[90px]"
-
+        self.fields["who"].widget = forms.CheckboxSelectMultiple()
+        
+        
+        print(user)
         if instance and user and instance.can_edit_limited(user):
             for name, field in self.fields.items():
                 if name not in ["state", "priority"]:

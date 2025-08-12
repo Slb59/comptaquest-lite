@@ -18,8 +18,9 @@ from django.views.decorators.http import require_GET, require_POST
 from django.views.generic import CreateView, TemplateView, UpdateView, View
 
 from .filters import TodoFilterForm
-from .todo_forms import TodoForm
+
 from .todo_model import Todo
+from .todo_forms import TodoForm
 
 
 logger = logging.getLogger(__name__)
@@ -93,13 +94,27 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        todo = form.save(commit=False)
+        todo.user = self.request.user        
+        todo.save()
+
+        # Afficher les assignés
+        todo.who.add(self.request.user)
+        assignees = todo.who.all()
+        print(f"Assignés: {[user.trigram for user in assignees]}")
+        todo.save()
+        
         return super().form_valid(form)
+        
     
     def form_invalid(self, form):
         logger.warning(f"Form invalid:{self.__class__.__name__} {form.errors}")
         return super().form_invalid(form)
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
 
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = "dashboard/dashboard.html"
@@ -190,10 +205,6 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
     form_class = TodoForm
     template_name = "dashboard/add_todo.html"
     success_url = reverse_lazy("home")
-
-    def get_queryset(self):
-        user = self.request.user
-        return Todo.objects.filter(Q(user=user) | Q(who=user))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
