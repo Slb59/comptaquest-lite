@@ -89,7 +89,6 @@ STATICFILES_FINDERS = [
 ]
 
 TAILWIND_APP_NAME = "theme"
-NPM_BIN_PATH = env("NPM_BIN_PATH")
 
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # Pour le développement
