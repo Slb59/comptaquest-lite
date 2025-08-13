@@ -54,6 +54,10 @@ jobs:
           uv run isort . --check --diff
           uv run black . --check
           uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
+      - name: Run pylint
+        env:
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        run: |
           uv run pylint $(git ls-files '*.py') --fail-under=9 --ignore=migrations, venv, tests/output > tests/output/pylint.txt
 
  
