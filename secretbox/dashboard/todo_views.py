@@ -82,7 +82,7 @@ def todo_mark_done(request, pk):
 class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     form_class = TodoForm
-    template_name = "dashboard/add_todo.html"
+    template_name = "dashboard/add_template.html"
     success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
@@ -201,7 +201,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     form_class = TodoForm
-    template_name = "dashboard/add_todo.html"
+    template_name = "dashboard/add_template.html"
     success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):

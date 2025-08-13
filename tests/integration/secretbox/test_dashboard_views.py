@@ -182,6 +182,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
 
         response = self.client.get(self.url)
         assert response.status_code == 200
+        print(response.content.decode())
         assert "Modifier l'entrée" in response.content.decode()
 
     def test_update_todo_valid_post(self):
