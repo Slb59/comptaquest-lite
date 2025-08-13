@@ -66,7 +66,15 @@ class DiaryEntryAdmin(admin.ModelAdmin):
 
         # Data
         for entry in queryset:
-            writer.writerow([entry.date, entry.user.username, entry.content, entry.created_at, entry.updated_at])
+            writer.writerow(
+                [
+                    entry.date,
+                    entry.user.username,
+                    entry.content,
+                    entry.created_at,
+                    entry.updated_at,
+                ]
+            )
 
         response = HttpResponse(
             output.getvalue(),

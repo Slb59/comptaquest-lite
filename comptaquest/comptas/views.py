@@ -1,21 +1,44 @@
+"""Views for the comptaquest.comptas application.
+Dashboard, edit, create, delete, and list views.
+"""
+
 import locale
 from datetime import datetime
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse_lazy, reverse
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DeleteView, DetailView, FormView,
-                                  ListView, UpdateView, TemplateView)
 from django.shortcuts import redirect
-from .forms import (CurrentAccountForm, InvestmentAccountForm, OutgoingsForm,
-                    SelectAccountTypeForm, CurrentAccountFilterForm)
-from .models.account import CurrentAccount
+from django.urls import reverse, reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    FormView,
+    ListView,
+    TemplateView,
+    UpdateView,
+)
+
+from secretbox.users.mixins import GroupRequiredMixin
+
+from .account_current_model import CurrentAccount
+from .account_investment_model import InvestmentAccount, InvestmentAsset
+from .choices import ACCOUNT_CHOICES
+from .filters import CurrentAccountFilterForm
+from .forms import (
+    AccountForm,
+    OutgoingsForm,
+    SelectAccountTypeForm,
+)
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
-from .choices import ACCOUNT_CHOICES
 
 
-class DashboardView(LoginRequiredMixin, TemplateView):
+class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "comptas_access"
+
+
+class DashboardView(ComptasBaseView, TemplateView):
     template_name = "comptaquest/list_account.html"
 
     def get_context_data(self, **kwargs):
@@ -45,7 +68,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class AccountEditView(LoginRequiredMixin, UpdateView):
+class AccountEditView(ComptasBaseView, UpdateView):
     template_name = "account_detail.html"
     model = CurrentAccount
     context_object_name = "account"
@@ -57,20 +80,22 @@ class AccountEditView(LoginRequiredMixin, UpdateView):
         return reverse("comptas:dashboard")
 
 
-class AccountDeleteView(LoginRequiredMixin, DeleteView):
+class AccountDeleteView(ComptasBaseView, DeleteView):
     template_name = "account_confirm_delete.html"
     model = CurrentAccount
     context_object_name = "account"
 
 
-class AccountTypeSelectView(FormView):
+class AccountTypeSelectView(FormView, ComptasBaseView):
     template_name = "generic/add_template.html"
     form_class = SelectAccountTypeForm
     success_url = reverse_lazy("comptas:account-create")
 
     def form_valid(self, form):
         # Stocke le type de compte dans la session
-        self.request.session["selected_account_type"] = form.cleaned_data["account_type"]
+        self.request.session["selected_account_type"] = form.cleaned_data[
+            "account_type"
+        ]
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -80,12 +105,9 @@ class AccountTypeSelectView(FormView):
         return context
 
 
-class AccountCreateView(LoginRequiredMixin, CreateView):
+class AccountCreateView(ComptasBaseView, CreateView):
     template_name = "generic/add_template.html"
     success_url = reverse_lazy("comptas:dashboard")
-
-    # model = CurrentAccount
-    # form_class = CurrentAccountForm
 
     def dispatch(self, request, *args, **kwargs):
         # Make sure the account type is set
@@ -94,35 +116,58 @@ class AccountCreateView(LoginRequiredMixin, CreateView):
             return redirect("comptas:account-select")  # return to the first step
         return super().dispatch(request, *args, **kwargs)
 
-    def get_form_class(self):
-        if self.account_type == "Current":
-            return CurrentAccountForm
+    def get_model_class(self):
+        if self.account_type == "Investment":
+            return InvestmentAccount
         else:
-            return InvestmentAccountForm
+            return CurrentAccount
+
+    def get_form_class(self):
+        class DynamicAccountForm(AccountForm):
+            class Meta(AccountForm.Meta):
+                model = self.get_model_class()
+
+        return DynamicAccountForm
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        return kwargs  # no additional data at this time
+        kwargs["account_type"] = self.account_type
+        return kwargs
 
     def form_valid(self, form):
         instance = form.save(commit=False)
         instance.created_by = self.request.user
         instance.account_type = self.account_type
         instance.save()
+
+        if self.account_type == "Investment":
+            formset = InvestmentAsset(self.request.POST, instance=instance)
+            if formset.is_valid():
+                formset.save()
+            else:
+                return self.form_invalid(form)
+
         # clear session after use
         del self.request.session["selected_account_type"]
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        account_type_label = dict(ACCOUNT_CHOICES).get(self.account_type, self.account_type)
+        account_type_label = dict(ACCOUNT_CHOICES).get(
+            self.account_type, self.account_type
+        )
         context["title"] = _("Nouveau ") + account_type_label.lower()
         context["logo_url"] = "/static/images/logo_cq.png"
         context["account_type"] = self.account_type
+        if self.account_type == "Investment":
+            if self.request.POST:
+                context["portfolio_formset"] = InvestmentAsset(self.request.POST)
+            else:
+                context["portfolio_formset"] = InvestmentAsset()
         return context
 
 
-class OutgoingsView(LoginRequiredMixin, ListView):
+class OutgoingsView(ComptasBaseView, ListView):
     template_name = "outgoings.html"
     model = Outgoings
     context_object_name = "outgoings"
@@ -133,13 +178,13 @@ class OutgoingsView(LoginRequiredMixin, ListView):
         return context
 
 
-class OutgoingsDetailView(LoginRequiredMixin, DetailView):
+class OutgoingsDetailView(ComptasBaseView, DetailView):
     template_name = "outgoings_detail.html"
     model = Outgoings
     context_object_name = "outgoings"
 
 
-class OutgoingsCreateView(LoginRequiredMixin, CreateView):
+class OutgoingsCreateView(ComptasBaseView, CreateView):
     template_name = "outgoings_create.html"
     model = Outgoings
     form_class = OutgoingsForm
@@ -150,19 +195,19 @@ class OutgoingsCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class BalanceSheetView(LoginRequiredMixin, ListView):
+class BalanceSheetView(ComptasBaseView, ListView):
     template_name = "balance_sheet.html"
 
 
-class TransactionsView(LoginRequiredMixin, ListView):
+class TransactionsView(ComptasBaseView, ListView):
     template_name = "transactions.html"
 
 
-class TransactionDetailView(LoginRequiredMixin, DetailView):
+class TransactionDetailView(ComptasBaseView, DetailView):
     template_name = "transaction_detail.html"
     model = Transaction
 
 
-class TransactionCreateView(LoginRequiredMixin, CreateView):
+class TransactionCreateView(ComptasBaseView, CreateView):
     template_name = "transaction_create.html"
     model = Transaction

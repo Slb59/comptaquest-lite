@@ -1,3 +1,8 @@
+"""Defines forms based on the application's templates.
+
+Used for creating and updating objects via views
+"""
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Div, Field, Layout
 from django import forms
@@ -5,14 +10,40 @@ from django.utils.translation import gettext_lazy as _
 
 from secretbox.tools.tooltip import TooltipFromInstanceMixin
 
-from .models import Sami
+from .sami_model import Sami
 
 
 class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
 
     class Meta:
         model = Sami
-        exclude = [""]
+        fields = [
+            "date",
+            "weight",
+            "bedtime",
+            "wakeup",
+            "nonstop",
+            "energy",
+            "naptime",
+            "phone",
+            "reading",
+            "fruits",
+            "vegetables",
+            "meals",
+            "desserts",
+            "sugardrinks",
+            "nosugardrinks",
+            "homework",
+            "garden",
+            "outsidetime",
+            "endurancesport",
+            "yogasport",
+            "videogames",
+            "papergames",
+            "administrative",
+            "computer",
+            "youtube",
+        ]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -32,7 +63,12 @@ class SamiForm(forms.ModelForm, TooltipFromInstanceMixin):
                     css_class="grid grid-cols-2 gap-4",
                 ),
                 Div(
-                    Field("bedtime", wrapper_class="col-span-1", attrs={"min": 0, "max": 3}, css_class="w-full"),
+                    Field(
+                        "bedtime",
+                        wrapper_class="col-span-1",
+                        attrs={"min": 0, "max": 3},
+                        css_class="w-full",
+                    ),
                     Field("wakeup", wrapper_class="col-span-1", css_class="w-full"),
                     Field("nonstop", wrapper_class="col-span-1", css_class="w-full"),
                     Field("energy", wrapper_class="col-span-1", css_class="w-full"),

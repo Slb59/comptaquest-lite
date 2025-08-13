@@ -9,7 +9,9 @@ from tests.factories.member import MemberFactory
 class TestModelCodification(TestCase):
 
     def setUp(self):
-        self.codification = PaymentCodificationFactory(name="Test Codification", description="A test description")
+        self.codification = PaymentCodificationFactory(
+            name="Test Codification", description="A test description"
+        )
 
     def test_codification_creation(self):
         self.assertEqual(self.codification.name, "Test Codification")

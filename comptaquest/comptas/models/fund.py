@@ -1,7 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
-from .account import InvestmentAccount
+from ..account_investment_model import InvestmentAccount
 
 
 class FundDistribution(models.Model):
@@ -16,7 +16,9 @@ class FundDistribution(models.Model):
     """
 
     fund_name = models.CharField(max_length=50)
-    prct = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+    prct = models.IntegerField(
+        default=0, validators=[MinValueValidator(0), MaxValueValidator(100)]
+    )
     fund_type = models.CharField(max_length=50)
     investment_account = models.ForeignKey(
         InvestmentAccount,

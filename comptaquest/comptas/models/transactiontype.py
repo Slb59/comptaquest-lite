@@ -1,10 +1,13 @@
 from django.db import models
 from django_stubs_ext.db.models import TypedModelMeta
 
-from comptaquest.utils.models import (CategoryCodification, IncomeCodification,
-                                      PaymentCodification)
+from comptaquest.utils.models import (
+    CategoryCodification,
+    IncomeCodification,
+    PaymentCodification,
+)
 
-from .account import CurrentAccount
+from ..account_current_model import CurrentAccount
 
 
 class Expense(models.Model):

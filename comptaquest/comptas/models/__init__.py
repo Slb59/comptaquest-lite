@@ -1,4 +1,3 @@
-from .account import *  # noqa: F403 F401
 from .fund import *  # noqa: F403 F401
 from .ledger import *  # noqa: F403 F401
 from .outgoings import *  # noqa: F403 F401

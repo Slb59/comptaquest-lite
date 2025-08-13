@@ -4,8 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
 from .outgoings import ExpenseOutgoings, IncomeOutgoings, TransferOutgoings
-from .transaction import (ExpenseTransaction, IncomeTransaction,
-                          TransferTransaction)
+from .transaction import ExpenseTransaction, IncomeTransaction, TransferTransaction
 
 
 class OutgoingsTransaction(models.Model):
@@ -13,9 +12,12 @@ class OutgoingsTransaction(models.Model):
     Represents a transaction associated with recurring outgoings.
 
     Attributes:
-        last_transaction (ForeignKey): A reference to the last transaction in the outgoing sequence.
-        previous_transaction (ForeignKey): A reference to the previous transaction in the outgoing sequence.
-        outgoings_transaction_type (CharField): Specifies the type of the outgoing transaction (Expense, Income, or Transfer).
+        last_transaction (ForeignKey):
+        A reference to the last transaction in the outgoing sequence.
+        previous_transaction (ForeignKey):
+        A reference to the previous transaction in the outgoing sequence.
+        outgoings_transaction_type (CharField):
+        Specifies the type of the outgoing transaction (Expense, Income, or Transfer).
     """
 
     class OutgoingsTransactionType(models.TextChoices):
@@ -43,8 +45,10 @@ class OutgoingsTransaction(models.Model):
         Validates the integrity of the OutgoingsTransaction instance.
 
         Ensures that:
-        - `last_transaction` and `previous_transaction` do not reference the same object as `self`.
-        - Circular references are prevented in the `last_transaction` and `previous_transaction` chains.
+        - `last_transaction` and `previous_transaction`
+        do not reference the same object as `self`.
+        - Circular references are prevented in the
+        `last_transaction` and `previous_transaction` chains.
 
         Raises:
             ValidationError: If any validation check fails.
@@ -55,7 +59,9 @@ class OutgoingsTransaction(models.Model):
         if self.last_transaction == self:
             raise ValidationError("last_transaction cannot reference the same object.")
         if self.previous_transaction == self:
-            raise ValidationError("previous_transaction cannot reference the same object.")
+            raise ValidationError(
+                "previous_transaction cannot reference the same object."
+            )
 
         # Prevent circular references in last_transaction
         if self.is_circular_reference(self.last_transaction):
@@ -63,7 +69,9 @@ class OutgoingsTransaction(models.Model):
 
         # Prevent circular references in previous_transaction
         if self.is_circular_reference(self.previous_transaction):
-            raise ValidationError("Circular reference detected in previous_transaction.")
+            raise ValidationError(
+                "Circular reference detected in previous_transaction."
+            )
 
     def is_circular_reference(self, transaction):
         """

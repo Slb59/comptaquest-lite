@@ -4,11 +4,15 @@ from django.db.models import ProtectedError
 from django.test import TestCase
 from django.utils.timezone import now
 
-from comptaquest.comptas.models.transaction import (ExpenseTransaction,
-                                                    TransferTransaction)
+from comptaquest.comptas.models.transaction import (
+    ExpenseTransaction,
+    TransferTransaction,
+)
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.transaction import (ExpenseTransactionFactory,
-                                         TransferTransactionFactory)
+from tests.factories.transaction import (
+    ExpenseTransactionFactory,
+    TransferTransactionFactory,
+)
 
 
 class TestTransactionSoftDelete(TestCase):
@@ -25,19 +29,25 @@ class TestTransactionSoftDelete(TestCase):
         )
 
         # Create a transfer transaction pair
-        self.transfer = TransferTransactionFactory(account=self.account1, link_account=self.account2)
+        self.transfer = TransferTransactionFactory(
+            account=self.account1, link_account=self.account2
+        )
 
     def test_expense_soft_delete(self):
         """Test soft delete of a regular expense transaction."""
         # Verify initial status
-        self.assertEqual(self.expense.status, ExpenseTransaction.TransactionStatus.ACTIVE)
+        self.assertEqual(
+            self.expense.status, ExpenseTransaction.TransactionStatus.ACTIVE
+        )
 
         # Perform soft delete
         self.expense.delete()
 
         # Refresh from database and verify status
         self.expense.refresh_from_db()
-        self.assertEqual(self.expense.status, ExpenseTransaction.TransactionStatus.DELETED)
+        self.assertEqual(
+            self.expense.status, ExpenseTransaction.TransactionStatus.DELETED
+        )
 
         # Verify transaction still exists in database
         self.assertTrue(ExpenseTransaction.objects.filter(pk=self.expense.pk).exists())
@@ -54,7 +64,9 @@ class TestTransactionSoftDelete(TestCase):
 
         # Verify status remained active
         self.expense.refresh_from_db()
-        self.assertEqual(self.expense.status, ExpenseTransaction.TransactionStatus.ACTIVE)
+        self.assertEqual(
+            self.expense.status, ExpenseTransaction.TransactionStatus.ACTIVE
+        )
 
     def test_transfer_soft_delete(self):
         """Test soft delete of a transfer transaction and its reciprocal."""
@@ -62,8 +74,12 @@ class TestTransactionSoftDelete(TestCase):
         reciprocal = self.transfer.link_transfer
 
         # Verify initial status of both transactions
-        self.assertEqual(self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE)
-        self.assertEqual(reciprocal.status, TransferTransaction.TransactionStatus.ACTIVE)
+        self.assertEqual(
+            self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE
+        )
+        self.assertEqual(
+            reciprocal.status, TransferTransaction.TransactionStatus.ACTIVE
+        )
 
         # Perform soft delete
         self.transfer.delete()
@@ -72,11 +88,17 @@ class TestTransactionSoftDelete(TestCase):
         self.transfer.refresh_from_db()
         reciprocal.refresh_from_db()
 
-        self.assertEqual(self.transfer.status, TransferTransaction.TransactionStatus.DELETED)
-        self.assertEqual(reciprocal.status, TransferTransaction.TransactionStatus.DELETED)
+        self.assertEqual(
+            self.transfer.status, TransferTransaction.TransactionStatus.DELETED
+        )
+        self.assertEqual(
+            reciprocal.status, TransferTransaction.TransactionStatus.DELETED
+        )
 
         # Verify both transactions still exist in database
-        self.assertTrue(TransferTransaction.objects.filter(pk=self.transfer.pk).exists())
+        self.assertTrue(
+            TransferTransaction.objects.filter(pk=self.transfer.pk).exists()
+        )
         self.assertTrue(TransferTransaction.objects.filter(pk=reciprocal.pk).exists())
 
     def test_pointed_transfer_protection(self):
@@ -93,7 +115,9 @@ class TestTransactionSoftDelete(TestCase):
         self.transfer.refresh_from_db()
         self.transfer.link_transfer.refresh_from_db()
 
-        self.assertEqual(self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE)
+        self.assertEqual(
+            self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE
+        )
         self.assertEqual(
             self.transfer.link_transfer.status,
             TransferTransaction.TransactionStatus.ACTIVE,
@@ -114,8 +138,12 @@ class TestTransactionSoftDelete(TestCase):
         self.transfer.refresh_from_db()
         reciprocal.refresh_from_db()
 
-        self.assertEqual(self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE)
-        self.assertEqual(reciprocal.status, TransferTransaction.TransactionStatus.ACTIVE)
+        self.assertEqual(
+            self.transfer.status, TransferTransaction.TransactionStatus.ACTIVE
+        )
+        self.assertEqual(
+            reciprocal.status, TransferTransaction.TransactionStatus.ACTIVE
+        )
 
     def test_active_transactions_query(self):
         """Test querying for active vs deleted transactions."""
@@ -125,12 +153,16 @@ class TestTransactionSoftDelete(TestCase):
         self.expense.delete()
 
         # Test filtering active transactions
-        active_expenses = ExpenseTransaction.objects.filter(status=ExpenseTransaction.TransactionStatus.ACTIVE)
+        active_expenses = ExpenseTransaction.objects.filter(
+            status=ExpenseTransaction.TransactionStatus.ACTIVE
+        )
         self.assertEqual(active_expenses.count(), 1)
         self.assertEqual(active_expenses.first(), expense2)
 
         # Test filtering deleted transactions
-        deleted_expenses = ExpenseTransaction.objects.filter(status=ExpenseTransaction.TransactionStatus.DELETED)
+        deleted_expenses = ExpenseTransaction.objects.filter(
+            status=ExpenseTransaction.TransactionStatus.DELETED
+        )
         self.assertEqual(deleted_expenses.count(), 1)
         self.assertEqual(deleted_expenses.first(), self.expense)
 
@@ -145,5 +177,9 @@ class TestTransactionSoftDelete(TestCase):
         self.transfer.refresh_from_db()
         reciprocal.refresh_from_db()
 
-        self.assertEqual(self.transfer.status, TransferTransaction.TransactionStatus.DELETED)
-        self.assertEqual(reciprocal.status, TransferTransaction.TransactionStatus.DELETED)
+        self.assertEqual(
+            self.transfer.status, TransferTransaction.TransactionStatus.DELETED
+        )
+        self.assertEqual(
+            reciprocal.status, TransferTransaction.TransactionStatus.DELETED
+        )

@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.test import TestCase
 from django.urls import reverse
 
@@ -12,6 +13,8 @@ User = get_user_model()
 class EscapeVaultViewsTests(TestCase):
     def setUp(self):
         self.user = MemberFactory()
+        group = Group.objects.create(name="escapevault_access")
+        self.user.add(group)
         self.client.force_login(self.user)
         self.position = NomadePositionFactory()
 

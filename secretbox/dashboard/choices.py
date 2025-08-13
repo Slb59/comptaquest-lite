@@ -1,3 +1,9 @@
+"""Lists of values used as choices in Django template fields.
+
+This file centralizes type constants (value, label)
+to ensure consistency between models, forms and display.
+"""
+
 PRIORITY_CHOICES = [
     ("6-verylow", "Très faible"),
     ("5-low", "Faible"),

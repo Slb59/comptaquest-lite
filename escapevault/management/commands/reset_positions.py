@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+
 from escapevault.models import NomadePosition
 from tests.factories.nomadeposition import NomadePositionFactory
 

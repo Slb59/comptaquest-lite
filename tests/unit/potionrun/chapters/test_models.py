@@ -7,7 +7,9 @@ from potionrun.chapters.models import Act, Chapter, Scene
 
 class ChapterModelTest(TestCase):
     def setUp(self):
-        self.chapter = Chapter.objects.create(name="5km - 30mn", description="Objectif 5km en 30 minutes")
+        self.chapter = Chapter.objects.create(
+            name="5km - 30mn", description="Objectif 5km en 30 minutes"
+        )
 
     def test_chapter_creation(self):
         self.assertEqual(self.chapter.name, "5km - 30mn")
@@ -21,7 +23,9 @@ class ChapterModelTest(TestCase):
 class ActModelTest(TestCase):
     def setUp(self):
         self.chapter = Chapter.objects.create(name="Test")
-        self.act = Act.objects.create(chapter=self.chapter, number=1, short="Acte I", description="Premier acte")
+        self.act = Act.objects.create(
+            chapter=self.chapter, number=1, short="Acte I", description="Premier acte"
+        )
 
     def test_act_creation(self):
         self.assertEqual(self.act.number, 1)
@@ -34,7 +38,9 @@ class ActModelTest(TestCase):
 
     def test_act_number_validation(self):
         with self.assertRaises(ValidationError):
-            Act.objects.create(chapter=self.chapter, number=8, short="Acte VIII")  # Invalide (doit être entre 1 et 7)
+            Act.objects.create(
+                chapter=self.chapter, number=8, short="Acte VIII"
+            )  # Invalide (doit être entre 1 et 7)
 
     def test_chapter_act_relation(self):
         self.assertEqual(self.chapter.acts.count(), 1)
@@ -46,7 +52,10 @@ class SceneModelTest(TestCase):
         self.chapter = Chapter.objects.create(name="Test")
         self.act = Act.objects.create(chapter=self.chapter, number=1)
         self.scene = Scene.objects.create(
-            act=self.act, number=1, short="Scène 1", instructions="=> Instruction 1\n=> Instruction 2"
+            act=self.act,
+            number=1,
+            short="Scène 1",
+            instructions="=> Instruction 1\n=> Instruction 2",
         )
 
     def test_scene_creation(self):

@@ -2,7 +2,7 @@ import factory
 import pytest
 
 from sami.models import Sami
-from secretbox.tools.models import get_now_date
+from secretbox.tools.date_tools import get_now_date
 from tests.factories.member import MemberFactory
 
 

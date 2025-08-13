@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import models as auth_models
+from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
@@ -19,11 +20,19 @@ class CQUser(auth_models.AbstractUser):
     username = None
     email = models.EmailField(_("email address"), unique=True, max_length=50)
     trigram = models.CharField(max_length=5, blank=False)
-    usertype = models.CharField(max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True)
+    usertype = models.CharField(
+        max_length=30, choices=UserTypes.choices, default=UserTypes.MEMBER, blank=True
+    )
 
-    last_password_change = models.DateTimeField(_("Dernier changement de mot de passe"), null=True, blank=True)
-    last_email_change = models.DateTimeField(_("Dernier changement d'email"), null=True, blank=True)
-    last_trigram_change = models.DateTimeField(_("Dernier changement de trigram"), null=True, blank=True)
+    last_password_change = models.DateTimeField(
+        _("Dernier changement de mot de passe"), null=True, blank=True
+    )
+    last_email_change = models.DateTimeField(
+        _("Dernier changement d'email"), null=True, blank=True
+    )
+    last_trigram_change = models.DateTimeField(
+        _("Dernier changement de trigram"), null=True, blank=True
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["trigram"]
@@ -39,12 +48,11 @@ class CQUser(auth_models.AbstractUser):
 
     def request_app_modification(self, requested_apps):
         """Envoie un mail à l'administrateur pour demander la modification des apps"""
-        from django.conf import settings
-        from django.core.mail import send_mail
 
         subject = f"Demande de modification d'applications pour {self.trigram}"
         message = f"""
-        L'utilisateur {self.trigram} ({self.email}) a demandé une modification de ses applications autorisées.
+        L'utilisateur {self.trigram} ({self.email})
+        a demandé une modification de ses applications autorisées.
         Applications demandées : {', '.join(requested_apps)}
 
         Veuillez traiter cette demande via l'interface d'administration.
@@ -68,7 +76,9 @@ class CQUser(auth_models.AbstractUser):
 
 
 class BaseUserProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="_profile")
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="_profile"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     avatar = models.ImageField(blank=True, upload_to="profile_images")
@@ -96,13 +106,16 @@ class MemberManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(usertype=CQUser.UserTypes.MEMBER)
 
+    def get_by_natural_key(self, email):
+        return self.get(email=email)
+
 
 class Member(CQUser):
 
     class Meta(TypedModelMeta):
         proxy = True
 
-    member = MemberManager()
+    objects = MemberManager()
 
     @property
     def profile(self):

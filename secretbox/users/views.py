@@ -1,17 +1,23 @@
+"""Views for secretbox.users application
+Dashboard, edit, create, delete, and list views.
+"""
+
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView as DjangoLoginView
-from django.contrib.auth.views import LogoutView as DjangoLogoutView
-from django.contrib.auth.views import \
-    PasswordResetView as DjangoPasswordResetView
+from django.contrib.auth.views import (
+    LoginView as DjangoLoginView,
+    LogoutView as DjangoLogoutView,
+    PasswordResetView as DjangoPasswordResetView,
+)
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import UpdateView
 
 from .forms import LoginForm, PasswordResetForm, ProfileUpdateForm
-from .models import CQUser
+
+CQUser = get_user_model()
 
 
 class LoginView(DjangoLoginView):
@@ -29,8 +35,6 @@ class LoginView(DjangoLoginView):
         print("\n=== Authentification ===")
         login(self.request, form.get_user())
         response = super().form_valid(form)
-        print(f"User.is_authenticated: {self.request.user.is_authenticated}")
-        print(f"Session: {dict(self.request.session)}")
         return response
 
     def get_context_data(self, **kwargs):
@@ -55,7 +59,9 @@ class LogoutView(LoginRequiredMixin, DjangoLogoutView):
             # Nettoyage supplémentaire si nécessaire
             pass
         if not request.session.test_cookie_worked():
-            messages.error(request, "Les cookies doivent être activés pour cette fonctionnalité.")
+            messages.error(
+                request, "Les cookies doivent être activés pour cette fonctionnalité."
+            )
             return redirect("users:login")
         return super().dispatch(request, *args, **kwargs)
 

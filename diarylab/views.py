@@ -1,3 +1,7 @@
+"""Views for the diarylab application.
+Dashboard, edit, create, delete, and list views.
+"""
+
 from io import BytesIO
 
 from django.contrib import messages
@@ -10,11 +14,17 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 
+from secretbox.users.mixins import GroupRequiredMixin
+
 from .forms import DiaryEntryForm
 from .models import DiaryEntry
 
 
-class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
+class DialylabBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "diarylab_access"
+
+
+class DiaryEntryCreateView(DialylabBaseView, CreateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = "diarylab/add_entry.html"
@@ -32,7 +42,9 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user
         # Check if an entry already exists for the given date
         entry_date = form.cleaned_data["date"]
-        existing_entry = DiaryEntry.objects.filter(user=self.request.user, date=entry_date).exists()
+        existing_entry = DiaryEntry.objects.filter(
+            user=self.request.user, date=entry_date
+        ).exists()
 
         if existing_entry:
             # Add an error to the form
@@ -52,7 +64,7 @@ class DiaryEntryCreateView(LoginRequiredMixin, CreateView):
         # return render(self.request, self.template_name, {'form': form})
 
 
-class DiaryEntryListView(LoginRequiredMixin, ListView):
+class DiaryEntryListView(DialylabBaseView, ListView):
     model = DiaryEntry
     template_name = "diarylab/list_entries.html"
     context_object_name = "entries"
@@ -75,7 +87,9 @@ class DiaryEntryListView(LoginRequiredMixin, ListView):
         # Check if there's an entry for today
         today = timezone.now().date()
         if entries.filter(date=today).exists():
-            messages.error(self.request, _("Vous avez déjà saisi une pensée aujourd'hui."))
+            messages.error(
+                self.request, _("Vous avez déjà saisi une pensée aujourd'hui.")
+            )
             context["entry_exists_today"] = entries.filter(date=today).exists()
 
         return context
@@ -83,12 +97,16 @@ class DiaryEntryListView(LoginRequiredMixin, ListView):
 
 def generate_pdf(request, year, month):
     response = HttpResponse(content_type="application/pdf")
-    response["Content-Disposition"] = f'attachment; filename="{year}{month:02d}-pensees.pdf"'
+    response["Content-Disposition"] = (
+        f'attachment; filename="{year}{month:02d}-pensees.pdf"'
+    )
 
     buffer = BytesIO()
     p = canvas.Canvas(buffer, pagesize=letter)
 
-    entries = DiaryEntry.objects.filter(user=request.user, date__year=year, date__month=month)
+    entries = DiaryEntry.objects.filter(
+        user=request.user, date__year=year, date__month=month
+    )
 
     for entry in entries:
         p.setFont("Helvetica", 12)
@@ -106,14 +124,14 @@ def generate_pdf(request, year, month):
     return response
 
 
-class DiaryEditView(LoginRequiredMixin, UpdateView):
+class DiaryEditView(DialylabBaseView, UpdateView):
     model = DiaryEntry
     form_class = DiaryEntryForm
     template_name = "diarylab/edit_entry.html"
     success_url = reverse_lazy("diarylab:list_entries")
 
 
-class DiaryDeleteView(LoginRequiredMixin, DeleteView):
+class DiaryDeleteView(DialylabBaseView, DeleteView):
     model = DiaryEntry
     template_name = "diarylab/delete_entry.html"
     success_url = reverse_lazy("diarylab:list_entries")

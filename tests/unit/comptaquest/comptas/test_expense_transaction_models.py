@@ -3,8 +3,10 @@ from django.utils.timezone import now
 
 from comptaquest.comptas.models.transaction import ExpenseTransaction
 from tests.factories.account import CurrentAccountFactory
-from tests.factories.codification import (CategoryCodificationFactory,
-                                          PaymentCodificationFactory)
+from tests.factories.codification import (
+    CategoryCodificationFactory,
+    PaymentCodificationFactory,
+)
 
 
 class TestExpenseTransactionModel(TestCase):

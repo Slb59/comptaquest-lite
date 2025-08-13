@@ -19,7 +19,8 @@
         <ul class="space-y-2">
             {% for review in form.instance.reviews %}
             <li class="bg-gray-100 p-3 rounded shadow-sm">                
-                <div class="text-sm text-gray-700">{{ review.date|parse_iso|date:"d/m/Y" }}</div>
+                <div class="text-sm text-gray-700">{{ review.date|parse_iso_date|date:"d/m/Y" }}
+                </div>
                 <div class="text-sm text-gray-700">{{ review.text|linebreaksbr }}</div>
             </li>
             {% endfor %}

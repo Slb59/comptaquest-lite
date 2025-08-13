@@ -41,7 +41,9 @@
                                 {{ todo.get_appointment_display|default_if_none:"" }}
                             </td>
                             <td class="py-2 px-4 border-b">{{ todo.get_category_display }}</td>
-                            <td class="py-2 px-4 border-b">{{ todo.who }}</td>
+                            <td class="py-2 px-4 border-b">
+                                {{ todo.who.all|join:", " }}
+                            </td>
                             <td class="py-2 px-4 border-b">{{ todo.place }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.get_periodic_display }}</td>
                             <td class="py-2 px-4 border-b">{{ todo.get_planned_date_display }}</td>

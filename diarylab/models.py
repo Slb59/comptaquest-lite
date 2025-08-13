@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django_stubs_ext.db.models import TypedModelMeta
 
-from secretbox.tools.models import get_now_date
+from secretbox.tools.date_tools import get_now_date
 
 
 class DiaryEntry(models.Model):
@@ -22,13 +22,19 @@ class DiaryEntry(models.Model):
         - Users can have multiple diary entries
     """
 
-    date = models.DateField(default=get_now_date, help_text=_("Date à laquelle cette pensée a été écrite"))
+    date = models.DateField(
+        default=get_now_date, help_text=_("Date à laquelle cette pensée a été écrite")
+    )
     content = models.TextField(blank=True, help_text=_("Le contenu de cette pensée"))
     created_at = models.DateTimeField(
-        auto_now_add=True, editable=False, help_text=_("Timestamp when this entry was created")
+        auto_now_add=True,
+        editable=False,
+        help_text=_("Timestamp when this entry was created"),
     )
     updated_at = models.DateTimeField(
-        auto_now=True, editable=False, help_text=_("Timestamp when this entry was last modified")
+        auto_now=True,
+        editable=False,
+        help_text=_("Timestamp when this entry was last modified"),
     )
     # Foreign key to the user model
     # Delete the diary entry if the user is deleted
@@ -62,4 +68,8 @@ class DiaryEntry(models.Model):
         verbose_name = _("Pensée")
         verbose_name_plural = _("Pensées")
         ordering = ["date"]
-        constraints = [models.UniqueConstraint(fields=["user", "date"], name="unique_entry_per_user_per_date")]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "date"], name="unique_entry_per_user_per_date"
+            )
+        ]

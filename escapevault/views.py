@@ -1,18 +1,34 @@
-import folium
+"""Views for the escapevault application.
+Dashboard, edit, create, delete, and list views.
+"""
+
 from django import forms
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import (CreateView, DeleteView, ListView,
-                                  TemplateView, UpdateView)
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    ListView,
+    TemplateView,
+    UpdateView,
+)
+from folium import CustomIcon, Map, Marker, Popup
 
-from .forms import EscapeVaultFilterForm, EscapeVaultForm
-from .models import NomadePosition
 from secretbox.users.mixins import GroupRequiredMixin
 
+from .filters import EscapeVaultFilterForm
+from .forms import EscapeVaultForm
+from .models import NomadePosition
 
-class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
+
+class EscapeVaultBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "escapevault_access"
+
+
+class EscapeVaultMapView(EscapeVaultBaseView, TemplateView):
+
     template_name = "escapevault/map.html"
 
     def get_context_data(self, **kwargs):
@@ -20,7 +36,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
         form = EscapeVaultFilterForm(self.request.GET or None)
 
         # Create a base map centered around a specific location
-        the_map = folium.Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
+        the_map = Map(location=[45.4769, 9.1516], zoom_start=5)  # Centered on France
 
         # Fetch all nomadic positions from the database
         positions = NomadePosition.objects.filter()
@@ -35,7 +51,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
         # Add markers for each position
         for position in positions:
 
-            icon = folium.CustomIcon(
+            icon = CustomIcon(
                 icon_image=position.get_category_image(),
                 icon_size=(50, 50),
                 icon_anchor=(0, 0),
@@ -43,7 +59,9 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
 
             if position.latitude and position.longitude:
 
-                edit_url = reverse("escapevault:edit_position", kwargs={"pk": position.pk})
+                edit_url = reverse(
+                    "escapevault:edit_position", kwargs={"pk": position.pk}
+                )
                 edit_url += f"?next={self.request.get_full_path()}"
                 popup_html = f"""
                 <div>
@@ -53,18 +71,24 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
                 </div>"""
 
                 if position.opening_date or position.closing_date:
-                    tooltip_label = f"{position.name} ({position.opening_date}-{position.closing_date})"
+                    tooltip_label = f"{position.name} "
+                    tooltip_label += (
+                        f"({position.opening_date} - {position.closing_date})"
+                    )
+
                 else:
                     tooltip_label = position.name
 
-                folium.Marker(
+                Marker(
                     location=[position.latitude, position.longitude],
-                    popup=folium.Popup(popup_html, max_width=250),
+                    popup=Popup(popup_html, max_width=250),
                     tooltip=tooltip_label,
                     icon=icon,
                 ).add_to(the_map)
 
         # Convert the map to HTML
+        # Folium has no public method to convert the map to HTML
+        # pylint: disable=protected-access
         the_map = the_map._repr_html_()
 
         context["title"] = _("EscapeVault Map")
@@ -74,7 +98,7 @@ class EscapeVaultMapView(LoginRequiredMixin, TemplateView, GroupRequiredMixin):
         return context
 
 
-class EscapeVaultParametersView(LoginRequiredMixin, TemplateView):
+class EscapeVaultParametersView(EscapeVaultBaseView, TemplateView):
     template_name = "escapevault/parameters.html"
 
     def get_context_data(self, **kwargs):
@@ -84,7 +108,7 @@ class EscapeVaultParametersView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
+class EscapeVaultCreateView(EscapeVaultBaseView, CreateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "generic/add_template.html"
@@ -97,7 +121,7 @@ class EscapeVaultCreateView(LoginRequiredMixin, CreateView):
         return context
 
 
-class EscapeVaultListView(LoginRequiredMixin, ListView):
+class EscapeVaultListView(EscapeVaultBaseView, ListView):
     model = NomadePosition
     template_name = "escapevault/list_position.html"
     context_object_name = "positions"
@@ -122,7 +146,7 @@ class EscapeVaultListView(LoginRequiredMixin, ListView):
         return context
 
 
-class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
+class EscapeVaultEditView(EscapeVaultBaseView, UpdateView):
     model = NomadePosition
     form_class = EscapeVaultForm
     template_name = "escapevault/edit_position.html"
@@ -131,7 +155,9 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
         form = super().get_form(form_class)
         next_url = self.request.GET.get("next")
         if next_url:
-            form.fields["next"] = forms.CharField(widget=forms.HiddenInput(), initial=next_url, required=False)
+            form.fields["next"] = forms.CharField(
+                widget=forms.HiddenInput(), initial=next_url, required=False
+            )
         return form
 
     def get_success_url(self):
@@ -153,14 +179,16 @@ class EscapeVaultEditView(LoginRequiredMixin, UpdateView):
             position = form.instance
             existing_reviews = position.reviews or []
 
-            existing_reviews.append({"text": new_review_text, "date": now().isoformat()})
+            existing_reviews.append(
+                {"text": new_review_text, "date": now().isoformat()}
+            )
 
             position.reviews = existing_reviews
 
         return super().form_valid(form)
 
 
-class EscapeVaultDeleteView(LoginRequiredMixin, DeleteView):
+class EscapeVaultDeleteView(EscapeVaultBaseView, DeleteView):
     model = NomadePosition
     template_name = "escapevault/delete_position.html"
     success_url = reverse_lazy("escapevault:list_positions")

@@ -1,4 +1,4 @@
-import random
+import secrets
 from datetime import datetime
 
 import factory
@@ -25,7 +25,9 @@ class NomadePositionFactory(factory.django.DjangoModelFactory):
 
     opening_date = factory.Faker("date", pattern="%d/%m")
     closing_date = factory.Faker("date", pattern="%d/%m")
-    category = factory.fuzzy.FuzzyChoice([choice[0] for choice in NomadePosition.CATEGORY_CHOICES])
+    category = factory.fuzzy.FuzzyChoice(
+        [choice[0] for choice in NomadePosition.CATEGORY_CHOICES]
+    )
     latitude = factory.fuzzy.FuzzyDecimal(low=-90.0, high=90.0)
     longitude = factory.fuzzy.FuzzyDecimal(low=-90.0, high=90.0)
 
@@ -33,5 +35,5 @@ class NomadePositionFactory(factory.django.DjangoModelFactory):
     def reviews(self):
         return [
             {"text": fake.text(max_nb_chars=200), "date": datetime.now().isoformat()}
-            for _ in range(random.randint(1, 3))
+            for _ in range(secrets.randbelow(3) + 1)
         ]

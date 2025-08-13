@@ -1,7 +1,8 @@
 import factory
 import pytest
+from django.contrib.auth import get_user_model
 
-from secretbox.users.models import Member
+Member = get_user_model()
 
 
 @pytest.mark.django_db

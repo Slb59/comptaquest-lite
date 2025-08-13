@@ -16,3 +16,13 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f"Utilisateur {email} créé"))
         else:
             self.stdout.write(self.style.WARNING(f"L'utilisateur {email} existe déjà."))
+
+        # test user
+        email = "test.user@test.com"
+        password = "motdepasse"
+        if not Member.objects.filter(email=email).exists():
+            user = MemberFactory(email=email, password=password)
+            user.save()
+            self.stdout.write(self.style.SUCCESS(f"Utilisateur {email} créé"))
+        else:
+            self.stdout.write(self.style.WARNING(f"L'utilisateur {email} existe déjà."))

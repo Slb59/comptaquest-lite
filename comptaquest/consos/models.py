@@ -53,7 +53,9 @@ class Conso(models.Model):
     """
 
     date = models.DateField(default=timezone.now)
-    amount = models.DecimalField(default=0, max_digits=8, decimal_places=2, validators=[MinValueValidator(0)])
+    amount = models.DecimalField(
+        default=0, max_digits=8, decimal_places=2, validators=[MinValueValidator(0)]
+    )
     description = models.CharField(max_length=255, blank=True, null=True)
     place = models.ForeignKey(
         Place,
@@ -157,7 +159,9 @@ class ConsoWater(Conso):
             year = timezone.now().year
 
         return (
-            self.__class__.objects.filter(date__year=year).aggregate(total_quantity=Sum("quantity"))["total_quantity"]
+            self.__class__.objects.filter(date__year=year).aggregate(
+                total_quantity=Sum("quantity")
+            )["total_quantity"]
             or 0
         )
 

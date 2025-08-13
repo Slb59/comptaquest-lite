@@ -1,13 +1,23 @@
+"""Views for the samicheck application.
+Dashboard, edit, create, delete, and list views.
+"""
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, ListView, TemplateView
 
+from secretbox.users.mixins import GroupRequiredMixin
+
 from .forms import SamiForm
-from .models import Sami
+from .sami_model import Sami
 
 
-class SamiDashboardView(LoginRequiredMixin, TemplateView):
+class ComptasBaseView(LoginRequiredMixin, GroupRequiredMixin):
+    group_name = "sami_access"
+
+
+class SamiDashboardView(ComptasBaseView, TemplateView):
 
     template_name = "sami/dashboard.html"
 
@@ -18,7 +28,7 @@ class SamiDashboardView(LoginRequiredMixin, TemplateView):
         return context
 
 
-class SamiListView(LoginRequiredMixin, ListView):
+class SamiListView(ComptasBaseView, ListView):
     model = Sami
     template_name = "sami/list.html"
     context_object_name = "samis"
@@ -33,7 +43,7 @@ class SamiListView(LoginRequiredMixin, ListView):
         return context
 
 
-class SamiCreateView(LoginRequiredMixin, CreateView):
+class SamiCreateView(ComptasBaseView, CreateView):
     model = Sami
     form_class = SamiForm
     template_name = "sami/add_sami.html"

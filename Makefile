@@ -1,11 +1,14 @@
 include .env
 
 quality:
-	uv run black .
 	uv run isort .
+	uv run black .
 	uv run flake8 .
+	uv run pylint . > tests/output/pylint.txt
+	uv run bandit -r . --exclude venv,migrations -o tests/output/bandit.txt -f txt
 
 tests:
+	uv run pytest --benchmark-only
 	uv run pytest
 	npx playwright test
 
@@ -17,8 +20,8 @@ tests-secretbox:
 
 tests-escapevault:
 	uv run manage.py create_test_user
-	uv run pytest tests/unit/test_escapevault_models.py tests/integration/escapevault --html=tests/htmlcov/escapevault.html
-	npx playwright test
+	uv run pytest tests/unit/escapevault tests/integration/escapevault --html=tests/htmlcov/escapevault.html
+	npx playwright test tests/endtoend/escapevault
 	npx playwright show-report
 
 tests-sami:
@@ -69,3 +72,4 @@ loaddata-test:
 	uv run manage.py loaddata secretbox/tools/loaddata/usergroup.json --settings=config.settings.test
 	uv run manage.py loaddata secretbox/tools/loaddata/default_users.json --settings=config.settings.test
 	uv run manage.py set_default_password --settings=config.settings.test
+

@@ -1,14 +1,21 @@
+"""Defines forms based on the application's templates.
+
+Used for creating and updating objects via views
+"""
+
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import HTML, Layout, Submit
 from django import forms
-from django.contrib.auth import authenticate
-from django.contrib.auth import forms as auth_forms
-from django.contrib.auth.forms import \
-    PasswordResetForm as DjangoPasswordResetForm
-from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth import authenticate, forms as auth_forms, get_user_model
+from django.contrib.auth.forms import (
+    PasswordResetForm as DjangoPasswordResetForm,
+    UserChangeForm,
+)
 from django.utils.translation import gettext_lazy as _
 
-from .models import CQUser, MemberProfile
+CQUser = get_user_model()
+
+from .models import MemberProfile
 
 
 class LoginForm(auth_forms.AuthenticationForm):
@@ -21,13 +28,19 @@ class LoginForm(auth_forms.AuthenticationForm):
     password = forms.CharField(
         label=_("Mot de passe"),
         strip=False,
-        widget=forms.PasswordInput(attrs={"placeholder": _("Votre mot de passe"), "class": "form-input"}),
+        widget=forms.PasswordInput(
+            attrs={"placeholder": _("Votre mot de passe"), "class": "form-input"}
+        ),
     )
 
     username = forms.EmailField(
         label=_("Identifiant"),
         widget=forms.EmailInput(
-            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+            attrs={
+                "placeholder": _("Votre adresse email"),
+                "class": "form-input",
+                "autofocus": True,
+            }
         ),
     )
 
@@ -86,8 +99,14 @@ class CQUserChangeForm(auth_forms.UserChangeForm):
 
 
 class ProfileUpdateForm(UserChangeForm):
-    email = forms.EmailField(label=_("Email"), widget=forms.EmailInput(attrs={"class": "form-input"}))
-    trigram = forms.CharField(label=_("Trigram"), max_length=5, widget=forms.TextInput(attrs={"class": "form-input"}))
+    email = forms.EmailField(
+        label=_("Email"), widget=forms.EmailInput(attrs={"class": "form-input"})
+    )
+    trigram = forms.CharField(
+        label=_("Trigram"),
+        max_length=5,
+        widget=forms.TextInput(attrs={"class": "form-input"}),
+    )
     avatar = forms.ImageField(label=_("Avatar"), required=False)
 
     class Meta:
@@ -101,7 +120,9 @@ class ProfileUpdateForm(UserChangeForm):
 
         # Récupérer l'instance du profil utilisateur
         profile = self.instance._profile if hasattr(self.instance, "_profile") else None
-        avatar_url = profile.get_avatar_url() if profile else "/static/images/default_avatar.png"
+        avatar_url = (
+            profile.get_avatar_url() if profile else "/static/images/default_avatar.png"
+        )
 
         # Ajouter un élément HTML pour afficher l'avatar actuel
         avatar_display = HTML(
@@ -151,7 +172,11 @@ class PasswordResetForm(DjangoPasswordResetForm):
 
         self.fields["email"].label = _("Email")
         self.fields["email"].widget = forms.EmailInput(
-            attrs={"placeholder": _("Votre adresse email"), "class": "form-input", "autofocus": True}
+            attrs={
+                "placeholder": _("Votre adresse email"),
+                "class": "form-input",
+                "autofocus": True,
+            }
         )
 
         self.helper = FormHelper()
