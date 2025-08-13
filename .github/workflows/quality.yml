@@ -11,10 +11,10 @@ on:
         description: 'Page to navigate to'
         required: true
         default: 'dashboard'
+env:
+  DJANGO_SETTINGS_MODULE: "config.settings.prod"
 
 jobs:
-  env:
-    DJANGO_SETTINGS_MODULE: config.settings.prod
 
   build:
     runs-on: 
