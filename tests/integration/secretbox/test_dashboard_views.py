@@ -1,3 +1,4 @@
+from bs4 import BeautifulSoup
 from datetime import date
 
 from django.test import Client, TestCase
@@ -174,6 +175,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
         self.url = reverse("dashboard:edit_todo", kwargs={"pk": self.todo.pk})
 
     def test_redirect_if_not_logged_in(self):
+        self.client.logout()
         response = self.client.get(self.url)
         self.assertRedirectsToLogin(response)
 
@@ -182,8 +184,8 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
 
         response = self.client.get(self.url)
         assert response.status_code == 200
-        print(response.content.decode())
-        assert "Modifier l'entrée" in response.content.decode()
+        soup = BeautifulSoup(response.content, "html.parser")
+        assert soup.find("h1").text == "Modifier l'entrée"
 
     def test_update_todo_valid_post(self):
         self.client.force_login(self.user)
@@ -191,7 +193,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
             "description": "Updated description",
             "state": self.todo.state,
             "category": self.todo.category,
-            "who": self.todo.who,
+            "who": [u.pk for u in self.todo.who.all()],
             "place": self.todo.place,
             "priority": self.todo.priority,
             "periodic": self.todo.periodic,
@@ -205,6 +207,7 @@ class TodoUpdateViewTest(TestCase, TodoTestMixin):
             data,
             follow=True,
         )
+        print(response.context["form"].errors)
         assert response.status_code == 200
         self.todo.refresh_from_db()
         assert self.todo.description == "Updated description"

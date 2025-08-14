@@ -4,7 +4,7 @@ Dashboard, edit, create, delete, and list views.
 
 import logging
 from datetime import date
-
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
@@ -82,7 +82,7 @@ def todo_mark_done(request, pk):
 class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     form_class = TodoForm
-    template_name = "dashboard/add_template.html"
+    template_name = "generic/add_template.html"
     success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
@@ -201,7 +201,7 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 class TodoUpdateView(LoginRequiredMixin, UpdateView):
     model = Todo
     form_class = TodoForm
-    template_name = "dashboard/add_template.html"
+    template_name = "generic/add_template.html"
     success_url = reverse_lazy("home")
 
     def get_context_data(self, **kwargs):
@@ -211,6 +211,9 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         return context
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(f"{settings.LOGIN_URL}?next={request.path}")
+
         todo = self.get_object()
         if not todo.can_view(request.user):
             return HttpResponseForbidden(_("Vous ne pouvez pas voir cet élément."))
