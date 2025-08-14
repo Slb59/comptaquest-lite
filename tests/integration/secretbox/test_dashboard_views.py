@@ -1,6 +1,6 @@
-from bs4 import BeautifulSoup
 from datetime import date
 
+from bs4 import BeautifulSoup
 from django.test import Client, TestCase
 from django.urls import reverse
 from django.utils.translation import activate, gettext_lazy as _

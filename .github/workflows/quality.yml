@@ -60,6 +60,6 @@ jobs:
         env:
           DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
-          uv run pylint $(git ls-files '*.py') --fail-under=9 --ignore=migrations, venv, tests/output > tests/output/pylint.txt
+          uv run pylint $(git ls-files '*.py') --fail-under=9 --ignore=migrations, tests/output > tests/output/pylint.txt
 
  

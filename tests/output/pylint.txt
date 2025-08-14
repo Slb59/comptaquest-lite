@@ -1,3 +1,7 @@
+************* Module wagtail_hooks
+wagtail_hooks.py:3:0: E0401: Unable to import 'wagtail.admin.edit_handlers' (import-error)
+wagtail_hooks.py:3:0: E0611: No name 'edit_handlers' in module 'wagtail.admin' (no-name-in-module)
+wagtail_hooks.py:4:0: E0611: No name 'BaseSetting' in module 'wagtail.contrib.settings.models' (no-name-in-module)
 ************* Module sami.forms
 sami/forms.py:79:0: C0301: Line too long (179/100) (line-too-long)
 ************* Module comptaquest.comptas.admin
@@ -21,16 +25,16 @@ potionrun/chapters/__init__.py:1:0: C0103: Constant name "default_app_config" do
 potionrun/chapters/apps.py:14:8: W0611: Unused signals imported from  (unused-import)
 ************* Module config
 config/__init__.py:14:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+************* Module config.settings.prod
+config/settings/prod.py:6:1: W0511: TODO : définir les paramètres de l'envoi de mail (fixme)
+config/settings/prod.py:1:0: W0401: Wildcard import base (wildcard-import)
+config/settings/prod.py:1:0: W0614: Unused import(s) DEBUG, os, BASE_DIR, VERSION, SECRET_KEY, ALLOWED_HOSTS, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
 ************* Module config.settings.dev
 config/settings/dev.py:1:0: W0401: Wildcard import base (wildcard-import)
-config/settings/dev.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, os, BASE_DIR, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
+config/settings/dev.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, os, BASE_DIR, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path and get_version from wildcard import of base (unused-wildcard-import)
 ************* Module config.settings.test
 config/settings/test.py:1:0: W0401: Wildcard import base (wildcard-import)
-config/settings/test.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, DATABASES, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
-************* Module config.settings.production
-config/settings/production.py:6:1: W0511: TODO : définir les paramètres de l'envoi de mail (fixme)
-config/settings/production.py:1:0: W0401: Wildcard import base (wildcard-import)
-config/settings/production.py:1:0: W0614: Unused import(s) DEBUG, os, BASE_DIR, VERSION, SECRET_KEY, ALLOWED_HOSTS, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, NPM_BIN_PATH, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, DATABASES, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
+config/settings/test.py:1:0: W0614: Unused import(s) DEBUG, ALLOWED_HOSTS, DATABASES, VERSION, SECRET_KEY, DJANGO_APPS, PROJECT_APPS, TIERS_APPS, DEV_APPS, INSTALLED_APPS, STATICFILES_FINDERS, TAILWIND_APP_NAME, STATIC_URL, STATICFILES_DIRS, STATIC_ROOT, WAGTAILADMIN_BASE_CSS, DJANGO_MIDDLEWARE, TIERS_MIDDLEWARE, MIDDLEWARE, ROOT_URLCONF, TEMPLATES, WSGI_APPLICATION, CRISPY_ALLOWED_TEMPLATE_PACKS, CRISPY_TEMPLATE_PACK, LOGIN_REDIRECT_URL, LOGOUT_REDIRECT_URL, LOGIN_URL, AUTH_PASSWORD_VALIDATORS, AUTH_USER_MODEL, LANGUAGE_CODE, TIME_ZONE, USE_I18N, USE_TZ, DEFAULT_AUTO_FIELD, SESSION_COOKIE_DOMAIN, SESSION_COOKIE_NAME, SESSION_COOKIE_AGE, SESSION_SAVE_EVERY_REQUEST, SESSION_COOKIE_SECURE, CSRF_COOKIE_SECURE, SECURE_SSL_REDIRECT, DEFAULT_FROM_EMAIL, EMAIL_HOST, EMAIL_PORT, EMAIL_USE_TLS, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, MEDIA_URL, MEDIA_ROOT, CITIES_LIGHT_TRANSLATION_LANGUAGES, CITIES_LIGHT_INCLUDE_COUNTRIES, CITIES_LIGHT_INCLUDE_CITY_TYPES, Path, env and get_version from wildcard import of base (unused-wildcard-import)
 ************* Module templates.dashboard.urlviewupdate
 templates/dashboard/urlviewupdate.py:4:0: E0401: Unable to import 'templates.dashboard.views' (import-error)
 ************* Module tests.unit.diarylab.test_diarylab_models
@@ -53,10 +57,10 @@ tests/integration/secretbox/test_users_urls.py:59:4: C0103: Method name "test_lo
 tests/integration/secretbox/test_users_urls.py:64:4: C0103: Method name "test_profile_GET_authenticated" doesn't conform to snake_case naming style (invalid-name)
 tests/integration/secretbox/test_users_urls.py:69:4: C0103: Method name "test_profile_GET_unauthenticated" doesn't conform to snake_case naming style (invalid-name)
 ************* Module tests.integration.secretbox.test_dashboard_views
-tests/integration/secretbox/test_dashboard_views.py:13:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
-tests/integration/secretbox/test_dashboard_views.py:79:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:83:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
-tests/integration/secretbox/test_dashboard_views.py:211:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
+tests/integration/secretbox/test_dashboard_views.py:14:0: R0902: Too many instance attributes (9/7) (too-many-instance-attributes)
+tests/integration/secretbox/test_dashboard_views.py:80:4: C0103: Method name "assertRedirectsToLogin" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:84:4: C0103: Method name "assertRedirectsToDashboard" doesn't conform to snake_case naming style (invalid-name)
+tests/integration/secretbox/test_dashboard_views.py:215:8: W0612: Unused variable 'test_user_cannot_edit_other_users_todo' (unused-variable)
 ************* Module tests.factories.account
 tests/factories/account.py:4:0: E0401: Unable to import 'comptaquest.comptas.models.account' (import-error)
 tests/factories/account.py:4:0: E0611: No name 'account' in module 'comptaquest.comptas.models' (no-name-in-module)
@@ -89,8 +93,8 @@ secretbox/dashboard/todo_model.py:155:8: C0103: Variable name "PERIODIC_DAYS_MAP
 secretbox/dashboard/colorparameter_model.py:49:0: C0301: Line too long (110/100) (line-too-long)
 secretbox/dashboard/colorparameter_model.py:41:4: E0211: Method 'get_color_parameter_coverage' has no argument (no-method-argument)
 ************* Module secretbox.dashboard.todo_views
-secretbox/dashboard/todo_views.py:74:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
-secretbox/dashboard/todo_views.py:108:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
+secretbox/dashboard/todo_views.py:75:4: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
+secretbox/dashboard/todo_views.py:109:8: W1203: Use lazy % formatting in logging functions (logging-fstring-interpolation)
 ************* Module secretbox.dashboard.admin
 secretbox/dashboard/admin.py:61:0: C0301: Line too long (107/100) (line-too-long)
 ************* Module secretbox.dashboard.todo_forms
@@ -121,22 +125,22 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==sami.admin:[37:44]
 ==sami.forms:[22:29]
-            "bedtime",
-            "wakeup",
-            "nonstop",
-            "energy",
-            "naptime",
-            "phone",
-            "reading", (duplicate-code)
+                    "bedtime",
+                    "wakeup",
+                    "nonstop",
+                    "energy",
+                    "naptime",
+                    "phone",
+                    "reading", (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==sami.admin:[52:58]
 ==sami.forms:[29:35]
-                    "fruits",
-                    "vegetables",
-                    "meals",
-                    "desserts",
-                    "sugardrinks",
-                    "nosugardrinks", (duplicate-code)
+            "fruits",
+            "vegetables",
+            "meals",
+            "desserts",
+            "sugardrinks",
+            "nosugardrinks", (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==secretbox.dashboard.admin:[24:29]
 ==secretbox.dashboard.todo_forms:[25:30]
@@ -156,11 +160,11 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==sami.admin:[79:84]
 ==sami.forms:[40:45]
-                    "videogames",
-                    "papergames",
-                    "administrative",
-                    "computer",
-                    "youtube", (duplicate-code)
+            "videogames",
+            "papergames",
+            "administrative",
+            "computer",
+            "youtube", (duplicate-code)
 secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 files
 ==diarylab.models:[40:45]
 ==sami.sami_model:[63:68]
@@ -172,5 +176,5 @@ secretbox/dashboard/templatetags/__init__.py:1:0: R0801: Similar lines in 2 file
 secretbox/dashboard/templatetags/__init__.py:1:0: R0401: Cyclic import (sami.sami_model -> sami.samimetrics_model) (cyclic-import)
 
 ------------------------------------------------------------------
-Your code has been rated at 9.75/10 (previous run: 9.72/10, +0.03)
+Your code has been rated at 9.71/10 (previous run: 9.71/10, +0.00)
 

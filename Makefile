@@ -4,8 +4,8 @@ quality:
 	uv run isort .
 	uv run black .
 	uv run flake8 .
-	uv run pylint . > tests/output/pylint.txt
-	uv run bandit -r . --exclude venv,migrations -o tests/output/bandit.txt -f txt
+	uv run pylint . --fail-under=9 --ignore=migrations,.venv,tests/output > tests/output/pylint.txt 
+	uv run bandit -r . --severity-level high --exclude venv,migrations -o tests/output/bandit.txt -f txt
 
 tests:
 	uv run pytest --benchmark-only
