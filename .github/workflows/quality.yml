@@ -11,8 +11,20 @@ on:
         description: 'Page to navigate to'
         required: true
         default: 'dashboard'
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 env:
   DJANGO_SETTINGS_MODULE: "config.settings.prod"
+  DEFAULT_FROM_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+  EMAIL_HOST: "smtp.gmail.com"
+  EMAIL_PORT: 587
+  EMAIL_USE_TLS: True
+  EMAIL_HOST_USER: ${{ secrets.ADMIN_EMAIL }}
+  EMAIL_HOST_PASSWORD: ${{ secrets.SENDGRID_API_KEY }}
+  DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
 
 jobs:
 
@@ -57,8 +69,6 @@ jobs:
           uv run black . --check
           uv run flake8 . --count --exit-zero --max-complexity=10 --statistics
       - name: Run pylint
-        env:
-          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           uv run pylint $(git ls-files '*.py') --fail-under=9 --ignore=migrations, tests/output > tests/output/pylint.txt
 
