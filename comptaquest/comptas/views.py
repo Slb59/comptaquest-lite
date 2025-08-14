@@ -29,6 +29,7 @@ from .forms import (
     AccountForm,
     OutgoingsForm,
     SelectAccountTypeForm,
+    PortfolioFormSet
 )
 from .models.outgoings import Outgoings
 from .models.transaction import Transaction
@@ -135,17 +136,21 @@ class AccountCreateView(ComptasBaseView, CreateView):
         return kwargs
 
     def form_valid(self, form):
+        context = self.get_context_data()
+        if self.account_type == "Investment":
+            form = self.get_form()
+            form.portfolio_formset = PortfolioFormSet(self.request.POST)
+            if not portfolio_formset.is_valid():
+                return self.form_invalid(form)
+
         instance = form.save(commit=False)
         instance.created_by = self.request.user
         instance.account_type = self.account_type
         instance.save()
 
         if self.account_type == "Investment":
-            formset = InvestmentAsset(self.request.POST, instance=instance)
-            if formset.is_valid():
-                formset.save()
-            else:
-                return self.form_invalid(form)
+            portfolio_formset.instance = instance
+            portfolio_formset.save()
 
         # clear session after use
         del self.request.session["selected_account_type"]
@@ -161,9 +166,9 @@ class AccountCreateView(ComptasBaseView, CreateView):
         context["account_type"] = self.account_type
         if self.account_type == "Investment":
             if self.request.POST:
-                context["portfolio_formset"] = InvestmentAsset(self.request.POST)
+                context["portfolio_formset"] = PortfolioFormSet(self.request.POST)
             else:
-                context["portfolio_formset"] = InvestmentAsset()
+                context["portfolio_formset"] = PortfolioFormSet()
         return context
 
 

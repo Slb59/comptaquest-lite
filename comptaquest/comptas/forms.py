@@ -39,8 +39,8 @@ class SelectAccountTypeForm(forms.Form):
 
 
 PortfolioFormSet = inlineformset_factory(
-    InvestmentAccount,
-    InvestmentAsset,
+    parent_model=InvestmentAccount,
+    model=InvestmentAsset,
     fields=("designation", "asset_type", "quantity", "price"),
     extra=1,
     can_delete=True,
@@ -50,9 +50,16 @@ PortfolioFormSet = inlineformset_factory(
 class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
     class Meta:
         model = AbstractAccount
-        fields = ["name", "bank_name", "pointed_date"]
+        fields = [
+            "user", "name", "bank_name", 
+            "pointed_date", "description",
+            "closed_date", "state", "created_date",
+            "ledger_analysis", "average_interest",
+            "current_balance", "current_pointed_date", "current_pointed_balance",
+        ]
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, account_type=None, **kwargs):
+        self.account_type = account_type
         super().__init__(*args, **kwargs)
 
         self.set_tooltips_from_instance()
@@ -66,7 +73,7 @@ class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
         self.fields["bank_name"].label = _("Banque")
         self.fields["pointed_date"].label = _("Dernier pointage")
 
-        self.helper.layout = Layout(
+        layout_items = [
             Div(
                 Div(
                     Div("name", css_class="sm:col-span-2"),
@@ -96,9 +103,20 @@ class AccountForm(forms.ModelForm, TooltipFromInstanceMixin):
                     css_class="grid grid-cols-3 gap-4",
                 ),
                 "description",
-                action_buttons(back_url_name="comptas:dashboard", back_label="Liste"),
             )
-        )
+        ]
+
+        if self.account_type == "Investment":
+            layout_items.append(
+                HTML("<h3>Portefeuille</h3>"),
+                Fieldset(
+                    "",
+                    Formset("portfolio_formset")
+                )
+            )
+
+        layout_items.append(action_buttons(back_url_name="comptas:dashboard", back_label="Liste"))
+        self.helper.layout = Layout(*layout_items)
 
 
 class OutgoingsForm(forms.ModelForm):
