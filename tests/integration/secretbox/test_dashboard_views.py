@@ -234,6 +234,7 @@ class TodoDeleteViewTest(TestCase, TodoTestMixin):
         self.url = reverse("dashboard:delete_todo", kwargs={"pk": self.todo.pk})
 
     def test_redirect_if_not_logged_in(self):
+        self.client.logout()
         response = self.client.post(self.url)
         self.assertRedirectsToLogin(response)
 
@@ -255,3 +256,4 @@ class TodoDeleteViewTest(TestCase, TodoTestMixin):
         self.assertEqual(self.todo.state, "cancel")
         self.assertEqual(self.todo.note.count("*** supprimé"), 1)
         self.assertRedirects(response, reverse("home"))
+

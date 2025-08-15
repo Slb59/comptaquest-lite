@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 from config import env, get_version
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -157,9 +158,9 @@ DATABASES = {
 }
 
 
-LOGIN_REDIRECT_URL = "comptas:dashboard"
-LOGOUT_REDIRECT_URL = "users:login"
-LOGIN_URL = "users:login"
+LOGIN_REDIRECT_URL = reverse_lazy("comptas:dashboard")
+LOGOUT_REDIRECT_URL = reverse_lazy("users:login")
+LOGIN_URL = reverse_lazy("users:login")
 
 
 # Password validation

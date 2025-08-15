@@ -15,7 +15,7 @@ from django.urls import reverse_lazy
 from django.utils.dateparse import parse_date
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.http import require_GET, require_POST
-from django.views.generic import CreateView, TemplateView, UpdateView, View
+from django.views.generic import CreateView, TemplateView, UpdateView, View, DeleteView
 
 from .filters import TodoFilterForm
 from .todo_forms import TodoForm
@@ -165,9 +165,13 @@ class DashboardView(LoginRequiredMixin, TemplateView):
             _("Recherche dans Dashboard get_queryset_by_rights par l'utilisateur %s"),
             user,
         )
+
         if user.is_superuser:
-            return Todo.objects.all()
-        return Todo.objects.filter(Q(user=user) | Q(who=user)).distinct()
+            return Todo.objects.order_by("pk").distinct()
+        else:
+            return Todo.objects.filter(
+                Q(user=user) | Q(who=user)
+            ).order_by("pk").distinct()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -230,7 +234,9 @@ class TodoUpdateView(LoginRequiredMixin, UpdateView):
         return kwargs
 
 
-class TodoDeleteView(LoginRequiredMixin, View):
+class TodoDeleteView(LoginRequiredMixin, DeleteView):
+    model = Todo
+    success_url = reverse_lazy("home")
 
     def post(self, request, pk, *args, **kwargs):
         todo = get_object_or_404(Todo, pk=pk)
@@ -241,6 +247,9 @@ class TodoDeleteView(LoginRequiredMixin, View):
         return redirect("home")
 
     def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(f"{settings.LOGIN_URL}?next={request.path}")
+
         todo = self.get_object()
         if not todo.can_delete(request.user):
             return HttpResponseForbidden(_("Vous ne pouvez pas supprimer cet élément."))
